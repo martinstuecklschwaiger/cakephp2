@@ -28,7 +28,6 @@ use Cake\Database\TypeMap;
 use Cake\Database\ValueBinder;
 use Cake\Datasource\ConnectionManager;
 use Cake\Event\EventInterface;
-use Cake\I18n\FrozenTime;
 use Cake\I18n\Time;
 use Cake\ORM\Association\BelongsTo;
 use Cake\ORM\Query;
@@ -727,7 +726,7 @@ class QueryTest extends TestCase
         $this->assertInstanceOf('Cake\ORM\Entity', $result);
         $this->assertInstanceOf('Cake\ORM\Entity', $result->_matchingData['Comments']);
         $this->assertIsInt($result->_matchingData['Comments']->id);
-        $this->assertInstanceOf(FrozenTime::class, $result->_matchingData['Comments']->created);
+        $this->assertInstanceOf(Time::class, $result->_matchingData['Comments']->created);
     }
 
     /**
@@ -1299,7 +1298,7 @@ class QueryTest extends TestCase
             'created' => new Time('2016-01-01 00:00'),
         ];
         $this->assertEquals($expected, $first->tags[0]->toArray());
-        $this->assertInstanceOf(FrozenTime::class, $first->tags[0]->created);
+        $this->assertInstanceOf(Time::class, $first->tags[0]->created);
 
         $expected = [
             'id' => 2,
@@ -1309,7 +1308,7 @@ class QueryTest extends TestCase
             'created' => new Time('2016-01-01 00:00'),
         ];
         $this->assertEquals($expected, $first->tags[1]->toArray());
-        $this->assertInstanceOf(FrozenTime::class, $first->tags[1]->created);
+        $this->assertInstanceOf(Time::class, $first->tags[1]->created);
     }
 
     /**
@@ -1361,7 +1360,7 @@ class QueryTest extends TestCase
             'created' => new Time('2016-01-01 00:00'),
         ];
         $this->assertEquals($expected, $first->tags[0]->toArray());
-        $this->assertInstanceOf(FrozenTime::class, $first->tags[0]->created);
+        $this->assertInstanceOf(Time::class, $first->tags[0]->created);
 
         $expected = [
             'id' => 2,
@@ -1375,7 +1374,7 @@ class QueryTest extends TestCase
             'created' => new Time('2016-01-01 00:00'),
         ];
         $this->assertEquals($expected, $first->tags[1]->toArray());
-        $this->assertInstanceOf(FrozenTime::class, $first->tags[0]->created);
+        $this->assertInstanceOf(Time::class, $first->tags[0]->created);
     }
 
     /**
@@ -3220,8 +3219,8 @@ class QueryTest extends TestCase
             ->find()
             ->select(['created', 'updated_time' => 'updated'])
             ->first();
-        $this->assertInstanceOf(FrozenTime::class, $result->created);
-        $this->assertInstanceOf(FrozenTime::class, $result->updated_time);
+        $this->assertInstanceOf(Time::class, $result->created);
+        $this->assertInstanceOf(Time::class, $result->updated_time);
     }
 
     /**

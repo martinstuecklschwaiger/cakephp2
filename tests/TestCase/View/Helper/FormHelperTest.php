@@ -21,7 +21,7 @@ use Cake\Core\Configure;
 use Cake\Form\Form;
 use Cake\Http\ServerRequest;
 use Cake\I18n\Date;
-use Cake\I18n\FrozenTime;
+use Cake\I18n\Time;
 use Cake\ORM\Entity;
 use Cake\ORM\Table;
 use Cake\Routing\Router;
@@ -3253,7 +3253,7 @@ class FormHelperTest extends TestCase
     {
         $result = $this->Form->control('prueba', [
             'type' => 'datetime',
-            'value' => new FrozenTime('2019-09-27 02:52:43'),
+            'value' => new Time('2019-09-27 02:52:43'),
         ]);
         $expected = [
             'div' => ['class' => 'input datetime'],
@@ -3310,7 +3310,7 @@ class FormHelperTest extends TestCase
     {
         $result = $this->Form->control('prueba', [
             'type' => 'datetime',
-            'value' => new FrozenTime('2019-09-27 02:52:43'),
+            'value' => new Time('2019-09-27 02:52:43'),
             'step' => '0.5',
         ]);
         $expected = [
@@ -7147,7 +7147,7 @@ class FormHelperTest extends TestCase
             ],
         ]);
         $result = $this->Form->datetime('created', [
-            'val' => new FrozenTime('2019-09-27 02:52:43.123'),
+            'val' => new Time('2019-09-27 02:52:43.123'),
         ]);
         $expected = [
             'input' => [
@@ -7176,7 +7176,7 @@ class FormHelperTest extends TestCase
             ],
         ]);
         $result = $this->Form->control('created', [
-            'val' => new FrozenTime('2019-09-27 02:52:43.123'),
+            'val' => new Time('2019-09-27 02:52:43.123'),
         ]);
         $expected = [
             'div' => ['class' => 'input datetime'],

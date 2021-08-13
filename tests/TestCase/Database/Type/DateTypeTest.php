@@ -53,7 +53,6 @@ class DateTypeTest extends TestCase
     public function tearDown(): void
     {
         parent::tearDown();
-        $this->type->useImmutable();
         $this->type->useLocaleParser(false)->setLocaleFormat(null);
     }
 
@@ -197,10 +196,6 @@ class DateTypeTest extends TestCase
     {
         $result = $this->type->marshal($value);
         $this->assertEquals($expected, $result);
-
-        $this->type->useMutable();
-        $result = $this->type->marshal($value);
-        $this->assertEquals($expected, $result);
     }
 
     /**
@@ -212,10 +207,6 @@ class DateTypeTest extends TestCase
         $this->assertNull($this->type->marshal('11/derp/2013'));
 
         $expected = new Date('13-10-2013');
-        $result = $this->type->marshal('10/13/2013');
-        $this->assertSame($expected->format('Y-m-d'), $result->format('Y-m-d'));
-
-        $this->type->useMutable();
         $result = $this->type->marshal('10/13/2013');
         $this->assertSame($expected->format('Y-m-d'), $result->format('Y-m-d'));
     }
@@ -231,10 +222,6 @@ class DateTypeTest extends TestCase
         $expected = new Date('13-10-2013');
         $result = $this->type->marshal('13 Oct, 2013');
         $this->assertSame($expected->format('Y-m-d'), $result->format('Y-m-d'));
-
-        $this->type->useMutable();
-        $result = $this->type->marshal('13 Oct, 2013');
-        $this->assertSame($expected->format('Y-m-d'), $result->format('Y-m-d'));
     }
 
     /**
@@ -242,12 +229,7 @@ class DateTypeTest extends TestCase
      */
     public function testToImmutableAndToMutable(): void
     {
-        $this->type->useImmutable();
         $this->assertInstanceOf('DateTimeImmutable', $this->type->marshal('2015-11-01'));
         $this->assertInstanceOf('DateTimeImmutable', $this->type->toPHP('2015-11-01', $this->driver));
-
-        $this->type->useMutable();
-        $this->assertInstanceOf('DateTime', $this->type->marshal('2015-11-01'));
-        $this->assertInstanceOf('DateTime', $this->type->toPHP('2015-11-01', $this->driver));
     }
 }

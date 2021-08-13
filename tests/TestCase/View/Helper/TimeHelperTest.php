@@ -131,7 +131,7 @@ class TimeHelperTest extends TestCase
             'element' => 'span',
         ]);
         $vancouver = clone $timestamp;
-        $vancouver->timezone('America/Vancouver');
+        $vancouver = $vancouver->timezone('America/Vancouver');
 
         $expected = [
             'span' => [
@@ -200,7 +200,7 @@ class TimeHelperTest extends TestCase
         $this->Time->setConfig('outputTimezone', 'America/Vancouver');
         $dateTime = new Time();
         $vancouver = clone $dateTime;
-        $vancouver->timezone('America/Vancouver');
+        $vancouver = $vancouver->timezone('America/Vancouver');
         $this->assertSame($vancouver->format(Time::ATOM), $this->Time->toAtom($vancouver));
     }
 
@@ -230,7 +230,7 @@ class TimeHelperTest extends TestCase
         $this->Time->setConfig('outputTimezone', 'America/Vancouver');
         $dateTime = new Time();
         $vancouver = clone $dateTime;
-        $vancouver->timezone('America/Vancouver');
+        $vancouver = $vancouver->timezone('America/Vancouver');
 
         $this->assertSame($vancouver->format('r'), $this->Time->toRss($vancouver));
     }
@@ -479,7 +479,7 @@ class TimeHelperTest extends TestCase
 
         I18n::setLocale('fr_FR');
         Time::setDefaultLocale('fr_FR');
-        $time = new \Cake\I18n\FrozenTime('Thu Jan 14 13:59:28 2010');
+        $time = new \Cake\I18n\Time('Thu Jan 14 13:59:28 2010');
         $result = $this->Time->format($time, \IntlDateFormatter::FULL);
         $this->assertStringContainsString('jeudi 14 janvier 2010', $result);
         $this->assertStringContainsString('13:59:28', $result);

@@ -18,7 +18,6 @@ namespace Cake\Test\TestCase\ORM;
 
 use Cake\Database\Expression\IdentifierExpression;
 use Cake\Event\EventInterface;
-use Cake\I18n\FrozenTime;
 use Cake\I18n\Time;
 use Cake\ORM\Entity;
 use Cake\ORM\Marshaller;
@@ -1301,7 +1300,7 @@ class MarshallerTest extends TestCase
      */
     public function testMergeWithSameObjectValue(): void
     {
-        $created = new FrozenTime('2020-10-29');
+        $created = new Time('2020-10-29');
         $entity = new Entity([
             'comment' => 'foo',
             'created' => $created,
@@ -2401,7 +2400,7 @@ class MarshallerTest extends TestCase
         ];
         $marshall = new Marshaller($this->comments);
         $result = $marshall->merge($entity, $data);
-        $this->assertInstanceOf(FrozenTime::class, $entity->created);
+        $this->assertInstanceOf(Time::class, $entity->created);
         $this->assertSame('2014-02-14', $entity->created->format('Y-m-d'));
     }
 

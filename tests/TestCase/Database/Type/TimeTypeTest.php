@@ -251,12 +251,7 @@ class TimeTypeTest extends TestCase
      */
     public function testToImmutableAndToMutable(): void
     {
-        $this->type->useImmutable();
         $this->assertInstanceOf('DateTimeImmutable', $this->type->marshal('11:23:12'));
         $this->assertInstanceOf('DateTimeImmutable', $this->type->toPHP('11:23:12', $this->driver));
-
-        $this->type->useMutable();
-        $this->assertInstanceOf('DateTime', $this->type->marshal('11:23:12'));
-        $this->assertInstanceOf('DateTime', $this->type->toPHP('11:23:12', $this->driver));
     }
 }

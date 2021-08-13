@@ -17,9 +17,7 @@ declare(strict_types=1);
 namespace Cake\Database\Type;
 
 use Cake\I18n\Date;
-use Cake\I18n\FrozenDate;
 use Cake\I18n\I18nDateTimeInterface;
-use DateTime;
 use DateTimeImmutable;
 use DateTimeInterface;
 
@@ -49,27 +47,13 @@ class DateType extends DateTimeType
     protected $setToDateStart = true;
 
     /**
-     * Change the preferred class name to the FrozenDate implementation.
-     *
-     * @return $this
+     * @inheritDoc
      */
-    public function useImmutable()
+    public function __construct(?string $name = null)
     {
-        $this->_setClassName(FrozenDate::class, DateTimeImmutable::class);
+        parent::__construct($name);
 
-        return $this;
-    }
-
-    /**
-     * Change the preferred class name to the mutable Date implementation.
-     *
-     * @return $this
-     */
-    public function useMutable()
-    {
-        $this->_setClassName(Date::class, DateTime::class);
-
-        return $this;
+        $this->_className = class_exists(Date::class) ? Date::class : DateTimeImmutable::class;
     }
 
     /**

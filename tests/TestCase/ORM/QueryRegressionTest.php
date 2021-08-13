@@ -20,7 +20,6 @@ use Cake\Database\Expression\ComparisonExpression;
 use Cake\Database\Expression\QueryExpression;
 use Cake\Datasource\EntityInterface;
 use Cake\Event\EventInterface;
-use Cake\I18n\FrozenTime;
 use Cake\I18n\Time;
 use Cake\ORM\Query;
 use Cake\TestSuite\TestCase;
@@ -1240,7 +1239,7 @@ class QueryRegressionTest extends TestCase
 
         $result = $query->first();
         $this->assertNotEmpty($result);
-        $this->assertInstanceOf(FrozenTime::class, $result->comment->updated);
+        $this->assertInstanceOf(Time::class, $result->comment->updated);
     }
 
     /**
@@ -1267,7 +1266,7 @@ class QueryRegressionTest extends TestCase
 
         $result = $query->first();
         $this->assertNotEmpty($result);
-        $this->assertInstanceOf(FrozenTime::class, $result->comment->article->author->updated);
+        $this->assertInstanceOf(Time::class, $result->comment->article->author->updated);
     }
 
     /**
@@ -1294,7 +1293,7 @@ class QueryRegressionTest extends TestCase
 
         $result = $query->first();
         $this->assertNotEmpty($result);
-        $this->assertInstanceOf(FrozenTime::class, $result->_matchingData['Comments']->updated);
+        $this->assertInstanceOf(Time::class, $result->_matchingData['Comments']->updated);
 
         $query = $table->find()
             ->matching('Comments.Articles.Authors')
@@ -1304,7 +1303,7 @@ class QueryRegressionTest extends TestCase
 
         $result = $query->first();
         $this->assertNotEmpty($result);
-        $this->assertInstanceOf(FrozenTime::class, $result->_matchingData['Authors']->updated);
+        $this->assertInstanceOf(Time::class, $result->_matchingData['Authors']->updated);
     }
 
     /**
@@ -1327,7 +1326,7 @@ class QueryRegressionTest extends TestCase
         $result = $query->first();
         $this->assertNotEmpty($result);
         $this->assertSame(3, $result->id);
-        $this->assertInstanceOf(FrozenTime::class, $result->created);
+        $this->assertInstanceOf(Time::class, $result->created);
     }
 
     /**
@@ -1354,7 +1353,7 @@ class QueryRegressionTest extends TestCase
 
         $result = $query->first();
         $this->assertNotEmpty($result);
-        $this->assertInstanceOf(FrozenTime::class, $result->updated);
+        $this->assertInstanceOf(Time::class, $result->updated);
 
         $query = $table->find()
             ->innerJoinWith('Comments.Articles.Authors')
@@ -1364,7 +1363,7 @@ class QueryRegressionTest extends TestCase
 
         $result = $query->first();
         $this->assertNotEmpty($result);
-        $this->assertInstanceOf(FrozenTime::class, $result->updated);
+        $this->assertInstanceOf(Time::class, $result->updated);
     }
 
     /**
@@ -1391,7 +1390,7 @@ class QueryRegressionTest extends TestCase
 
         $result = $query->first();
         $this->assertNotEmpty($result);
-        $this->assertInstanceOf(FrozenTime::class, $result->updated);
+        $this->assertInstanceOf(Time::class, $result->updated);
 
         $query = $table->find()
             ->leftJoinWith('Comments.Articles.Authors')
@@ -1401,7 +1400,7 @@ class QueryRegressionTest extends TestCase
 
         $result = $query->first();
         $this->assertNotEmpty($result);
-        $this->assertInstanceOf(FrozenTime::class, $result->updated);
+        $this->assertInstanceOf(Time::class, $result->updated);
     }
 
     /**
