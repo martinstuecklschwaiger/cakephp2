@@ -1,5 +1,5 @@
 {
-	"name": "diesocialisten/cakephp2",
+	"name": "cakephp/cakephp",
 	"description": "The CakePHP framework",
 	"type": "library",
 	"keywords": ["framework"],
