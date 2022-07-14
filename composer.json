@@ -12,13 +12,12 @@
 		}
 	],
 	"support": {
-		"issues": "https://github.com/cakephp/cakephp/issues",
+		"issues": "https://github.com/diesocialisten/cakephp2/issues",
 		"forum": "https://stackoverflow.com/tags/cakephp",
-		"irc": "irc://irc.freenode.org/cakephp",
-		"source": "https://github.com/cakephp/cakephp"
+		"source": "https://github.com/diesocialisten/cakephp2"
 	},
 	"require": {
-		"php": ">=5.3.0,<8.0.0"
+		"php": ">=5.3.0,<8.1.0"
 	},
 	"suggest": {
 		"ext-openssl": "You need to install ext-openssl or ext-mcrypt to use AES-256 encryption",
