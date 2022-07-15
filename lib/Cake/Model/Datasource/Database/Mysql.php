@@ -918,4 +918,30 @@ class Mysql extends DboSource {
 		}
 		return $result;
 	}
+	
+	public function commit(): bool
+	{
+		try {
+			return parent::commit();
+		} catch (PDOException $e) {
+
+			// Autocommit errors were not reported by PHP before version 8.0
+			if ($this->isFailedAutocommit($e)) {
+				return false;
+			}
+
+			throw $e;
+		}
+	}
+
+	/**
+	 * Whether this exception was caused by a MySQL autocommit because of a DDL change
+	 *
+	 * If there's a DDL change in a MySQL statement, the transaction gets committed automatically.
+	 * If we commit it later, a PDOException is thrown in PHP 8 but not in earlier versions.
+	 */
+	private function isFailedAutocommit(PDOException $e): bool
+	{
+		return $e->getMessage() === "There is no active transaction";
+	}
 }
