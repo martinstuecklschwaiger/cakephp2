@@ -153,7 +153,7 @@ class DboSource extends DataSource {
 /**
  * A reference to the physical connection of this DataSource
  *
- * @var array
+ * @var PDO
  */
 	protected $_connection = null;
 
