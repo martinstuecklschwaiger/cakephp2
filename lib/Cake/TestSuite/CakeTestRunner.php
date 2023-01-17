@@ -54,7 +54,7 @@ class CakeTestRunner extends PHPUnit_TextUI_TestRunner {
  * @param array $arguments The CLI arguments
  * @param bool $exit Exits by default or returns the results
  * This argument is ignored if >PHPUnit5.2.0
- * @return void
+ * @return PHPUnit_Framework_TestResult
  */
 	public function doRun(PHPUnit_Framework_Test $suite, array $arguments = array(), $exit = true) {
 		if (isset($arguments['printer'])) {

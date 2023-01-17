@@ -108,6 +108,14 @@ class CakeTestSuiteCommand extends PHPUnit_TextUI_Command {
 				exit(PHPUnit_TextUI_TestRunner::FAILURE_EXIT);
 			}
 
+			if (!empty($this->arguments["failOnWarning"]) && $result->warningCount() > 0) {
+				exit(PHPUnit_TextUI_TestRunner::FAILURE_EXIT);
+			}
+
+			if (!empty($this->arguments["failOnRisky"]) && !$result->allHarmless()) {
+				exit(PHPUnit_TextUI_TestRunner::FAILURE_EXIT);
+			}
+
 			// Default to success even if there are warnings to match phpunit's behavior
 			exit(PHPUnit_TextUI_TestRunner::SUCCESS_EXIT);
 		}
