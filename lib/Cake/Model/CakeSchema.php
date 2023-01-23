@@ -387,7 +387,7 @@ class CakeSchema extends CakeObject {
 		$out .= "}\n";
 
 		$file = new File($options['path'] . DS . $options['file'], true);
-		$content = "<?php \n{$out}";
+		$content = "<?php\n{$out}";
 		if ($file->write($content)) {
 			return $content;
 		}
