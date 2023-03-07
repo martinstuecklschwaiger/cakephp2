@@ -544,7 +544,7 @@ class App {
 
 		$file = static::_mapped($className, $plugin);
 		if ($file) {
-			return include $file;
+			return include_once $file;
 		}
 		$paths = static::path($package, $plugin);
 
@@ -564,7 +564,7 @@ class App {
 			$file = $path . $normalizedClassName . '.php';
 			if (file_exists($file)) {
 				static::_map($file, $className, $plugin);
-				return include $file;
+				return include_once $file;
 			}
 		}
 
@@ -722,7 +722,7 @@ class App {
 		}
 		if (!empty($file) && file_exists($file)) {
 			static::_map($file, $name, $plugin);
-			$returnValue = include $file;
+			$returnValue = include_once $file;
 			if ($return) {
 				return $returnValue;
 			}
