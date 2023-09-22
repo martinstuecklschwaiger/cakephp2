@@ -60,12 +60,21 @@ class Hash {
 			$parts = $path;
 		}
 
-		foreach ($parts as $key) {
-			if (is_array($data) && isset($data[$key])) {
-				$data =& $data[$key];
-			} else {
-				return $default;
-			}
+		switch (count($parts)) {
+			case 1:
+				return $data[$parts[0]] ?? $default;
+			case 2:
+				return $data[$parts[0]][$parts[1]] ?? $default;
+			case 3:
+				return $data[$parts[0]][$parts[1]][$parts[2]] ?? $default;
+			default:
+				foreach ($parts as $key) {
+					if (is_array($data) && isset($data[$key])) {
+						$data =& $data[$key];
+					} else {
+						return $default;
+					}
+				}
 		}
 
 		return $data;
