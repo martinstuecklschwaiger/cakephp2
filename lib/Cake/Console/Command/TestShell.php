@@ -117,24 +117,12 @@ class TestShell extends Shell {
 		))->addOption('stop-on-failure', array(
 			'help' => __d('cake_console', 'Stop execution upon first failure.'),
 			'boolean' => true
-		))->addOption('stop-on-warning', array(
-				'help' => __d('cake_console', 'Stop execution upon first warning.'),
-				'boolean' => true,
 		))->addOption('stop-on-skipped', array(
 			'help' => __d('cake_console', 'Stop execution upon first skipped test.'),
 			'boolean' => true
 		))->addOption('stop-on-incomplete', array(
 			'help' => __d('cake_console', 'Stop execution upon first incomplete test.'),
 			'boolean' => true
-		))->addOption('stop-on-risky', array(
-			'help' => __d('cake_console', 'Stop execution upon first risky test.'),
-			'boolean' => true
-		))->addOption('fail-on-warning', array(
-			'help' => __d('cake_console', 'Fail if there were tests with warnings.'),
-			'boolean' => true
-		))->addOption('fail-on-risky', array(
-				'help' => __d('cake_console', 'Fail if there were tests that were marked as risky.'),
-				'boolean' => true
 		))->addOption('strict', array(
 			'help' => __d('cake_console', 'Mark a test as incomplete if no assertions are made.'),
 			'boolean' => true

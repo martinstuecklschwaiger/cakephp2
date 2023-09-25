@@ -56,7 +56,8 @@ class CakeTestRunner extends PHPUnit_TextUI_TestRunner {
  * This argument is ignored if >PHPUnit5.2.0
  * @return PHPUnit_Framework_TestResult
  */
-	public function doRun(PHPUnit_Framework_Test $suite, array $arguments = array(), $exit = true) {
+	public function doRun(PHPUnit_Framework_Test $suite, array $arguments = array(), $exit = true): PHPUnit_Framework_TestResult
+	{
 		if (isset($arguments['printer'])) {
 			static::$versionStringPrinted = true;
 		}
