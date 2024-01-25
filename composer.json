@@ -17,7 +17,7 @@
 		"source": "https://github.com/diesocialisten/cakephp2"
 	},
 	"require": {
-		"php": ">=5.3.0,<8.1.0"
+		"php": ">=5.3.0,<8.2.0"
 	},
 	"suggest": {
 		"ext-openssl": "You need to install ext-openssl or ext-mcrypt to use AES-256 encryption",
