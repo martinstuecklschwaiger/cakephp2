@@ -311,7 +311,7 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable {
  * @param string $index name of the rule
  * @return bool
  */
-	public function offsetExists($index) {
+	public function offsetExists(mixed $index): bool {
 		return isset($this->_rules[$index]);
 	}
 
@@ -321,7 +321,7 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable {
  * @param string $index name of the rule
  * @return CakeValidationRule
  */
-	public function offsetGet($index) {
+	public function offsetGet(mixed $index): mixed {
 		return $this->_rules[$index];
 	}
 
@@ -331,12 +331,12 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable {
  * This is a wrapper for ArrayAccess. Use setRule() directly for
  * chainable access.
  *
- * @param string $index Name of the rule.
+ * @param mixed $index Name of the rule.
  * @param CakeValidationRule|array $rule Rule to add to $index.
  * @return void
  * @see http://www.php.net/manual/en/arrayobject.offsetset.php
  */
-	public function offsetSet($index, $rule) {
+	public function offsetSet(mixed $index, mixed $rule): void {
 		$this->setRule($index, $rule);
 	}
 
@@ -346,7 +346,7 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable {
  * @param string $index name of the rule
  * @return void
  */
-	public function offsetUnset($index) {
+	public function offsetUnset(mixed $index): void {
 		unset($this->_rules[$index]);
 	}
 
@@ -355,7 +355,7 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable {
  *
  * @return ArrayIterator
  */
-	public function getIterator() {
+	public function getIterator(): Traversable {
 		return new ArrayIterator($this->_rules);
 	}
 
@@ -364,7 +364,7 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable {
  *
  * @return int
  */
-	public function count() {
+	public function count(): int {
 		return count($this->_rules);
 	}
 

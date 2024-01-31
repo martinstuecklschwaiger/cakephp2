@@ -1117,7 +1117,7 @@ class CakeRequest implements ArrayAccess {
  * @param string $name Name of the key being accessed.
  * @return mixed
  */
-	public function offsetGet($name) {
+	public function offsetGet(mixed $name): mixed {
 		if (isset($this->params[$name])) {
 			return $this->params[$name];
 		}
@@ -1133,11 +1133,11 @@ class CakeRequest implements ArrayAccess {
 /**
  * Array access write implementation
  *
- * @param string $name Name of the key being written
+ * @param mixed $name Name of the key being written
  * @param mixed $value The value being written.
  * @return void
  */
-	public function offsetSet($name, $value) {
+	public function offsetSet(mixed $name, mixed $value): void {
 		$this->params[$name] = $value;
 	}
 
@@ -1147,7 +1147,7 @@ class CakeRequest implements ArrayAccess {
  * @param string $name thing to check.
  * @return bool
  */
-	public function offsetExists($name) {
+	public function offsetExists(mixed $name): bool {
 		if ($name === 'url' || $name === 'data') {
 			return true;
 		}
@@ -1157,10 +1157,10 @@ class CakeRequest implements ArrayAccess {
 /**
  * Array access unset() implementation
  *
- * @param string $name Name to unset.
+ * @param mixed $name Name to unset.
  * @return void
  */
-	public function offsetUnset($name) {
+	public function offsetUnset(mixed $name): void {
 		unset($this->params[$name]);
 	}
 
