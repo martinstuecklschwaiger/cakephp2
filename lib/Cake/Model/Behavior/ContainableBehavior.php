@@ -375,8 +375,16 @@ class ContainableBehavior extends ModelBehavior {
 				foreach ($children as $type => $bindings) {
 					foreach ($bindings as $dependency) {
 						if ($type === 'hasAndBelongsToMany') {
+							//we need this because of the deprecation
+							if($fields === false) {
+								$fields = [];
+							};
 							$fields[$parent][] = '--primaryKey--';
 						} elseif ($type === 'belongsTo') {
+							//we need this because of the deprecation
+							if($fields === false) {
+								$fields = [];
+							};
 							$fields[$parent][] = $dependency . '.--primaryKey--';
 						}
 					}

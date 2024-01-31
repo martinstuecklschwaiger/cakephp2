@@ -1074,7 +1074,7 @@ class Router {
 			$out = $q;
 			$q = $extra;
 		}
-		$addition = http_build_query($q, null, $join);
+		$addition = http_build_query($q, '', $join);
 
 		if ($out && $addition && substr($out, strlen($join) * -1, strlen($join)) !== $join) {
 			$out .= $join;

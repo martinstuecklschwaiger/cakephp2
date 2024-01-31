@@ -513,6 +513,7 @@ class DboSource extends DataSource {
 			}
 			return $query;
 		} catch (PDOException $e) {
+			//this is adding a dynamic property querystring
 			if (isset($query->queryString)) {
 				$e->queryString = $query->queryString;
 			} else {
@@ -3271,7 +3272,7 @@ class DboSource extends DataSource {
 		$sign = isset($result[3]);
 
 		$isFloat = in_array($type, array('dec', 'decimal', 'float', 'numeric', 'double'));
-		if ($isFloat && strpos($length, ',') !== false) {
+		if ($isFloat && strpos((string) $length, ',') !== false) {
 			return $length;
 		}
 

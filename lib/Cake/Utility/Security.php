@@ -110,7 +110,7 @@ class Security {
 		if (empty($type)) {
 			$type = static::$hashType;
 		}
-		$type = strtolower($type);
+		$type = strtolower((string) $type);
 
 		if ($type === 'blowfish') {
 			return static::_crypt($string, $salt);
