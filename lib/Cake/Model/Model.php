@@ -1026,7 +1026,7 @@ class Model extends CakeObject implements CakeEventListener {
 			$association =& $this->{$type};
 
 			if (!is_array($association)) {
-				$association = explode(',', $association);
+				$association = explode(',', (string) $association);
 
 				foreach ($association as $i => $className) {
 					$className = trim($className);
@@ -1046,7 +1046,7 @@ class Model extends CakeObject implements CakeEventListener {
 						$association[$assoc] = $value;
 					}
 
-					if (!isset($value['className']) && strpos($assoc, '.') !== false) {
+					if (!isset($value['className']) && strpos((string) $assoc, '.') !== false) {
 						unset($association[$assoc]);
 						list($plugin, $assoc) = pluginSplit($assoc, true);
 						$association[$assoc] = array('className' => $plugin . $assoc) + $value;
@@ -1359,7 +1359,7 @@ class Model extends CakeObject implements CakeEventListener {
 					}
 				}
 
-				if (!isset($data[$val]) || isset($data[$val]) && (empty($data[$val]) || substr($data[$val], 0, 1) === '-')) {
+				if (!isset($data[$val]) || isset($data[$val]) && (empty($data[$val]) || substr((string) $data[$val], 0, 1) === '-')) {
 					return null;
 				}
 
@@ -1377,7 +1377,7 @@ class Model extends CakeObject implements CakeEventListener {
 				}
 			}
 
-			return str_replace(array_keys($date), array_values($date), $format);
+			return str_replace(array_keys($date), array_values($date), (string) $format);
 		}
 
 		return $data;
@@ -3172,7 +3172,7 @@ class Model extends CakeObject implements CakeEventListener {
 		if ($state === 'before') {
 			if (!empty($query['type']) && isset($this->findMethods[$query['type']]) && $query['type'] !== 'count') {
 				$query['operation'] = 'count';
-				$query = $this->{'_find' . ucfirst($query['type'])}('before', $query);
+				$query = $this->{'_find' . ucfirst((string) $query['type'])}('before', $query);
 			}
 
 			$db = $this->getDataSource();
@@ -3182,7 +3182,7 @@ class Model extends CakeObject implements CakeEventListener {
 			}
 
 			if (!empty($query['fields']) && is_array($query['fields'])) {
-				if (!preg_match('/^count/i', current($query['fields']))) {
+				if (!preg_match('/^count/i', (string) current($query['fields']))) {
 					unset($query['fields']);
 				}
 			}
@@ -3231,7 +3231,7 @@ class Model extends CakeObject implements CakeEventListener {
 				}
 
 				if (count($query['fields']) === 1) {
-					if (strpos($query['fields'][0], '.') === false) {
+					if (strpos((string) $query['fields'][0], '.') === false) {
 						$query['fields'][0] = $this->alias . '.' . $query['fields'][0];
 					}
 
@@ -3239,7 +3239,7 @@ class Model extends CakeObject implements CakeEventListener {
 					$query['fields'] = array("{$this->alias}.{$this->primaryKey}", $query['fields'][0]);
 				} elseif (count($query['fields']) === 3) {
 					for ($i = 0; $i < 3; $i++) {
-						if (strpos($query['fields'][$i], '.') === false) {
+						if (strpos((string) $query['fields'][$i], '.') === false) {
 							$query['fields'][$i] = $this->alias . '.' . $query['fields'][$i];
 						}
 					}
@@ -3247,7 +3247,7 @@ class Model extends CakeObject implements CakeEventListener {
 					$list = array('{n}.' . $query['fields'][0], '{n}.' . $query['fields'][1], '{n}.' . $query['fields'][2]);
 				} else {
 					for ($i = 0; $i < 2; $i++) {
-						if (strpos($query['fields'][$i], '.') === false) {
+						if (strpos((string) $query['fields'][$i], '.') === false) {
 							$query['fields'][$i] = $this->alias . '.' . $query['fields'][$i];
 						}
 					}
@@ -3286,7 +3286,7 @@ class Model extends CakeObject implements CakeEventListener {
 		if ($state === 'before') {
 			$conditions = (array)$conditions;
 			if (isset($field) && isset($value)) {
-				if (strpos($field, '.') === false) {
+				if (strpos((string) $field, '.') === false) {
 					$field = $this->alias . '.' . $field;
 				}
 			} else {
@@ -3446,7 +3446,7 @@ class Model extends CakeObject implements CakeEventListener {
 				}
 			}
 
-			if (strpos($field, '.') === false) {
+			if (strpos((string) $field, '.') === false) {
 				unset($fields[$field]);
 				$fields[$this->alias . '.' . $field] = $value;
 			}

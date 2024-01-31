@@ -203,7 +203,7 @@ class CakeTime {
 				$format = __dc('cake', 'am_pm', 5);
 				if (is_array($format)) {
 					$meridiem = $format[$meridiem];
-					return ($specifier[1] === 'P') ? strtolower($meridiem) : strtoupper($meridiem);
+					return ($specifier[1] === 'P') ? strtolower((string) $meridiem) : strtoupper((string) $meridiem);
 				}
 				break;
 			case 'r':
@@ -809,7 +809,7 @@ class CakeTime {
 
 		$isAbsoluteDate = $diff > abs($now - static::fromString($relativeEnd));
 		if ($isAbsoluteDate) {
-			if (strpos($format, '%') === false) {
+			if (strpos((string) $format, '%') === false) {
 				$date = date($format, $inSeconds);
 			} else {
 				$date = static::_strftime($format, $inSeconds);
@@ -894,7 +894,7 @@ class CakeTime {
 			$accuracy = $accuracies['minute'];
 		}
 
-		$accuracyNum = str_replace(array('year', 'month', 'week', 'day', 'hour', 'minute', 'second'), array(1, 2, 3, 4, 5, 6, 7), $accuracy);
+		$accuracyNum = str_replace(array('year', 'month', 'week', 'day', 'hour', 'minute', 'second'), array(1, 2, 3, 4, 5, 6, 7), (string) $accuracy);
 
 		$relativeDate = array();
 		if ($accuracyNum >= 1 && $years > 0) {

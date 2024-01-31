@@ -595,7 +595,7 @@ class Shell extends CakeObject {
 			$this->_stop(self::CODE_ERROR);
 			return self::CODE_ERROR;
 		}
-		$result = trim($result);
+		$result = trim((string) $result);
 
 		if ($default !== null && ($result === '' || $result === null)) {
 			return $default;
@@ -774,11 +774,11 @@ class Shell extends CakeObject {
 			$this->out(__d('cake_console', '<warning>File `%s` exists</warning>', $path));
 			$key = $this->in(__d('cake_console', 'Do you want to overwrite?'), array('y', 'n', 'q'), 'n');
 
-			if (strtolower($key) === 'q') {
+			if (strtolower((string) $key) === 'q') {
 				$this->out(__d('cake_console', '<error>Quitting</error>.'), 2);
 				$this->_stop();
 				return true;
-			} elseif (strtolower($key) !== 'y') {
+			} elseif (strtolower((string) $key) !== 'y') {
 				$this->out(__d('cake_console', 'Skip `%s`', $path), 2);
 				return false;
 			}
@@ -838,7 +838,7 @@ class Shell extends CakeObject {
 
 		$prompt = __d('cake_console', 'PHPUnit is not installed. Do you want to bake unit test files anyway?');
 		$unitTest = $this->in($prompt, array('y', 'n'), 'y');
-		$result = strtolower($unitTest) === 'y' || strtolower($unitTest) === 'yes';
+		$result = strtolower((string) $unitTest) === 'y' || strtolower((string) $unitTest) === 'yes';
 
 		if ($result) {
 			$this->out();

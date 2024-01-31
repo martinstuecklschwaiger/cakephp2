@@ -826,7 +826,7 @@ FROM articles AS [Article]   WHERE 1 = 1  GROUP BY user_id  HAVING COUNT(*) > 10
 WHERE _cake_paging_._cake_page_rownum_ > 15
 ORDER BY _cake_paging_._cake_page_rownum_
 SQL;
-		$this->assertEquals($expected, preg_replace('/^\s+|\s+$/m', '', $sql));
+		$this->assertEquals($expected, preg_replace('/^\s+|\s+$/m', '', (string) $sql));
 	}
 
 /**
@@ -863,6 +863,6 @@ FROM users AS [User]  WITH (UPDLOCK)   WHERE 1 = 1
 WHERE _cake_paging_._cake_page_rownum_ > 15
 ORDER BY _cake_paging_._cake_page_rownum_
 SQL;
-		$this->assertEquals($expected, preg_replace('/^\s+|\s+$/m', '', $sql));
+		$this->assertEquals($expected, preg_replace('/^\s+|\s+$/m', '', (string) $sql));
 	}
 }

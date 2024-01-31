@@ -126,7 +126,7 @@ class SmtpTransport extends AbstractTransport {
 	protected function _bufferResponseLines(array $responseLines) {
 		$response = array();
 		foreach ($responseLines as $responseLine) {
-			if (preg_match('/^(\d{3})(?:[ -]+(.*))?$/', $responseLine, $match)) {
+			if (preg_match('/^(\d{3})(?:[ -]+(.*))?$/', (string) $responseLine, $match)) {
 				$response[] = array(
 					'code' => $match[1],
 					'message' => isset($match[2]) ? $match[2] : null
@@ -187,12 +187,12 @@ class SmtpTransport extends AbstractTransport {
 			$replyCode = $this->_smtpSend('AUTH LOGIN', '334|500|502|504');
 			if ($replyCode == '334') {
 				try {
-					$this->_smtpSend(base64_encode($this->_config['username']), '334');
+					$this->_smtpSend(base64_encode((string) $this->_config['username']), '334');
 				} catch (SocketException $e) {
 					throw new SocketException(__d('cake_dev', 'SMTP server did not accept the username.'));
 				}
 				try {
-					$this->_smtpSend(base64_encode($this->_config['password']), '235');
+					$this->_smtpSend(base64_encode((string) $this->_config['password']), '235');
 				} catch (SocketException $e) {
 					throw new SocketException(__d('cake_dev', 'SMTP server did not accept the password.'));
 				}

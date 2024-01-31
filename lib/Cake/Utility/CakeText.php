@@ -164,9 +164,9 @@ class CakeText {
 		if (!isset($format)) {
 			$format = sprintf(
 				'/(?<!%s)%s%%s%s/',
-				preg_quote($options['escape'], '/'),
-				str_replace('%', '%%', preg_quote($options['before'], '/')),
-				str_replace('%', '%%', preg_quote($options['after'], '/'))
+				preg_quote((string) $options['escape'], '/'),
+				str_replace('%', '%%', preg_quote((string) $options['before'], '/')),
+				str_replace('%', '%%', preg_quote((string) $options['after'], '/'))
 			);
 		}
 
@@ -174,8 +174,8 @@ class CakeText {
 			$offset = 0;
 			while (($pos = strpos($str, '?', $offset)) !== false) {
 				$val = array_shift($data);
-				$offset = $pos + strlen($val);
-				$str = substr_replace($str, $val, $pos, 1);
+				$offset = $pos + strlen((string) $val);
+				$str = substr_replace($str, (string) $val, $pos, 1);
 			}
 			return ($options['clean']) ? CakeText::cleanInsert($str, $options) : $str;
 		}
@@ -234,11 +234,11 @@ class CakeText {
 				), $clean);
 				$kleenex = sprintf(
 					'/[\s]*[a-z]+=(")(%s%s%s[\s]*)+\\1/i',
-					preg_quote($options['before'], '/'),
+					preg_quote((string) $options['before'], '/'),
 					$clean['word'],
-					preg_quote($options['after'], '/')
+					preg_quote((string) $options['after'], '/')
 				);
-				$str = preg_replace($kleenex, $clean['replacement'], $str);
+				$str = preg_replace($kleenex, (string) $clean['replacement'], $str);
 				if ($clean['andText']) {
 					$options['clean'] = array('method' => 'text');
 					$str = CakeText::cleanInsert($str, $options);
@@ -253,16 +253,16 @@ class CakeText {
 
 				$kleenex = sprintf(
 					'/(%s%s%s%s|%s%s%s%s)/',
-					preg_quote($options['before'], '/'),
+					preg_quote((string) $options['before'], '/'),
 					$clean['word'],
-					preg_quote($options['after'], '/'),
+					preg_quote((string) $options['after'], '/'),
 					$clean['gap'],
 					$clean['gap'],
-					preg_quote($options['before'], '/'),
+					preg_quote((string) $options['before'], '/'),
 					$clean['word'],
-					preg_quote($options['after'], '/')
+					preg_quote((string) $options['after'], '/')
 				);
-				$str = preg_replace($kleenex, $clean['replacement'], $str);
+				$str = preg_replace($kleenex, (string) $clean['replacement'], $str);
 				break;
 		}
 		return $str;
@@ -402,7 +402,7 @@ class CakeText {
 			$with = array();
 
 			foreach ($phrase as $key => $segment) {
-				$segment = '(' . preg_quote($segment, '|') . ')';
+				$segment = '(' . preg_quote((string) $segment, '|') . ')';
 				if ($html) {
 					$segment = "(?![^<]+>)$segment(?![^<]+>)";
 				}
@@ -419,7 +419,7 @@ class CakeText {
 			$phrase = "(?![^<]+>)$phrase(?![^<]+>)";
 		}
 
-		return preg_replace(sprintf($options['regex'], $phrase), $format, $text);
+		return preg_replace(sprintf($options['regex'], $phrase), (string) $format, $text);
 	}
 
 /**
@@ -464,7 +464,7 @@ class CakeText {
 			return $text;
 		}
 
-		$truncate = mb_substr($text, mb_strlen($text) - $length + mb_strlen($ellipsis));
+		$truncate = mb_substr($text, mb_strlen($text) - $length + mb_strlen((string) $ellipsis));
 		if (!$exact) {
 			$spacepos = mb_strpos($truncate, ' ');
 			$truncate = $spacepos === false ? '' : trim(mb_substr($truncate, $spacepos));
@@ -511,7 +511,7 @@ class CakeText {
 			if (mb_strlen(preg_replace('/<.*?>/', '', $text)) <= $length) {
 				return $text;
 			}
-			$totalLength = mb_strlen(strip_tags($ellipsis));
+			$totalLength = mb_strlen(strip_tags((string) $ellipsis));
 			$openTags = array();
 			$truncate = '';
 
@@ -558,7 +558,7 @@ class CakeText {
 			if (mb_strlen($text) <= $length) {
 				return $text;
 			}
-			$truncate = mb_substr($text, 0, $length - mb_strlen($ellipsis));
+			$truncate = mb_substr($text, 0, $length - mb_strlen((string) $ellipsis));
 		}
 		if (!$exact) {
 			$spacepos = mb_strrpos($truncate, ' ');
@@ -569,7 +569,7 @@ class CakeText {
 				if ($lastOpenTag > $lastCloseTag) {
 					preg_match_all('/<[\w]+[^>]*>/s', $truncate, $lastTagMatches);
 					$lastTag = array_pop($lastTagMatches[0]);
-					$spacepos = mb_strrpos($truncate, $lastTag) + mb_strlen($lastTag);
+					$spacepos = mb_strrpos($truncate, (string) $lastTag) + mb_strlen((string) $lastTag);
 				}
 				$bits = mb_substr($truncate, $spacepos);
 				preg_match_all('/<\/([a-z]+)>/', $bits, $droppedTags, PREG_SET_ORDER);

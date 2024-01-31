@@ -447,7 +447,7 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase {
 				$explanations = array();
 				$i = 1;
 				foreach ($attributes as $attr => $val) {
-					if (is_numeric($attr) && preg_match('/^preg\:\/(.+)\/$/i', $val, $matches)) {
+					if (is_numeric($attr) && preg_match('/^preg\:\/(.+)\/$/i', (string) $val, $matches)) {
 						$attrs[] = $matches[1];
 						$explanations[] = sprintf('Regex "%s" matches', $matches[1]);
 						continue;
@@ -457,7 +457,7 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase {
 							$attr = $val;
 							$val = '.+?';
 							$explanations[] = sprintf('Attribute "%s" present', $attr);
-						} elseif (!empty($val) && preg_match('/^preg\:\/(.+)\/$/i', $val, $matches)) {
+						} elseif (!empty($val) && preg_match('/^preg\:\/(.+)\/$/i', (string) $val, $matches)) {
 							$val = str_replace(
 								array('.*', '.+'),
 								array('.*?', '.+?'),
@@ -468,9 +468,9 @@ abstract class CakeTestCase extends PHPUnit_Framework_TestCase {
 							$explanations[] = sprintf('Attribute "%s" matches "%s"', $attr, $val);
 						} else {
 							$explanations[] = sprintf('Attribute "%s" == "%s"', $attr, $val);
-							$val = preg_quote($val, '/');
+							$val = preg_quote((string) $val, '/');
 						}
-						$attrs[] = '[\s]+' . preg_quote($attr, '/') . '=' . $quotes . $val . $quotes;
+						$attrs[] = '[\s]+' . preg_quote((string) $attr, '/') . '=' . $quotes . $val . $quotes;
 					}
 					$i++;
 				}

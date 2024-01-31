@@ -532,7 +532,7 @@ class SecurityComponent extends Component {
 			throw new SecurityException('Unexpected \'_Token.debug\' found in request data');
 		}
 
-		$token = urldecode($check['_Token']['fields']);
+		$token = urldecode((string) $check['_Token']['fields']);
 		if (strpos($token, ':')) {
 			list($token, ) = explode(':', $token, 2);
 		}
@@ -566,7 +566,7 @@ class SecurityComponent extends Component {
  */
 	protected function _fieldsList(array $check) {
 		$locked = '';
-		$token = urldecode($check['_Token']['fields']);
+		$token = urldecode((string) $check['_Token']['fields']);
 		$unlocked = $this->_unlocked($check);
 
 		if (strpos($token, ':')) {
@@ -603,7 +603,7 @@ class SecurityComponent extends Component {
 
 			if (!empty($unlockedFields)) {
 				foreach ($unlockedFields as $off) {
-					$off = explode('.', $off);
+					$off = explode('.', (string) $off);
 					$field = array_values(array_intersect(explode('.', $key), $off));
 					$isUnlocked = ($field === $off);
 					if ($isUnlocked) {
@@ -633,7 +633,7 @@ class SecurityComponent extends Component {
  * @return string
  */
 	protected function _unlocked(array $data) {
-		return urldecode($data['_Token']['unlocked']);
+		return urldecode((string) $data['_Token']['unlocked']);
 	}
 
 /**
@@ -659,7 +659,7 @@ class SecurityComponent extends Component {
  */
 	protected function _debugPostTokenNotMatching(Controller $controller, $hashParts) {
 		$messages = array();
-		$expectedParts = json_decode(urldecode($controller->request->data['_Token']['debug']), true);
+		$expectedParts = json_decode(urldecode((string) $controller->request->data['_Token']['debug']), true);
 		if (!is_array($expectedParts) || count($expectedParts) !== 3) {
 			return 'Invalid security debug token.';
 		}
@@ -683,7 +683,7 @@ class SecurityComponent extends Component {
 		$expectedUnlockedFields = Hash::get($expectedParts, 2);
 		$dataUnlockedFields = Hash::get($hashParts, 2) ?: array();
 		if ($dataUnlockedFields) {
-			$dataUnlockedFields = explode('|', $dataUnlockedFields);
+			$dataUnlockedFields = explode('|', (string) $dataUnlockedFields);
 		}
 		$unlockFieldsMessages = $this->_debugCheckFields(
 			$dataUnlockedFields,

@@ -197,7 +197,7 @@ class ModelReadTest extends BaseModelTest {
 		$isOnlyFullGroupBy = false;
 		if ($this->db instanceof Mysql) {
 			$sqlMode = $this->db->query('SELECT @@sql_mode AS sql_mode;');
-			if (strpos($sqlMode[0][0]['sql_mode'], 'ONLY_FULL_GROUP_BY') > -1) {
+			if (strpos((string) $sqlMode[0][0]['sql_mode'], 'ONLY_FULL_GROUP_BY') > -1) {
 				$isOnlyFullGroupBy = true;
 			}
 		}

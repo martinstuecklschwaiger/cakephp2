@@ -232,7 +232,7 @@ class TestTask extends BakeTask {
 				$selection = $options[$selection - 1];
 			}
 			if ($type !== 'Model') {
-				$selection = substr($selection, 0, $typeLength * - 1);
+				$selection = substr((string) $selection, 0, $typeLength * - 1);
 			}
 		}
 		return $selection;
@@ -453,9 +453,9 @@ class TestTask extends BakeTask {
 	public function getUserFixtures() {
 		$proceed = $this->in(__d('cake_console', 'Bake could not detect fixtures, would you like to add some?'), array('y', 'n'), 'n');
 		$fixtures = array();
-		if (strtolower($proceed) === 'y') {
+		if (strtolower((string) $proceed) === 'y') {
 			$fixtureList = $this->in(__d('cake_console', "Please provide a comma separated list of the fixtures names you'd like to use.\nExample: 'app.comment, app.post, plugin.forums.post'"));
-			$fixtureListTrimmed = str_replace(' ', '', $fixtureList);
+			$fixtureListTrimmed = str_replace(' ', '', (string) $fixtureList);
 			$fixtures = explode(',', $fixtureListTrimmed);
 		}
 		$this->_fixtures = array_merge($this->_fixtures, $fixtures);

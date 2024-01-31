@@ -417,7 +417,7 @@ class CakeTimeTest extends CakeTestCase {
 		date_default_timezone_set('UTC');
 		$result = $this->Time->nice(null, 'America/New_York');
 		$expected = $this->Time->nice(time(), 'America/New_York');
-		$this->assertEquals(substr($expected, 0, -1), substr($result, 0, -1));
+		$this->assertEquals(substr((string) $expected, 0, -1), substr((string) $result, 0, -1));
 
 		$this->_restoreSystemTimezone();
 	}

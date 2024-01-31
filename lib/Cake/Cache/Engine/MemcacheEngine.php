@@ -219,7 +219,7 @@ class MemcacheEngine extends CacheEngine {
 						continue;
 					}
 					foreach (array_keys($stats) as $key) {
-						if (strpos($key, $this->settings['prefix']) === 0) {
+						if (strpos($key, (string) $this->settings['prefix']) === 0) {
 							$this->_Memcache->delete($key);
 						}
 					}

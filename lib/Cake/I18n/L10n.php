@@ -437,8 +437,8 @@ class L10n {
 				$this->_setLanguage($langKey);
 				return true;
 			}
-			if (strpos($langKey, '-') !== false) {
-				$langKey = substr($langKey, 0, 2);
+			if (strpos((string) $langKey, '-') !== false) {
+				$langKey = substr((string) $langKey, 0, 2);
 				if (isset($this->_l10nCatalog[$langKey])) {
 					$this->_setLanguage($langKey);
 					return true;

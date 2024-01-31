@@ -992,8 +992,8 @@ class PostgresTest extends CakeTestCase {
 			)
 		));
 		$result = $this->db->alterSchema($schema2->compare($schema1));
-		$this->assertEquals(2, substr_count($result, 'field_two'), 'Too many fields');
-		$this->assertFalse(strpos(';ALTER', $result), 'Too many semi colons');
+		$this->assertEquals(2, substr_count((string) $result, 'field_two'), 'Too many fields');
+		$this->assertFalse(strpos(';ALTER', (string) $result), 'Too many semi colons');
 	}
 
 /**

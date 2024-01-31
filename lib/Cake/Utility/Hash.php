@@ -27,6 +27,7 @@ App::uses('CakeText', 'Utility');
  *
  * @package       Cake.Utility
  */
+#[\AllowDynamicProperties]
 class Hash {
 
 /**
@@ -239,7 +240,7 @@ class Hash {
 
 			// Pattern matches and other operators.
 			if ($op === '=' && $val && $val[0] === '/') {
-				if (!preg_match($val, $prop)) {
+				if (!preg_match($val, (string) $prop)) {
 					return false;
 				}
 			} elseif (($op === '=' && $prop != $val) ||
@@ -912,7 +913,7 @@ class Hash {
 			$ignoreCase = $type['ignoreCase'];
 			$type = $type['type'];
 		}
-		$type = strtolower($type);
+		$type = strtolower((string) $type);
 
 		if ($type === 'natural' && version_compare(PHP_VERSION, '5.4.0', '<')) {
 			$type = 'regular';
@@ -1105,10 +1106,10 @@ class Hash {
 		$return = $idMap = array();
 		$ids = static::extract($data, $options['idPath']);
 
-		$idKeys = explode('.', $options['idPath']);
+		$idKeys = explode('.', (string) $options['idPath']);
 		array_shift($idKeys);
 
-		$parentKeys = explode('.', $options['parentPath']);
+		$parentKeys = explode('.', (string) $options['parentPath']);
 		array_shift($parentKeys);
 
 		foreach ($data as $result) {

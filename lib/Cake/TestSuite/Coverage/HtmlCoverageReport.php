@@ -102,7 +102,7 @@ HTML;
 				$coveringTests = array();
 				foreach ($coverageData[$lineno] as $test) {
 					$class = (is_array($test) && isset($test['id'])) ? $test['id'] : $test;
-					$testReflection = new ReflectionClass(current(explode('::', $class)));
+					$testReflection = new ReflectionClass(current(explode('::', (string) $class)));
 					$this->_testNames[] = $this->_guessSubjectName($testReflection);
 					$coveringTests[] = $class;
 				}

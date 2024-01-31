@@ -279,7 +279,7 @@ class I18n {
 						$trans = $trans[0];
 					}
 				}
-				if (strlen($trans)) {
+				if (strlen((string) $trans)) {
 					return $trans;
 				}
 			}
@@ -453,14 +453,14 @@ class I18n {
 		if (isset($this->_domains[$domain][$this->_lang][$this->category][""])) {
 			$head = $this->_domains[$domain][$this->_lang][$this->category][""];
 
-			foreach (explode("\n", $head) as $line) {
+			foreach (explode("\n", (string) $head) as $line) {
 				$header = strtok($line, ':');
 				$line = trim(strtok("\n"));
 				$this->_domains[$domain][$this->_lang][$this->category]["%po-header"][strtolower($header)] = $line;
 			}
 
 			if (isset($this->_domains[$domain][$this->_lang][$this->category]["%po-header"]["plural-forms"])) {
-				$switch = preg_replace("/(?:[() {}\\[\\]^\\s*\\]]+)/", "", $this->_domains[$domain][$this->_lang][$this->category]["%po-header"]["plural-forms"]);
+				$switch = preg_replace("/(?:[() {}\\[\\]^\\s*\\]]+)/", "", (string) $this->_domains[$domain][$this->_lang][$this->category]["%po-header"]["plural-forms"]);
 				$this->_domains[$domain][$this->_lang][$this->category]["%plural-c"] = $switch;
 				unset($this->_domains[$domain][$this->_lang][$this->category]["%po-header"]);
 			}

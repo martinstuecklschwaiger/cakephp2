@@ -256,7 +256,7 @@ class Sqlserver extends DboSource {
 				$fields[$field]['default'] = preg_replace(
 					"/^[(]{1,2}'?([^')]*)?'?[)]{1,2}$/",
 					"$1",
-					$fields[$field]['default']
+					(string) $fields[$field]['default']
 				);
 				$this->value($fields[$field]['default'], $fields[$field]['type']);
 			}
@@ -294,24 +294,24 @@ class Sqlserver extends DboSource {
 		$fields = parent::fields($model, $alias, $fields, false);
 		$count = count($fields);
 
-		if ($count >= 1 && strpos($fields[0], 'COUNT(*)') === false) {
+		if ($count >= 1 && strpos((string) $fields[0], 'COUNT(*)') === false) {
 			$result = array();
 			for ($i = 0; $i < $count; $i++) {
 				$prepend = '';
 
-				if (strpos($fields[$i], 'DISTINCT') !== false && strpos($fields[$i], 'COUNT') === false) {
+				if (strpos((string) $fields[$i], 'DISTINCT') !== false && strpos((string) $fields[$i], 'COUNT') === false) {
 					$prepend = 'DISTINCT ';
-					$fields[$i] = trim(str_replace('DISTINCT', '', $fields[$i]));
+					$fields[$i] = trim(str_replace('DISTINCT', '', (string) $fields[$i]));
 				}
-				if (strpos($fields[$i], 'COUNT(DISTINCT') !== false) {
+				if (strpos((string) $fields[$i], 'COUNT(DISTINCT') !== false) {
 					$prepend = 'COUNT(DISTINCT ';
 					$fields[$i] = trim(str_replace('COUNT(DISTINCT', '', $this->_quoteFields($fields[$i])));
 				}
 
-				if (!preg_match('/\s+AS\s+/i', $fields[$i])) {
-					if (substr($fields[$i], -1) === '*') {
-						if (strpos($fields[$i], '.') !== false && $fields[$i] != $alias . '.*') {
-							$build = explode('.', $fields[$i]);
+				if (!preg_match('/\s+AS\s+/i', (string) $fields[$i])) {
+					if (substr((string) $fields[$i], -1) === '*') {
+						if (strpos((string) $fields[$i], '.') !== false && $fields[$i] != $alias . '.*') {
+							$build = explode('.', (string) $fields[$i]);
 							$AssociatedModel = $model->{$build[0]};
 						} else {
 							$AssociatedModel = $model;
@@ -322,12 +322,12 @@ class Sqlserver extends DboSource {
 						continue;
 					}
 
-					if (strpos($fields[$i], '.') === false) {
+					if (strpos((string) $fields[$i], '.') === false) {
 						$this->_fieldMappings[$alias . '__' . $fields[$i]] = $alias . '.' . $fields[$i];
 						$fieldName = $this->name($alias . '.' . $fields[$i]);
 						$fieldAlias = $this->name($alias . '__' . $fields[$i]);
 					} else {
-						$build = explode('.', $fields[$i]);
+						$build = explode('.', (string) $fields[$i]);
 						$build[0] = trim($build[0], '[]');
 						$build[1] = trim($build[1], '[]');
 						$name = $build[0] . '.' . $build[1];
@@ -416,7 +416,7 @@ class Sqlserver extends DboSource {
 				$rt = ' TOP';
 			}
 			$rt .= sprintf(' %u', $limit);
-			if ((is_int($offset) || ctype_digit($offset)) && $offset > 0) {
+			if ((is_int($offset) || ctype_digit((string) $offset)) && $offset > 0) {
 				$rt = sprintf(' OFFSET %u ROWS FETCH FIRST %u ROWS ONLY', $offset, $limit);
 			}
 			return $rt;
@@ -448,28 +448,28 @@ class Sqlserver extends DboSource {
 		if ($col === 'bit') {
 			return 'boolean';
 		}
-		if (strpos($col, 'bigint') !== false) {
+		if (strpos((string) $col, 'bigint') !== false) {
 			return 'biginteger';
 		}
-		if (strpos($col, 'smallint') !== false) {
+		if (strpos((string) $col, 'smallint') !== false) {
 			return 'smallinteger';
 		}
-		if (strpos($col, 'tinyint') !== false) {
+		if (strpos((string) $col, 'tinyint') !== false) {
 			return 'tinyinteger';
 		}
-		if (strpos($col, 'int') !== false) {
+		if (strpos((string) $col, 'int') !== false) {
 			return 'integer';
 		}
-		if (strpos($col, 'char') !== false && $limit == -1) {
+		if (strpos((string) $col, 'char') !== false && $limit == -1) {
 			return 'text';
 		}
-		if (strpos($col, 'char') !== false) {
+		if (strpos((string) $col, 'char') !== false) {
 			return 'string';
 		}
-		if (strpos($col, 'text') !== false) {
+		if (strpos((string) $col, 'text') !== false) {
 			return 'text';
 		}
-		if (strpos($col, 'binary') !== false || $col === 'image') {
+		if (strpos((string) $col, 'binary') !== false || $col === 'image') {
 			return 'binary';
 		}
 		if (in_array($col, array('float', 'real'))) {
@@ -490,7 +490,7 @@ class Sqlserver extends DboSource {
  */
 	public function length($length) {
 		if (is_object($length) && isset($length->Length)) {
-			if ($length->Length == -1 && strpos($length->Type, 'char') !== false) {
+			if ($length->Length == -1 && strpos((string) $length->Type, 'char') !== false) {
 				return null;
 			}
 			if (in_array($length->Type, array('nchar', 'nvarchar'))) {
@@ -520,8 +520,8 @@ class Sqlserver extends DboSource {
 			$name = $column['name'];
 
 			if (strpos($name, '__')) {
-				if (isset($this->_fieldMappings[$name]) && strpos($this->_fieldMappings[$name], '.')) {
-					$map = explode('.', $this->_fieldMappings[$name]);
+				if (isset($this->_fieldMappings[$name]) && strpos((string) $this->_fieldMappings[$name], '.')) {
+					$map = explode('.', (string) $this->_fieldMappings[$name]);
 				} elseif (isset($this->_fieldMappings[$name])) {
 					$map = array(0, $this->_fieldMappings[$name]);
 				} else {
@@ -546,13 +546,13 @@ class Sqlserver extends DboSource {
 		switch (strtolower($type)) {
 			case 'select':
 				extract($data);
-				$fields = trim($fields);
+				$fields = trim((string) $fields);
 
 				$having = !empty($having) ? " $having" : '';
 				$lock = !empty($lock) ? " $lock" : '';
 
-				if (strpos($limit, 'TOP') !== false && strpos($fields, 'DISTINCT ') === 0) {
-					$limit = 'DISTINCT ' . trim($limit);
+				if (strpos((string) $limit, 'TOP') !== false && strpos($fields, 'DISTINCT ') === 0) {
+					$limit = 'DISTINCT ' . trim((string) $limit);
 					$fields = substr($fields, 9);
 				}
 
@@ -562,8 +562,8 @@ class Sqlserver extends DboSource {
 				}
 
 				// For older versions use the subquery version of pagination.
-				if (version_compare($this->getVersion(), '11', '<') && preg_match('/FETCH\sFIRST\s+([0-9]+)/i', $limit, $offset)) {
-					preg_match('/OFFSET\s*(\d+)\s*.*?(\d+)\s*ROWS/', $limit, $limitOffset);
+				if (version_compare($this->getVersion(), '11', '<') && preg_match('/FETCH\sFIRST\s+([0-9]+)/i', (string) $limit, $offset)) {
+					preg_match('/OFFSET\s*(\d+)\s*.*?(\d+)\s*ROWS/', (string) $limit, $limitOffset);
 
 					$limit = 'TOP ' . (int)$limitOffset[2];
 					$page = (int)($limitOffset[1] / $limitOffset[2]);
@@ -579,7 +579,7 @@ class Sqlserver extends DboSource {
 					";
 					return trim($sql);
 				}
-				if (strpos($limit, 'FETCH') !== false) {
+				if (strpos((string) $limit, 'FETCH') !== false) {
 					return trim("SELECT {$fields} FROM {$table} {$alias}{$lock} {$joins} {$conditions} {$group}{$having} {$order} {$limit}");
 				}
 				return trim("SELECT {$limit} {$fields} FROM {$table} {$alias}{$lock} {$joins} {$conditions} {$group}{$having} {$order}");
@@ -587,7 +587,7 @@ class Sqlserver extends DboSource {
 				extract($data);
 
 				foreach ($indexes as $i => $index) {
-					if (preg_match('/PRIMARY KEY/', $index)) {
+					if (preg_match('/PRIMARY KEY/', (string) $index)) {
 						unset($indexes[$i]);
 						break;
 					}

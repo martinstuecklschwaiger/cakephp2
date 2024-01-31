@@ -100,7 +100,7 @@ class BakeShell extends AppShell {
 		$this->out(__d('cake_console', '[T]est case'));
 		$this->out(__d('cake_console', '[Q]uit'));
 
-		$classToBake = strtoupper($this->in(__d('cake_console', 'What would you like to Bake?'), array('D', 'M', 'V', 'C', 'P', 'F', 'T', 'Q')));
+		$classToBake = strtoupper((string) $this->in(__d('cake_console', 'What would you like to Bake?'), array('D', 'M', 'V', 'C', 'P', 'F', 'T', 'Q')));
 		switch ($classToBake) {
 			case 'D':
 				$this->DbConfig->execute();

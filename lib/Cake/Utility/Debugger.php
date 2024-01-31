@@ -365,7 +365,7 @@ class Debugger {
 			return str_replace(APP, 'APP' . DS, $path);
 		} elseif (strpos($path, CAKE_CORE_INCLUDE_PATH) === 0) {
 			return str_replace(CAKE_CORE_INCLUDE_PATH, 'CORE', $path);
-		} elseif (strpos($path, ROOT) === 0) {
+		} elseif (strpos($path, (string) ROOT) === 0) {
 			return str_replace(ROOT, 'ROOT', $path);
 		}
 
@@ -488,7 +488,7 @@ class Debugger {
 			case 'float':
 				return '(float) ' . $var;
 			case 'string':
-				if (trim($var) === '') {
+				if (trim((string) $var) === '') {
 					return "''";
 				}
 				return "'" . $var . "'";

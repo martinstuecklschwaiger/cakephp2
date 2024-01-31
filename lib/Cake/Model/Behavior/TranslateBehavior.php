@@ -269,7 +269,7 @@ class TranslateBehavior extends ModelBehavior {
 				if (is_numeric($field)) {
 					$field = $assoc;
 				}
-				if (strpos($col, $field) !== false) {
+				if (strpos($col, (string) $field) !== false) {
 					$conditionFields[] = $field;
 				}
 			}

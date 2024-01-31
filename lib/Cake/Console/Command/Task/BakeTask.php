@@ -79,7 +79,7 @@ class BakeTask extends AppShell {
  */
 	public function execute() {
 		foreach ($this->args as $i => $arg) {
-			if (strpos($arg, '.')) {
+			if (strpos((string) $arg, '.')) {
 				list($this->params['plugin'], $this->args[$i]) = pluginSplit($arg);
 				break;
 			}

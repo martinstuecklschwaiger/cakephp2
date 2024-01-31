@@ -526,8 +526,8 @@ class Controller extends CakeObject implements CakeEventListener {
 		$prefixes = array_map('strtolower', Router::prefixes());
 
 		if (!$privateAction && !empty($prefixes)) {
-			if (empty($request->params['prefix']) && strpos($request->params['action'], '_') > 0) {
-				list($prefix) = explode('_', $request->params['action']);
+			if (empty($request->params['prefix']) && strpos((string) $request->params['action'], '_') > 0) {
+				list($prefix) = explode('_', (string) $request->params['action']);
 				$privateAction = in_array(strtolower($prefix), $prefixes);
 			}
 		}
@@ -1061,7 +1061,7 @@ class Controller extends CakeObject implements CakeEventListener {
 				throw new RuntimeException("Unsafe operator found in {$model}");
 			}
 			foreach ($fields as $field => $value) {
-				if (preg_match($allowedChars, $field)) {
+				if (preg_match($allowedChars, (string) $field)) {
 					throw new RuntimeException("Unsafe operator found in {$model}.{$field}");
 				}
 				$key = $model . '.' . $field;
@@ -1078,7 +1078,7 @@ class Controller extends CakeObject implements CakeEventListener {
 				if ($exclusive && $fieldOp === false) {
 					continue;
 				}
-				$fieldOp = strtoupper(trim($fieldOp));
+				$fieldOp = strtoupper(trim((string) $fieldOp));
 				if ($fieldOp === 'LIKE') {
 					$key = $key . ' LIKE';
 					$value = '%' . $value . '%';

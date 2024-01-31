@@ -70,7 +70,7 @@ class I18nShell extends AppShell {
 		$this->out(__d('cake_console', '[H]elp'));
 		$this->out(__d('cake_console', '[Q]uit'));
 
-		$choice = strtolower($this->in(__d('cake_console', 'What would you like to do?'), array('E', 'I', 'H', 'Q')));
+		$choice = strtolower((string) $this->in(__d('cake_console', 'What would you like to do?'), array('E', 'I', 'H', 'Q')));
 		switch ($choice) {
 			case 'e':
 				$this->Extract->execute();

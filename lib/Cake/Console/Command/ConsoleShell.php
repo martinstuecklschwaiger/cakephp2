@@ -200,7 +200,7 @@ class ConsoleShell extends AppShell {
 		$this->_finished = false;
 		while (!$this->_finished) {
 			if (empty($command)) {
-				$command = trim($this->in(''));
+				$command = trim((string) $this->in(''));
 			}
 
 			$method = $this->_method($command);
@@ -260,7 +260,7 @@ class ConsoleShell extends AppShell {
  * @return void
  */
 	protected function _bind($command) {
-		preg_match($this->_methodPatterns[__FUNCTION__], $command, $tmp);
+		preg_match($this->_methodPatterns[__FUNCTION__], (string) $command, $tmp);
 
 		foreach ($tmp as $data) {
 			$data = strip_tags($data);
@@ -287,7 +287,7 @@ class ConsoleShell extends AppShell {
  * @return void
  */
 	protected function _unbind($command) {
-		preg_match($this->_methodPatterns[__FUNCTION__], $command, $tmp);
+		preg_match($this->_methodPatterns[__FUNCTION__], (string) $command, $tmp);
 
 		foreach ($tmp as $data) {
 			$data = strip_tags($data);
@@ -324,7 +324,7 @@ class ConsoleShell extends AppShell {
  * @return void
  */
 	protected function _find($command) {
-		$command = strip_tags($command);
+		$command = strip_tags((string) $command);
 		$command = str_replace($this->badCommandChars, "", $command);
 
 		// Do we have a valid model?
@@ -387,7 +387,7 @@ class ConsoleShell extends AppShell {
  */
 	protected function _save($command) {
 		// Validate the model we're trying to save here
-		$command = strip_tags($command);
+		$command = strip_tags((string) $command);
 		$command = str_replace($this->badCommandChars, "", $command);
 		list($modelToSave) = explode("->", $command);
 
@@ -410,7 +410,7 @@ class ConsoleShell extends AppShell {
  * @return void
  */
 	protected function _columns($command) {
-		preg_match($this->_methodPatterns[__FUNCTION__], $command, $tmp);
+		preg_match($this->_methodPatterns[__FUNCTION__], (string) $command, $tmp);
 
 		$modelToCheck = strip_tags(str_replace($this->badCommandChars, "", $tmp[1]));
 
@@ -459,7 +459,7 @@ class ConsoleShell extends AppShell {
  * @return void
  */
 	protected function _routeToString($command) {
-		preg_match($this->_methodPatterns[__FUNCTION__], $command, $tmp);
+		preg_match($this->_methodPatterns[__FUNCTION__], (string) $command, $tmp);
 
 		//@codingStandardsIgnoreStart
 		if ($url = eval('return array' . $tmp[1] . ';')) {
@@ -475,7 +475,7 @@ class ConsoleShell extends AppShell {
  * @return void
  */
 	protected function _routeToArray($command) {
-		preg_match($this->_methodPatterns[__FUNCTION__], $command, $tmp);
+		preg_match($this->_methodPatterns[__FUNCTION__], (string) $command, $tmp);
 
 		$this->out(var_export(Router::parse($tmp[1]), true));
 	}

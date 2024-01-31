@@ -596,7 +596,7 @@ class FormHelperTest extends CakeTestCase {
  */
 	public function testCreateWithSecurity() {
 		$this->Form->request['_Token'] = array('key' => 'testKey');
-		$encoding = strtolower(Configure::read('App.encoding'));
+		$encoding = strtolower((string) Configure::read('App.encoding'));
 		$result = $this->Form->create('Contact', array('url' => '/contacts/add'));
 		$expected = array(
 			'form' => array('method' => 'post', 'action' => '/contacts/add', 'accept-charset' => $encoding, 'id' => 'ContactAddForm'),
@@ -623,7 +623,7 @@ class FormHelperTest extends CakeTestCase {
  */
 	public function testCreateEndGetNoSecurity() {
 		$this->Form->request['_Token'] = array('key' => 'testKey');
-		$encoding = strtolower(Configure::read('App.encoding'));
+		$encoding = strtolower((string) Configure::read('App.encoding'));
 		$result = $this->Form->create('Contact', array('type' => 'get', 'url' => '/contacts/add'));
 		$this->assertNotContains('Token', $result);
 
@@ -1544,7 +1544,7 @@ class FormHelperTest extends CakeTestCase {
 		$this->Form->request['_Token'] = array('key' => 'testKey');
 
 		$result = $this->Form->create('Contact', array('url' => '/contacts/add'));
-		$encoding = strtolower(Configure::read('App.encoding'));
+		$encoding = strtolower((string) Configure::read('App.encoding'));
 		$expected = array(
 			'form' => array('method' => 'post', 'action' => '/contacts/add', 'accept-charset' => $encoding, 'id' => 'ContactAddForm'),
 			'div' => array('style' => 'display:none;'),
@@ -2252,7 +2252,7 @@ class FormHelperTest extends CakeTestCase {
 		$this->assertFalse($this->UserForm->OpenidUrl->validates());
 
 		$result = $this->Form->create('UserForm', array('type' => 'post', 'url' => array('action' => 'login')));
-		$encoding = strtolower(Configure::read('App.encoding'));
+		$encoding = strtolower((string) Configure::read('App.encoding'));
 		$expected = array(
 			'form' => array(
 				'action' => '/user_forms/login',
@@ -2296,7 +2296,7 @@ class FormHelperTest extends CakeTestCase {
 		$this->assertFalse($this->ValidateUser->ValidateProfile->validates());
 
 		$result = $this->Form->create('ValidateUser', array('type' => 'post', 'url' => array('action' => 'add')));
-		$encoding = strtolower(Configure::read('App.encoding'));
+		$encoding = strtolower((string) Configure::read('App.encoding'));
 		$expected = array(
 			'form' => array('method' => 'post', 'action' => '/validate_users/add', 'id', 'accept-charset' => $encoding),
 			'div' => array('style' => 'display:none;'),
@@ -2349,7 +2349,7 @@ class FormHelperTest extends CakeTestCase {
 		$this->assertFalse($this->ValidateUser->ValidateProfile->ValidateItem->validates());
 
 		$result = $this->Form->create('ValidateUser', array('type' => 'post', 'url' => array('action' => 'add')));
-		$encoding = strtolower(Configure::read('App.encoding'));
+		$encoding = strtolower((string) Configure::read('App.encoding'));
 		$expected = array(
 			'form' => array('method' => 'post', 'action' => '/validate_users/add', 'id', 'accept-charset' => $encoding),
 			'div' => array('style' => 'display:none;'),
@@ -7091,7 +7091,7 @@ class FormHelperTest extends CakeTestCase {
 		$this->assertNotRegExp('/<option[^<>]+value=""[^<>]+selected="selected"[^>]*>/', $result);
 
 		$this->Form->request->data['Model']['field'] = date('Y') . '-01-01 00:00:00';
-		$now = strtotime($this->Form->data['Model']['field']);
+		$now = strtotime((string) $this->Form->data['Model']['field']);
 		$result = $this->Form->dateTime('Model.field', 'DMY', '12', array('empty' => false));
 		$expected = array(
 			array('select' => array('name' => 'data[Model][field][day]', 'id' => 'ModelFieldDay')),
@@ -9182,7 +9182,7 @@ class FormHelperTest extends CakeTestCase {
  */
 	public function testCreate() {
 		$result = $this->Form->create('Contact');
-		$encoding = strtolower(Configure::read('App.encoding'));
+		$encoding = strtolower((string) Configure::read('App.encoding'));
 		$expected = array(
 			'form' => array(
 				'id' => 'ContactAddForm', 'method' => 'post', 'action' => '/contacts/add',
@@ -9368,7 +9368,7 @@ class FormHelperTest extends CakeTestCase {
 			'form' => array(
 				'id' => 'addForm',
 				'method' => 'post',
-				'accept-charset' => strtolower(Configure::read('App.encoding'))
+				'accept-charset' => strtolower((string) Configure::read('App.encoding'))
 			),
 			'div' => array('style' => 'display:none;'),
 			'input' => array('type' => 'hidden', 'name' => '_method', 'value' => 'POST'),
@@ -9397,7 +9397,7 @@ class FormHelperTest extends CakeTestCase {
 				'action' => '/comments/addComment',
 				'id' => 'addCommentForm',
 				'method' => 'post',
-				'accept-charset' => strtolower(Configure::read('App.encoding'))
+				'accept-charset' => strtolower((string) Configure::read('App.encoding'))
 			),
 			'div' => array('style' => 'display:none;'),
 			'input' => array('type' => 'hidden', 'name' => '_method', 'value' => 'POST'),
@@ -9495,7 +9495,7 @@ class FormHelperTest extends CakeTestCase {
  */
 	public function testCreateCustomRoute() {
 		Router::connect('/login', array('controller' => 'users', 'action' => 'login'));
-		$encoding = strtolower(Configure::read('App.encoding'));
+		$encoding = strtolower((string) Configure::read('App.encoding'));
 
 		$result = $this->Form->create('User', array('url' => array('action' => 'login')));
 		$expected = array(
@@ -9590,7 +9590,7 @@ class FormHelperTest extends CakeTestCase {
  * @return void
  */
 	public function testCreateQuerystringrequest() {
-		$encoding = strtolower(Configure::read('App.encoding'));
+		$encoding = strtolower((string) Configure::read('App.encoding'));
 		$result = $this->Form->create('Contact', array(
 			'type' => 'post',
 			'escape' => false,
@@ -9642,7 +9642,7 @@ class FormHelperTest extends CakeTestCase {
  * @return void
  */
 	public function testCreateWithMultipleIdInData() {
-		$encoding = strtolower(Configure::read('App.encoding'));
+		$encoding = strtolower((string) Configure::read('App.encoding'));
 
 		$this->Form->request->data['Contact']['id'] = array(1, 2);
 		$result = $this->Form->create('Contact');
@@ -9666,7 +9666,7 @@ class FormHelperTest extends CakeTestCase {
  * @return void
  */
 	public function testCreatePassedArgs() {
-		$encoding = strtolower(Configure::read('App.encoding'));
+		$encoding = strtolower((string) Configure::read('App.encoding'));
 		$this->Form->request->data['Contact']['id'] = 1;
 		$result = $this->Form->create('Contact', array(
 			'type' => 'post',
@@ -9697,7 +9697,7 @@ class FormHelperTest extends CakeTestCase {
  * @return void
  */
 	public function testCreateNoErrorsWithMockModel() {
-		$encoding = strtolower(Configure::read('App.encoding'));
+		$encoding = strtolower((string) Configure::read('App.encoding'));
 		$ContactMock = $this->getMockBuilder('Contact')
 			->disableOriginalConstructor()
 			->getMock();
@@ -9717,7 +9717,7 @@ class FormHelperTest extends CakeTestCase {
  * @return void
  */
 	public function testGetFormCreate() {
-		$encoding = strtolower(Configure::read('App.encoding'));
+		$encoding = strtolower((string) Configure::read('App.encoding'));
 		$result = $this->Form->create('Contact', array('type' => 'get'));
 		$this->assertTags($result, array('form' => array(
 			'id' => 'ContactAddForm', 'method' => 'get', 'action' => '/contacts/add',
@@ -9747,7 +9747,7 @@ class FormHelperTest extends CakeTestCase {
  * @return void
  */
 	public function testGetFormWithFalseModel() {
-		$encoding = strtolower(Configure::read('App.encoding'));
+		$encoding = strtolower((string) Configure::read('App.encoding'));
 		$this->Form->request['controller'] = 'contact_test';
 		$result = $this->Form->create(false, array('type' => 'get', 'url' => array('controller' => 'contact_test')));
 
@@ -10080,7 +10080,7 @@ class FormHelperTest extends CakeTestCase {
  * @return void
  */
 	public function testFormMagicInput() {
-		$encoding = strtolower(Configure::read('App.encoding'));
+		$encoding = strtolower((string) Configure::read('App.encoding'));
 		$result = $this->Form->create('Contact');
 		$expected = array(
 			'form' => array(
@@ -10251,7 +10251,7 @@ class FormHelperTest extends CakeTestCase {
  * @return void
  */
 	public function testForMagicInputNonExistingNorValidated() {
-		$encoding = strtolower(Configure::read('App.encoding'));
+		$encoding = strtolower((string) Configure::read('App.encoding'));
 		$result = $this->Form->create('Contact');
 		$expected = array(
 			'form' => array(
@@ -10312,7 +10312,7 @@ class FormHelperTest extends CakeTestCase {
  * @return void
  */
 	public function testFormMagicInputLabel() {
-		$encoding = strtolower(Configure::read('App.encoding'));
+		$encoding = strtolower((string) Configure::read('App.encoding'));
 		$result = $this->Form->create('Contact');
 		$expected = array(
 			'form' => array(

@@ -41,7 +41,7 @@ class AssetDispatcher extends DispatcherFilter {
  * @throws NotFoundException When asset not found
  */
 	public function beforeDispatch(CakeEvent $event) {
-		$url = urldecode($event->data['request']->url);
+		$url = urldecode((string) $event->data['request']->url);
 		if (strpos($url, '..') !== false || strpos($url, '.') === false) {
 			return null;
 		}
@@ -63,7 +63,7 @@ class AssetDispatcher extends DispatcherFilter {
 			return $response;
 		}
 
-		$pathSegments = explode('.', $url);
+		$pathSegments = explode('.', (string) $url);
 		$ext = array_pop($pathSegments);
 
 		$this->_deliverAsset($response, $assetFile, $ext);
@@ -82,12 +82,12 @@ class AssetDispatcher extends DispatcherFilter {
 		$response = $event->data['response'];
 		$filters = Configure::read('Asset.filter');
 		$isCss = (
-			strpos($url, 'ccss/') === 0 ||
-			preg_match('#^(theme/([^/]+)/ccss/)|(([^/]+)(?<!css)/ccss)/#i', $url)
+			strpos((string) $url, 'ccss/') === 0 ||
+			preg_match('#^(theme/([^/]+)/ccss/)|(([^/]+)(?<!css)/ccss)/#i', (string) $url)
 		);
 		$isJs = (
-			strpos($url, 'cjs/') === 0 ||
-			preg_match('#^/((theme/[^/]+)/cjs/)|(([^/]+)(?<!js)/cjs)/#i', $url)
+			strpos((string) $url, 'cjs/') === 0 ||
+			preg_match('#^/((theme/[^/]+)/cjs/)|(([^/]+)(?<!js)/cjs)/#i', (string) $url)
 		);
 
 		if (($isCss && empty($filters['css'])) || ($isJs && empty($filters['js']))) {

@@ -113,7 +113,7 @@ class Dispatcher implements CakeEventListener {
 				}
 				$manager->attach(new $callable($settings));
 			} else {
-				$on = strtolower($filter['on']);
+				$on = strtolower((string) $filter['on']);
 				$options = array();
 				if (isset($filter['priority'])) {
 					$options = array('priority' => $filter['priority']);

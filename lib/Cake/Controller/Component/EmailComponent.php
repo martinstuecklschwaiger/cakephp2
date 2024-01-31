@@ -431,7 +431,7 @@ class EmailComponent extends Component {
 	protected function _formatAddresses($addresses) {
 		$formatted = array();
 		foreach ($addresses as $address) {
-			if (preg_match('/((.*))?\s?<(.+)>/', $address, $matches) && !empty($matches[2])) {
+			if (preg_match('/((.*))?\s?<(.+)>/', (string) $address, $matches) && !empty($matches[2])) {
 				$formatted[$this->_strip($matches[3])] = $matches[2];
 			} else {
 				$address = $this->_strip($address);

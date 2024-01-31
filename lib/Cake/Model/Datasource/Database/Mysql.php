@@ -652,7 +652,7 @@ class Mysql extends DboSource {
 				}
 				$name = $this->startQuote . $name . $this->endQuote;
 			}
-			if (isset($value['type']) && strtolower($value['type']) === 'fulltext') {
+			if (isset($value['type']) && strtolower((string) $value['type']) === 'fulltext') {
 				$out .= 'FULLTEXT ';
 			}
 			$out .= 'KEY ' . $name . ' (';

@@ -188,7 +188,7 @@ class TestValidate extends CakeTestModel {
  * @return void
  */
 	public function validateTitle($value) {
-		return (!empty($value) && strpos(strtolower($value['title']), 'title-') === 0);
+		return (!empty($value) && strpos(strtolower((string) $value['title']), 'title-') === 0);
 	}
 
 }

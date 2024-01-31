@@ -72,7 +72,7 @@ class CakeFixtureManager {
 		$this->_initDb();
 		$test->db = $this->_db;
 		if (!is_array($test->fixtures)) {
-			$test->fixtures = array_map('trim', explode(',', $test->fixtures));
+			$test->fixtures = array_map('trim', explode(',', (string) $test->fixtures));
 		}
 		if (isset($test->fixtures)) {
 			$this->_loadFixtures($test->fixtures);
@@ -128,18 +128,18 @@ class CakeFixtureManager {
 				continue;
 			}
 
-			if (strpos($fixture, 'core.') === 0) {
-				$fixture = substr($fixture, strlen('core.'));
+			if (strpos((string) $fixture, 'core.') === 0) {
+				$fixture = substr((string) $fixture, strlen('core.'));
 				$fixturePaths[] = CAKE . 'Test' . DS . 'Fixture';
-			} elseif (strpos($fixture, 'app.') === 0) {
-				$fixturePrefixLess = substr($fixture, strlen('app.'));
+			} elseif (strpos((string) $fixture, 'app.') === 0) {
+				$fixturePrefixLess = substr((string) $fixture, strlen('app.'));
 				$fixtureParsedPath = $this->_parseFixturePath($fixturePrefixLess);
 				$fixture = $fixtureParsedPath['fixture'];
 				$fixturePaths = array(
 					TESTS . 'Fixture' . $fixtureParsedPath['additionalPath']
 				);
-			} elseif (strpos($fixture, 'plugin.') === 0) {
-				$explodedFixture = explode('.', $fixture, 3);
+			} elseif (strpos((string) $fixture, 'plugin.') === 0) {
+				$explodedFixture = explode('.', (string) $fixture, 3);
 				$pluginName = $explodedFixture[1];
 				$fixtureParsedPath = $this->_parseFixturePath($explodedFixture[2]);
 				$fixture = $fixtureParsedPath['fixture'];

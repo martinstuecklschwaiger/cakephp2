@@ -209,7 +209,7 @@ class TestShell extends Shell {
 			'output' => 'text',
 		);
 
-		if (strpos($this->args[0], '.php')) {
+		if (strpos((string) $this->args[0], '.php')) {
 			$category = $this->_mapFileToCategory($this->args[0]);
 			$params['case'] = $this->_mapFileToCase($this->args[0], $category);
 		} else {
@@ -326,7 +326,7 @@ class TestShell extends Shell {
 		$i = 1;
 		$cases = array();
 		foreach ($testCases as $testCase) {
-			$case = str_replace('Test.php', '', $testCase);
+			$case = str_replace('Test.php', '', (string) $testCase);
 			$this->out("[$i] $case");
 			$cases[$i] = $case;
 			$i++;

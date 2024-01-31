@@ -99,7 +99,7 @@ class ViewTask extends BakeTask {
 		$this->controllerName = $this->_controllerName($this->args[0]);
 
 		$this->Project->interactive = false;
-		if (strtolower($this->args[0]) === 'all') {
+		if (strtolower((string) $this->args[0]) === 'all') {
 			return $this->all();
 		}
 
@@ -148,7 +148,7 @@ class ViewTask extends BakeTask {
 				if ($scaffoldActions) {
 					$methods[$i] = $adminRoute . $method;
 					continue;
-				} elseif (strpos($method, $adminRoute) === false) {
+				} elseif (strpos((string) $method, (string) $adminRoute) === false) {
 					unset($methods[$i]);
 				}
 			}
@@ -210,7 +210,7 @@ class ViewTask extends BakeTask {
 		$prompt = __d('cake_console', "Would you like bake to build your views interactively?\nWarning: Choosing no will overwrite %s views if they exist.", $this->controllerName);
 		$interactive = $this->in($prompt, array('y', 'n'), 'n');
 
-		if (strtolower($interactive) === 'n') {
+		if (strtolower((string) $interactive) === 'n') {
 			$this->interactive = false;
 		}
 
@@ -219,13 +219,13 @@ class ViewTask extends BakeTask {
 
 		$wannaDoAdmin = $this->in(__d('cake_console', "Would you like to create the views for admin routing?"), array('y', 'n'), 'n');
 
-		if (strtolower($wannaDoScaffold) === 'y' || strtolower($wannaDoAdmin) === 'y') {
+		if (strtolower((string) $wannaDoScaffold) === 'y' || strtolower((string) $wannaDoAdmin) === 'y') {
 			$vars = $this->_loadController();
-			if (strtolower($wannaDoScaffold) === 'y') {
+			if (strtolower((string) $wannaDoScaffold) === 'y') {
 				$actions = $this->scaffoldActions;
 				$this->bakeActions($actions, $vars);
 			}
-			if (strtolower($wannaDoAdmin) === 'y') {
+			if (strtolower((string) $wannaDoAdmin) === 'y') {
 				$admin = $this->Project->getPrefix();
 				$regularActions = $this->scaffoldActions;
 				$adminActions = array();
@@ -331,7 +331,7 @@ class ViewTask extends BakeTask {
 		$this->out(__d('cake_console', 'Path:            %s', $this->getPath() . $this->controllerName . DS . Inflector::underscore($action) . ".ctp"));
 		$this->hr();
 		$looksGood = $this->in(__d('cake_console', 'Look okay?'), array('y', 'n'), 'y');
-		if (strtolower($looksGood) === 'y') {
+		if (strtolower((string) $looksGood) === 'y') {
 			$this->bake($action, ' ');
 			return $this->_stop();
 		}
@@ -400,7 +400,7 @@ class ViewTask extends BakeTask {
 		$template = $action;
 		$prefixes = Configure::read('Routing.prefixes');
 		foreach ((array)$prefixes as $prefix) {
-			if (strpos($template, $prefix) !== false) {
+			if (strpos($template, (string) $prefix) !== false) {
 				$template = str_replace($prefix . '_', '', $template);
 			}
 		}

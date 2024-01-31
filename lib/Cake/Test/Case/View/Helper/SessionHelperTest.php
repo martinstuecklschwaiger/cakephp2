@@ -140,7 +140,7 @@ class SessionHelperTest extends CakeTestCase {
 			'View' => array(CAKE . 'Test' . DS . 'test_app' . DS . 'View' . DS)
 		));
 		$result = $this->Session->flash('notification');
-		$result = str_replace("\r\n", "\n", $result);
+		$result = str_replace("\r\n", "\n", (string) $result);
 		$expected = "<div id=\"notificationLayout\">\n\t<h1>Alert!</h1>\n\t<h3>Notice!</h3>\n\t<p>This is a test of the emergency broadcasting system</p>\n</div>";
 		$this->assertEquals($expected, $result);
 		$this->assertFalse($this->Session->check('Message.notification'));

@@ -17,5 +17,5 @@
  */
 
 $versionFile = file(CAKE . 'VERSION.txt');
-$config['Cake.version'] = trim(array_pop($versionFile));
+$config['Cake.version'] = trim((string) array_pop($versionFile));
 return $config;

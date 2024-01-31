@@ -87,7 +87,7 @@ class MediaView extends View {
 
 		if ($name !== null) {
 			if (empty($extension)) {
-				$extension = pathinfo($id, PATHINFO_EXTENSION);
+				$extension = pathinfo((string) $id, PATHINFO_EXTENSION);
 			}
 			if (!empty($extension)) {
 				$name .= '.' . $extension;

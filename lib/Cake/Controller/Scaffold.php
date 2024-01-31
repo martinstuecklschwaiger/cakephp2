@@ -268,7 +268,7 @@ class Scaffold {
 
 			foreach ($this->ScaffoldModel->belongsTo as $assocName => $assocData) {
 				$varName = Inflector::variable(Inflector::pluralize(
-					preg_replace('/(?:_id)$/', '', $assocData['foreignKey'])
+					preg_replace('/(?:_id)$/', '', (string) $assocData['foreignKey'])
 				));
 				$this->controller->set($varName, $this->ScaffoldModel->{$assocName}->find('list'));
 			}
@@ -379,7 +379,7 @@ class Scaffold {
 
 			if (in_array($request->params['action'], $this->scaffoldActions)) {
 				if (!empty($prefixes)) {
-					$request->params['action'] = str_replace($scaffoldPrefix . '_', '', $request->params['action']);
+					$request->params['action'] = str_replace($scaffoldPrefix . '_', '', (string) $request->params['action']);
 				}
 				switch ($request->params['action']) {
 					case 'index':

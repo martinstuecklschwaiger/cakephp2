@@ -109,10 +109,10 @@ class CakeHtmlReporter extends CakeBaseReporter {
 		}
 
 		foreach ($testCases as $testCase) {
-			$title = explode(DS, str_replace('.test.php', '', $testCase));
+			$title = explode(DS, str_replace('.test.php', '', (string) $testCase));
 			$title[count($title) - 1] = Inflector::camelize($title[count($title) - 1]);
 			$title = implode(' / ', $title);
-				$buffer .= "<li><a href='" . $this->baseUrl() . "?case=" . urlencode($testCase) . $urlExtra . "'>" . $title . "</a></li>\n";
+				$buffer .= "<li><a href='" . $this->baseUrl() . "?case=" . urlencode((string) $testCase) . $urlExtra . "'>" . $title . "</a></li>\n";
 		}
 		$buffer .= "</ul>\n";
 		echo $buffer;

@@ -104,7 +104,7 @@ class IniAcl extends CakeObject implements AclInterface {
 		}
 
 		if (isset($aclConfig[$aro]['deny'])) {
-			$userDenies = $this->arrayTrim(explode(",", $aclConfig[$aro]['deny']));
+			$userDenies = $this->arrayTrim(explode(",", (string) $aclConfig[$aro]['deny']));
 
 			if (array_search($aco, $userDenies)) {
 				return false;
@@ -112,7 +112,7 @@ class IniAcl extends CakeObject implements AclInterface {
 		}
 
 		if (isset($aclConfig[$aro]['allow'])) {
-			$userAllows = $this->arrayTrim(explode(",", $aclConfig[$aro]['allow']));
+			$userAllows = $this->arrayTrim(explode(",", (string) $aclConfig[$aro]['allow']));
 
 			if (array_search($aco, $userAllows)) {
 				return true;
@@ -120,12 +120,12 @@ class IniAcl extends CakeObject implements AclInterface {
 		}
 
 		if (isset($aclConfig[$aro]['groups'])) {
-			$userGroups = $this->arrayTrim(explode(",", $aclConfig[$aro]['groups']));
+			$userGroups = $this->arrayTrim(explode(",", (string) $aclConfig[$aro]['groups']));
 
 			foreach ($userGroups as $group) {
 				if (array_key_exists($group, $aclConfig)) {
 					if (isset($aclConfig[$group]['deny'])) {
-						$groupDenies = $this->arrayTrim(explode(",", $aclConfig[$group]['deny']));
+						$groupDenies = $this->arrayTrim(explode(",", (string) $aclConfig[$group]['deny']));
 
 						if (array_search($aco, $groupDenies)) {
 							return false;
@@ -133,7 +133,7 @@ class IniAcl extends CakeObject implements AclInterface {
 					}
 
 					if (isset($aclConfig[$group]['allow'])) {
-						$groupAllows = $this->arrayTrim(explode(",", $aclConfig[$group]['allow']));
+						$groupAllows = $this->arrayTrim(explode(",", (string) $aclConfig[$group]['allow']));
 
 						if (array_search($aco, $groupAllows)) {
 							return true;
@@ -166,7 +166,7 @@ class IniAcl extends CakeObject implements AclInterface {
  */
 	public function arrayTrim($array) {
 		foreach ($array as $key => $value) {
-			$array[$key] = trim($value);
+			$array[$key] = trim((string) $value);
 		}
 		array_unshift($array, "");
 		return $array;
