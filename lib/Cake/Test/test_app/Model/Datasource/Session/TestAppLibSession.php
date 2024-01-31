@@ -5,6 +5,7 @@
 
 App::uses('CakeSessionHandlerInterface', 'Model/Datasource/Session');
 
+#[\AllowDynamicProperties]
 class TestAppLibSession implements CakeSessionHandlerInterface {
 
 	public function open() {

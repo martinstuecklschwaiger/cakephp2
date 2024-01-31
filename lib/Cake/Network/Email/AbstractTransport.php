@@ -21,6 +21,7 @@
  *
  * @package       Cake.Network.Email
  */
+#[\AllowDynamicProperties]
 abstract class AbstractTransport {
 
 /**

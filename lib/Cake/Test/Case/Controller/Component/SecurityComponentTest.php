@@ -138,6 +138,7 @@ class BrokenCallbackController extends Controller {
  *
  * @package       Cake.Test.Case.Controller.Component
  */
+#[\AllowDynamicProperties]
 class SecurityComponentTest extends CakeTestCase {
 
 /**

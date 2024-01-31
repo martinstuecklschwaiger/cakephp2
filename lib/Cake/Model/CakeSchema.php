@@ -26,6 +26,7 @@ App::uses('File', 'Utility');
  *
  * @package       Cake.Model
  */
+#[\AllowDynamicProperties]
 class CakeSchema extends CakeObject {
 
 /**

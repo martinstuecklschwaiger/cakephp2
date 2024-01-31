@@ -21,5 +21,6 @@
  *
  * @package       Cake.Test.TestApp.Vendor.sample
  */
+#[\AllowDynamicProperties]
 class ConfigureTestVendorSample {
 }

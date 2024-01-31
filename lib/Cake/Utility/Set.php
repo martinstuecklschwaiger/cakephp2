@@ -25,6 +25,7 @@ App::uses('Hash', 'Utility');
  * @package       Cake.Utility
  * @deprecated 3.0.0 Will be removed in 3.0. Use Hash instead.
  */
+#[\AllowDynamicProperties]
 class Set {
 
 /**

@@ -23,6 +23,7 @@ App::uses('CakeRequest', 'Network');
  *
  * @package       Cake.I18n
  */
+#[\AllowDynamicProperties]
 class L10n {
 
 /**

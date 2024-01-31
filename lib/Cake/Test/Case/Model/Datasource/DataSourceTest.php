@@ -93,6 +93,7 @@ class TestSource extends DataSource {
  *
  * @package       Cake.Test.Case.Model.Datasource
  */
+#[\AllowDynamicProperties]
 class DataSourceTest extends CakeTestCase {
 
 /**

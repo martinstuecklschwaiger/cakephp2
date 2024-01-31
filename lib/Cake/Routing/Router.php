@@ -38,6 +38,7 @@ App::uses('CakeRoute', 'Routing/Route');
  *
  * @package       Cake.Routing
  */
+#[\AllowDynamicProperties]
 class Router {
 
 /**

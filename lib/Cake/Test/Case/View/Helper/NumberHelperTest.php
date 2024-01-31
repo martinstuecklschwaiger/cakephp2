@@ -37,6 +37,7 @@ class NumberHelperTestObject extends NumberHelper {
 /**
  * CakeNumberMock class
  */
+#[\AllowDynamicProperties]
 class CakeNumberMock {
 }
 
@@ -45,6 +46,7 @@ class CakeNumberMock {
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class NumberHelperTest extends CakeTestCase {
 
 /**

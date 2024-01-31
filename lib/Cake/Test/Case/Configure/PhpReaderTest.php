@@ -23,6 +23,7 @@ App::uses('PhpReader', 'Configure');
  *
  * @package       Cake.Test.Case.Configure
  */
+#[\AllowDynamicProperties]
 class PhpReaderTest extends CakeTestCase {
 
 /**

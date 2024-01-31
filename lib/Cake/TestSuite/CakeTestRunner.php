@@ -34,6 +34,7 @@ App::uses('CakeFixtureManager', 'TestSuite/Fixture');
  *
  * @package       Cake.TestSuite
  */
+#[\AllowDynamicProperties]
 class CakeTestRunner extends PHPUnit_TextUI_TestRunner {
 
 /**

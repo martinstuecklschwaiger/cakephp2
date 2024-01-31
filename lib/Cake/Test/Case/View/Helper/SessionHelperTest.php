@@ -25,6 +25,7 @@ App::uses('SessionHelper', 'View/Helper');
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class SessionHelperTest extends CakeTestCase {
 
 /**

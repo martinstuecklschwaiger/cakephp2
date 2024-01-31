@@ -23,6 +23,7 @@ App::uses('SmtpTransport', 'Network/Email');
 /**
  * Help to test SmtpTransport
  */
+#[\AllowDynamicProperties]
 class SmtpTestTransport extends SmtpTransport {
 
 /**
@@ -60,6 +61,7 @@ class SmtpTestTransport extends SmtpTransport {
 /**
  * Test case
  */
+#[\AllowDynamicProperties]
 class SmtpTransportTest extends CakeTestCase {
 
 /**

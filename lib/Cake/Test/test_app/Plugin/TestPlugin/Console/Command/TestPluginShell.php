@@ -18,6 +18,7 @@
  * TestPluginShell
  * @package       Cake.Test.TestApp.Plugin.TestPlugin.Console.Command
  */
+#[\AllowDynamicProperties]
 class TestPluginShell extends Shell {
 
 /**

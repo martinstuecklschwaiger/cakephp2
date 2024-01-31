@@ -53,6 +53,7 @@ App::uses('CakePlugin', 'Core');
  * @package       Cake.Configure
  * @see http://php.net/parse_ini_file
  */
+#[\AllowDynamicProperties]
 class IniReader implements ConfigReaderInterface {
 
 /**

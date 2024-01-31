@@ -26,6 +26,7 @@ require_once dirname(__FILE__) . DS . 'ModelTestBase.php';
 /**
  * Helper class for testing with mocked datasources
  */
+#[\AllowDynamicProperties]
 class TestAuthor extends Author {
 
 	public $hasMany = array(
@@ -66,6 +67,7 @@ class TestAuthor extends Author {
 /**
  * Helper class for testing with mocked datasources
  */
+#[\AllowDynamicProperties]
 class TestPost extends Post {
 
 	public $belongsTo = array(
@@ -108,6 +110,7 @@ class TestPost extends Post {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class ModelWriteTest extends BaseModelTest {
 
 /**

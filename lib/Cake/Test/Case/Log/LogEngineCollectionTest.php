@@ -30,6 +30,7 @@ class LoggerEngineLog extends FileLog {
  *
  * @package       Cake.Test.Case.Log
  */
+#[\AllowDynamicProperties]
 class LogEngineCollectionTest extends CakeTestCase {
 
 	public $Collection;

@@ -30,6 +30,7 @@ App::uses('ConnectionManager', 'Model');
  *
  * @package       Cake.Utility
  */
+#[\AllowDynamicProperties]
 class ClassRegistry {
 
 /**

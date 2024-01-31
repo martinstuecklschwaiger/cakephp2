@@ -21,6 +21,7 @@ App::uses('Model', 'Model');
  *
  * @package       Cake.TestSuite.Fixture
  */
+#[\AllowDynamicProperties]
 class CakeTestModel extends Model {
 
 	public $useDbConfig = 'test';

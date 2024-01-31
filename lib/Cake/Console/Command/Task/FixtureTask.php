@@ -24,6 +24,7 @@ App::uses('Model', 'Model');
  *
  * @package       Cake.Console.Command.Task
  */
+#[\AllowDynamicProperties]
 class FixtureTask extends BakeTask {
 
 /**

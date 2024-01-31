@@ -28,6 +28,7 @@ App::uses('SchemaShell', 'Console/Command');
  *
  * @package       Cake.Test.Case.Console.Command
  */
+#[\AllowDynamicProperties]
 class SchemaShellTestSchema extends CakeSchema {
 
 /**
@@ -85,6 +86,7 @@ class SchemaShellTestSchema extends CakeSchema {
  *
  * @package       Cake.Test.Case.Console.Command
  */
+#[\AllowDynamicProperties]
 class SchemaShellTest extends CakeTestCase {
 
 /**

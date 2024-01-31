@@ -23,6 +23,7 @@ App::uses('BaseLog', 'Log/Engine');
  *
  * @package       Cake.Log.Engine
  */
+#[\AllowDynamicProperties]
 class SyslogLog extends BaseLog {
 
 /**

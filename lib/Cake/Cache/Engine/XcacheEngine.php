@@ -22,6 +22,7 @@
  * @link          http://trac.lighttpd.net/xcache/ Xcache
  * @package       Cake.Cache.Engine
  */
+#[\AllowDynamicProperties]
 class XcacheEngine extends CacheEngine {
 
 /**

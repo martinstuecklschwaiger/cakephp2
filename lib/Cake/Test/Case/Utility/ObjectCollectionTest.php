@@ -22,6 +22,7 @@ App::uses('CakeEvent', 'Event');
 /**
  * A generic object class
  */
+#[\AllowDynamicProperties]
 class GenericObject {
 
 /**
@@ -40,6 +41,7 @@ class GenericObject {
 /**
  * First Extension of Generic CakeObject
  */
+#[\AllowDynamicProperties]
 class FirstGenericObject extends GenericObject {
 
 /**
@@ -55,6 +57,7 @@ class FirstGenericObject extends GenericObject {
 /**
  * Second Extension of Generic CakeObject
  */
+#[\AllowDynamicProperties]
 class SecondGenericObject extends GenericObject {
 
 /**
@@ -68,6 +71,7 @@ class SecondGenericObject extends GenericObject {
 /**
  * Third Extension of Generic CakeObject
  */
+#[\AllowDynamicProperties]
 class ThirdGenericObject extends GenericObject {
 
 /**
@@ -81,6 +85,7 @@ class ThirdGenericObject extends GenericObject {
 /**
  * A collection of Generic objects
  */
+#[\AllowDynamicProperties]
 class GenericObjectCollection extends ObjectCollection {
 
 /**
@@ -127,6 +132,7 @@ class GenericObjectCollection extends ObjectCollection {
 
 }
 
+#[\AllowDynamicProperties]
 class ObjectCollectionTest extends CakeTestCase {
 
 /**

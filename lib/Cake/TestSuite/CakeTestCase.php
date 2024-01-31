@@ -24,6 +24,7 @@ App::uses('CakeTestFixture', 'TestSuite/Fixture');
  *
  * @package       Cake.TestSuite
  */
+#[\AllowDynamicProperties]
 abstract class CakeTestCase extends PHPUnit_Framework_TestCase {
 
 /**

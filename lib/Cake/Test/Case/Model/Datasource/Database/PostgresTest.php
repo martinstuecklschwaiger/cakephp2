@@ -175,6 +175,7 @@ class PostgresClientTestModel extends Model {
  *
  * @package       Cake.Test.Case.Model.Datasource.Database
  */
+#[\AllowDynamicProperties]
 class PostgresTest extends CakeTestCase {
 
 /**

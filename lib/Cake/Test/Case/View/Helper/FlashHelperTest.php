@@ -27,6 +27,7 @@ App::uses('CakePlugin', 'Core');
  *
  * @package		Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class FlashHelperTest extends CakeTestCase {
 
 /**

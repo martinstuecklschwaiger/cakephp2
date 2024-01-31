@@ -24,6 +24,7 @@ App::uses('CakeSession', 'Model/Datasource');
  *
  * @package       Cake.Test.Case.I18n
  */
+#[\AllowDynamicProperties]
 class I18nTest extends CakeTestCase {
 
 /**

@@ -40,6 +40,7 @@ App::uses('CacheEngine', 'Cache');
  *
  * @package       Cake.Cache
  */
+#[\AllowDynamicProperties]
 class Cache {
 
 /**

@@ -20,6 +20,7 @@ App::uses('Security', 'Utility');
  *
  * @package       Cake.Test.Case.Utility
  */
+#[\AllowDynamicProperties]
 class SecurityTest extends CakeTestCase {
 
 /**

@@ -111,6 +111,7 @@ class ControllerTestCaseTestController extends AppController {
  *
  * @package       Cake.Test.Case.TestSuite
  */
+#[\AllowDynamicProperties]
 class ControllerTestCaseTest extends CakeTestCase {
 
 /**

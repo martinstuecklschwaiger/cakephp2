@@ -32,6 +32,7 @@ App::uses('CakeTestModel', 'TestSuite/Fixture');
  *
  * @package       Cake.TestSuite
  */
+#[\AllowDynamicProperties]
 class CakeTestSuiteCommand extends PHPUnit_TextUI_Command {
 
 /**

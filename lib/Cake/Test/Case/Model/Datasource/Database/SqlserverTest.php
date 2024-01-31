@@ -205,6 +205,7 @@ class SqlserverClientTestModel extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model.Datasource.Database
  */
+#[\AllowDynamicProperties]
 class SqlserverTestResultIterator extends ArrayIterator {
 
 /**
@@ -236,6 +237,7 @@ class SqlserverTestResultIterator extends ArrayIterator {
  *
  * @package       Cake.Test.Case.Model.Datasource.Database
  */
+#[\AllowDynamicProperties]
 class SqlserverTest extends CakeTestCase {
 
 /**

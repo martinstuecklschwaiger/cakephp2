@@ -23,6 +23,7 @@ App::uses('Sanitize', 'Utility');
  *
  * @package       Cake.Test.Case.Utility
  */
+#[\AllowDynamicProperties]
 class SanitizeDataTest extends CakeTestModel {
 
 /**
@@ -38,6 +39,7 @@ class SanitizeDataTest extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Utility
  */
+#[\AllowDynamicProperties]
 class SanitizeArticle extends CakeTestModel {
 
 /**
@@ -53,6 +55,7 @@ class SanitizeArticle extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Utility
  */
+#[\AllowDynamicProperties]
 class SanitizeTest extends CakeTestCase {
 
 /**

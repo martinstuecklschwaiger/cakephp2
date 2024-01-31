@@ -26,6 +26,7 @@ App::uses('CakeText', 'Utility');
  *
  * @package       Cake.Model.Datasource.Database
  */
+#[\AllowDynamicProperties]
 class Sqlite extends DboSource {
 
 /**

@@ -28,6 +28,7 @@ App::uses('DataSource', 'Model/Datasource');
  *
  * @package       Cake.Model
  */
+#[\AllowDynamicProperties]
 class ConnectionManager {
 
 /**

@@ -26,6 +26,7 @@ require_once dirname(__FILE__) . DS . 'models.php';
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 abstract class BaseModelTest extends CakeTestCase {
 
 /**

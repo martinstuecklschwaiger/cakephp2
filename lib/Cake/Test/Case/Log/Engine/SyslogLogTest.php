@@ -21,6 +21,7 @@ App::uses('SyslogLog', 'Log/Engine');
  *
  * @package       Cake.Test.Case.Log.Engine
  */
+#[\AllowDynamicProperties]
 class SyslogLogTest extends CakeTestCase {
 
 /**

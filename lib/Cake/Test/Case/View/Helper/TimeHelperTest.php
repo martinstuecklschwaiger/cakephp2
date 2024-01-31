@@ -42,6 +42,7 @@ class TimeHelperTestObject extends TimeHelper {
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class CakeTimeMock {
 }
 
@@ -50,6 +51,7 @@ class CakeTimeMock {
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class TimeHelperTest extends CakeTestCase {
 
 	public $Time = null;

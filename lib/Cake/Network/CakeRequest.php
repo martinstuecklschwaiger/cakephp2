@@ -32,6 +32,7 @@ App::uses('Hash', 'Utility');
  * @property array $pass        Array of passed arguments parsed from the URL.
  * @package       Cake.Network
  */
+#[\AllowDynamicProperties]
 class CakeRequest implements ArrayAccess {
 
 /**

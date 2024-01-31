@@ -26,6 +26,7 @@ class_exists('CakeSession');
  *
  * @package       Cake.Test.Case.Model.Datasource.Session
  */
+#[\AllowDynamicProperties]
 class SessionTestModel extends Model {
 
 	public $useTable = 'sessions';
@@ -37,6 +38,7 @@ class SessionTestModel extends Model {
  *
  * @package       Cake.Test.Case.Model.Datasource.Session
  */
+#[\AllowDynamicProperties]
 class DatabaseSessionTest extends CakeTestCase {
 
 	protected static $_sessionBackup;

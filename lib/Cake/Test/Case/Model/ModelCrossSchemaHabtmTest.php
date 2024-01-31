@@ -25,6 +25,7 @@ require_once dirname(__FILE__) . DS . 'ModelTestBase.php';
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class ModelCrossSchemaHabtmTest extends BaseModelTest {
 
 /**

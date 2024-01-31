@@ -31,6 +31,7 @@ if (!class_exists('UsersController')) {
 	}
 }
 
+#[\AllowDynamicProperties]
 class BakeShellTest extends CakeTestCase {
 
 /**

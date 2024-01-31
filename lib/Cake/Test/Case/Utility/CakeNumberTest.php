@@ -24,6 +24,7 @@ App::uses('CakeNumber', 'Utility');
  *
  * @package       Cake.Test.Case.Utility
  */
+#[\AllowDynamicProperties]
 class CakeNumberTest extends CakeTestCase {
 
 /**

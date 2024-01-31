@@ -26,6 +26,7 @@ App::uses('CakeNumber', 'Utility');
  *
  * @package       Cake.Log.Engine
  */
+#[\AllowDynamicProperties]
 class FileLog extends BaseLog {
 
 /**

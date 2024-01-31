@@ -21,6 +21,7 @@
  *
  * @package       Cake.Test.TestApp.Model
  */
+#[\AllowDynamicProperties]
 class Post extends AppModel {
 
 	public $useTable = 'posts';

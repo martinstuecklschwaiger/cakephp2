@@ -21,6 +21,7 @@ App::uses('CakePlugin', 'Core');
 /**
  * CakePluginTest class
  */
+#[\AllowDynamicProperties]
 class CakePluginTest extends CakeTestCase {
 
 /**

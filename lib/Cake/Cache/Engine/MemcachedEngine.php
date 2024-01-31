@@ -27,6 +27,7 @@
  *
  * @package       Cake.Cache.Engine
  */
+#[\AllowDynamicProperties]
 class MemcachedEngine extends CacheEngine {
 
 /**

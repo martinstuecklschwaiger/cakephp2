@@ -23,6 +23,7 @@ App::uses('AbstractTransport', 'Network/Email');
  *
  * @package       Cake.Network.Email
  */
+#[\AllowDynamicProperties]
 class DebugTransport extends AbstractTransport {
 
 /**

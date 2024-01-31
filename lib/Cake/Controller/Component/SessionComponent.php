@@ -28,6 +28,7 @@ App::uses('CakeSession', 'Model/Datasource');
  * @link https://book.cakephp.org/2.0/en/core-libraries/components/sessions.html
  * @link https://book.cakephp.org/2.0/en/development/sessions.html
  */
+#[\AllowDynamicProperties]
 class SessionComponent extends Component {
 
 /**

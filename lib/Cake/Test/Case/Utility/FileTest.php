@@ -25,6 +25,7 @@ App::uses('Folder', 'Utility');
  * @package       Cake.Test.Case.Utility
  * @coversDefaultClass File
  */
+#[\AllowDynamicProperties]
 class FileTest extends CakeTestCase {
 
 /**

@@ -24,6 +24,7 @@ App::uses('ClassRegistry', 'Utility');
  *
  * @package       Cake.Model.Datasource.Session
  */
+#[\AllowDynamicProperties]
 class DatabaseSession implements CakeSessionHandlerInterface {
 
 /**

@@ -102,6 +102,7 @@ class TestShellDispatcher extends ShellDispatcher {
  *
  * @package       Cake.Test.Case.Console
  */
+#[\AllowDynamicProperties]
 class ShellDispatcherTest extends CakeTestCase {
 
 /**

@@ -32,6 +32,7 @@ App::uses('Set', 'Utility');
  * @package       Cake.Core
  * @link          https://book.cakephp.org/2.0/en/development/configuration.html#configure-class
  */
+#[\AllowDynamicProperties]
 class Configure {
 
 /**

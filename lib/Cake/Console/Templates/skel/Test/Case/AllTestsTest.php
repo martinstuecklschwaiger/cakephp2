@@ -16,6 +16,7 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
+#[\AllowDynamicProperties]
 class AllTestsTest extends CakeTestSuite {
 
 /**

@@ -23,6 +23,7 @@ App::uses('ConsoleErrorHandler', 'Console');
  *
  * @package       Cake.Test.Case.Console
  */
+#[\AllowDynamicProperties]
 class ConsoleErrorHandlerTest extends CakeTestCase {
 
 /**

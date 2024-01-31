@@ -23,6 +23,7 @@ App::uses('L10n', 'I18n');
  *
  * @package       Cake.Test.Case.I18n
  */
+#[\AllowDynamicProperties]
 class L10nTest extends CakeTestCase {
 
 /**

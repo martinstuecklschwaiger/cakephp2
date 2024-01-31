@@ -41,7 +41,8 @@ if (!$imported) {
 /**
  * BakeArticle
  */
-	class BakeArticle extends Model {
+	#[\AllowDynamicProperties]
+ class BakeArticle extends Model {
 
 		public $hasMany = array('BakeComment');
 
@@ -55,6 +56,7 @@ if (!$imported) {
  *
  * @package       Cake.Test.Case.Console.Command.Task
  */
+#[\AllowDynamicProperties]
 class ControllerTaskTest extends CakeTestCase {
 
 /**

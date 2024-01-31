@@ -140,6 +140,7 @@ class TestScaffoldMock extends Scaffold {
  *
  * @package       Cake.Test.Case.Controller
  */
+#[\AllowDynamicProperties]
 class ScaffoldTest extends CakeTestCase {
 
 /**

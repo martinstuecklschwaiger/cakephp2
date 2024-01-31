@@ -19,6 +19,7 @@
  *
  * @package       Cake.Test.Case.TestSuite
  */
+#[\AllowDynamicProperties]
 class CakeTestSuiteTest extends CakeTestCase {
 
 /**

@@ -25,6 +25,7 @@ App::uses('CakeTestFixture', 'TestSuite/Fixture');
  *
  * @package       Cake.Test.Case.TestSuite
  */
+#[\AllowDynamicProperties]
 class CakeTestFixtureTestFixture extends CakeTestFixture {
 
 /**
@@ -69,6 +70,7 @@ class CakeTestFixtureTestFixture extends CakeTestFixture {
  *
  * @package       Cake.Test.Case.TestSuite
  */
+#[\AllowDynamicProperties]
 class StringsTestFixture extends CakeTestFixture {
 
 /**
@@ -114,6 +116,7 @@ class StringsTestFixture extends CakeTestFixture {
  *
  * @package       Cake.Test.Case.TestSuite
  */
+#[\AllowDynamicProperties]
 class InvalidTestFixture extends CakeTestFixture {
 
 /**
@@ -158,6 +161,7 @@ class InvalidTestFixture extends CakeTestFixture {
  *
  * @package       Cake.Test.Case.TestSuite
  */
+#[\AllowDynamicProperties]
 class CakeTestFixtureImportFixture extends CakeTestFixture {
 
 /**
@@ -180,6 +184,7 @@ class CakeTestFixtureImportFixture extends CakeTestFixture {
  *
  * @package       Cake.Test.Case.TestSuite
  */
+#[\AllowDynamicProperties]
 class CakeTestFixtureDefaultImportFixture extends CakeTestFixture {
 
 /**
@@ -221,6 +226,7 @@ class FixturePrefixTest extends Model {
  *
  * @package       Cake.Test.Case.TestSuite
  */
+#[\AllowDynamicProperties]
 class CakeTestFixtureTest extends CakeTestCase {
 
 /**

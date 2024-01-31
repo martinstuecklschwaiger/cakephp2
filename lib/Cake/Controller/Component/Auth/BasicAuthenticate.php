@@ -48,6 +48,7 @@ App::uses('BaseAuthenticate', 'Controller/Component/Auth');
  * @package       Cake.Controller.Component.Auth
  * @since 2.0
  */
+#[\AllowDynamicProperties]
 class BasicAuthenticate extends BaseAuthenticate {
 
 /**

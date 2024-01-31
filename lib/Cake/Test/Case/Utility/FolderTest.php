@@ -24,6 +24,7 @@ App::uses('File', 'Utility');
  *
  * @package       Cake.Test.Case.Utility
  */
+#[\AllowDynamicProperties]
 class FolderTest extends CakeTestCase {
 
 	protected static $_tmp = array();

@@ -26,6 +26,7 @@ App::uses('CakeEventListener', 'Event');
  *
  * @package       Cake.View
  */
+#[\AllowDynamicProperties]
 class HelperCollection extends ObjectCollection implements CakeEventListener {
 
 /**

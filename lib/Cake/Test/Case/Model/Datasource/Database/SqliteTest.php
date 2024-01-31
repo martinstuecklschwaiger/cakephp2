@@ -63,6 +63,7 @@ class DboSqliteTestDb extends Sqlite {
  *
  * @package       Cake.Test.Case.Model.Datasource.Database
  */
+#[\AllowDynamicProperties]
 class SqliteTest extends CakeTestCase {
 
 /**

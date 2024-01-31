@@ -22,6 +22,7 @@ App::uses('Shell', 'Console');
 /**
  * Extended Task
  */
+#[\AllowDynamicProperties]
 class DbConfigAliasedTask extends Shell {
 }
 
@@ -30,6 +31,7 @@ class DbConfigAliasedTask extends Shell {
  *
  * @package       Cake.Test.Case.Console
  */
+#[\AllowDynamicProperties]
 class TaskCollectionTest extends CakeTestCase {
 
 /**

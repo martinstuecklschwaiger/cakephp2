@@ -25,6 +25,7 @@ App::uses('CakeLog', 'Log');
  *
  * @package       Cake.Console
  */
+#[\AllowDynamicProperties]
 class ConsoleErrorHandler {
 
 /**
@@ -78,6 +79,7 @@ class ConsoleErrorHandler {
 		if (error_reporting() === 0) {
 			return;
 		}
+		
 		$stderr = static::getStderr();
 		list($name, $log) = ErrorHandler::mapErrorCode($code);
 		$message = __d('cake_console', '%s in [%s, line %s]', $description, $file, $line);

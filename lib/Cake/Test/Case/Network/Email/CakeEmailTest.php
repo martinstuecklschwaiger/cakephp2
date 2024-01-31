@@ -22,6 +22,7 @@ App::uses('File', 'Utility');
 /**
  * Help to test CakeEmail
  */
+#[\AllowDynamicProperties]
 class TestCakeEmail extends CakeEmail {
 
 /**
@@ -88,6 +89,7 @@ class TestCakeEmail extends CakeEmail {
 /**
  * EmailConfig class
  */
+#[\AllowDynamicProperties]
 class TestEmailConfig {
 
 /**
@@ -133,6 +135,7 @@ class TestEmailConfig {
  * ExtendTransport class
  * test class to ensure the class has send() method
  */
+#[\AllowDynamicProperties]
 class ExtendTransport {
 
 }
@@ -142,6 +145,7 @@ class ExtendTransport {
  *
  * @package       Cake.Test.Case.Network.Email
  */
+#[\AllowDynamicProperties]
 class CakeEmailTest extends CakeTestCase {
 
 /**

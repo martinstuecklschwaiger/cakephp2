@@ -33,6 +33,7 @@ App::uses('Xml', 'Utility');
  * @package       Cake.Controller.Component
  * @link https://book.cakephp.org/2.0/en/core-libraries/components/request-handling.html
  */
+#[\AllowDynamicProperties]
 class RequestHandlerComponent extends Component {
 
 /**

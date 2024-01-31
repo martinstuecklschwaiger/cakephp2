@@ -27,6 +27,7 @@ App::uses('View', 'View');
  *
  * @package       Cake.Model.Datasource
  */
+#[\AllowDynamicProperties]
 class DboSource extends DataSource {
 
 /**

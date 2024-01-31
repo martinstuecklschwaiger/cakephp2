@@ -43,6 +43,7 @@ class FaultyExceptionRenderer extends ExceptionRenderer {
  *
  * @package       Cake.Test.Case.Error
  */
+#[\AllowDynamicProperties]
 class ErrorHandlerTest extends CakeTestCase {
 
 	protected $_restoreError = false;

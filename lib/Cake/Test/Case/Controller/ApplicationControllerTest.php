@@ -49,6 +49,7 @@ class TransSessionIdController extends AppController {
  *
  * @package       Cake.Test.Case.Controller
  */
+#[\AllowDynamicProperties]
 class ApplicationControllerTest extends ControllerTestCase {
 
 /**

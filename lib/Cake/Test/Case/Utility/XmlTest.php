@@ -24,6 +24,7 @@ App::uses('CakeTestModel', 'TestSuite/Fixture');
  *
  * @package       Cake.Test.Case.Utility
  */
+#[\AllowDynamicProperties]
 class XmlArticle extends CakeTestModel {
 
 /**
@@ -51,6 +52,7 @@ class XmlArticle extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Utility
  */
+#[\AllowDynamicProperties]
 class XmlUser extends CakeTestModel {
 
 /**
@@ -77,6 +79,7 @@ class XmlUser extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Utility
  */
+#[\AllowDynamicProperties]
 class XmlTest extends CakeTestCase {
 
 /**

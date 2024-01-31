@@ -32,6 +32,7 @@ App::uses('File', 'Utility');
  *
  * @package       Cake.Test.Case.Console.Command.Task
  */
+#[\AllowDynamicProperties]
 class PluginTaskTest extends CakeTestCase {
 
 /**

@@ -25,6 +25,7 @@ App::uses('Validation', 'Utility');
  *
  * @package		  Cake.Network
  */
+#[\AllowDynamicProperties]
 class CakeSocket {
 
 /**

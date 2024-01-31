@@ -21,6 +21,7 @@ App::uses('AppModel', 'Model');
  *
  * @package       Cake.Model
  */
+#[\AllowDynamicProperties]
 class Permission extends AppModel {
 
 /**

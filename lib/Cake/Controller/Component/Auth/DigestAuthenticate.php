@@ -53,6 +53,7 @@ App::uses('BasicAuthenticate', 'Controller/Component/Auth');
  * @package       Cake.Controller.Component.Auth
  * @since 2.0
  */
+#[\AllowDynamicProperties]
 class DigestAuthenticate extends BasicAuthenticate {
 
 /**

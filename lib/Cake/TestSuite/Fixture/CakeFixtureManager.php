@@ -24,6 +24,7 @@ App::uses('ClassRegistry', 'Utility');
  *
  * @package       Cake.TestSuite.Fixture
  */
+#[\AllowDynamicProperties]
 class CakeFixtureManager {
 
 /**

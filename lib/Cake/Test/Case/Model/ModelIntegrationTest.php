@@ -25,6 +25,7 @@ App::uses('DboMock', 'Model/Datasource');
  * DboMock class
  * A Dbo Source driver to mock a connection and a identity name() method
  */
+#[\AllowDynamicProperties]
 class DboMock extends DboSource {
 
 /**
@@ -52,6 +53,7 @@ class DboMock extends DboSource {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class ModelIntegrationTest extends BaseModelTest {
 
 /**

@@ -4,6 +4,7 @@
  *
  * @package       Cake.Test.Fixture
  */
+#[\AllowDynamicProperties]
 class FixturizedTestCase extends CakeTestCase {
 
 /**

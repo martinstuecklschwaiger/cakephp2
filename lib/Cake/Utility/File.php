@@ -23,6 +23,7 @@ App::uses('Folder', 'Utility');
  *
  * @package       Cake.Utility
  */
+#[\AllowDynamicProperties]
 class File {
 
 /**

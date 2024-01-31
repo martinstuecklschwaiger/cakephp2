@@ -18,6 +18,7 @@ App::uses("BaseShellHelper", "Console/Helper");
  * Create a visually pleasing ASCII art table
  * from 2 dimensional array data.
  */
+#[\AllowDynamicProperties]
 class TableShellHelper extends BaseShellHelper {
 
 /**

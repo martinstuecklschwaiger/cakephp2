@@ -26,6 +26,7 @@ App::uses('Security', 'Utility');
  *
  * @package       Cake.Console.Command.Task
  */
+#[\AllowDynamicProperties]
 class ProjectTask extends AppShell {
 
 /**

@@ -61,6 +61,7 @@
  * @see Model::$actsAs
  * @see BehaviorCollection::load()
  */
+#[\AllowDynamicProperties]
 class ModelBehavior extends CakeObject {
 
 /**

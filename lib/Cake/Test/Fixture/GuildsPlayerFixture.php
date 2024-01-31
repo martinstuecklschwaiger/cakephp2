@@ -21,6 +21,7 @@
  *
  * @package       Cake.Test.Fixture
  */
+#[\AllowDynamicProperties]
 class GuildsPlayerFixture extends CakeTestFixture {
 
 	public $useDbConfig = 'test2';

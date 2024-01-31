@@ -30,6 +30,7 @@ App::uses('Router', 'Routing');
  * @see AuthComponent::$authenticate
  * @see AclComponent::check()
  */
+#[\AllowDynamicProperties]
 class CrudAuthorize extends BaseAuthorize {
 
 /**

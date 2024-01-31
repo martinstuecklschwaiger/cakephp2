@@ -20,6 +20,7 @@
  *
  * @package       Cake.Network.Http
  */
+#[\AllowDynamicProperties]
 class HttpSocketResponse implements ArrayAccess {
 
 /**

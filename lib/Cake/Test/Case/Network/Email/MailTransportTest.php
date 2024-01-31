@@ -23,6 +23,7 @@ App::uses('MailTransport', 'Network/Email');
 /**
  * Test case
  */
+#[\AllowDynamicProperties]
 class MailTransportTest extends CakeTestCase {
 
 /**

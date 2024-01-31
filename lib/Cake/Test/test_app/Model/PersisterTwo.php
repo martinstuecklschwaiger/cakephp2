@@ -21,6 +21,7 @@
  *
  * @package       Cake.Test.TestApp.Model
  */
+#[\AllowDynamicProperties]
 class PersisterTwo extends AppModel {
 
 	public $useTable = 'posts';

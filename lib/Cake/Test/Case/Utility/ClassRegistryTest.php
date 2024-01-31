@@ -125,6 +125,7 @@ interface ClassRegistryInterfaceTest {
  *
  * @package       Cake.Test.Case.Utility
  */
+#[\AllowDynamicProperties]
 class ClassRegistryTest extends CakeTestCase {
 
 /**

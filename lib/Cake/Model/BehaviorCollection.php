@@ -28,6 +28,7 @@ App::uses('CakeEventListener', 'Event');
  *
  * @package       Cake.Model
  */
+#[\AllowDynamicProperties]
 class BehaviorCollection extends ObjectCollection implements CakeEventListener {
 
 /**

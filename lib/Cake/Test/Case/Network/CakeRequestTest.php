@@ -57,6 +57,7 @@ class TestCakeRequest extends CakeRequest {
 /**
  * CakeRequestTest
  */
+#[\AllowDynamicProperties]
 class CakeRequestTest extends CakeTestCase {
 
 /**

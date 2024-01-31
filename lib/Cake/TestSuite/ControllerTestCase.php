@@ -111,6 +111,7 @@ class InterceptContentHelper extends Helper {
  * @package       Cake.TestSuite
  * @method        mixed testAction() testAction($url, $options = array())  Lets you do functional tests of a controller action.
  */
+#[\AllowDynamicProperties]
 abstract class ControllerTestCase extends CakeTestCase {
 
 /**

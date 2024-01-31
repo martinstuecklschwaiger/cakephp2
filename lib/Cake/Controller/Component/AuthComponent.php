@@ -36,6 +36,7 @@ App::uses('CakeEvent', 'Event');
  * @package       Cake.Controller.Component
  * @link https://book.cakephp.org/2.0/en/core-libraries/components/authentication.html
  */
+#[\AllowDynamicProperties]
 class AuthComponent extends Component {
 
 /**

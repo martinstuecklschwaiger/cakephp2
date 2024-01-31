@@ -22,6 +22,7 @@
  *
  * @package Cake.Controller.Component.Acl
  */
+#[\AllowDynamicProperties]
 class PhpAcl extends CakeObject implements AclInterface {
 
 /**
@@ -197,6 +198,7 @@ class PhpAcl extends CakeObject implements AclInterface {
 /**
  * Access Control Object
  */
+#[\AllowDynamicProperties]
 class PhpAco {
 
 /**
@@ -361,6 +363,7 @@ class PhpAco {
 /**
  * Access Request Object
  */
+#[\AllowDynamicProperties]
 class PhpAro {
 
 /**

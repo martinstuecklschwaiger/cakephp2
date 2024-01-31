@@ -25,6 +25,7 @@ App::uses('DboSource', 'Model/Datasource');
  *
  * @package       Cake.Model.Datasource.Database
  */
+#[\AllowDynamicProperties]
 class Mysql extends DboSource {
 
 /**

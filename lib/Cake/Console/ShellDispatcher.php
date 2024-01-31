@@ -20,6 +20,7 @@
  *
  * @package       Cake.Console
  */
+#[\AllowDynamicProperties]
 class ShellDispatcher {
 
 /**

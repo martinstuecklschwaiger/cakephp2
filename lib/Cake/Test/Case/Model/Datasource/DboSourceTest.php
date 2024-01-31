@@ -31,6 +31,7 @@ require_once dirname(dirname(__FILE__)) . DS . 'models.php';
  *
  * @package       Cake.Test.Case.Model.Datasource
  */
+#[\AllowDynamicProperties]
 class MockPDO extends PDO {
 
 /**
@@ -160,6 +161,7 @@ class DboFourthTestSource extends DboSource {
  *
  * @package       Cake.Test.Case.Model.Datasource
  */
+#[\AllowDynamicProperties]
 class DboSourceTest extends CakeTestCase {
 
 /**

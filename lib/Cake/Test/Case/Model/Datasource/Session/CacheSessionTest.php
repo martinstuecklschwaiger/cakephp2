@@ -25,6 +25,7 @@ class_exists('CakeSession');
  *
  * @package       Cake.Test.Case.Model.Datasource.Session
  */
+#[\AllowDynamicProperties]
 class CacheSessionTest extends CakeTestCase {
 
 	protected static $_sessionBackup;

@@ -21,6 +21,7 @@
  *
  * @package       Cake.Cache.Engine
  */
+#[\AllowDynamicProperties]
 class RedisEngine extends CacheEngine {
 
 /**

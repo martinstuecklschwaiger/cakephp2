@@ -25,6 +25,7 @@ App::uses('UuidFixture', 'Test/Fixture');
  *
  * @package       Cake.Test.Case.TestSuite
  */
+#[\AllowDynamicProperties]
 class CakeFixtureManagerTest extends CakeTestCase {
 
 /**

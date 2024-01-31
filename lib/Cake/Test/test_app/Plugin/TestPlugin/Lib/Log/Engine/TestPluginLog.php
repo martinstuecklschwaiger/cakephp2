@@ -23,6 +23,7 @@ App::uses('CakeLogInterface', 'Log');
  *
  * @package       Cake.Test.TestApp.Plugin.TestPlugin.Lib.Log.Engine
  */
+#[\AllowDynamicProperties]
 class TestPluginLog implements CakeLogInterface {
 
 	public function write($type, $message) {

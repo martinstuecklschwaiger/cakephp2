@@ -61,6 +61,7 @@ class ConstructorPost extends Model {
  *
  * @package       Cake.Test.Case.TestSuite
  */
+#[\AllowDynamicProperties]
 class CakeTestCaseTest extends CakeTestCase {
 
 /**

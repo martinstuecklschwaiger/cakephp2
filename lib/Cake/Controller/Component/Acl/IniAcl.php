@@ -22,6 +22,7 @@ App::uses('AclInterface', 'Controller/Component/Acl');
  *
  * @package       Cake.Controller.Component.Acl
  */
+#[\AllowDynamicProperties]
 class IniAcl extends CakeObject implements AclInterface {
 
 /**

@@ -24,6 +24,7 @@ App::uses('Router', 'Routing');
  *
  * @package       Cake.Test.Case.Routing.Route
  */
+#[\AllowDynamicProperties]
 class PluginShortRouteTest extends CakeTestCase {
 
 /**

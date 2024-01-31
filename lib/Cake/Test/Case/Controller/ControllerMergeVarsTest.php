@@ -47,6 +47,7 @@ class MergeVarsAppController extends Controller {
  *
  * @package       Cake.Test.Case.Controller
  */
+#[\AllowDynamicProperties]
 class MergeVarComponent extends CakeObject {
 
 }
@@ -122,6 +123,7 @@ class MergePostsController extends MergeVarPluginAppController {
  *
  * @package       Cake.Test.Case.Controller
  */
+#[\AllowDynamicProperties]
 class ControllerMergeVarsTest extends CakeTestCase {
 
 /**

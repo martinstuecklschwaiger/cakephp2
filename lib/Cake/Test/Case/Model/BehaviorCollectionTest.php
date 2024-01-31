@@ -460,6 +460,7 @@ class Orangutan extends Monkey {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class BehaviorCollectionTest extends CakeTestCase {
 
 /**

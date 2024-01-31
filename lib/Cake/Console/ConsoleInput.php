@@ -21,6 +21,7 @@
  *
  * @package       Cake.Console
  */
+#[\AllowDynamicProperties]
 class ConsoleInput {
 
 /**

@@ -28,6 +28,7 @@ App::uses('Inflector', 'Utility');
  *
  * @package       Cake.Test.Case.Utility
  */
+#[\AllowDynamicProperties]
 class InflectorTest extends CakeTestCase {
 
 /**

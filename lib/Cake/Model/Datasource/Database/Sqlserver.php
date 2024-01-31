@@ -28,6 +28,7 @@ App::uses('DboSource', 'Model/Datasource');
  *
  * @package       Cake.Model.Datasource.Database
  */
+#[\AllowDynamicProperties]
 class Sqlserver extends DboSource {
 
 /**

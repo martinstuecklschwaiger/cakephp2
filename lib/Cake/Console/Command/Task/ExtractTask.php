@@ -25,6 +25,7 @@ App::uses('Hash', 'Utility');
  *
  * @package       Cake.Console.Command.Task
  */
+#[\AllowDynamicProperties]
 class ExtractTask extends AppShell {
 
 /**

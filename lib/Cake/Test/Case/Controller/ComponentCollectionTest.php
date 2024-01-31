@@ -27,6 +27,7 @@ App::uses('ComponentCollection', 'Controller');
 class CookieAliasComponent extends CookieComponent {
 }
 
+#[\AllowDynamicProperties]
 class ComponentCollectionTest extends CakeTestCase {
 
 /**

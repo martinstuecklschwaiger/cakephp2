@@ -24,6 +24,7 @@ App::uses('Folder', 'Utility');
  *
  * @package       Cake.Console.Command.Task
  */
+#[\AllowDynamicProperties]
 class TemplateTask extends AppShell {
 
 /**

@@ -31,6 +31,7 @@ class HtmlAliasHelper extends HtmlHelper {
  *
  * @package       Cake.Test.Case.View
  */
+#[\AllowDynamicProperties]
 class HelperCollectionTest extends CakeTestCase {
 
 /**

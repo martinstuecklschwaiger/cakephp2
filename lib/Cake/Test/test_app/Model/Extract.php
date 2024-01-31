@@ -23,6 +23,7 @@
  *
  * @package       Cake.Test.TestApp.Model
  */
+#[\AllowDynamicProperties]
 class Extract extends AppModel {
 
 	public $useTable = false;

@@ -24,6 +24,7 @@ App::uses('Hash', 'Utility');
  *
  * @package Cake.Routing.Route
  */
+#[\AllowDynamicProperties]
 class CakeRoute {
 
 /**

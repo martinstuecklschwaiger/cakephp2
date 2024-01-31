@@ -24,6 +24,7 @@ App::uses('CakeRoute', 'Routing/Route');
  *
  * @package Cake.Routing.Route
  */
+#[\AllowDynamicProperties]
 class RedirectRoute extends CakeRoute {
 
 /**

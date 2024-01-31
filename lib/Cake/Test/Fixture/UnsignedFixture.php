@@ -23,6 +23,7 @@
  *
  * @package       Cake.Test.Fixture
  */
+#[\AllowDynamicProperties]
 class UnsignedFixture extends CakeTestFixture {
 
 /**

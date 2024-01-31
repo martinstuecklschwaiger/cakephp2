@@ -20,6 +20,7 @@ App::uses('Debugger', 'Utility');
  *
  * @package       Cake.Test.Case.Utility
  */
+#[\AllowDynamicProperties]
 class DebuggerTestCaseDebugger extends Debugger {
 }
 
@@ -31,6 +32,7 @@ class DebuggerTestCaseDebugger extends Debugger {
  *
  * @package       Cake.Test.Case.Utility
  */
+#[\AllowDynamicProperties]
 class DebuggerTest extends CakeTestCase {
 
 	protected $_restoreError = false;

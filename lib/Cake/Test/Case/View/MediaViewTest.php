@@ -25,6 +25,7 @@ App::uses('CakeResponse', 'Network');
  *
  * @package       Cake.Test.Case.View
  */
+#[\AllowDynamicProperties]
 class MediaViewTest extends CakeTestCase {
 
 /**

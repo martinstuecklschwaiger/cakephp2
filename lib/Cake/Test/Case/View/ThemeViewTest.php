@@ -96,6 +96,7 @@ class TestTheme2View extends ThemeView {
  *
  * @package       Cake.Test.Case.View
  */
+#[\AllowDynamicProperties]
 class ThemeViewTest extends CakeTestCase {
 
 /**

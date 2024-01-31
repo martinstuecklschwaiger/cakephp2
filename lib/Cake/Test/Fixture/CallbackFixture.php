@@ -21,6 +21,7 @@
  *
  * @package       Cake.Test.Fixture
  */
+#[\AllowDynamicProperties]
 class CallbackFixture extends CakeTestFixture {
 
 /**

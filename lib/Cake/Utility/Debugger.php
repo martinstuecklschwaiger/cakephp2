@@ -29,6 +29,7 @@ App::uses('CakeText', 'Utility');
  * @package       Cake.Utility
  * @link          https://book.cakephp.org/2.0/en/development/debugging.html#debugger-class
  */
+#[\AllowDynamicProperties]
 class Debugger {
 
 /**

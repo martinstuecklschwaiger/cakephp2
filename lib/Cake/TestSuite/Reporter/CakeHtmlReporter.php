@@ -23,6 +23,7 @@ App::uses('CakeBaseReporter', 'TestSuite/Reporter');
  *
  * @package       Cake.TestSuite.Reporter
  */
+#[\AllowDynamicProperties]
 class CakeHtmlReporter extends CakeBaseReporter {
 
 /**

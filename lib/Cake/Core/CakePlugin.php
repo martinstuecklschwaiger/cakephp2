@@ -24,6 +24,7 @@
  * @package       Cake.Core
  * @link https://book.cakephp.org/2.0/en/plugins.html
  */
+#[\AllowDynamicProperties]
 class CakePlugin {
 
 /**

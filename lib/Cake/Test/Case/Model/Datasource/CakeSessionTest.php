@@ -42,6 +42,7 @@ class TestCakeSession extends CakeSession {
  *
  * @package       Cake.Test.Case.Model.Datasource
  */
+#[\AllowDynamicProperties]
 class TestCacheSession extends CacheSession {
 
 	protected function _writeSession() {
@@ -55,6 +56,7 @@ class TestCacheSession extends CacheSession {
  *
  * @package       Cake.Test.Case.Model.Datasource
  */
+#[\AllowDynamicProperties]
 class TestDatabaseSession extends DatabaseSession {
 
 	protected function _writeSession() {
@@ -68,6 +70,7 @@ class TestDatabaseSession extends DatabaseSession {
  *
  * @package       Cake.Test.Case.Model.Datasource
  */
+#[\AllowDynamicProperties]
 class CakeSessionTest extends CakeTestCase {
 
 	protected static $_gcDivisor;

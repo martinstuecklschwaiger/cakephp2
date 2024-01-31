@@ -56,6 +56,7 @@ class DigestHttpSocket extends HttpSocket {
  *
  * @package       Cake.Test.Case.Network.Http
  */
+#[\AllowDynamicProperties]
 class DigestAuthenticationTest extends CakeTestCase {
 
 /**

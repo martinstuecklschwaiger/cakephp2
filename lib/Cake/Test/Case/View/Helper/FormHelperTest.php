@@ -46,6 +46,7 @@ class ContactTestController extends Controller {
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class Contact extends CakeTestModel {
 
 /**
@@ -139,6 +140,7 @@ class Contact extends CakeTestModel {
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class ContactTagsContact extends CakeTestModel {
 
 /**
@@ -176,6 +178,7 @@ class ContactTagsContact extends CakeTestModel {
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class ContactNonStandardPk extends Contact {
 
 /**
@@ -204,6 +207,7 @@ class ContactNonStandardPk extends Contact {
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class ContactTag extends Model {
 
 /**
@@ -231,6 +235,7 @@ class ContactTag extends Model {
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class UserForm extends CakeTestModel {
 
 /**
@@ -271,6 +276,7 @@ class UserForm extends CakeTestModel {
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class OpenidUrl extends CakeTestModel {
 
 /**
@@ -326,6 +332,7 @@ class OpenidUrl extends CakeTestModel {
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class ValidateUser extends CakeTestModel {
 
 /**
@@ -379,6 +386,7 @@ class ValidateUser extends CakeTestModel {
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class ValidateProfile extends CakeTestModel {
 
 /**
@@ -438,6 +446,7 @@ class ValidateProfile extends CakeTestModel {
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class ValidateItem extends CakeTestModel {
 
 /**
@@ -487,6 +496,7 @@ class ValidateItem extends CakeTestModel {
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class TestMail extends CakeTestModel {
 
 /**
@@ -504,6 +514,7 @@ class TestMail extends CakeTestModel {
  * @package       Cake.Test.Case.View.Helper
  * @property FormHelper $Form
  */
+#[\AllowDynamicProperties]
 class FormHelperTest extends CakeTestCase {
 
 /**

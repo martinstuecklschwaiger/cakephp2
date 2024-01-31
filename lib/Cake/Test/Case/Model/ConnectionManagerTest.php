@@ -22,6 +22,7 @@ App::uses('ConnectionManager', 'Model');
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class ConnectionManagerTest extends CakeTestCase {
 
 /**

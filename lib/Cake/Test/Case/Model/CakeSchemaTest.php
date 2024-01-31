@@ -336,6 +336,7 @@ class SchemaCrossDatabase extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class SchemaCrossDatabaseFixture extends CakeTestFixture {
 
 /**
@@ -378,6 +379,7 @@ class SchemaCrossDatabaseFixture extends CakeTestFixture {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class NonConventionalPrimaryKeyFixture extends CakeTestFixture {
 
 /**
@@ -433,6 +435,7 @@ class SchemaPrefixAuthUser extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class CakeSchemaTest extends CakeTestCase {
 
 /**

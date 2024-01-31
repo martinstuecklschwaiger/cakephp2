@@ -27,6 +27,7 @@ App::uses('Validation', 'Utility');
  * @package       Cake.Model.Validator
  * @link          https://book.cakephp.org/2.0/en/data-validation.html
  */
+#[\AllowDynamicProperties]
 class CakeValidationRule {
 
 /**

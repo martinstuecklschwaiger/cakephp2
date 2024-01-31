@@ -19,6 +19,7 @@
  *
  * @package       Cake.Test.Fixture
  */
+#[\AllowDynamicProperties]
 class CakeSessionFixture extends CakeTestFixture {
 
 /**

@@ -32,6 +32,7 @@ App::uses('Model', 'Model');
  *
  * @package       Cake.Test.Case.Console.Command.Task
  */
+#[\AllowDynamicProperties]
 class TestTaskArticle extends Model {
 
 /**
@@ -98,6 +99,7 @@ class TestTaskArticle extends Model {
  *
  * @package       Cake.Test.Case.Console.Command.Task
  */
+#[\AllowDynamicProperties]
 class TestTaskTag extends Model {
 
 /**
@@ -127,6 +129,7 @@ class TestTaskTag extends Model {
  *
  * @package       Cake.Test.Case.Console.Command.Task
  */
+#[\AllowDynamicProperties]
 class TestTaskAppModel extends Model {
 }
 
@@ -135,6 +138,7 @@ class TestTaskAppModel extends Model {
  *
  * @package       Cake.Test.Case.Console.Command.Task
  */
+#[\AllowDynamicProperties]
 class TestTaskComment extends TestTaskAppModel {
 
 /**
@@ -177,6 +181,7 @@ class TestTaskCommentsController extends Controller {
  *
  * @package       Cake.Test.Case.Console.Command.Task
  */
+#[\AllowDynamicProperties]
 class TestTaskTest extends CakeTestCase {
 
 /**

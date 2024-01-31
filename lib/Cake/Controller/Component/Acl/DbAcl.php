@@ -37,6 +37,7 @@ App::uses('ClassRegistry', 'Utility');
  *
  * @package       Cake.Controller.Component.Acl
  */
+#[\AllowDynamicProperties]
 class DbAcl extends CakeObject implements AclInterface {
 
 /**

@@ -25,6 +25,7 @@ App::uses('Model', 'Model');
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class AppModel extends Model {
 
 /**
@@ -61,6 +62,7 @@ class AppModel extends Model {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Test extends CakeTestModel {
 
 /**
@@ -98,6 +100,7 @@ class Test extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class TestAlias extends CakeTestModel {
 
 /**
@@ -134,6 +137,7 @@ class TestAlias extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class TestValidate extends CakeTestModel {
 
 /**
@@ -194,6 +198,7 @@ class TestValidate extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class User extends CakeTestModel {
 
 /**
@@ -232,6 +237,7 @@ class User extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Article extends CakeTestModel {
 
 /**
@@ -310,6 +316,7 @@ class Article extends CakeTestModel {
  * @see #250
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class BeforeDeleteComment extends CakeTestModel {
 
 	public $name = 'BeforeDeleteComment';
@@ -329,6 +336,7 @@ class BeforeDeleteComment extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class NumericArticle extends CakeTestModel {
 
 /**
@@ -352,6 +360,7 @@ class NumericArticle extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Article10 extends CakeTestModel {
 
 /**
@@ -382,6 +391,7 @@ class Article10 extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class ArticleFeatured extends CakeTestModel {
 
 /**
@@ -433,6 +443,7 @@ class ArticleFeatured extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Featured extends CakeTestModel {
 
 /**
@@ -455,6 +466,7 @@ class Featured extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Tag extends CakeTestModel {
 
 /**
@@ -470,6 +482,7 @@ class Tag extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class ArticlesTag extends CakeTestModel {
 
 /**
@@ -485,6 +498,7 @@ class ArticlesTag extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class ArticleFeaturedsTag extends CakeTestModel {
 
 /**
@@ -500,6 +514,7 @@ class ArticleFeaturedsTag extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Comment extends CakeTestModel {
 
 /**
@@ -529,6 +544,7 @@ class Comment extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class ModifiedComment extends CakeTestModel {
 
 /**
@@ -581,6 +597,7 @@ class ModifiedComment extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class AgainModifiedComment extends CakeTestModel {
 
 /**
@@ -688,6 +705,7 @@ class MergeVarPluginComment extends MergeVarPluginAppModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Attachment extends CakeTestModel {
 
 /**
@@ -710,6 +728,7 @@ class Attachment extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class ModifiedAttachment extends CakeTestModel {
 
 /**
@@ -751,6 +770,7 @@ class ModifiedAttachment extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Category extends CakeTestModel {
 
 /**
@@ -766,6 +786,7 @@ class Category extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class CategoryThread extends CakeTestModel {
 
 /**
@@ -788,6 +809,7 @@ class CategoryThread extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Apple extends CakeTestModel {
 
 /**
@@ -831,6 +853,7 @@ class Apple extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Sample extends CakeTestModel {
 
 /**
@@ -853,6 +876,7 @@ class Sample extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class AnotherArticle extends CakeTestModel {
 
 /**
@@ -875,6 +899,7 @@ class AnotherArticle extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Advertisement extends CakeTestModel {
 
 /**
@@ -897,6 +922,7 @@ class Advertisement extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Home extends CakeTestModel {
 
 /**
@@ -919,6 +945,7 @@ class Home extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Post extends CakeTestModel {
 
 /**
@@ -963,6 +990,7 @@ class Post extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Author extends CakeTestModel {
 
 /**
@@ -997,6 +1025,7 @@ class Author extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class ModifiedAuthor extends Author {
 
 /**
@@ -1026,6 +1055,7 @@ class ModifiedAuthor extends Author {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Project extends CakeTestModel {
 
 /**
@@ -1048,6 +1078,7 @@ class Project extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Thread extends CakeTestModel {
 
 /**
@@ -1077,6 +1108,7 @@ class Thread extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Message extends CakeTestModel {
 
 /**
@@ -1099,6 +1131,7 @@ class Message extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Bid extends CakeTestModel {
 
 /**
@@ -1121,6 +1154,7 @@ class Bid extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class BiddingMessage extends CakeTestModel {
 
 /**
@@ -1155,6 +1189,7 @@ class BiddingMessage extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Bidding extends CakeTestModel {
 
 /**
@@ -1183,6 +1218,7 @@ class Bidding extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class NodeAfterFind extends CakeTestModel {
 
 /**
@@ -1244,6 +1280,7 @@ class NodeAfterFind extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class NodeAfterFindSample extends CakeTestModel {
 
 /**
@@ -1273,6 +1310,7 @@ class NodeAfterFindSample extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class NodeNoAfterFind extends CakeTestModel {
 
 /**
@@ -1323,6 +1361,7 @@ class NodeNoAfterFind extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Node extends CakeTestModel {
 
 /**
@@ -1353,6 +1392,7 @@ class Node extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Dependency extends CakeTestModel {
 
 /**
@@ -1368,6 +1408,7 @@ class Dependency extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class ModelA extends CakeTestModel {
 
 /**
@@ -1397,6 +1438,7 @@ class ModelA extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class ModelB extends CakeTestModel {
 
 /**
@@ -1426,6 +1468,7 @@ class ModelB extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class ModelC extends CakeTestModel {
 
 /**
@@ -1455,6 +1498,7 @@ class ModelC extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class ModelD extends CakeTestModel {
 
 /**
@@ -1477,6 +1521,7 @@ class ModelD extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Something extends CakeTestModel {
 
 /**
@@ -1499,6 +1544,7 @@ class Something extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class SomethingElse extends CakeTestModel {
 
 /**
@@ -1538,6 +1584,7 @@ class SomethingElse extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class JoinThing extends CakeTestModel {
 
 /**
@@ -1577,6 +1624,7 @@ class JoinThing extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Portfolio extends CakeTestModel {
 
 /**
@@ -1599,6 +1647,7 @@ class Portfolio extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Item extends CakeTestModel {
 
 /**
@@ -1628,6 +1677,7 @@ class Item extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class ItemsPortfolio extends CakeTestModel {
 
 /**
@@ -1643,6 +1693,7 @@ class ItemsPortfolio extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Syfile extends CakeTestModel {
 
 /**
@@ -1665,6 +1716,7 @@ class Syfile extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Image extends CakeTestModel {
 
 /**
@@ -1680,6 +1732,7 @@ class Image extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class DeviceType extends CakeTestModel {
 
 /**
@@ -1720,6 +1773,7 @@ class DeviceType extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class DeviceTypeCategory extends CakeTestModel {
 
 /**
@@ -1735,6 +1789,7 @@ class DeviceTypeCategory extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class FeatureSet extends CakeTestModel {
 
 /**
@@ -1750,6 +1805,7 @@ class FeatureSet extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class ExteriorTypeCategory extends CakeTestModel {
 
 /**
@@ -1772,6 +1828,7 @@ class ExteriorTypeCategory extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Document extends CakeTestModel {
 
 /**
@@ -1794,6 +1851,7 @@ class Document extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Device extends CakeTestModel {
 
 /**
@@ -1809,6 +1867,7 @@ class Device extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class DocumentDirectory extends CakeTestModel {
 
 /**
@@ -1824,6 +1883,7 @@ class DocumentDirectory extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class PrimaryModel extends CakeTestModel {
 
 /**
@@ -1839,6 +1899,7 @@ class PrimaryModel extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class SecondaryModel extends CakeTestModel {
 
 /**
@@ -1854,6 +1915,7 @@ class SecondaryModel extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class JoinA extends CakeTestModel {
 
 /**
@@ -1876,6 +1938,7 @@ class JoinA extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class JoinB extends CakeTestModel {
 
 /**
@@ -1898,6 +1961,7 @@ class JoinB extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class JoinC extends CakeTestModel {
 
 /**
@@ -1920,6 +1984,7 @@ class JoinC extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class ThePaper extends CakeTestModel {
 
 /**
@@ -1956,6 +2021,7 @@ class ThePaper extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Monkey extends CakeTestModel {
 
 /**
@@ -1978,6 +2044,7 @@ class Monkey extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class AssociationTest1 extends CakeTestModel {
 
 /**
@@ -2009,6 +2076,7 @@ class AssociationTest1 extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class AssociationTest2 extends CakeTestModel {
 
 /**
@@ -2040,6 +2108,7 @@ class AssociationTest2 extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Callback extends CakeTestModel {
 
 }
@@ -2049,6 +2118,7 @@ class Callback extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class CallbackPostTestModel extends CakeTestModel {
 
 	public $useTable = 'posts';
@@ -2110,6 +2180,7 @@ class CallbackPostTestModel extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Uuid extends CakeTestModel {
 
 /**
@@ -2125,6 +2196,7 @@ class Uuid extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class UuidNative extends CakeTestModel {
 
 /**
@@ -2140,6 +2212,7 @@ class UuidNative extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class DataTest extends CakeTestModel {
 
 /**
@@ -2155,6 +2228,7 @@ class DataTest extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class TheVoid extends CakeTestModel {
 
 /**
@@ -2177,6 +2251,7 @@ class TheVoid extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class ValidationTest1 extends CakeTestModel {
 
 /**
@@ -2263,6 +2338,7 @@ class ValidationTest1 extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class ValidationTest2 extends CakeTestModel {
 
 /**
@@ -2320,6 +2396,7 @@ class ValidationTest2 extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Person extends CakeTestModel {
 
 /**
@@ -2351,6 +2428,7 @@ class Person extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class UnderscoreField extends CakeTestModel {
 
 /**
@@ -2366,6 +2444,7 @@ class UnderscoreField extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Product extends CakeTestModel {
 
 /**
@@ -2381,6 +2460,7 @@ class Product extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Story extends CakeTestModel {
 
 /**
@@ -2417,6 +2497,7 @@ class Story extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Cd extends CakeTestModel {
 
 /**
@@ -2446,6 +2527,7 @@ class Cd extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Book extends CakeTestModel {
 
 /**
@@ -2475,6 +2557,7 @@ class Book extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class OverallFavorite extends CakeTestModel {
 
 /**
@@ -2490,6 +2573,7 @@ class OverallFavorite extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class MyUser extends CakeTestModel {
 
 /**
@@ -2512,6 +2596,7 @@ class MyUser extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class MyCategory extends CakeTestModel {
 
 /**
@@ -2534,6 +2619,7 @@ class MyCategory extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class MyProduct extends CakeTestModel {
 
 /**
@@ -2556,6 +2642,7 @@ class MyProduct extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class MyCategoriesMyUser extends CakeTestModel {
 
 /**
@@ -2571,6 +2658,7 @@ class MyCategoriesMyUser extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class MyCategoriesMyProduct extends CakeTestModel {
 
 /**
@@ -2586,6 +2674,7 @@ class MyCategoriesMyProduct extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class NumberTree extends CakeTestModel {
 
 /**
@@ -2650,6 +2739,7 @@ class NumberTree extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class NumberTreeTwo extends NumberTree {
 
 /**
@@ -2672,6 +2762,7 @@ class NumberTreeTwo extends NumberTree {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class FlagTree extends NumberTree {
 
 /**
@@ -2687,6 +2778,7 @@ class FlagTree extends NumberTree {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class UnconventionalTree extends NumberTree {
 
 /**
@@ -2711,6 +2803,7 @@ class UnconventionalTree extends NumberTree {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class UuidTree extends NumberTree {
 
 /**
@@ -2726,6 +2819,7 @@ class UuidTree extends NumberTree {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Campaign extends CakeTestModel {
 
 /**
@@ -2748,6 +2842,7 @@ class Campaign extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Ad extends CakeTestModel {
 
 /**
@@ -2777,6 +2872,7 @@ class Ad extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class AfterTree extends NumberTree {
 
 /**
@@ -2811,6 +2907,7 @@ class AfterTree extends NumberTree {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Content extends CakeTestModel {
 
 /**
@@ -2847,6 +2944,7 @@ class Content extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Account extends CakeTestModel {
 
 /**
@@ -2876,6 +2974,7 @@ class Account extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class ContentAccount extends CakeTestModel {
 
 /**
@@ -2905,6 +3004,7 @@ class ContentAccount extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class FilmFile extends CakeTestModel {
 
 	public $name = 'FilmFile';
@@ -2916,6 +3016,7 @@ class FilmFile extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Basket extends CakeTestModel {
 
 	public $name = 'Basket';
@@ -2937,6 +3038,7 @@ class Basket extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class TestPluginArticle extends CakeTestModel {
 
 /**
@@ -2972,6 +3074,7 @@ class TestPluginArticle extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class TestPluginComment extends CakeTestModel {
 
 /**
@@ -3003,6 +3106,7 @@ class TestPluginComment extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Uuidportfolio extends CakeTestModel {
 
 /**
@@ -3025,6 +3129,7 @@ class Uuidportfolio extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Uuiditem extends CakeTestModel {
 
 /**
@@ -3048,6 +3153,7 @@ class Uuiditem extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class UuiditemsUuidportfolio extends CakeTestModel {
 
 /**
@@ -3063,6 +3169,7 @@ class UuiditemsUuidportfolio extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class UuiditemsUuidportfolioNumericid extends CakeTestModel {
 
 /**
@@ -3078,6 +3185,7 @@ class UuiditemsUuidportfolioNumericid extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Uuidnativeportfolio extends CakeTestModel {
 
 /**
@@ -3100,6 +3208,7 @@ class Uuidnativeportfolio extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Uuidnativeitem extends CakeTestModel {
 
 /**
@@ -3126,6 +3235,7 @@ class Uuidnativeitem extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class UuidnativeitemsUuidnativeportfolio extends CakeTestModel {
 
 /**
@@ -3141,6 +3251,7 @@ class UuidnativeitemsUuidnativeportfolio extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class UuidnativeitemsUuidnativeportfolioNumericid extends CakeTestModel {
 
 /**
@@ -3156,6 +3267,7 @@ class UuidnativeitemsUuidnativeportfolioNumericid extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class TranslateTestModel extends CakeTestModel {
 
 /**
@@ -3185,6 +3297,7 @@ class TranslateTestModel extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class TranslateWithPrefix extends CakeTestModel {
 
 /**
@@ -3215,6 +3328,7 @@ class TranslateWithPrefix extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class TranslatedItem extends CakeTestModel {
 
 /**
@@ -3247,6 +3361,7 @@ class TranslatedItem extends CakeTestModel {
 
 }
 
+#[\AllowDynamicProperties]
 class TranslatedItemLeftJoin extends TranslatedItem {
 
 	public $actsAs = array(
@@ -3263,6 +3378,7 @@ class TranslatedItemLeftJoin extends TranslatedItem {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class TranslatedItem2 extends CakeTestModel {
 
 /**
@@ -3300,6 +3416,7 @@ class TranslatedItem2 extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class TranslatedItemWithTable extends CakeTestModel {
 
 /**
@@ -3351,6 +3468,7 @@ class TranslatedItemWithTable extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class TranslateArticleModel extends CakeTestModel {
 
 /**
@@ -3381,6 +3499,7 @@ class TranslateArticleModel extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class TranslatedArticle extends CakeTestModel {
 
 /**
@@ -3427,6 +3546,7 @@ class TranslatedArticle extends CakeTestModel {
 
 }
 
+#[\AllowDynamicProperties]
 class CounterCacheUser extends CakeTestModel {
 
 	public $name = 'CounterCacheUser';
@@ -3441,6 +3561,7 @@ class CounterCacheUser extends CakeTestModel {
 	);
 }
 
+#[\AllowDynamicProperties]
 class CounterCachePost extends CakeTestModel {
 
 	public $name = 'CounterCachePost';
@@ -3456,6 +3577,7 @@ class CounterCachePost extends CakeTestModel {
 	);
 }
 
+#[\AllowDynamicProperties]
 class CounterCacheUserNonstandardPrimaryKey extends CakeTestModel {
 
 	public $name = 'CounterCacheUserNonstandardPrimaryKey';
@@ -3473,6 +3595,7 @@ class CounterCacheUserNonstandardPrimaryKey extends CakeTestModel {
 
 }
 
+#[\AllowDynamicProperties]
 class CounterCachePostNonstandardPrimaryKey extends CakeTestModel {
 
 	public $name = 'CounterCachePostNonstandardPrimaryKey';
@@ -3491,6 +3614,7 @@ class CounterCachePostNonstandardPrimaryKey extends CakeTestModel {
 
 }
 
+#[\AllowDynamicProperties]
 class ArticleB extends CakeTestModel {
 
 	public $name = 'ArticleB';
@@ -3508,6 +3632,7 @@ class ArticleB extends CakeTestModel {
 
 }
 
+#[\AllowDynamicProperties]
 class TagB extends CakeTestModel {
 
 	public $name = 'TagB';
@@ -3525,6 +3650,7 @@ class TagB extends CakeTestModel {
 
 }
 
+#[\AllowDynamicProperties]
 class Fruit extends CakeTestModel {
 
 	public $name = 'Fruit';
@@ -3541,6 +3667,7 @@ class Fruit extends CakeTestModel {
 
 }
 
+#[\AllowDynamicProperties]
 class FruitsUuidTag extends CakeTestModel {
 
 	public $name = 'FruitsUuidTag';
@@ -3560,6 +3687,7 @@ class FruitsUuidTag extends CakeTestModel {
 
 }
 
+#[\AllowDynamicProperties]
 class UuidTag extends CakeTestModel {
 
 	public $name = 'UuidTag';
@@ -3576,6 +3704,7 @@ class UuidTag extends CakeTestModel {
 
 }
 
+#[\AllowDynamicProperties]
 class FruitNoWith extends CakeTestModel {
 
 	public $name = 'Fruit';
@@ -3593,6 +3722,7 @@ class FruitNoWith extends CakeTestModel {
 
 }
 
+#[\AllowDynamicProperties]
 class UuidTagNoWith extends CakeTestModel {
 
 	public $name = 'UuidTag';
@@ -3610,6 +3740,7 @@ class UuidTagNoWith extends CakeTestModel {
 
 }
 
+#[\AllowDynamicProperties]
 class ProductUpdateAll extends CakeTestModel {
 
 	public $name = 'ProductUpdateAll';
@@ -3618,6 +3749,7 @@ class ProductUpdateAll extends CakeTestModel {
 
 }
 
+#[\AllowDynamicProperties]
 class GroupUpdateAll extends CakeTestModel {
 
 	public $name = 'GroupUpdateAll';
@@ -3626,6 +3758,7 @@ class GroupUpdateAll extends CakeTestModel {
 
 }
 
+#[\AllowDynamicProperties]
 class TransactionTestModel extends CakeTestModel {
 
 	public $name = 'TransactionTestModel';
@@ -3641,6 +3774,7 @@ class TransactionTestModel extends CakeTestModel {
 
 }
 
+#[\AllowDynamicProperties]
 class TransactionManyTestModel extends CakeTestModel {
 
 	public $name = 'TransactionManyTestModel';
@@ -3656,6 +3790,7 @@ class TransactionManyTestModel extends CakeTestModel {
 
 }
 
+#[\AllowDynamicProperties]
 class Site extends CakeTestModel {
 
 	public $name = 'Site';
@@ -3667,6 +3802,7 @@ class Site extends CakeTestModel {
 	);
 }
 
+#[\AllowDynamicProperties]
 class Domain extends CakeTestModel {
 
 	public $name = 'Domain';
@@ -3683,6 +3819,7 @@ class Domain extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class TestModel extends CakeTestModel {
 
 /**
@@ -3758,6 +3895,7 @@ class TestModel extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class TestModel2 extends CakeTestModel {
 
 /**
@@ -3780,6 +3918,7 @@ class TestModel2 extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class TestModel3 extends CakeTestModel {
 
 /**
@@ -3802,6 +3941,7 @@ class TestModel3 extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class TestModel4 extends CakeTestModel {
 
 /**
@@ -3886,6 +4026,7 @@ class TestModel4 extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class TestModel4TestModel7 extends CakeTestModel {
 
 /**
@@ -3931,6 +4072,7 @@ class TestModel4TestModel7 extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class TestModel5 extends CakeTestModel {
 
 /**
@@ -3999,6 +4141,7 @@ class TestModel5 extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class TestModel6 extends CakeTestModel {
 
 /**
@@ -4059,6 +4202,7 @@ class TestModel6 extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class TestModel7 extends CakeTestModel {
 
 /**
@@ -4106,6 +4250,7 @@ class TestModel7 extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class TestModel8 extends CakeTestModel {
 
 /**
@@ -4167,6 +4312,7 @@ class TestModel8 extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class TestModel9 extends CakeTestModel {
 
 /**
@@ -4228,6 +4374,7 @@ class TestModel9 extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Level extends CakeTestModel {
 
 /**
@@ -4287,6 +4434,7 @@ class Level extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Group extends CakeTestModel {
 
 /**
@@ -4347,6 +4495,7 @@ class Group extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class User2 extends CakeTestModel {
 
 /**
@@ -4419,6 +4568,7 @@ class User2 extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Category2 extends CakeTestModel {
 
 /**
@@ -4502,6 +4652,7 @@ class Category2 extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Article2 extends CakeTestModel {
 
 /**
@@ -4574,6 +4725,7 @@ class Article2 extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class CategoryFeatured2 extends CakeTestModel {
 
 /**
@@ -4622,6 +4774,7 @@ class CategoryFeatured2 extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Featured2 extends CakeTestModel {
 
 /**
@@ -4680,6 +4833,7 @@ class Featured2 extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Comment2 extends CakeTestModel {
 
 /**
@@ -4734,6 +4888,7 @@ class Comment2 extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class ArticleFeatured2 extends CakeTestModel {
 
 /**
@@ -4814,6 +4969,7 @@ class ArticleFeatured2 extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class MysqlTestModel extends Model {
 
 /**
@@ -4889,9 +5045,11 @@ class MysqlTestModel extends Model {
 /**
  * Test model for datasource prefixes
  */
+#[\AllowDynamicProperties]
 class PrefixTestModel extends CakeTestModel {
 }
 
+#[\AllowDynamicProperties]
 class PrefixTestUseTableModel extends CakeTestModel {
 
 	public $name = 'PrefixTest';
@@ -4905,6 +5063,7 @@ class PrefixTestUseTableModel extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Controller
  */
+#[\AllowDynamicProperties]
 class ScaffoldMock extends CakeTestModel {
 
 /**
@@ -4959,6 +5118,7 @@ class ScaffoldMock extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Controller
  */
+#[\AllowDynamicProperties]
 class ScaffoldUser extends CakeTestModel {
 
 /**
@@ -4986,6 +5146,7 @@ class ScaffoldUser extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Controller
  */
+#[\AllowDynamicProperties]
 class ScaffoldComment extends CakeTestModel {
 
 /**
@@ -5013,6 +5174,7 @@ class ScaffoldComment extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Controller
  */
+#[\AllowDynamicProperties]
 class ScaffoldTag extends CakeTestModel {
 
 /**
@@ -5029,6 +5191,7 @@ class ScaffoldTag extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Player extends CakeTestModel {
 
 	public $hasAndBelongsToMany = array(
@@ -5045,6 +5208,7 @@ class Player extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Guild extends CakeTestModel {
 
 	public $hasAndBelongsToMany = array(
@@ -5061,6 +5225,7 @@ class Guild extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class GuildsPlayer extends CakeTestModel {
 
 	public $useDbConfig = 'test2';
@@ -5076,6 +5241,7 @@ class GuildsPlayer extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Armor extends CakeTestModel {
 
 	public $useDbConfig = 'test2';
@@ -5090,6 +5256,7 @@ class Armor extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class ArmorsPlayer extends CakeTestModel {
 
 	public $useDbConfig = 'test_database_three';
@@ -5215,6 +5382,7 @@ class UserHasOneArticle extends AppModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class ArticlesTagBelongsToArticle extends CakeTestModel {
 
 /**
