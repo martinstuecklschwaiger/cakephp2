@@ -29,6 +29,7 @@ if (!function_exists('mb_strlen')) {
  *
  * @package       Cake.Utility
  */
+#[\AllowDynamicProperties]
 class Validation {
 
 /**

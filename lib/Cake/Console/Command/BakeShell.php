@@ -32,6 +32,7 @@ App::uses('Model', 'Model');
  * @package       Cake.Console.Command
  * @link          https://book.cakephp.org/2.0/en/console-and-shells/code-generation-with-bake.html
  */
+#[\AllowDynamicProperties]
 class BakeShell extends AppShell {
 
 /**

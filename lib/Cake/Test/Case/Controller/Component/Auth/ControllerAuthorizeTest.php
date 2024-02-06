@@ -26,6 +26,7 @@ App::uses('CakeResponse', 'Network');
  *
  * @package       Cake.Test.Case.Controller.Component.Auth
  */
+#[\AllowDynamicProperties]
 class ControllerAuthorizeTest extends CakeTestCase {
 
 /**

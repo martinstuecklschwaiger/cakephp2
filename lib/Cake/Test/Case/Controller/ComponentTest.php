@@ -199,6 +199,7 @@ class SomethingWithEmailComponent extends Component {
  *
  * @package       Cake.Test.Case.Controller
  */
+#[\AllowDynamicProperties]
 class ComponentTest extends CakeTestCase {
 
 /**

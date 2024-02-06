@@ -34,6 +34,7 @@ App::uses('Security', 'Utility');
  * @package       Cake.Controller.Component
  * @link https://book.cakephp.org/2.0/en/core-libraries/components/security-component.html
  */
+#[\AllowDynamicProperties]
 class SecurityComponent extends Component {
 
 /**

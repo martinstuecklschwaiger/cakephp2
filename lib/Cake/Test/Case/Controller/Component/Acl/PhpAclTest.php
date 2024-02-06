@@ -25,6 +25,7 @@ class_exists('AclComponent');
  *
  * @package       Cake.Test.Case.Controller.Component.Acl
  */
+#[\AllowDynamicProperties]
 class PhpAclTest extends CakeTestCase {
 
 /**

@@ -21,6 +21,7 @@ App::uses('Hash', 'Utility');
  * @since 2.0
  * @see AuthComponent::$authenticate
  */
+#[\AllowDynamicProperties]
 abstract class BaseAuthorize {
 
 /**

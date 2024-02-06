@@ -29,6 +29,7 @@ App::uses('ModelBehavior', 'Model');
  * @package       Cake.Model.Behavior
  * @link https://book.cakephp.org/2.0/en/core-libraries/behaviors/tree.html
  */
+#[\AllowDynamicProperties]
 class TreeBehavior extends ModelBehavior {
 
 /**

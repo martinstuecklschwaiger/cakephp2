@@ -22,6 +22,7 @@
  * @uses          CakeTestFixture
  * @package       Cake.Test.Fixture
  */
+#[\AllowDynamicProperties]
 class UuidTreeFixture extends CakeTestFixture {
 
 /**

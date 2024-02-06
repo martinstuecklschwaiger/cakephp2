@@ -24,6 +24,7 @@
  * @uses          CakeTestFixture
  * @package       Cake.Test.Fixture
  */
+#[\AllowDynamicProperties]
 class UnconventionalTreeFixture extends CakeTestFixture {
 
 /**

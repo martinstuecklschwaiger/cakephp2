@@ -25,6 +25,7 @@ App::uses('PrototypeEngineHelper', 'View/Helper');
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class PrototypeEngineHelperTest extends CakeTestCase {
 
 /**

@@ -36,6 +36,7 @@ App::uses('AppController', 'Controller');
  *
  * @package       Cake.Test.Case.Console.Command.Task
  */
+#[\AllowDynamicProperties]
 class ViewTaskComment extends Model {
 
 /**
@@ -63,6 +64,7 @@ class ViewTaskComment extends Model {
  *
  * @package       Cake.Test.Case.Console.Command.Task
  */
+#[\AllowDynamicProperties]
 class ViewTaskArticle extends Model {
 
 /**
@@ -168,6 +170,7 @@ class ViewTaskArticlesController extends Controller {
  *
  * @package       Cake.Test.Case.Console.Command.Task
  */
+#[\AllowDynamicProperties]
 class ViewTaskTest extends CakeTestCase {
 
 /**

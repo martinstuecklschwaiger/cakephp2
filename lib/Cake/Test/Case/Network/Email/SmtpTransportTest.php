@@ -60,6 +60,7 @@ class SmtpTestTransport extends SmtpTransport {
 /**
  * Test case
  */
+#[\AllowDynamicProperties]
 class SmtpTransportTest extends CakeTestCase {
 
 /**

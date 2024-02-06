@@ -30,5 +30,6 @@ App::uses('Model', 'Model');
  *
  * @package       Cake.Model
  */
+#[\AllowDynamicProperties]
 class AppModel extends Model {
 }

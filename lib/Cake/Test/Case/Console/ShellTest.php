@@ -28,6 +28,7 @@ App::uses("ProgressHelper", "Console/Helper");
  *
  * @package       Cake.Test.Case.Console.Command
  */
+#[\AllowDynamicProperties]
 class ShellTestShell extends Shell {
 
 /**
@@ -91,6 +92,7 @@ class ShellTestShell extends Shell {
  *
  * @package       Cake.Test.Case.Console.Command
  */
+#[\AllowDynamicProperties]
 class TestMergeShell extends Shell {
 
 	public $tasks = array('DbConfig', 'Fixture');
@@ -104,6 +106,7 @@ class TestMergeShell extends Shell {
  *
  * @package       Cake.Test.Case.Console.Command
  */
+#[\AllowDynamicProperties]
 class TestAppleTask extends Shell {
 }
 
@@ -112,6 +115,7 @@ class TestAppleTask extends Shell {
  *
  * @package       Cake.Test.Case.Console.Command
  */
+#[\AllowDynamicProperties]
 class TestBananaTask extends Shell {
 }
 
@@ -120,6 +124,7 @@ class TestBananaTask extends Shell {
  *
  * @package       Cake.Test.Case.Console.Command
  */
+#[\AllowDynamicProperties]
 class ShellTest extends CakeTestCase {
 
 /**

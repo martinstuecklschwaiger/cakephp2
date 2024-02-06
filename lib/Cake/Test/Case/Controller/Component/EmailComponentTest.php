@@ -45,6 +45,7 @@ class EmailTestComponent extends EmailComponent {
  *
  * @package       Cake.Test.Case.Controller.Component
  */
+#[\AllowDynamicProperties]
 class DebugCompTransport extends AbstractTransport {
 
 /**
@@ -112,6 +113,7 @@ class EmailTestController extends Controller {
  *
  * @package       Cake.Test.Case.Controller.Component
  */
+#[\AllowDynamicProperties]
 class EmailComponentTest extends CakeTestCase {
 
 /**

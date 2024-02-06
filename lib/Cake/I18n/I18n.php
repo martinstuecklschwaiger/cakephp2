@@ -26,6 +26,7 @@ App::uses('CakeSession', 'Model/Datasource');
  *
  * @package       Cake.I18n
  */
+#[\AllowDynamicProperties]
 class I18n {
 
 /**

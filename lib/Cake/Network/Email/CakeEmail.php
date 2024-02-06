@@ -28,6 +28,7 @@ App::uses('View', 'View');
  *
  * @package       Cake.Network.Email
  */
+#[\AllowDynamicProperties]
 class CakeEmail {
 
 /**

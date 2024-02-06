@@ -112,6 +112,7 @@ class ScaffoldMockControllerWithError extends Controller {
  *
  * @package       Cake.Test.Case.Controller
  */
+#[\AllowDynamicProperties]
 class TestScaffoldMock extends Scaffold {
 
 /**
@@ -140,6 +141,7 @@ class TestScaffoldMock extends Scaffold {
  *
  * @package       Cake.Test.Case.Controller
  */
+#[\AllowDynamicProperties]
 class ScaffoldTest extends CakeTestCase {
 
 /**

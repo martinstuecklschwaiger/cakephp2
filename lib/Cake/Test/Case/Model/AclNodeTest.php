@@ -24,6 +24,7 @@ App::uses('AclNode', 'Model');
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class DbAclNodeTestBase extends AclNode {
 
 /**
@@ -46,6 +47,7 @@ class DbAclNodeTestBase extends AclNode {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class DbAroTest extends DbAclNodeTestBase {
 
 /**
@@ -68,6 +70,7 @@ class DbAroTest extends DbAclNodeTestBase {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class DbAcoTest extends DbAclNodeTestBase {
 
 /**
@@ -90,6 +93,7 @@ class DbAcoTest extends DbAclNodeTestBase {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class DbPermissionTest extends CakeTestModel {
 
 /**
@@ -119,6 +123,7 @@ class DbPermissionTest extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class DbAcoActionTest extends CakeTestModel {
 
 /**
@@ -141,6 +146,7 @@ class DbAcoActionTest extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class DbAroUserTest extends CakeTestModel {
 
 /**
@@ -178,6 +184,7 @@ class DbAroUserTest extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class TestDbAcl extends DbAcl {
 
 /**
@@ -197,6 +204,7 @@ class TestDbAcl extends DbAcl {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class AclNodeTest extends CakeTestCase {
 
 /**

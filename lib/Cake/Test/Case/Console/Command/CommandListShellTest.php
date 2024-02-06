@@ -27,6 +27,7 @@ App::uses('CommandTask', 'Console/Command/Task');
  *
  * @package       Cake.Test.Case.Console.Command
  */
+#[\AllowDynamicProperties]
 class TestStringOutput extends ConsoleOutput {
 
 	public $output = '';
@@ -42,6 +43,7 @@ class TestStringOutput extends ConsoleOutput {
  *
  * @package       Cake.Test.Case.Console.Command
  */
+#[\AllowDynamicProperties]
 class CommandListShellTest extends CakeTestCase {
 
 /**

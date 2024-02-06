@@ -27,6 +27,7 @@ App::uses('CakeEventManager', 'Event');
  *
  * @package       Cake.Test.Case.Error
  */
+#[\AllowDynamicProperties]
 class AuthBlueberryUser extends CakeTestModel {
 
 /**
@@ -109,6 +110,7 @@ class TestErrorController extends Controller {
  *
  * @package       Cake.Test.Case.Error
  */
+#[\AllowDynamicProperties]
 class MyCustomExceptionRenderer extends ExceptionRenderer {
 
 /**
@@ -127,6 +129,7 @@ class MyCustomExceptionRenderer extends ExceptionRenderer {
  *
  * @package       Cake.Test.Case.Error
  */
+#[\AllowDynamicProperties]
 class MissingWidgetThingException extends NotFoundException {
 }
 
@@ -135,6 +138,7 @@ class MissingWidgetThingException extends NotFoundException {
  *
  * @package       Cake.Test.Case.Error
  */
+#[\AllowDynamicProperties]
 class ExceptionRendererTest extends CakeTestCase {
 
 	protected $_restoreError = false;

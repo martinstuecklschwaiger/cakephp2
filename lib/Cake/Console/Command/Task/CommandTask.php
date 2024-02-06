@@ -20,6 +20,7 @@ App::uses('AppShell', 'Console/Command');
  *
  * @package       Cake.Console.Command.Task
  */
+#[\AllowDynamicProperties]
 class CommandTask extends AppShell {
 
 /**

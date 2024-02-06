@@ -28,6 +28,7 @@ App::uses('File', 'Utility');
  *
  * @package       Cake.Console
  */
+#[\AllowDynamicProperties]
 class Shell extends CakeObject {
 
 /**

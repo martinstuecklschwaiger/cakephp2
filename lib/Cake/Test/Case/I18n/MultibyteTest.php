@@ -23,6 +23,7 @@ App::uses('Multibyte', 'I18n');
  *
  * @package       Cake.Test.Case.I18n
  */
+#[\AllowDynamicProperties]
 class MultibyteTest extends CakeTestCase {
 
 /**

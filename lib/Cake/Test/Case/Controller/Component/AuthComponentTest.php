@@ -136,6 +136,7 @@ class TestAuthComponent extends AuthComponent {
  *
  * @package       Cake.Test.Case.Controller.Component
  */
+#[\AllowDynamicProperties]
 class AuthUser extends CakeTestModel {
 
 /**
@@ -329,6 +330,7 @@ class AjaxAuthController extends Controller {
  *
  * @package Cake.Test.Case.Event
  */
+#[\AllowDynamicProperties]
 class AuthEventTestListener {
 
 	public $callStack = array();
@@ -350,6 +352,7 @@ class AuthEventTestListener {
  *
  * @package       Cake.Test.Case.Controller.Component
  */
+#[\AllowDynamicProperties]
 class AuthComponentTest extends CakeTestCase {
 
 /**

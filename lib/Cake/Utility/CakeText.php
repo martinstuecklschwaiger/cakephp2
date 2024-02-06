@@ -21,6 +21,7 @@
  *
  * @package       Cake.Utility
  */
+#[\AllowDynamicProperties]
 class CakeText {
 
 /**

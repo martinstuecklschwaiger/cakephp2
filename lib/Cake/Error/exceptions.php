@@ -22,6 +22,7 @@
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class CakeBaseException extends RuntimeException {
 
 /**
@@ -62,7 +63,8 @@ if (!class_exists('HttpException', false)) {
  *
  * @package       Cake.Error
  */
-	class HttpException extends CakeBaseException {
+	#[\AllowDynamicProperties]
+ class HttpException extends CakeBaseException {
 	}
 }
 
@@ -71,6 +73,7 @@ if (!class_exists('HttpException', false)) {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class BadRequestException extends HttpException {
 
 /**
@@ -93,6 +96,7 @@ class BadRequestException extends HttpException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class UnauthorizedException extends HttpException {
 
 /**
@@ -115,6 +119,7 @@ class UnauthorizedException extends HttpException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class ForbiddenException extends HttpException {
 
 /**
@@ -137,6 +142,7 @@ class ForbiddenException extends HttpException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class NotFoundException extends HttpException {
 
 /**
@@ -159,6 +165,7 @@ class NotFoundException extends HttpException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class MethodNotAllowedException extends HttpException {
 
 /**
@@ -181,6 +188,7 @@ class MethodNotAllowedException extends HttpException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class InternalErrorException extends HttpException {
 
 /**
@@ -204,6 +212,7 @@ class InternalErrorException extends HttpException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class CakeException extends CakeBaseException {
 
 /**
@@ -256,6 +265,7 @@ class CakeException extends CakeBaseException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class MissingControllerException extends CakeException {
 
 	protected $_messageTemplate = 'Controller class %s could not be found.';
@@ -274,6 +284,7 @@ class MissingControllerException extends CakeException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class MissingActionException extends CakeException {
 
 	protected $_messageTemplate = 'Action %s::%s() could not be found.';
@@ -292,6 +303,7 @@ class MissingActionException extends CakeException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class PrivateActionException extends CakeException {
 
 	protected $_messageTemplate = 'Private Action %s::%s() is not directly accessible.';
@@ -309,6 +321,7 @@ class PrivateActionException extends CakeException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class MissingComponentException extends CakeException {
 
 	protected $_messageTemplate = 'Component class %s could not be found.';
@@ -320,6 +333,7 @@ class MissingComponentException extends CakeException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class MissingBehaviorException extends CakeException {
 
 	protected $_messageTemplate = 'Behavior class %s could not be found.';
@@ -331,6 +345,7 @@ class MissingBehaviorException extends CakeException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class MissingViewException extends CakeException {
 
 	protected $_messageTemplate = 'View file "%s" is missing.';
@@ -342,6 +357,7 @@ class MissingViewException extends CakeException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class MissingLayoutException extends CakeException {
 
 	protected $_messageTemplate = 'Layout file "%s" is missing.';
@@ -353,6 +369,7 @@ class MissingLayoutException extends CakeException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class MissingHelperException extends CakeException {
 
 	protected $_messageTemplate = 'Helper class %s could not be found.';
@@ -364,6 +381,7 @@ class MissingHelperException extends CakeException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class MissingDatabaseException extends CakeException {
 
 	protected $_messageTemplate = 'Database connection "%s" could not be found.';
@@ -375,6 +393,7 @@ class MissingDatabaseException extends CakeException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class MissingConnectionException extends CakeException {
 
 	protected $_messageTemplate = 'Database connection "%s" is missing, or could not be created.';
@@ -399,6 +418,7 @@ class MissingConnectionException extends CakeException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class MissingTaskException extends CakeException {
 
 	protected $_messageTemplate = 'Task class %s could not be found.';
@@ -410,6 +430,7 @@ class MissingTaskException extends CakeException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class MissingShellMethodException extends CakeException {
 
 	protected $_messageTemplate = "Unknown command %1\$s %2\$s.\nFor usage try `cake %1\$s --help`";
@@ -421,6 +442,7 @@ class MissingShellMethodException extends CakeException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class MissingShellException extends CakeException {
 
 	protected $_messageTemplate = 'Shell class %s could not be found.';
@@ -432,6 +454,7 @@ class MissingShellException extends CakeException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class MissingDatasourceConfigException extends CakeException {
 
 	protected $_messageTemplate = 'The datasource configuration "%s" was not found in database.php';
@@ -443,6 +466,7 @@ class MissingDatasourceConfigException extends CakeException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class MissingDatasourceException extends CakeException {
 
 	protected $_messageTemplate = 'Datasource class %s could not be found. %s';
@@ -454,6 +478,7 @@ class MissingDatasourceException extends CakeException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class MissingTableException extends CakeException {
 
 	protected $_messageTemplate = 'Table %s for model %s was not found in datasource %s.';
@@ -465,6 +490,7 @@ class MissingTableException extends CakeException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class MissingModelException extends CakeException {
 
 	protected $_messageTemplate = 'Model %s could not be found.';
@@ -476,6 +502,7 @@ class MissingModelException extends CakeException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class MissingTestLoaderException extends CakeException {
 
 	protected $_messageTemplate = 'Test loader %s could not be found.';
@@ -487,6 +514,7 @@ class MissingTestLoaderException extends CakeException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class MissingPluginException extends CakeException {
 
 	protected $_messageTemplate = 'Plugin %s could not be found.';
@@ -498,6 +526,7 @@ class MissingPluginException extends CakeException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class MissingDispatcherFilterException extends CakeException {
 
 	protected $_messageTemplate = 'Dispatcher filter %s could not be found.';
@@ -509,6 +538,7 @@ class MissingDispatcherFilterException extends CakeException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class AclException extends CakeException {
 }
 
@@ -518,6 +548,7 @@ class AclException extends CakeException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class CacheException extends CakeException {
 }
 
@@ -527,6 +558,7 @@ class CacheException extends CakeException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class RouterException extends CakeException {
 }
 
@@ -536,6 +568,7 @@ class RouterException extends CakeException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class CakeLogException extends CakeException {
 }
 
@@ -545,6 +578,7 @@ class CakeLogException extends CakeException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class CakeSessionException extends CakeException {
 }
 
@@ -554,6 +588,7 @@ class CakeSessionException extends CakeException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class ConfigureException extends CakeException {
 }
 
@@ -563,6 +598,7 @@ class ConfigureException extends CakeException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class SocketException extends CakeException {
 }
 
@@ -572,6 +608,7 @@ class SocketException extends CakeException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class XmlException extends CakeException {
 }
 
@@ -581,6 +618,7 @@ class XmlException extends CakeException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class ConsoleException extends CakeException {
 }
 
@@ -589,6 +627,7 @@ class ConsoleException extends CakeException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class FatalErrorException extends CakeException {
 
 /**
@@ -616,6 +655,7 @@ class FatalErrorException extends CakeException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class NotImplementedException extends CakeException {
 
 	protected $_messageTemplate = '%s is not implemented.';
@@ -633,6 +673,7 @@ class NotImplementedException extends CakeException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class SecurityException extends BadRequestException {
 
 /**
@@ -693,6 +734,7 @@ class SecurityException extends BadRequestException {
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class AuthSecurityException extends SecurityException {
 
 /**

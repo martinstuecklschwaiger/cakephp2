@@ -56,6 +56,7 @@ class CacheTestController extends Controller {
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class CacheHelperTest extends CakeTestCase {
 
 /**

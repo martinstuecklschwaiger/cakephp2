@@ -22,6 +22,7 @@
  * Using the Schema command line utility
  * cake schema run create Sessions
  */
+#[\AllowDynamicProperties]
 class SessionsSchema extends CakeSchema {
 
 /**

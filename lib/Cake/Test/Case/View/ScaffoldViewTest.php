@@ -69,6 +69,7 @@ class ScaffoldViewMockController extends Controller {
  *
  * @package       Cake.Test.Case.Controller
  */
+#[\AllowDynamicProperties]
 class ScaffoldViewTest extends CakeTestCase {
 
 /**

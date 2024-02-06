@@ -23,6 +23,7 @@ App::uses('CakeTime', 'Utility');
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class CakeTimeTest extends CakeTestCase {
 
 /**

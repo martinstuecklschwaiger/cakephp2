@@ -22,6 +22,7 @@ App::uses('HttpResponse', 'Network/Http');
  *
  * @package       Cake.Test.Case.Network.Http
  */
+#[\AllowDynamicProperties]
 class TestHttpResponse extends HttpResponse {
 
 /**
@@ -82,6 +83,7 @@ class TestHttpResponse extends HttpResponse {
  *
  * @package       Cake.Test.Case.Network.Http
  */
+#[\AllowDynamicProperties]
 class HttpResponseTest extends CakeTestCase {
 
 /**

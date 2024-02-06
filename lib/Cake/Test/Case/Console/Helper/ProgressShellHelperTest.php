@@ -20,6 +20,7 @@ App::uses("ConsoleOutputStub", "TestSuite/Stub");
  * @property ConsoleOutputStub $consoleOutput
  * @property ProgressShellHelper $helper
  */
+#[\AllowDynamicProperties]
 class ProgressShellHelperTest extends CakeTestCase {
 
 /**

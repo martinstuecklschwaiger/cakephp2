@@ -18,6 +18,7 @@
  *
  * @package       Cake.Controller.Component.Auth
  */
+#[\AllowDynamicProperties]
 abstract class AbstractPasswordHasher {
 
 /**

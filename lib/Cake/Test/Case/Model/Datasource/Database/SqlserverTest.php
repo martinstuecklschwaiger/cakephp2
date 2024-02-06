@@ -27,6 +27,7 @@ require_once dirname(dirname(dirname(__FILE__))) . DS . 'models.php';
  *
  * @package       Cake.Test.Case.Model.Datasource.Database
  */
+#[\AllowDynamicProperties]
 class SqlserverTestDb extends Sqlserver {
 
 /**
@@ -111,6 +112,7 @@ class SqlserverTestDb extends Sqlserver {
  *
  * @package       Cake.Test.Case.Model.Datasource.Database
  */
+#[\AllowDynamicProperties]
 class SqlserverTestModel extends CakeTestModel {
 
 /**
@@ -177,6 +179,7 @@ class SqlserverTestModel extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model.Datasource.Database
  */
+#[\AllowDynamicProperties]
 class SqlserverClientTestModel extends CakeTestModel {
 
 /**
@@ -205,6 +208,7 @@ class SqlserverClientTestModel extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model.Datasource.Database
  */
+#[\AllowDynamicProperties]
 class SqlserverTestResultIterator extends ArrayIterator {
 
 /**
@@ -236,6 +240,7 @@ class SqlserverTestResultIterator extends ArrayIterator {
  *
  * @package       Cake.Test.Case.Model.Datasource.Database
  */
+#[\AllowDynamicProperties]
 class SqlserverTest extends CakeTestCase {
 
 /**

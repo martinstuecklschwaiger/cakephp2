@@ -21,6 +21,7 @@
  *
  * @package       Cake.Test.Fixture
  */
+#[\AllowDynamicProperties]
 class CounterCachePostNonstandardPrimaryKeyFixture extends CakeTestFixture {
 
 	public $fields = array(

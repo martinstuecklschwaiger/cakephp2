@@ -30,6 +30,7 @@ App::uses('ClassRegistry', 'Utility');
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class JsEncodingObject {
 
 	protected $_title = 'Old thing';
@@ -116,6 +117,7 @@ class OptionEngineHelper extends JsBaseEngineHelper {
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class JsHelperTest extends CakeTestCase {
 
 /**
@@ -742,6 +744,7 @@ class JsHelperTest extends CakeTestCase {
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class JsBaseEngineTest extends CakeTestCase {
 
 /**

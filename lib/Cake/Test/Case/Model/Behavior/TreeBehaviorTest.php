@@ -23,6 +23,7 @@
  *
  * @package       Cake.Test.Case.Model.Behavior
  */
+#[\AllowDynamicProperties]
 class TreeBehaviorTest extends PHPUnit_Framework_TestSuite {
 
 /**

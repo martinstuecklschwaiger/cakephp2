@@ -24,6 +24,7 @@ App::uses('I18nModel', 'Model');
  * @package       Cake.Model.Behavior
  * @link https://book.cakephp.org/2.0/en/core-libraries/behaviors/translate.html
  */
+#[\AllowDynamicProperties]
 class TranslateBehavior extends ModelBehavior {
 
 /**

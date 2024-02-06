@@ -25,6 +25,7 @@ App::uses('CakePlugin', 'Core');
  *
  * @package       Cake.Console.Command
  */
+#[\AllowDynamicProperties]
 class UpgradeShell extends AppShell {
 
 /**

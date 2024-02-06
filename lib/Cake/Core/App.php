@@ -62,6 +62,7 @@ App::uses('CakePlugin', 'Core');
  * @link          https://book.cakephp.org/2.0/en/core-utility-libraries/app.html
  * @package       Cake.Core
  */
+#[\AllowDynamicProperties]
 class App {
 
 /**

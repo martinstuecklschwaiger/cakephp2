@@ -43,6 +43,7 @@ class TestSslHttpSocket extends HttpSocket {
  *
  * @package       Cake.Test.Case.Network.Http
  */
+#[\AllowDynamicProperties]
 class BasicAuthenticationTest extends CakeTestCase {
 
 /**

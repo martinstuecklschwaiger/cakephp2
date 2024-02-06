@@ -30,6 +30,7 @@ require_once CAKE . 'Test' . DS . 'Case' . DS . 'Model' . DS . 'models.php';
  *
  * @package	Cake.Test.Case.Controller.Component.Auth
  */
+#[\AllowDynamicProperties]
 class BlowfishAuthenticateTest extends CakeTestCase {
 
 	public $fixtures = array('core.user', 'core.auth_user');

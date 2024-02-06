@@ -22,6 +22,7 @@
  *
  * @package       Cake.Test.Fixture
  */
+#[\AllowDynamicProperties]
 class AfterTreeFixture extends CakeTestFixture {
 
 /**

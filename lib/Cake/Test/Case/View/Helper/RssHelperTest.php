@@ -26,6 +26,7 @@ App::uses('File', 'Utility');
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class RssHelperTest extends CakeTestCase {
 
 /**

@@ -30,6 +30,7 @@ App::uses('Hash', 'Utility');
  * @package       Cake.Model.Behavior
  * @link https://book.cakephp.org/2.0/en/core-libraries/behaviors/acl.html
  */
+#[\AllowDynamicProperties]
 class AclBehavior extends ModelBehavior {
 
 /**

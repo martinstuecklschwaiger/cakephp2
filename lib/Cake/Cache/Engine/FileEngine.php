@@ -28,6 +28,7 @@
  *
  * @package       Cake.Cache.Engine
  */
+#[\AllowDynamicProperties]
 class FileEngine extends CacheEngine {
 
 /**

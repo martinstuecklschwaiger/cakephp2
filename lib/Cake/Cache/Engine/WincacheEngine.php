@@ -23,6 +23,7 @@
  *
  * @package       Cake.Cache.Engine
  */
+#[\AllowDynamicProperties]
 class WincacheEngine extends CacheEngine {
 
 /**

@@ -504,6 +504,7 @@ class TestMail extends CakeTestModel {
  * @package       Cake.Test.Case.View.Helper
  * @property FormHelper $Form
  */
+#[\AllowDynamicProperties]
 class FormHelperTest extends CakeTestCase {
 
 /**

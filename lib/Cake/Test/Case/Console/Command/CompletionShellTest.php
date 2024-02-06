@@ -29,6 +29,7 @@ App::uses('CommandTask', 'Console/Command/Task');
  *
  * @package       Cake.Test.Case.Console.Command
  */
+#[\AllowDynamicProperties]
 class TestCompletionStringOutput extends ConsoleOutput {
 
 	public $output = '';
@@ -44,6 +45,7 @@ class TestCompletionStringOutput extends ConsoleOutput {
  *
  * @package       Cake.Test.Case.Console.Command
  */
+#[\AllowDynamicProperties]
 class CompletionShellTest extends CakeTestCase {
 
 /**

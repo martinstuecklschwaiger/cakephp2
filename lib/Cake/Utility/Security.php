@@ -23,6 +23,7 @@ App::uses('CakeText', 'Utility');
  *
  * @package       Cake.Utility
  */
+#[\AllowDynamicProperties]
 class Security {
 
 /**

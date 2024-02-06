@@ -23,6 +23,7 @@ App::uses('CakeValidationRule', 'Model/Validator');
  *
  * @package       Cake.Test.Case.Model.Validator
  */
+#[\AllowDynamicProperties]
 class CakeValidationRuleTest extends CakeTestCase {
 
 /**

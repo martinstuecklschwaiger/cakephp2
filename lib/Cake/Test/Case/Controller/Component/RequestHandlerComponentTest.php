@@ -85,6 +85,7 @@ class CustomJsonView extends JsonView {
  *
  * @package       Cake.Test.Case.Controller.Component
  */
+#[\AllowDynamicProperties]
 class RequestHandlerComponentTest extends CakeTestCase {
 
 /**

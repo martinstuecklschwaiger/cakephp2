@@ -25,6 +25,7 @@
  *
  * cake schema run create i18n
  */
+#[\AllowDynamicProperties]
 class I18nSchema extends CakeSchema {
 
 /**

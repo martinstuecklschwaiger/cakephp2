@@ -45,6 +45,7 @@ class PaginatorTestController extends Controller {
  *
  * @package       Cake.Test.Case.Controller.Component
  */
+#[\AllowDynamicProperties]
 class PaginatorControllerPost extends CakeTestModel {
 
 /**
@@ -108,6 +109,7 @@ class PaginatorControllerPost extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Controller.Component
  */
+#[\AllowDynamicProperties]
 class ControllerPaginateModel extends CakeTestModel {
 
 /**
@@ -143,6 +145,7 @@ class ControllerPaginateModel extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Controller.Component
  */
+#[\AllowDynamicProperties]
 class PaginatorControllerComment extends CakeTestModel {
 
 /**
@@ -172,6 +175,7 @@ class PaginatorControllerComment extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Controller.Component
  */
+#[\AllowDynamicProperties]
 class PaginatorAuthor extends CakeTestModel {
 
 /**
@@ -197,6 +201,7 @@ class PaginatorAuthor extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Controller.Component
  */
+#[\AllowDynamicProperties]
 class PaginatorCustomPost extends CakeTestModel {
 
 /**
@@ -283,6 +288,7 @@ class PaginatorCustomPost extends CakeTestModel {
 
 }
 
+#[\AllowDynamicProperties]
 class PaginatorComponentTest extends CakeTestCase {
 
 /**

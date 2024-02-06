@@ -29,6 +29,7 @@ App::uses('TemplateTask', 'Console/Command/Task');
  *
  * @package       Cake.Test.Case.Console.Command.Task
  */
+#[\AllowDynamicProperties]
 class TemplateTaskTest extends CakeTestCase {
 
 /**

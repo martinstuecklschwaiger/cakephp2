@@ -21,6 +21,7 @@ App::uses('AppShell', 'Console/Command');
  * @package       Cake.Console.Command
  * @deprecated 3.0.0 Deprecated since version 2.4, will be removed in 3.0
  */
+#[\AllowDynamicProperties]
 class ConsoleShell extends AppShell {
 
 /**

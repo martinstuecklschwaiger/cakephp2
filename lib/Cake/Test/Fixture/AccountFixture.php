@@ -21,6 +21,7 @@
  *
  * @package       Cake.Test.Fixture
  */
+#[\AllowDynamicProperties]
 class AccountFixture extends CakeTestFixture {
 
 	public $table = 'Accounts';

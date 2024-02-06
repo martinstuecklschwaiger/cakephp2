@@ -2,6 +2,7 @@
 
 App::uses('DataSource', 'Model/Datasource');
 
+#[\AllowDynamicProperties]
 class TestSource extends DataSource {
 
 	public function describe($model) {

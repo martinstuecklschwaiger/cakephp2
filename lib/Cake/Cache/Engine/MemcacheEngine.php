@@ -24,6 +24,7 @@
  * @package Cake.Cache.Engine
  * @deprecated 3.0.0 You should use the Memcached adapter instead.
  */
+#[\AllowDynamicProperties]
 class MemcacheEngine extends CacheEngine {
 
 /**

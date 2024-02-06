@@ -21,6 +21,7 @@ App::uses('DispatcherFilter', 'Routing');
  *
  * @package Cake.Routing.Filter
  */
+#[\AllowDynamicProperties]
 class CacheDispatcher extends DispatcherFilter {
 
 /**

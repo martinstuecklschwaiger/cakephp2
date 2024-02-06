@@ -42,6 +42,7 @@ App::uses('CakeTestSuiteCommand', 'TestSuite');
  *
  * @package       Cake.TestSuite
  */
+#[\AllowDynamicProperties]
 class CakeTestSuiteDispatcher {
 
 /**

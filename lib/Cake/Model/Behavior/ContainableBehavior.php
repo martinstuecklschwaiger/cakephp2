@@ -28,6 +28,7 @@ App::uses('ModelBehavior', 'Model');
  * @package       Cake.Model.Behavior
  * @link https://book.cakephp.org/2.0/en/core-libraries/behaviors/containable.html
  */
+#[\AllowDynamicProperties]
 class ContainableBehavior extends ModelBehavior {
 
 /**

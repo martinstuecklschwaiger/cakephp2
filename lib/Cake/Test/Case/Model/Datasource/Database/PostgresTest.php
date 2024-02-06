@@ -26,6 +26,7 @@ require_once dirname(dirname(dirname(__FILE__))) . DS . 'models.php';
  *
  * @package       Cake.Test.Case.Model.Datasource.Database
  */
+#[\AllowDynamicProperties]
 class DboPostgresTestDb extends Postgres {
 
 /**
@@ -62,6 +63,7 @@ class DboPostgresTestDb extends Postgres {
  *
  * @package       Cake.Test.Case.Model.Datasource.Database
  */
+#[\AllowDynamicProperties]
 class PostgresTestModel extends Model {
 
 /**
@@ -144,6 +146,7 @@ class PostgresTestModel extends Model {
  *
  * @package       Cake.Test.Case.Model.Datasource.Database
  */
+#[\AllowDynamicProperties]
 class PostgresClientTestModel extends Model {
 
 /**
@@ -175,6 +178,7 @@ class PostgresClientTestModel extends Model {
  *
  * @package       Cake.Test.Case.Model.Datasource.Database
  */
+#[\AllowDynamicProperties]
 class PostgresTest extends CakeTestCase {
 
 /**

@@ -19,6 +19,7 @@
  *
  * @package       Cake.Cache
  */
+#[\AllowDynamicProperties]
 abstract class CacheEngine {
 
 /**

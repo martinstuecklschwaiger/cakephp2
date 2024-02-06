@@ -23,6 +23,7 @@ require_once dirname(__FILE__) . DS . 'ModelTestBase.php';
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class ModelValidationTest extends BaseModelTest {
 
 /**
@@ -2528,6 +2529,7 @@ class ModelValidationTest extends BaseModelTest {
 /**
  * Behavior for testing validation rules.
  */
+#[\AllowDynamicProperties]
 class ValidationRuleBehavior extends ModelBehavior {
 
 	public function setup(Model $Model, $config = array()) {

@@ -21,6 +21,7 @@
  *
  * @package       Cake.Test.Fixture
  */
+#[\AllowDynamicProperties]
 class GroupUpdateAllFixture extends CakeTestFixture {
 
 	public $table = 'group_update_all';

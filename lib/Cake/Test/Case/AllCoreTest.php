@@ -23,6 +23,7 @@
  *
  * @package       Cake.Test.Case
  */
+#[\AllowDynamicProperties]
 class AllCoreTest extends PHPUnit_Framework_TestSuite {
 
 /**

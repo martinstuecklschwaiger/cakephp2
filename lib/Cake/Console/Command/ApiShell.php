@@ -27,6 +27,7 @@ App::uses('File', 'Utility');
  *
  * @package       Cake.Console.Command
  */
+#[\AllowDynamicProperties]
 class ApiShell extends AppShell {
 
 /**

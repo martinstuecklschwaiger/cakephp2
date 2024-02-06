@@ -24,6 +24,7 @@ App::uses('ConsoleOutput', 'Console');
  *
  * @package       Cake.Log.Engine
  */
+#[\AllowDynamicProperties]
 class ConsoleLog extends BaseLog {
 
 /**

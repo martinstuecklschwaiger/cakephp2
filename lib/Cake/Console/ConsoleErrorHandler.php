@@ -25,6 +25,7 @@ App::uses('CakeLog', 'Log');
  *
  * @package       Cake.Console
  */
+#[\AllowDynamicProperties]
 class ConsoleErrorHandler {
 
 /**

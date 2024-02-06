@@ -115,6 +115,7 @@ class Html5TestHelper extends TestHtmlHelper {
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class HtmlHelperTest extends CakeTestCase {
 
 /**

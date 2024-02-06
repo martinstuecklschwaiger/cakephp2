@@ -23,6 +23,7 @@ App::uses('ObjectCollection', 'Utility');
  *
  * @package       Cake.Log
  */
+#[\AllowDynamicProperties]
 class LogEngineCollection extends ObjectCollection {
 
 /**

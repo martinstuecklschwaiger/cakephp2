@@ -28,6 +28,7 @@ App::uses('Hash', 'Utility');
  *
  * @package       Cake.Console.Command
  */
+#[\AllowDynamicProperties]
 class AclShell extends AppShell {
 
 /**

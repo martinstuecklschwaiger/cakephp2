@@ -23,6 +23,7 @@ App::uses('FileLog', 'Log/Engine');
  *
  * @package       Cake.Test.Case.Log.Engine
  */
+#[\AllowDynamicProperties]
 class FileLogTest extends CakeTestCase {
 
 /**

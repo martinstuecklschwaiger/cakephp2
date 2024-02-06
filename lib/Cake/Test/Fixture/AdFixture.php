@@ -22,6 +22,7 @@
  *
  * @package       Cake.Test.Fixture
  */
+#[\AllowDynamicProperties]
 class AdFixture extends CakeTestFixture {
 
 /**

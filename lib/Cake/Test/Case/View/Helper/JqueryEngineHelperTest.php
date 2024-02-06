@@ -25,6 +25,7 @@ App::uses('View', 'View');
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class JqueryEngineHelperTest extends CakeTestCase {
 
 /**

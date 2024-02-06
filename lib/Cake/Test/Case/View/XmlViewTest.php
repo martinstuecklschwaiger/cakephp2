@@ -26,6 +26,7 @@ App::uses('XmlView', 'View');
  *
  * @package       Cake.Test.Case.View
  */
+#[\AllowDynamicProperties]
 class XmlViewTest extends CakeTestCase {
 
 	public function setUp() {

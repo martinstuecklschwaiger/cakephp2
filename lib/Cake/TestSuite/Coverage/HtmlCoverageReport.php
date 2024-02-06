@@ -23,6 +23,7 @@ App::uses('BaseCoverageReport', 'TestSuite/Coverage');
  *
  * @package       Cake.TestSuite.Coverage
  */
+#[\AllowDynamicProperties]
 class HtmlCoverageReport extends BaseCoverageReport {
 
 /**

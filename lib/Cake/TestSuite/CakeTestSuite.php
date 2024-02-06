@@ -23,6 +23,7 @@ App::uses('Folder', 'Utility');
  *
  * @package       Cake.TestSuite
  */
+#[\AllowDynamicProperties]
 class CakeTestSuite extends PHPUnit_Framework_TestSuite {
 
 /**

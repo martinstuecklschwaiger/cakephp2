@@ -24,6 +24,7 @@ App::uses('CakeText', 'Utility');
  * @package Cake.Test.Case.Utility
  * @coversDefaultClass CakeText
  */
+#[\AllowDynamicProperties]
 class CakeTextTest extends CakeTestCase {
 
 /**

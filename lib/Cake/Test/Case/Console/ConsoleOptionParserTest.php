@@ -23,6 +23,7 @@ App::uses('ConsoleOptionParser', 'Console');
  *
  * @package       Cake.Test.Case.Console
  */
+#[\AllowDynamicProperties]
 class ConsoleOptionParserTest extends CakeTestCase {
 
 /**

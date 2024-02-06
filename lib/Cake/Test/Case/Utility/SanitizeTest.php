@@ -53,6 +53,7 @@ class SanitizeArticle extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Utility
  */
+#[\AllowDynamicProperties]
 class SanitizeTest extends CakeTestCase {
 
 /**

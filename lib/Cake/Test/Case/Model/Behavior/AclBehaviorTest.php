@@ -29,6 +29,7 @@ App::uses('DbAcl', 'Model');
  *
  * @package       Cake.Test.Case.Model.Behavior
  */
+#[\AllowDynamicProperties]
 class AclPerson extends CakeTestModel {
 
 /**
@@ -96,6 +97,7 @@ class AclPerson extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model.Behavior
  */
+#[\AllowDynamicProperties]
 class AclUser extends CakeTestModel {
 
 /**
@@ -135,6 +137,7 @@ class AclUser extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model.Behavior
  */
+#[\AllowDynamicProperties]
 class AclPost extends CakeTestModel {
 
 /**
@@ -174,6 +177,7 @@ class AclPost extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model.Behavior
  */
+#[\AllowDynamicProperties]
 class AclBehaviorTest extends CakeTestCase {
 
 /**

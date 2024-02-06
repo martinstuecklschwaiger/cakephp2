@@ -21,6 +21,7 @@
  *
  * @package       Cake.Test.Fixture
  */
+#[\AllowDynamicProperties]
 class ProductUpdateAllFixture extends CakeTestFixture {
 
 	public $table = 'product_update_all';

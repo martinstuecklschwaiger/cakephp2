@@ -22,6 +22,7 @@ App::uses('Inflector', 'Utility');
  *
  * @package       Cake.Console.Command
  */
+#[\AllowDynamicProperties]
 class CommandListShell extends AppShell {
 
 /**

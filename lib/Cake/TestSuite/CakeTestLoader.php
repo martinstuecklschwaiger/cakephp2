@@ -25,6 +25,7 @@
  *
  * @package Cake.TestSuite
  */
+#[\AllowDynamicProperties]
 class CakeTestLoader extends PHPUnit_Runner_StandardTestSuiteLoader {
 
 /**

@@ -23,6 +23,7 @@ App::uses('CakeSocket', 'Network');
  *
  * @package       Cake.Test.Case.Network
  */
+#[\AllowDynamicProperties]
 class CakeSocketTest extends CakeTestCase {
 
 /**

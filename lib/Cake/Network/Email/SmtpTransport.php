@@ -23,6 +23,7 @@ App::uses('CakeSocket', 'Network');
  *
  * @package       Cake.Network.Email
  */
+#[\AllowDynamicProperties]
 class SmtpTransport extends AbstractTransport {
 
 /**

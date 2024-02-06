@@ -27,6 +27,7 @@ App::uses('HttpSocket', 'Network/Http');
  *
  * @package       Cake.Utility
  */
+#[\AllowDynamicProperties]
 class Xml {
 
 /**

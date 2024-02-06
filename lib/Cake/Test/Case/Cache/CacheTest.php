@@ -23,6 +23,7 @@ App::uses('Cache', 'Cache');
  *
  * @package       Cake.Test.Case.Cache
  */
+#[\AllowDynamicProperties]
 class CacheTest extends CakeTestCase {
 
 	protected $_count = 0;

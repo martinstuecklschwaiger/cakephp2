@@ -28,6 +28,7 @@ if (!defined('FULL_BASE_URL')) {
  *
  * @package       Cake.Test.Case.Routing
  */
+#[\AllowDynamicProperties]
 class RouterTest extends CakeTestCase {
 
 /**

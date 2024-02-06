@@ -30,6 +30,7 @@ if (!class_exists('AppController', false)) {
  *
  * @package       Cake.Test.Case.Routing
  */
+#[\AllowDynamicProperties]
 class DispatcherMockCakeResponse extends CakeResponse {
 
 	protected function _sendHeader($name, $value = null) {
@@ -536,6 +537,7 @@ class TestFilterDispatcher extends DispatcherFilter {
  *
  * @package       Cake.Test.Case.Routing
  */
+#[\AllowDynamicProperties]
 class DispatcherTest extends CakeTestCase {
 
 /**

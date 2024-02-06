@@ -22,6 +22,7 @@ App::uses('Folder', 'Utility');
  *
  * @package       Cake.Console.Command.Task
  */
+#[\AllowDynamicProperties]
 class PluginTask extends AppShell {
 
 /**

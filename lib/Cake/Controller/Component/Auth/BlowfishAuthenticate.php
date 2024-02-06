@@ -37,6 +37,7 @@ App::uses('FormAuthenticate', 'Controller/Component/Auth');
  * @see	AuthComponent::$authenticate
  * @deprecated 3.0.0 Since 2.4. Just use FormAuthenticate with 'passwordHasher' setting set to 'Blowfish'
  */
+#[\AllowDynamicProperties]
 class BlowfishAuthenticate extends FormAuthenticate {
 
 /**

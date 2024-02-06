@@ -24,6 +24,7 @@ App::uses('ClassRegistry', 'Utility');
  *
  * @package       Cake.Console.Command.Task
  */
+#[\AllowDynamicProperties]
 class TestTask extends BakeTask {
 
 /**

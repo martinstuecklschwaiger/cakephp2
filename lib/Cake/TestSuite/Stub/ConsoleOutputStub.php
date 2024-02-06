@@ -26,6 +26,7 @@ App::uses("ConsoleOutput", "Console");
  * $helper = new ProgressHelper($output);
  * ```
  */
+#[\AllowDynamicProperties]
 class ConsoleOutputStub extends ConsoleOutput {
 
 /**

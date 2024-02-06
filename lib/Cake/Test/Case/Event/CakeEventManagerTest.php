@@ -23,6 +23,7 @@ App::uses('CakeEventListener', 'Event');
  *
  * @package Cake.Test.Case.Event
  */
+#[\AllowDynamicProperties]
 class CakeEventTestListener {
 
 	public $callStack = array();
@@ -62,6 +63,7 @@ class CakeEventTestListener {
  *
  * @package Cake.Test.Case.Event
  */
+#[\AllowDynamicProperties]
 class CustomTestEventListener extends CakeEventTestListener implements CakeEventListener {
 
 	public function implementedEvents() {
@@ -89,6 +91,7 @@ class CustomTestEventListener extends CakeEventTestListener implements CakeEvent
 /**
  * Tests the CakeEventManager class functionality
  */
+#[\AllowDynamicProperties]
 class CakeEventManagerTest extends CakeTestCase {
 
 /**

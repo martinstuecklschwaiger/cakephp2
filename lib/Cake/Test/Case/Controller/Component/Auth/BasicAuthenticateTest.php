@@ -27,6 +27,7 @@ require_once CAKE . 'Test' . DS . 'Case' . DS . 'Model' . DS . 'models.php';
  *
  * @package       Cake.Test.Case.Controller.Component.Auth
  */
+#[\AllowDynamicProperties]
 class BasicAuthenticateTest extends CakeTestCase {
 
 /**

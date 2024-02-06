@@ -21,6 +21,7 @@ App::uses('DboSource', 'Model/Datasource');
  *
  * @package       Cake.Model.Datasource.Database
  */
+#[\AllowDynamicProperties]
 class Postgres extends DboSource {
 
 /**

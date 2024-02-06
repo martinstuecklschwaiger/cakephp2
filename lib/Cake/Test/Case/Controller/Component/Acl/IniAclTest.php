@@ -23,6 +23,7 @@ App::uses('IniAcl', 'Controller/Component/Acl');
  *
  * @package       Cake.Test.Case.Controller.Component.Acl
  */
+#[\AllowDynamicProperties]
 class IniAclTest extends CakeTestCase {
 
 /**

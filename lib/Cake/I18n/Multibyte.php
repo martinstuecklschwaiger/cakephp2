@@ -21,6 +21,7 @@
  *
  * @package       Cake.I18n
  */
+#[\AllowDynamicProperties]
 class Multibyte {
 
 /**

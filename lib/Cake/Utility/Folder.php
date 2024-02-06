@@ -20,6 +20,7 @@
  *
  * @package       Cake.Utility
  */
+#[\AllowDynamicProperties]
 class Folder {
 
 /**

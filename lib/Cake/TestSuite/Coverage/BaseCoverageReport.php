@@ -28,6 +28,7 @@ App::uses('CakePlugin', 'Core');
  *
  * @package       Cake.TestSuite.Coverage
  */
+#[\AllowDynamicProperties]
 abstract class BaseCoverageReport {
 
 /**

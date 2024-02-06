@@ -27,6 +27,7 @@ App::uses('DbConfigTask', 'Console/Command/Task');
  *
  * @package       Cake.Test.Case.Console.Command.Task
  */
+#[\AllowDynamicProperties]
 class DbConfigTaskTest extends CakeTestCase {
 
 /**

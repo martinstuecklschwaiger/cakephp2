@@ -29,6 +29,7 @@ App::uses('ConnectionManager', 'Model');
  * @package       Cake.Utility
  * @deprecated    3.0.0 Deprecated since version 2.4
  */
+#[\AllowDynamicProperties]
 class Sanitize {
 
 /**

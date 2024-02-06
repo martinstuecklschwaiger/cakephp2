@@ -55,6 +55,7 @@ class CookieComponentTestController extends Controller {
  *
  * @package       Cake.Test.Case.Controller.Component
  */
+#[\AllowDynamicProperties]
 class CookieComponentTest extends CakeTestCase {
 
 /**

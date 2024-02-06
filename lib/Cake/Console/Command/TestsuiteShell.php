@@ -29,6 +29,7 @@ App::uses('CakeTestLoader', 'TestSuite');
  *
  * @package       Cake.Console.Command
  */
+#[\AllowDynamicProperties]
 class TestsuiteShell extends TestShell {
 
 /**

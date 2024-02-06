@@ -24,6 +24,7 @@ App::uses('BakeTask', 'Console/Command/Task');
  *
  * @package       Cake.Console.Command.Task
  */
+#[\AllowDynamicProperties]
 class ViewTask extends BakeTask {
 
 /**

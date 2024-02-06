@@ -25,6 +25,7 @@ App::uses('CakeSessionHandlerInterface', 'Model/Datasource/Session');
  * @package       Cake.Model.Datasource.Session
  * @see CakeSession for configuration information.
  */
+#[\AllowDynamicProperties]
 class CacheSession implements CakeSessionHandlerInterface {
 
 /**

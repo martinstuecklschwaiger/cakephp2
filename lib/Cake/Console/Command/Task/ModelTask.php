@@ -26,6 +26,7 @@ App::uses('Validation', 'Utility');
  *
  * @package	   Cake.Console.Command.Task
  */
+#[\AllowDynamicProperties]
 class ModelTask extends BakeTask {
 
 /**

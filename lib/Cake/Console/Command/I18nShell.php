@@ -22,6 +22,7 @@ App::uses('AppShell', 'Console/Command');
  *
  * @package       Cake.Console.Command
  */
+#[\AllowDynamicProperties]
 class I18nShell extends AppShell {
 
 /**

@@ -26,6 +26,7 @@ App::uses('File', 'Utility');
  *
  * @package       Cake.Network
  */
+#[\AllowDynamicProperties]
 class CakeResponse {
 
 /**

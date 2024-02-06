@@ -21,6 +21,7 @@
  *
  * @package       Cake.Network.Http
  */
+#[\AllowDynamicProperties]
 class BasicAuthentication {
 
 /**

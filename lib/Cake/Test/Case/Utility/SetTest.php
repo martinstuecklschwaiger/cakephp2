@@ -24,6 +24,7 @@ App::uses('Model', 'Model');
  *
  * @package       Cake.Test.Case.Utility
  */
+#[\AllowDynamicProperties]
 class SetTest extends CakeTestCase {
 
 /**

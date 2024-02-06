@@ -27,6 +27,7 @@ App::uses('CakeSchema', 'Model');
  * @package       Cake.Console.Command
  * @link          https://book.cakephp.org/2.0/en/console-and-shells/schema-management-and-migrations.html
  */
+#[\AllowDynamicProperties]
 class SchemaShell extends AppShell {
 
 /**

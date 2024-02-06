@@ -1,4 +1,5 @@
 <?php
+#[\AllowDynamicProperties]
 class TestOtherSource extends DataSource {
 
 	public function describe($model) {

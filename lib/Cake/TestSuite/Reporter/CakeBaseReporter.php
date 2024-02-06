@@ -24,6 +24,7 @@ if (!class_exists('PHPUnit_TextUI_ResultPrinter')) {
  *
  * @package       Cake.TestSuite.Reporter
  */
+#[\AllowDynamicProperties]
 class CakeBaseReporter extends PHPUnit_TextUI_ResultPrinter {
 
 /**

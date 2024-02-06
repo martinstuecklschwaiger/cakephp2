@@ -47,6 +47,7 @@ class TestMemcacheEngine extends MemcacheEngine {
  *
  * @package       Cake.Test.Case.Cache.Engine
  */
+#[\AllowDynamicProperties]
 class MemcacheEngineTest extends CakeTestCase {
 
 /**

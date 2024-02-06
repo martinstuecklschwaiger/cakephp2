@@ -28,6 +28,7 @@ App::uses('Hash', 'Utility');
  *
  * @package       Cake.Network.Http
  */
+#[\AllowDynamicProperties]
 class HttpSocket extends CakeSocket {
 
 /**

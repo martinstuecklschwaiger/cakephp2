@@ -26,6 +26,7 @@ App::uses('CakeBaseReporter', 'TestSuite/Reporter');
  *
  * @package       Cake.Test.Case.TestSuite
  */
+#[\AllowDynamicProperties]
 class HtmlCoverageReportTest extends CakeTestCase {
 
 /**

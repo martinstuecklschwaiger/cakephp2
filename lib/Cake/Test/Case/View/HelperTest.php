@@ -26,6 +26,7 @@ App::uses('Router', 'Routing');
  *
  * @package       Cake.Test.Case.View
  */
+#[\AllowDynamicProperties]
 class HelperTestPost extends Model {
 
 /**
@@ -66,6 +67,7 @@ class HelperTestPost extends Model {
  *
  * @package       Cake.Test.Case.View
  */
+#[\AllowDynamicProperties]
 class HelperTestComment extends Model {
 
 /**
@@ -100,6 +102,7 @@ class HelperTestComment extends Model {
  *
  * @package       Cake.Test.Case.View
  */
+#[\AllowDynamicProperties]
 class HelperTestTag extends Model {
 
 /**
@@ -131,6 +134,7 @@ class HelperTestTag extends Model {
  *
  * @package       Cake.Test.Case.View
  */
+#[\AllowDynamicProperties]
 class HelperTestPostsTag extends Model {
 
 /**
@@ -194,6 +198,7 @@ class TestHelper extends Helper {
  *
  * @package       Cake.Test.Case.View
  */
+#[\AllowDynamicProperties]
 class HelperTest extends CakeTestCase {
 
 /**

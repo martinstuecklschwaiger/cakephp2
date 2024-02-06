@@ -17,6 +17,7 @@ App::uses("BaseShellHelper", "Console/Helper");
 /**
  * Create a progress bar using a supplied callback.
  */
+#[\AllowDynamicProperties]
 class ProgressShellHelper extends BaseShellHelper {
 
 /**

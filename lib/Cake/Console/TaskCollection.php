@@ -24,6 +24,7 @@ App::uses('ObjectCollection', 'Utility');
  *
  * @package       Cake.Console
  */
+#[\AllowDynamicProperties]
 class TaskCollection extends ObjectCollection {
 
 /**

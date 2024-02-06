@@ -21,6 +21,7 @@ App::uses('AppShell', 'Console/Command');
  * 
  * @package       Cake.Console.Command
  */
+#[\AllowDynamicProperties]
 class CompletionShell extends AppShell {
 
 /**

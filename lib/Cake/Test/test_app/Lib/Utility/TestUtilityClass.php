@@ -21,5 +21,6 @@
  *
  * @package       Cake.Test.TestApp.Lib.Utility
  */
+#[\AllowDynamicProperties]
 class TestUtilityClass {
 }

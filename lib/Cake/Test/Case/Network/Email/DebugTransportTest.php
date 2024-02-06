@@ -23,6 +23,7 @@ App::uses('DebugTransport', 'Network/Email');
 /**
  * Test case
  */
+#[\AllowDynamicProperties]
 class DebugTransportTest extends CakeTestCase {
 
 /**

@@ -24,6 +24,7 @@ App::uses('HttpResponse', 'Network/Http');
  *
  * @package       Cake.Test.Case.Network.Http
  */
+#[\AllowDynamicProperties]
 class TestAuthentication {
 
 /**
@@ -53,6 +54,7 @@ class TestAuthentication {
 /**
  * CustomResponse
  */
+#[\AllowDynamicProperties]
 class CustomResponse {
 
 /**
@@ -167,6 +169,7 @@ class TestHttpSocket extends HttpSocket {
  *
  * @package       Cake.Test.Case.Network.Http
  */
+#[\AllowDynamicProperties]
 class HttpSocketTest extends CakeTestCase {
 
 /**
