@@ -62,7 +62,7 @@ class LogEngineCollection extends ObjectCollection {
  */
 	protected static function _getLogger($loggerName) {
 		list($plugin, $loggerName) = pluginSplit($loggerName, true);
-		if (substr($loggerName, -3) !== 'Log') {
+		if (substr((string) $loggerName, -3) !== 'Log') {
 			$loggerName .= 'Log';
 		}
 		App::uses($loggerName, $plugin . 'Log/Engine');

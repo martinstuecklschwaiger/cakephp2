@@ -360,12 +360,12 @@ class Helper extends CakeObject {
 			$path = $options['pathPrefix'] . $path;
 		}
 		if (!empty($options['ext']) &&
-			strpos($path, '?') === false &&
-			substr($path, -strlen($options['ext'])) !== $options['ext']
+			strpos((string) $path, '?') === false &&
+			substr((string) $path, -strlen((string) $options['ext'])) !== $options['ext']
 		) {
 			$path .= $options['ext'];
 		}
-		if (preg_match('|^([a-z0-9]+:)?//|', $path)) {
+		if (preg_match('|^([a-z0-9]+:)?//|', (string) $path)) {
 			return $path;
 		}
 		if (isset($plugin)) {
@@ -617,7 +617,7 @@ class Helper extends CakeObject {
 			// check for associated model.
 			$reversed = array_reverse($parts);
 			foreach ($reversed as $i => $part) {
-				if ($i > 0 && preg_match('/^[A-Z]/', $part)) {
+				if ($i > 0 && preg_match('/^[A-Z]/', (string) $part)) {
 					$this->_association = $part;
 					break;
 				}
@@ -822,7 +822,7 @@ class Helper extends CakeObject {
  * @return array Array of options with $key set.
  */
 	public function addClass($options = array(), $class = null, $key = 'class') {
-		if (isset($options[$key]) && trim($options[$key])) {
+		if (isset($options[$key]) && trim((string) $options[$key])) {
 			$options[$key] .= ' ' . $class;
 		} else {
 			$options[$key] = $class;
@@ -959,12 +959,12 @@ class Helper extends CakeObject {
  */
 	protected function _clean() {
 		if (get_magic_quotes_gpc()) {
-			$this->_cleaned = stripslashes($this->_tainted);
+			$this->_cleaned = stripslashes((string) $this->_tainted);
 		} else {
 			$this->_cleaned = $this->_tainted;
 		}
 
-		$this->_cleaned = str_replace(array("&amp;", "&lt;", "&gt;"), array("&amp;amp;", "&amp;lt;", "&amp;gt;"), $this->_cleaned);
+		$this->_cleaned = str_replace(array("&amp;", "&lt;", "&gt;"), array("&amp;amp;", "&amp;lt;", "&amp;gt;"), (string) $this->_cleaned);
 		$this->_cleaned = preg_replace('#(&\#*\w+)[\x00-\x20]+;#u', "$1;", $this->_cleaned);
 		$this->_cleaned = preg_replace('#(&\#x*)([0-9A-F]+);*#iu', "$1$2;", $this->_cleaned);
 		$this->_cleaned = html_entity_decode($this->_cleaned, ENT_COMPAT, "UTF-8");

@@ -180,7 +180,7 @@ class Sqlite extends DboSource {
 		);
 
 		foreach ($result as $column) {
-			$default = ($column['dflt_value'] === 'NULL') ? null : trim($column['dflt_value'], "'");
+			$default = ($column['dflt_value'] === 'NULL') ? null : trim((string) $column['dflt_value'], "'");
 
 			$fields[$column['name']] = array(
 				'type' => $this->column($column['type']),
@@ -316,9 +316,9 @@ class Sqlite extends DboSource {
 			$selectpart = substr($querystring, 7);
 			$selects = array();
 			foreach (CakeText::tokenize($selectpart, ',', '(', ')') as $part) {
-				$fromPos = stripos($part, ' FROM ');
+				$fromPos = stripos((string) $part, ' FROM ');
 				if ($fromPos !== false) {
-					$selects[] = trim(substr($part, 0, $fromPos));
+					$selects[] = trim(substr((string) $part, 0, $fromPos));
 					break;
 				}
 				$selects[] = $part;
@@ -335,13 +335,13 @@ class Sqlite extends DboSource {
 				$j++;
 				continue;
 			}
-			if (preg_match('/\bAS(?!.*\bAS\b)\s+(.*)/i', $selects[$j], $matches)) {
+			if (preg_match('/\bAS(?!.*\bAS\b)\s+(.*)/i', (string) $selects[$j], $matches)) {
 				$columnName = trim($matches[1], '"');
 			} else {
-				$columnName = trim(str_replace('"', '', $selects[$j]));
+				$columnName = trim(str_replace('"', '', (string) $selects[$j]));
 			}
 
-			if (strpos($selects[$j], 'DISTINCT') === 0) {
+			if (strpos((string) $selects[$j], 'DISTINCT') === 0) {
 				$columnName = str_ireplace('DISTINCT', '', $columnName);
 			}
 
@@ -349,7 +349,7 @@ class Sqlite extends DboSource {
 			try {
 				$metaData = (array)$results->getColumnMeta($j);
 				if (!empty($metaData['sqlite:decl_type'])) {
-					$metaType = trim($metaData['sqlite:decl_type']);
+					$metaType = trim((string) $metaData['sqlite:decl_type']);
 				}
 			} catch (Exception $e) {
 			}
@@ -435,7 +435,7 @@ class Sqlite extends DboSource {
 			if ($column['null'] === false) {
 				$replacement = 'NOT NULL ' . $replacement;
 			}
-			return str_replace($this->columns['primary_key']['name'], $replacement, $out);
+			return str_replace($this->columns['primary_key']['name'], $replacement, (string) $out);
 		}
 		return $out;
 	}
@@ -522,7 +522,7 @@ class Sqlite extends DboSource {
 				foreach ($keyInfo as $keyCol) {
 					if (!isset($index[$key['name']])) {
 						$col = array();
-						if (preg_match('/autoindex/', $key['name'])) {
+						if (preg_match('/autoindex/', (string) $key['name'])) {
 							$key['name'] = 'PRIMARY';
 						}
 						$index[$key['name']]['column'] = $keyCol[0]['name'];

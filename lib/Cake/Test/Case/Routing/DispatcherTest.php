@@ -1547,7 +1547,7 @@ class DispatcherTest extends CakeTestCase {
 		$Dispatcher->dispatch(new CakeRequest($url), $response);
 		$result = ob_get_clean();
 
-		$path = CAKE . 'Test' . DS . 'test_app' . DS . str_replace('/', DS, $file);
+		$path = CAKE . 'Test' . DS . 'test_app' . DS . str_replace('/', DS, (string) $file);
 		$file = file_get_contents($path);
 		$this->assertEquals($file, $result);
 
@@ -1633,7 +1633,7 @@ class DispatcherTest extends CakeTestCase {
 		$dispatcher->dispatch($request, $response);
 		$cached = $response->body();
 
-		$cached = preg_replace('/<!--+[^<>]+-->/', '', $cached);
+		$cached = preg_replace('/<!--+[^<>]+-->/', '', (string) $cached);
 
 		$this->assertTextEquals($out, $cached);
 

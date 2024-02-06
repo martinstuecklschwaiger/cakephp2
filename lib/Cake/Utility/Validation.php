@@ -191,7 +191,7 @@ class Validation {
 
 		if (is_array($type)) {
 			foreach ($type as $value) {
-				$regex = $cards['all'][strtolower($value)];
+				$regex = $cards['all'][strtolower((string) $value)];
 
 				if (static::_check($check, $regex)) {
 					return static::luhn($check, $deep);
@@ -508,7 +508,7 @@ class Validation {
 		}
 		$extension = strtolower(pathinfo($check, PATHINFO_EXTENSION));
 		foreach ($extensions as $value) {
-			if ($extension === strtolower($value)) {
+			if ($extension === strtolower((string) $value)) {
 				return true;
 			}
 		}
@@ -630,7 +630,7 @@ class Validation {
 			foreach ($check as $val) {
 				$strict = !is_numeric($val);
 				if ($caseInsensitive) {
-					$val = mb_strtolower($val);
+					$val = mb_strtolower((string) $val);
 				}
 				if (!in_array((string)$val, $options['in'], $strict)) {
 					return false;
@@ -959,7 +959,7 @@ class Validation {
 		}
 
 		foreach ($mimeTypes as $key => $val) {
-			$mimeTypes[$key] = strtolower($val);
+			$mimeTypes[$key] = strtolower((string) $val);
 		}
 		return in_array($mime, $mimeTypes);
 	}

@@ -127,13 +127,13 @@ class ExtractTask extends AppShell {
 				implode(', ', $currentPaths)
 			);
 			$response = $this->in($message, null, $defaultPath);
-			if (strtoupper($response) === 'Q') {
+			if (strtoupper((string) $response) === 'Q') {
 				$this->err(__d('cake_console', 'Extract Aborted'));
 				return $this->_stop();
-			} elseif (strtoupper($response) === 'D' && count($this->_paths)) {
+			} elseif (strtoupper((string) $response) === 'D' && count($this->_paths)) {
 				$this->out();
 				return;
-			} elseif (strtoupper($response) === 'D') {
+			} elseif (strtoupper((string) $response) === 'D') {
 				$this->err(__d('cake_console', '<warning>No directories selected.</warning> Please choose a directory.'));
 			} elseif (is_dir($response)) {
 				$this->_paths[] = $response;
@@ -152,13 +152,13 @@ class ExtractTask extends AppShell {
  */
 	public function execute() {
 		if (!empty($this->params['exclude'])) {
-			$this->_exclude = explode(',', str_replace('/', DS, $this->params['exclude']));
+			$this->_exclude = explode(',', str_replace('/', DS, (string) $this->params['exclude']));
 		}
 		if (isset($this->params['files']) && !is_array($this->params['files'])) {
-			$this->_files = explode(',', $this->params['files']);
+			$this->_files = explode(',', (string) $this->params['files']);
 		}
 		if (isset($this->params['paths'])) {
-			$this->_paths = explode(',', $this->params['paths']);
+			$this->_paths = explode(',', (string) $this->params['paths']);
 		} elseif (isset($this->params['plugin'])) {
 			$plugin = Inflector::camelize($this->params['plugin']);
 			if (!CakePlugin::loaded($plugin)) {
@@ -171,10 +171,10 @@ class ExtractTask extends AppShell {
 		}
 
 		if (isset($this->params['extract-core'])) {
-			$this->_extractCore = !(strtolower($this->params['extract-core']) === 'no');
+			$this->_extractCore = !(strtolower((string) $this->params['extract-core']) === 'no');
 		} else {
 			$response = $this->in(__d('cake_console', 'Would you like to extract the messages from the CakePHP core?'), array('y', 'n'), 'n');
-			$this->_extractCore = strtolower($response) === 'y';
+			$this->_extractCore = strtolower((string) $response) === 'y';
 		}
 
 		if (!empty($this->params['exclude-plugins']) && $this->_isExtractingApp()) {
@@ -204,7 +204,7 @@ class ExtractTask extends AppShell {
 			$message = __d('cake_console', "What is the path you would like to output?\n[Q]uit", $this->_paths[0] . DS . 'Locale');
 			while (true) {
 				$response = $this->in($message, null, rtrim($this->_paths[0], DS) . DS . 'Locale');
-				if (strtoupper($response) === 'Q') {
+				if (strtoupper((string) $response) === 'Q') {
 					$this->err(__d('cake_console', 'Extract Aborted'));
 					return $this->_stop();
 				} elseif ($this->_isPathUsable($response)) {
@@ -218,11 +218,11 @@ class ExtractTask extends AppShell {
 		}
 
 		if (isset($this->params['merge'])) {
-			$this->_merge = !(strtolower($this->params['merge']) === 'no');
+			$this->_merge = !(strtolower((string) $this->params['merge']) === 'no');
 		} else {
 			$this->out();
 			$response = $this->in(__d('cake_console', 'Would you like to merge all domain and category strings into the default.pot file?'), array('y', 'n'), 'n');
-			$this->_merge = strtolower($response) === 'y';
+			$this->_merge = strtolower((string) $response) === 'y';
 		}
 
 		if (empty($this->_files)) {
@@ -666,21 +666,21 @@ class ExtractTask extends AppShell {
 					$File = new File($this->_output . $category . DS . $filename);
 				}
 				$response = '';
-				while ($overwriteAll === false && $File->exists() && strtoupper($response) !== 'Y') {
+				while ($overwriteAll === false && $File->exists() && strtoupper((string) $response) !== 'Y') {
 					$this->out();
 					$response = $this->in(
 						__d('cake_console', 'Error: %s already exists in this location. Overwrite? [Y]es, [N]o, [A]ll', $filename),
 						array('y', 'n', 'a'),
 						'y'
 					);
-					if (strtoupper($response) === 'N') {
+					if (strtoupper((string) $response) === 'N') {
 						$response = '';
 						while (!$response) {
 							$response = $this->in(__d('cake_console', "What would you like to name this file?"), null, 'new_' . $filename);
 							$File = new File($this->_output . $response);
 							$filename = $response;
 						}
-					} elseif (strtoupper($response) === 'A') {
+					} elseif (strtoupper((string) $response) === 'A') {
 						$overwriteAll = true;
 					}
 				}
@@ -808,7 +808,7 @@ class ExtractTask extends AppShell {
 				if (DS !== '\\' && $e[0] !== DS) {
 					$e = DS . $e;
 				}
-				$exclude[] = preg_quote($e, '/');
+				$exclude[] = preg_quote((string) $e, '/');
 			}
 			$pattern = '/' . implode('|', $exclude) . '/';
 		}

@@ -63,7 +63,7 @@ class SchemaShell extends AppShell {
 			$name = $this->params['name'] = $this->args[0];
 		}
 
-		if (strpos($name, '.')) {
+		if (strpos((string) $name, '.')) {
 			list($this->params['plugin'], $splitName) = pluginSplit($name);
 			$name = $this->params['name'] = $splitName;
 		}
@@ -72,7 +72,7 @@ class SchemaShell extends AppShell {
 		} elseif (empty($this->params['file'])) {
 			$this->params['file'] = 'schema.php';
 		}
-		if (strpos($this->params['file'], '.php') === false) {
+		if (strpos((string) $this->params['file'], '.php') === false) {
 			$this->params['file'] .= '.php';
 		}
 		$file = $this->params['file'];
@@ -134,7 +134,7 @@ class SchemaShell extends AppShell {
 		if (!$snapshot && file_exists($this->Schema->path . DS . $this->params['file'])) {
 			$snapshot = true;
 			$prompt = __d('cake_console', "Schema file exists.\n [O]verwrite\n [S]napshot\n [Q]uit\nWould you like to do?");
-			$result = strtolower($this->in($prompt, array('o', 's', 'q'), 's'));
+			$result = strtolower((string) $this->in($prompt, array('o', 's', 'q'), 's'));
 			if ($result === 'q') {
 				return $this->_stop();
 			}
@@ -159,7 +159,7 @@ class SchemaShell extends AppShell {
 		}
 
 		if ($snapshot === true) {
-			$fileName = basename($this->params['file'], '.php');
+			$fileName = basename((string) $this->params['file'], '.php');
 			$Folder = new Folder($this->Schema->path);
 			$result = $Folder->read();
 
@@ -171,7 +171,7 @@ class SchemaShell extends AppShell {
 			$count = 0;
 			if (!empty($result[1])) {
 				foreach ($result[1] as $file) {
-					if (preg_match('/' . preg_quote($fileName) . '(?:[_\d]*)?\.php$/', $file)) {
+					if (preg_match('/' . preg_quote($fileName) . '(?:[_\d]*)?\.php$/', (string) $file)) {
 						$count++;
 					}
 				}
@@ -221,10 +221,10 @@ class SchemaShell extends AppShell {
 		$contents = "\n\n" . $db->dropSchema($Schema) . "\n\n" . $db->createSchema($Schema);
 
 		if ($write) {
-			if (strpos($write, '.sql') === false) {
+			if (strpos((string) $write, '.sql') === false) {
 				$write .= '.sql';
 			}
-			if (strpos($write, DS) !== false) {
+			if (strpos((string) $write, DS) !== false) {
 				$File = new File($write, true);
 			} else {
 				$File = new File($this->Schema->path . DS . $write, true);

@@ -269,7 +269,7 @@ class CakeValidationRule {
 		$this->_parseRule($field, $data);
 
 		$validator = $this->_getPropertiesArray();
-		$rule = strtolower($this->_rule);
+		$rule = strtolower((string) $this->_rule);
 		if (isset($methods[$rule])) {
 			$this->_ruleParams[] = array_merge($validator, $this->_passedOptions);
 			$this->_ruleParams[0] = array($field => $this->_ruleParams[0]);
@@ -277,7 +277,7 @@ class CakeValidationRule {
 		} elseif (class_exists('Validation') && method_exists('Validation', $this->_rule)) {
 			$this->_valid = call_user_func_array(array('Validation', $this->_rule), $this->_ruleParams);
 		} elseif (is_string($validator['rule'])) {
-			$this->_valid = preg_match($this->_rule, $data[$field]);
+			$this->_valid = preg_match($this->_rule, (string) $data[$field]);
 		} else {
 			trigger_error(__d('cake_dev', 'Could not find validation handler %s for %s', $this->_rule, $field), E_USER_WARNING);
 			return false;

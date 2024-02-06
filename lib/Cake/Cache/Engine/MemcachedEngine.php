@@ -157,7 +157,7 @@ class MemcachedEngine extends CacheEngine {
 	protected function _setOptions() {
 		$this->_Memcached->setOption(Memcached::OPT_LIBKETAMA_COMPATIBLE, true);
 
-		$serializer = strtolower($this->settings['serialize']);
+		$serializer = strtolower((string) $this->settings['serialize']);
 		if (!isset($this->_serializers[$serializer])) {
 			throw new CacheException(
 				__d('cake_dev', '%s is not a valid serializer engine for Memcached', $serializer)
@@ -291,7 +291,7 @@ class MemcachedEngine extends CacheEngine {
 		}
 
 		foreach ($keys as $key) {
-			if (strpos($key, $this->settings['prefix']) === 0) {
+			if (strpos((string) $key, (string) $this->settings['prefix']) === 0) {
 				$this->_Memcached->delete($key);
 			}
 		}

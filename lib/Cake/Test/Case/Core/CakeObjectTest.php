@@ -369,7 +369,7 @@ class ObjectTest extends CakeTestCase {
  * @return void
  */
 	public function testToString() {
-		$result = strtolower($this->object->toString());
+		$result = strtolower((string) $this->object->toString());
 		$this->assertEquals('testcakeobject', $result);
 	}
 

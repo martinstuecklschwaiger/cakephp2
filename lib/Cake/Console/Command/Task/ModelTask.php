@@ -97,7 +97,7 @@ class ModelTask extends BakeTask {
 			if (!isset($this->connection)) {
 				$this->connection = 'default';
 			}
-			if (strtolower($this->args[0]) === 'all') {
+			if (strtolower((string) $this->args[0]) === 'all') {
 				return $this->all();
 			}
 			$model = $this->_modelName($this->args[0]);
@@ -208,7 +208,7 @@ class ModelTask extends BakeTask {
 		if (!in_array($useTable, $this->_tables)) {
 			$prompt = __d('cake_console', "The table %s doesn't exist or could not be automatically detected\ncontinue anyway?", $useTable);
 			$continue = $this->in($prompt, array('y', 'n'));
-			if (strtolower($continue) === 'n') {
+			if (strtolower((string) $continue) === 'n') {
 				return false;
 			}
 		}
@@ -234,13 +234,13 @@ class ModelTask extends BakeTask {
 
 			$prompt = __d('cake_console', "Would you like to supply validation criteria \nfor the fields in your model?");
 			$wannaDoValidation = $this->in($prompt, array('y', 'n'), 'y');
-			if (array_search($useTable, $this->_tables) !== false && strtolower($wannaDoValidation) === 'y') {
+			if (array_search($useTable, $this->_tables) !== false && strtolower((string) $wannaDoValidation) === 'y') {
 				$validate = $this->doValidation($tempModel);
 			}
 
 			$prompt = __d('cake_console', "Would you like to define model associations\n(hasMany, hasOne, belongsTo, etc.)?");
 			$wannaDoAssoc = $this->in($prompt, array('y', 'n'), 'y');
-			if (strtolower($wannaDoAssoc) === 'y') {
+			if (strtolower((string) $wannaDoAssoc) === 'y') {
 				$associations = $this->doAssociations($tempModel);
 			}
 		}
@@ -274,7 +274,7 @@ class ModelTask extends BakeTask {
 		$this->hr();
 		$looksGood = $this->in(__d('cake_console', 'Look okay?'), array('y', 'n'), 'y');
 
-		if (strtolower($looksGood) === 'y') {
+		if (strtolower((string) $looksGood) === 'y') {
 			$vars = compact('associations', 'validate', 'primaryKey', 'useTable', 'displayField');
 			$vars['useDbConfig'] = $this->connection;
 			if ($this->bake($currentModelName, $vars)) {
@@ -331,7 +331,7 @@ class ModelTask extends BakeTask {
 		$fieldNames = array_keys($fields);
 		$prompt = __d('cake_console', "A displayField could not be automatically detected\nwould you like to choose one?");
 		$continue = $this->in($prompt, array('y', 'n'));
-		if (strtolower($continue) === 'n') {
+		if (strtolower((string) $continue) === 'n') {
 			return false;
 		}
 		$prompt = __d('cake_console', 'Choose a field from the options above:');
@@ -602,7 +602,7 @@ class ModelTask extends BakeTask {
 	public function findBelongsTo(Model $model, $associations) {
 		$fieldNames = array_keys($model->schema(true));
 		foreach ($fieldNames as $fieldName) {
-			$offset = substr($fieldName, -3) === '_id';
+			$offset = substr((string) $fieldName, -3) === '_id';
 			if ($fieldName != $model->primaryKey && $fieldName !== 'parent_id' && $offset !== false) {
 				$tmpModelName = $this->_modelNameFromKey($fieldName);
 				$associations['belongsTo'][] = array(
@@ -635,7 +635,7 @@ class ModelTask extends BakeTask {
 			$tempFieldNames = array_keys($tempOtherModel->schema(true));
 
 			$pattern = '/_' . preg_quote($model->table, '/') . '|' . preg_quote($model->table, '/') . '_/';
-			$possibleJoinTable = preg_match($pattern, $otherTable);
+			$possibleJoinTable = preg_match($pattern, (string) $otherTable);
 			if ($possibleJoinTable) {
 				continue;
 			}
@@ -675,13 +675,13 @@ class ModelTask extends BakeTask {
 		$foreignKey = $this->_modelKey($model->name);
 		foreach ($this->_tables as $otherTable) {
 			$tableName = null;
-			$offset = strpos($otherTable, $model->table . '_');
-			$otherOffset = strpos($otherTable, '_' . $model->table);
+			$offset = strpos((string) $otherTable, $model->table . '_');
+			$otherOffset = strpos((string) $otherTable, '_' . $model->table);
 
 			if ($offset !== false) {
-				$tableName = substr($otherTable, strlen($model->table . '_'));
+				$tableName = substr((string) $otherTable, strlen($model->table . '_'));
 			} elseif ($otherOffset !== false) {
-				$tableName = substr($otherTable, 0, $otherOffset);
+				$tableName = substr((string) $otherTable, 0, $otherOffset);
 			}
 			if ($tableName && in_array($tableName, $this->_tables)) {
 				$habtmName = $this->_modelName($tableName);
@@ -711,7 +711,7 @@ class ModelTask extends BakeTask {
 					$prompt = "{$model->name} {$type} {$assoc['alias']}?";
 					$response = $this->in($prompt, array('y', 'n'), 'y');
 
-					if (strtolower($response) === 'n') {
+					if (strtolower((string) $response) === 'n') {
 						unset($associations[$type][$i]);
 					} elseif ($type === 'hasMany') {
 						unset($associations['hasOne'][$i]);
@@ -734,7 +734,7 @@ class ModelTask extends BakeTask {
 		$prompt = __d('cake_console', 'Would you like to define some additional model associations?');
 		$wannaDoMoreAssoc = $this->in($prompt, array('y', 'n'), 'n');
 		$possibleKeys = $this->_generatePossibleKeys();
-		while (strtolower($wannaDoMoreAssoc) === 'y') {
+		while (strtolower((string) $wannaDoMoreAssoc) === 'y') {
 			$assocs = array('belongsTo', 'hasOne', 'hasMany', 'hasAndBelongsToMany');
 			$this->out(__d('cake_console', 'What is the association type?'));
 			$assocType = (int)$this->inOptions($assocs, __d('cake_console', 'Enter a number'));
@@ -934,7 +934,7 @@ class ModelTask extends BakeTask {
 				$this->out(__d('cake_console', "Given your model named '%s',\nCake would expect a database table named '%s'", $modelName, $fullTableName));
 				$tableIsGood = $this->in(__d('cake_console', 'Do you want to use this table?'), array('y', 'n'), 'y');
 			}
-			if (strtolower($tableIsGood) === 'n') {
+			if (strtolower((string) $tableIsGood) === 'n') {
 				$useTable = $this->in(__d('cake_console', 'What is the name of the table (without prefix)?'));
 			}
 		}
@@ -959,8 +959,8 @@ class ModelTask extends BakeTask {
 		$usePrefix = empty($db->config['prefix']) ? '' : $db->config['prefix'];
 		if ($usePrefix) {
 			foreach ($db->listSources() as $table) {
-				if (!strncmp($table, $usePrefix, strlen($usePrefix))) {
-					$tables[] = substr($table, strlen($usePrefix));
+				if (!strncmp((string) $table, (string) $usePrefix, strlen((string) $usePrefix))) {
+					$tables[] = substr((string) $table, strlen((string) $usePrefix));
 				}
 			}
 		} else {

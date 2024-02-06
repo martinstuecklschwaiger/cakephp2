@@ -455,8 +455,8 @@ class CakeResponse {
 	protected function _setCookies() {
 		foreach ($this->_cookies as $name => $c) {
 			setcookie(
-				$name, $c['value'], $c['expire'], $c['path'],
-				$c['domain'], $c['secure'], $c['httpOnly']
+				$name, (string) $c['value'], $c['expire'], (string) $c['path'],
+				(string) $c['domain'], $c['secure'], $c['httpOnly']
 			);
 		}
 	}
@@ -588,10 +588,10 @@ class CakeResponse {
 			if (is_numeric($header)) {
 				list($header, $value) = array($value, null);
 			}
-			if ($value === null && strpos($header, ':') !== false) {
-				list($header, $value) = explode(':', $header, 2);
+			if ($value === null && strpos((string) $header, ':') !== false) {
+				list($header, $value) = explode(':', (string) $header, 2);
 			}
-			$this->_headers[$header] = is_array($value) ? array_map('trim', $value) : trim($value);
+			$this->_headers[$header] = is_array($value) ? array_map('trim', $value) : trim((string) $value);
 		}
 		return $this->_headers;
 	}
@@ -736,7 +736,7 @@ class CakeResponse {
 			$contentType = $this->_mimeTypes[$contentType];
 			$contentType = is_array($contentType) ? current($contentType) : $contentType;
 		}
-		if (strpos($contentType, '/') === false) {
+		if (strpos((string) $contentType, '/') === false) {
 			return false;
 		}
 		return $this->_contentType = $contentType;
@@ -1029,7 +1029,7 @@ class CakeResponse {
 			$this->_headers['Vary'] = implode(', ', $cacheVariances);
 		}
 		if (isset($this->_headers['Vary'])) {
-			return explode(', ', $this->_headers['Vary']);
+			return explode(', ', (string) $this->_headers['Vary']);
 		}
 		return null;
 	}
@@ -1173,7 +1173,7 @@ class CakeResponse {
 			$checks[] = in_array('*', $etags) || in_array($responseTag, $etags);
 		}
 		if ($modifiedSince) {
-			$checks[] = strtotime($this->modified()) === strtotime($modifiedSince);
+			$checks[] = strtotime($this->modified()) === strtotime((string) $modifiedSince);
 		}
 		if (empty($checks)) {
 			return false;
@@ -1294,7 +1294,7 @@ class CakeResponse {
 
 		$allowedDomains = $this->_normalizeCorsDomains((array)$allowedDomains, $request->is('ssl'));
 		foreach ($allowedDomains as $domain) {
-			if (!preg_match($domain['preg'], $origin)) {
+			if (!preg_match($domain['preg'], (string) $origin)) {
 				continue;
 			}
 			$this->header('Access-Control-Allow-Origin', $domain['original'] === '*' ? '*' : $origin);
@@ -1319,7 +1319,7 @@ class CakeResponse {
 				continue;
 			}
 			$original = $domain;
-			$preg = '@' . str_replace('*', '.*', $domain) . '@';
+			$preg = '@' . str_replace('*', '.*', (string) $domain) . '@';
 			$result[] = compact('original', 'preg');
 		}
 		return $result;

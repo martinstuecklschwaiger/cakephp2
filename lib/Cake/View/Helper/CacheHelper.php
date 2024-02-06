@@ -84,7 +84,7 @@ class CacheHelper extends AppHelper {
 		if ($this->_enabled()) {
 			$this->_View->output = $this->cache($layoutFile, $this->_View->output);
 		}
-		$this->_View->output = preg_replace('/<!--\/?nocache-->/', '', $this->_View->output);
+		$this->_View->output = preg_replace('/<!--\/?nocache-->/', '', (string) $this->_View->output);
 	}
 
 /**
@@ -245,11 +245,11 @@ class CacheHelper extends AppHelper {
 		if (!empty($this->_match)) {
 			foreach ($this->_match as $found) {
 				$original = $cache;
-				$length = strlen($found);
+				$length = strlen((string) $found);
 				$position = 0;
 
 				for ($i = 1; $i <= 1; $i++) {
-					$position = strpos($cache, $found, $position);
+					$position = strpos($cache, (string) $found, $position);
 
 					if ($position !== false) {
 						$cache = substr($original, 0, $position);

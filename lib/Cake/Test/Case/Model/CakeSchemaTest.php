@@ -1166,11 +1166,11 @@ class CakeSchemaTest extends CakeTestCase {
 		$col = $Schema->tables['testdescribes']['int_null'];
 		$col['name'] = 'int_null';
 		$column = $this->db->buildColumn($col);
-		$this->assertRegExp('/' . preg_quote($column, '/') . '/', $sql);
+		$this->assertRegExp('/' . preg_quote((string) $column, '/') . '/', $sql);
 
 		$col = $Schema->tables['testdescribes']['int_not_null'];
 		$col['name'] = 'int_not_null';
 		$column = $this->db->buildColumn($col);
-		$this->assertRegExp('/' . preg_quote($column, '/') . '/', $sql);
+		$this->assertRegExp('/' . preg_quote((string) $column, '/') . '/', $sql);
 	}
 }

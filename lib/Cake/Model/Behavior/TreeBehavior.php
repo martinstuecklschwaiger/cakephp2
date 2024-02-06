@@ -507,7 +507,7 @@ class TreeBehavior extends ModelBehavior {
 				array_pop($stack);
 				$count--;
 			}
-			$results[$i]['tree_prefix'] = str_repeat($options['spacer'], $count);
+			$results[$i]['tree_prefix'] = str_repeat((string) $options['spacer'], $count);
 			$stack[] = $result[$Model->alias][$right];
 		}
 

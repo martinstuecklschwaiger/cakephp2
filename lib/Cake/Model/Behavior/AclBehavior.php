@@ -53,7 +53,7 @@ class AclBehavior extends ModelBehavior {
 			unset($config[0]);
 		}
 		$this->settings[$model->name] = array_merge(array('type' => 'controlled'), $config);
-		$this->settings[$model->name]['type'] = strtolower($this->settings[$model->name]['type']);
+		$this->settings[$model->name]['type'] = strtolower((string) $this->settings[$model->name]['type']);
 
 		$types = $this->_typeMaps[$this->settings[$model->name]['type']];
 

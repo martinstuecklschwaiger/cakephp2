@@ -91,7 +91,7 @@ class CakeTestLoader extends PHPUnit_Runner_StandardTestSuiteLoader {
 
 		$testCases = array();
 		foreach ($fileList as $testCaseFile) {
-			$case = str_replace($directory . DS, '', $testCaseFile);
+			$case = str_replace($directory . DS, '', (string) $testCaseFile);
 			$case = str_replace('Test.php', '', $case);
 			$testCases[$testCaseFile] = $case;
 		}

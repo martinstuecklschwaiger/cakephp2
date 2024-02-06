@@ -1041,15 +1041,15 @@ class CakeEmailTest extends CakeTestCase {
 		$expected = "Here is my body, with multi lines.\r\nThis is the second line.\r\n\r\nAnd the last.\r\n\r\n";
 
 		$this->assertEquals($expected, $result['message']);
-		$this->assertTrue((bool)strpos($result['headers'], 'Date: '));
-		$this->assertTrue((bool)strpos($result['headers'], 'Message-ID: '));
-		$this->assertTrue((bool)strpos($result['headers'], 'To: '));
+		$this->assertTrue((bool)strpos((string) $result['headers'], 'Date: '));
+		$this->assertTrue((bool)strpos((string) $result['headers'], 'Message-ID: '));
+		$this->assertTrue((bool)strpos((string) $result['headers'], 'To: '));
 
 		$result = $this->CakeEmail->send("Other body");
 		$expected = "Other body\r\n\r\n";
 		$this->assertSame($expected, $result['message']);
-		$this->assertTrue((bool)strpos($result['headers'], 'Message-ID: '));
-		$this->assertTrue((bool)strpos($result['headers'], 'To: '));
+		$this->assertTrue((bool)strpos((string) $result['headers'], 'Message-ID: '));
+		$this->assertTrue((bool)strpos((string) $result['headers'], 'To: '));
 
 		$this->CakeEmail->reset();
 		$this->CakeEmail->transport('Debug');
@@ -1392,8 +1392,8 @@ class CakeEmailTest extends CakeTestCase {
 		App::uses('File', 'Utility');
 		$File = new File(TMP . 'cake_test_emails.log');
 		$log = $File->read();
-		$this->assertTrue(strpos($log, $result['headers']) !== false);
-		$this->assertTrue(strpos($log, $result['message']) !== false);
+		$this->assertTrue(strpos((string) $log, (string) $result['headers']) !== false);
+		$this->assertTrue(strpos((string) $log, (string) $result['message']) !== false);
 		$File->delete();
 		CakeLog::drop('email');
 	}
@@ -1421,8 +1421,8 @@ class CakeEmailTest extends CakeTestCase {
 		App::uses('File', 'Utility');
 		$File = new File(TMP . 'cake_test_emails.log');
 		$log = $File->read();
-		$this->assertTrue(strpos($log, $result['headers']) !== false);
-		$this->assertTrue(strpos($log, $result['message']) !== false);
+		$this->assertTrue(strpos((string) $log, (string) $result['headers']) !== false);
+		$this->assertTrue(strpos((string) $log, (string) $result['message']) !== false);
 		$File->delete();
 		CakeLog::drop('email');
 	}
@@ -1623,7 +1623,7 @@ class CakeEmailTest extends CakeTestCase {
 		$result = $this->CakeEmail->send();
 
 		$expected = mb_convert_encoding('ここにあなたの設定した値が入ります: 日本語の差し込み123', 'ISO-2022-JP');
-		$this->assertTrue((bool)strpos($result['message'], $expected));
+		$this->assertTrue((bool)strpos((string) $result['message'], $expected));
 	}
 
 /**
@@ -1647,7 +1647,7 @@ class CakeEmailTest extends CakeTestCase {
 		$this->assertInstanceOf('CakeEmail', $result);
 
 		$result = $this->CakeEmail->send();
-		$this->assertTrue((bool)strpos($result['message'], 'Right now: ' . date('Y-m-d\TH:i:s\Z', $timestamp)));
+		$this->assertTrue((bool)strpos((string) $result['message'], 'Right now: ' . date('Y-m-d\TH:i:s\Z', $timestamp)));
 
 		$result = $this->CakeEmail->helpers();
 		$this->assertEquals(array('Time'), $result);
@@ -2014,8 +2014,8 @@ class CakeEmailTest extends CakeTestCase {
 
 		$result = $this->CakeEmail->send('This is the message');
 
-		$this->assertTrue((bool)strpos($result['headers'], 'Message-ID: '));
-		$this->assertTrue((bool)strpos($result['headers'], 'To: '));
+		$this->assertTrue((bool)strpos((string) $result['headers'], 'Message-ID: '));
+		$this->assertTrue((bool)strpos((string) $result['headers'], 'To: '));
 	}
 
 /**
@@ -2064,8 +2064,8 @@ class CakeEmailTest extends CakeTestCase {
 
 		$result = $this->CakeEmail->send('This is the message');
 
-		$this->assertTrue((bool)strpos($result['headers'], 'Message-ID: '));
-		$this->assertTrue((bool)strpos($result['headers'], 'To: '));
+		$this->assertTrue((bool)strpos((string) $result['headers'], 'Message-ID: '));
+		$this->assertTrue((bool)strpos((string) $result['headers'], 'To: '));
 	}
 
 /**
@@ -2224,11 +2224,11 @@ class CakeEmailTest extends CakeTestCase {
 			if ($message[$i] === $boundary) {
 				$flag = false;
 				$type = '';
-				while (!preg_match('/^$/', $message[$i])) {
-					if (preg_match('/^Content-Type: text\/plain/', $message[$i])) {
+				while (!preg_match('/^$/', (string) $message[$i])) {
+					if (preg_match('/^Content-Type: text\/plain/', (string) $message[$i])) {
 						$type = 'text';
 					}
-					if (preg_match('/^Content-Type: text\/html/', $message[$i])) {
+					if (preg_match('/^Content-Type: text\/html/', (string) $message[$i])) {
 						$type = 'html';
 					}
 					if ($message[$i] === 'Content-Transfer-Encoding: ' . $charset) {

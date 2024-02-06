@@ -267,8 +267,8 @@ class PrototypeEngineHelperTest extends CakeTestCase {
 			'data' => $this->Proto->serializeForm(array('isForm' => false, 'inline' => true)),
 			'dataExpression' => true
 		));
-		$this->assertTrue(strpos($result, '$($("submit").form).serialize()') > 0);
-		$this->assertFalse(strpos($result, 'parameters:function () {$($("submit").form).serialize()}') > 0);
+		$this->assertTrue(strpos((string) $result, '$($("submit").form).serialize()') > 0);
+		$this->assertFalse(strpos((string) $result, 'parameters:function () {$($("submit").form).serialize()}') > 0);
 	}
 
 /**

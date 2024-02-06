@@ -252,7 +252,7 @@ class Postgres extends DboSource {
 					'default' => preg_replace(
 						"/^'(.*)'$/",
 						"$1",
-						preg_replace('/::[\w\s]+/', '', $c->default)
+						preg_replace('/::[\w\s]+/', '', (string) $c->default)
 					),
 					'length' => $length,
 				);
@@ -278,7 +278,7 @@ class Postgres extends DboSource {
 				if (
 					$fields[$c->name]['default'] === 'NULL' ||
 					$c->default === null ||
-					preg_match('/nextval\([\'"]?([\w.]+)/', $c->default, $seq)
+					preg_match('/nextval\([\'"]?([\w.]+)/', (string) $c->default, $seq)
 				) {
 					$fields[$c->name]['default'] = null;
 					if (!empty($seq) && isset($seq[1])) {
@@ -423,13 +423,13 @@ class Postgres extends DboSource {
 		}
 		$count = count($fields);
 
-		if ($count >= 1 && !preg_match('/^\s*COUNT\(\*/', $fields[0])) {
+		if ($count >= 1 && !preg_match('/^\s*COUNT\(\*/', (string) $fields[0])) {
 			$result = array();
 			for ($i = 0; $i < $count; $i++) {
-				if (!preg_match('/^.+\\(.*\\)/', $fields[$i]) && !preg_match('/\s+AS\s+/', $fields[$i])) {
-					if (substr($fields[$i], -1) === '*') {
-						if (strpos($fields[$i], '.') !== false && $fields[$i] != $alias . '.*') {
-							$build = explode('.', $fields[$i]);
+				if (!preg_match('/^.+\\(.*\\)/', (string) $fields[$i]) && !preg_match('/\s+AS\s+/', (string) $fields[$i])) {
+					if (substr((string) $fields[$i], -1) === '*') {
+						if (strpos((string) $fields[$i], '.') !== false && $fields[$i] != $alias . '.*') {
+							$build = explode('.', (string) $fields[$i]);
 							$AssociatedModel = $model->{$build[0]};
 						} else {
 							$AssociatedModel = $model;
@@ -441,19 +441,19 @@ class Postgres extends DboSource {
 					}
 
 					$prepend = '';
-					if (strpos($fields[$i], 'DISTINCT') !== false) {
+					if (strpos((string) $fields[$i], 'DISTINCT') !== false) {
 						$prepend = 'DISTINCT ';
-						$fields[$i] = trim(str_replace('DISTINCT', '', $fields[$i]));
+						$fields[$i] = trim(str_replace('DISTINCT', '', (string) $fields[$i]));
 					}
 
-					if (strrpos($fields[$i], '.') === false) {
+					if (strrpos((string) $fields[$i], '.') === false) {
 						$fields[$i] = $prepend . $this->name($alias) . '.' . $this->name($fields[$i]) . ' AS ' . $this->name($alias . '__' . $fields[$i]);
 					} else {
-						$build = explode('.', $fields[$i]);
+						$build = explode('.', (string) $fields[$i]);
 						$fields[$i] = $prepend . $this->name($build[0]) . '.' . $this->name($build[1]) . ' AS ' . $this->name($build[0] . '__' . $build[1]);
 					}
 				} else {
-					$fields[$i] = preg_replace_callback('/\(([\s\.\w]+)\)/', array(&$this, '_quoteFunctionField'), $fields[$i]);
+					$fields[$i] = preg_replace_callback('/\(([\s\.\w]+)\)/', array(&$this, '_quoteFunctionField'), (string) $fields[$i]);
 				}
 				$result[] = $fields[$i];
 			}
@@ -514,7 +514,7 @@ class Postgres extends DboSource {
 				if ($key['indisprimary']) {
 					$key['relname'] = 'PRIMARY';
 				}
-				preg_match('/\(([^\)]+)\)/', $key['statement'], $indexColumns);
+				preg_match('/\(([^\)]+)\)/', (string) $key['statement'], $indexColumns);
 				$parsedColumn = $indexColumns[1];
 				if (strpos($indexColumns[1], ',') !== false) {
 					$parsedColumn = explode(', ', $indexColumns[1]);
@@ -974,7 +974,7 @@ class Postgres extends DboSource {
 				extract($data);
 
 				foreach ($indexes as $i => $index) {
-					if (preg_match('/PRIMARY KEY/', $index)) {
+					if (preg_match('/PRIMARY KEY/', (string) $index)) {
 						unset($indexes[$i]);
 						$columns[] = $index;
 						break;

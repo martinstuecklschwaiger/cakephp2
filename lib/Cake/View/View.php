@@ -420,7 +420,7 @@ class View extends CakeObject {
 
 		if (empty($options['ignoreMissing'])) {
 			list ($plugin, $name) = pluginSplit($name, true);
-			$name = str_replace('/', DS, $name);
+			$name = str_replace('/', DS, (string) $name);
 			$file = $plugin . 'Elements' . DS . $name . $this->ext;
 			trigger_error(__d('cake_dev', 'Element Not Found: %s', $file), E_USER_NOTICE);
 		}
@@ -1008,13 +1008,13 @@ class View extends CakeObject {
 		$name = str_replace('/', DS, $name);
 		list($plugin, $name) = $this->pluginSplit($name);
 
-		if (strpos($name, DS) === false && $name[0] !== '.') {
+		if (strpos((string) $name, DS) === false && $name[0] !== '.') {
 			$name = $this->viewPath . DS . $subDir . Inflector::underscore($name);
-		} elseif (strpos($name, DS) !== false) {
+		} elseif (strpos((string) $name, DS) !== false) {
 			if ($name[0] === DS || $name[1] === ':') {
-				$name = trim($name, DS);
+				$name = trim((string) $name, DS);
 			} elseif ($name[0] === '.') {
-				$name = substr($name, 3);
+				$name = substr((string) $name, 3);
 			} elseif (!$plugin || $this->viewPath !== $this->name) {
 				$name = $this->viewPath . DS . $subDir . $name;
 			}
@@ -1153,7 +1153,7 @@ class View extends CakeObject {
 			$theme = Inflector::camelize($this->theme);
 			$themePaths = array();
 			foreach ($paths as $path) {
-				if (strpos($path, DS . 'Plugin' . DS) === false) {
+				if (strpos((string) $path, DS . 'Plugin' . DS) === false) {
 					if ($plugin) {
 						$themePaths[] = $path . 'Themed' . DS . $theme . DS . 'Plugin' . DS . $plugin . DS;
 					}

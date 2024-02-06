@@ -58,7 +58,7 @@ class DigestAuthentication {
 		if (empty($http->response['header']['WWW-Authenticate'])) {
 			return false;
 		}
-		preg_match_all('@(\w+)=(?:(?:")([^"]+)"|([^\s,$]+))@', $http->response['header']['WWW-Authenticate'], $matches, PREG_SET_ORDER);
+		preg_match_all('@(\w+)=(?:(?:")([^"]+)"|([^\s,$]+))@', (string) $http->response['header']['WWW-Authenticate'], $matches, PREG_SET_ORDER);
 		foreach ($matches as $match) {
 			$authInfo[$match[1]] = $match[2];
 		}
@@ -88,7 +88,7 @@ class DigestAuthentication {
 		}
 
 		$authHeader = 'Digest ';
-		$authHeader .= 'username="' . str_replace(array('\\', '"'), array('\\\\', '\\"'), $authInfo['user']) . '", ';
+		$authHeader .= 'username="' . str_replace(array('\\', '"'), array('\\\\', '\\"'), (string) $authInfo['user']) . '", ';
 		$authHeader .= 'realm="' . $authInfo['realm'] . '", ';
 		$authHeader .= 'nonce="' . $authInfo['nonce'] . '", ';
 		$authHeader .= 'uri="' . $http->request['uri']['path'] . '", ';

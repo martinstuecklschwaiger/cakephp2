@@ -65,7 +65,7 @@ class ApiShell extends AppShell {
 			return $this->out($this->OptionParser->help());
 		}
 
-		$type = strtolower($this->args[0]);
+		$type = strtolower((string) $this->args[0]);
 
 		if (isset($this->paths[$type])) {
 			$path = $this->paths[$type];
@@ -115,7 +115,7 @@ class ApiShell extends AppShell {
 				$this->out($list);
 
 				$methods = array_keys($parsed);
-				while ($number = strtolower($this->in(__d('cake_console', 'Select a number to see the more information about a specific method. q to quit. l to list.'), null, 'q'))) {
+				while ($number = strtolower((string) $this->in(__d('cake_console', 'Select a number to see the more information about a specific method. q to quit. l to list.'), null, 'q'))) {
 					if ($number === 'q') {
 						$this->out(__d('cake_console', 'Done'));
 						return $this->_stop();
@@ -189,8 +189,8 @@ class ApiShell extends AppShell {
 			foreach ($commands as $cmd) {
 				$this->out("{$cmd}\n\n");
 			}
-		} elseif (isset($commands[strtolower($this->args[1])])) {
-			$this->out($commands[strtolower($this->args[1])] . "\n\n");
+		} elseif (isset($commands[strtolower((string) $this->args[1])])) {
+			$this->out($commands[strtolower((string) $this->args[1])] . "\n\n");
 		} else {
 			$this->out(__d('cake_console', 'Command %s not found', $this->args[1]));
 		}

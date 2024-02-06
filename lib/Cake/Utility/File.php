@@ -300,7 +300,7 @@ class File {
  */
 	public function info() {
 		if (!$this->info) {
-			$this->info = pathinfo($this->path);
+			$this->info = pathinfo((string) $this->path);
 		}
 		if (!isset($this->info['filename'])) {
 			$this->info['filename'] = $this->name();
@@ -606,7 +606,7 @@ class File {
 			}
 		}
 
-		$replaced = $this->write(str_replace($search, $replace, $this->read()), 'w', true);
+		$replaced = $this->write(str_replace($search, $replace, (string) $this->read()), 'w', true);
 
 		if ($this->lock !== null) {
 			flock($this->handle, LOCK_UN);

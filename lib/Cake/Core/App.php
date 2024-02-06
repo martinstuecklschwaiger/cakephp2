@@ -471,7 +471,7 @@ class App {
 				if ($dir != APP && is_dir($dir)) {
 					$files = new RegexIterator(new DirectoryIterator($dir), $extension);
 					foreach ($files as $file) {
-						$fileName = basename($file);
+						$fileName = basename((string) $file);
 						if (!$file->isDot() && $fileName[0] !== '.') {
 							$isDir = $file->isDir();
 							if ($isDir && $includeDirectories) {
@@ -540,7 +540,7 @@ class App {
 			return false;
 		}
 
-		$parts = explode('.', static::$_classMap[$className], 2);
+		$parts = explode('.', (string) static::$_classMap[$className], 2);
 		list($plugin, $package) = count($parts) > 1 ? $parts : array(null, current($parts));
 
 		$file = static::_mapped($className, $plugin);
@@ -676,8 +676,8 @@ class App {
 		if ($parent && isset(static::$types[$originalType]['extends'])) {
 			$extends = static::$types[$originalType]['extends'];
 			$extendType = $type;
-			if (strpos($extends, '/') !== false) {
-				$parts = explode('/', $extends);
+			if (strpos((string) $extends, '/') !== false) {
+				$parts = explode('/', (string) $extends);
 				$extends = array_pop($parts);
 				$extendType = implode('/', $parts);
 			}

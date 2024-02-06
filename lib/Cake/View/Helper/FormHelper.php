@@ -373,7 +373,7 @@ class FormHelper extends AppHelper {
 			'action' => null,
 			'url' => null,
 			'default' => true,
-			'encoding' => strtolower(Configure::read('App.encoding')),
+			'encoding' => strtolower((string) Configure::read('App.encoding')),
 			'inputDefaults' => array()
 		);
 		$this->inputDefaults($options['inputDefaults']);
@@ -423,7 +423,7 @@ class FormHelper extends AppHelper {
 			$options['action'] = $options['url'];
 		}
 
-		switch (strtolower($options['type'])) {
+		switch (strtolower((string) $options['type'])) {
 			case 'get':
 				$htmlAttributes['method'] = 'get';
 				break;
@@ -434,13 +434,13 @@ class FormHelper extends AppHelper {
 			case 'put':
 			case 'delete':
 				$append .= $this->hidden('_method', array(
-					'name' => '_method', 'value' => strtoupper($options['type']), 'id' => null,
+					'name' => '_method', 'value' => strtoupper((string) $options['type']), 'id' => null,
 					'secure' => static::SECURE_SKIP
 				));
 			default:
 				$htmlAttributes['method'] = 'post';
 		}
-		$this->requestType = strtolower($options['type']);
+		$this->requestType = strtolower((string) $options['type']);
 
 		$action = null;
 		if ($options['action'] !== false && $options['url'] !== false) {
@@ -694,7 +694,7 @@ class FormHelper extends AppHelper {
 		}
 
 		foreach ($this->_unlockedFields as $unlockField) {
-			$unlockParts = explode('.', $unlockField);
+			$unlockParts = explode('.', (string) $unlockField);
 			if (array_values(array_intersect($field, $unlockParts)) === $unlockParts) {
 				return;
 			}
@@ -975,8 +975,8 @@ class FormHelper extends AppHelper {
 		if ($legend === true) {
 			$actionName = __d('cake', 'New %s');
 			$isEdit = (
-				strpos($this->request->params['action'], 'update') !== false ||
-				strpos($this->request->params['action'], 'edit') !== false
+				strpos((string) $this->request->params['action'], 'update') !== false ||
+				strpos((string) $this->request->params['action'], 'edit') !== false
 			);
 			if ($isEdit) {
 				$actionName = __d('cake', 'Edit %s');
@@ -991,7 +991,7 @@ class FormHelper extends AppHelper {
 				$name = $options;
 				$options = array();
 			}
-			$entity = explode('.', $name);
+			$entity = explode('.', (string) $name);
 			$blacklisted = (
 				is_array($blacklist) &&
 				(in_array($name, $blacklist) || in_array(end($entity), $blacklist))
@@ -1271,7 +1271,7 @@ class FormHelper extends AppHelper {
 				!isset($options['step'])
 			) {
 				if ($type === 'decimal' && isset($fieldDef['length'])) {
-					$decimalPlaces = substr($fieldDef['length'], strpos($fieldDef['length'], ',') + 1);
+					$decimalPlaces = substr((string) $fieldDef['length'], strpos((string) $fieldDef['length'], ',') + 1);
 					$options['step'] = sprintf('%.' . $decimalPlaces . 'F', pow(10, -1 * $decimalPlaces));
 				} elseif ($type === 'float' || $type === 'decimal') {
 					$options['step'] = 'any';
@@ -1437,7 +1437,7 @@ class FormHelper extends AppHelper {
 			) {
 				$firstInput = 'H';
 			} elseif (!empty($options['dateFormat'])) {
-				$firstInput = substr($options['dateFormat'], 0, 1);
+				$firstInput = substr((string) $options['dateFormat'], 0, 1);
 			}
 			switch ($firstInput) {
 				case 'D':
@@ -1827,7 +1827,7 @@ class FormHelper extends AppHelper {
 			$title = h($title);
 		}
 		if (isset($options['name'])) {
-			$name = str_replace(array('[', ']'), array('.', ''), $options['name']);
+			$name = str_replace(array('[', ']'), array('.', ''), (string) $options['name']);
 			$this->_secure($options['secure'], $name);
 		}
 		return $this->Html->useTag('button', $options, $title);
@@ -1904,7 +1904,7 @@ class FormHelper extends AppHelper {
 
 		$requestMethod = 'POST';
 		if (!empty($options['method'])) {
-			$requestMethod = strtoupper($options['method']);
+			$requestMethod = strtoupper((string) $options['method']);
 			unset($options['method']);
 		}
 		if (!empty($options['confirm'])) {
@@ -2025,7 +2025,7 @@ class FormHelper extends AppHelper {
 		}
 
 		if (isset($options['name'])) {
-			$name = str_replace(array('[', ']'), array('.', ''), $options['name']);
+			$name = str_replace(array('[', ']'), array('.', ''), (string) $options['name']);
 			$this->_secure($options['secure'], $name);
 		}
 		unset($options['secure']);
@@ -2297,7 +2297,7 @@ class FormHelper extends AppHelper {
 		$attributes += array('empty' => true, 'value' => null);
 		$attributes = $this->_dateTimeSelected('day', $fieldName, $attributes);
 
-		if (strlen($attributes['value']) > 2) {
+		if (strlen((string) $attributes['value']) > 2) {
 			$date = date_create($attributes['value']);
 			$attributes['value'] = null;
 			if ($date) {
@@ -2353,7 +2353,7 @@ class FormHelper extends AppHelper {
 			}
 		}
 
-		if (strlen($attributes['value']) > 4 || $attributes['value'] === 'now') {
+		if (strlen((string) $attributes['value']) > 4 || $attributes['value'] === 'now') {
 			$date = date_create($attributes['value']);
 			$attributes['value'] = null;
 			if ($date) {
@@ -2393,7 +2393,7 @@ class FormHelper extends AppHelper {
 		$attributes += array('empty' => true, 'value' => null);
 		$attributes = $this->_dateTimeSelected('month', $fieldName, $attributes);
 
-		if (strlen($attributes['value']) > 2) {
+		if (strlen((string) $attributes['value']) > 2) {
 			$date = date_create($attributes['value']);
 			$attributes['value'] = null;
 			if ($date) {
@@ -2438,7 +2438,7 @@ class FormHelper extends AppHelper {
 		$attributes += array('empty' => true, 'value' => null);
 		$attributes = $this->_dateTimeSelected('hour', $fieldName, $attributes);
 
-		if (strlen($attributes['value']) > 2) {
+		if (strlen((string) $attributes['value']) > 2) {
 			try {
 				$date = new DateTime($attributes['value']);
 				if ($format24Hours) {
@@ -2485,7 +2485,7 @@ class FormHelper extends AppHelper {
 		$attributes += array('empty' => true, 'value' => null);
 		$attributes = $this->_dateTimeSelected('min', $fieldName, $attributes);
 
-		if (strlen($attributes['value']) > 2) {
+		if (strlen((string) $attributes['value']) > 2) {
 			$date = date_create($attributes['value']);
 			$attributes['value'] = null;
 			if ($date) {
@@ -3128,7 +3128,7 @@ class FormHelper extends AppHelper {
  */
 	protected function _secureFieldName($options) {
 		if (isset($options['name'])) {
-			preg_match_all('/\[(.*?)\]/', $options['name'], $matches);
+			preg_match_all('/\[(.*?)\]/', (string) $options['name'], $matches);
 			if (isset($matches[1])) {
 				return $matches[1];
 			}
