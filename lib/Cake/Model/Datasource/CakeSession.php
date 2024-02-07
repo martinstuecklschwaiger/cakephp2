@@ -32,6 +32,7 @@ App::uses('Security', 'Utility');
  *
  * @package       Cake.Model.Datasource
  */
+#[\AllowDynamicProperties]
 class CakeSession {
 
 /**

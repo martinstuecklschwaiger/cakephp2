@@ -23,6 +23,7 @@ App::uses('Cache', 'Cache');
  *
  * @package       Cake.Test.Case.Cache.Engine
  */
+#[\AllowDynamicProperties]
 class FileEngineTest extends CakeTestCase {
 
 /**

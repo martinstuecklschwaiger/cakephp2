@@ -25,6 +25,7 @@ App::uses('CakePlugin', 'Core');
  *
  * @package       Cake.Console.Command
  */
+#[\AllowDynamicProperties]
 class UpgradeShell extends AppShell {
 
 /**
@@ -235,7 +236,7 @@ class UpgradeShell extends AppShell {
 		}
 		$helpers = array_merge($pluginHelpers, $helpers);
 		foreach ($helpers as $helper) {
-			$helper = preg_replace('/Helper$/', '', $helper);
+			$helper = preg_replace('/Helper$/', '', (string) $helper);
 			$oldHelper = $helper;
 			$oldHelper[0] = strtolower($oldHelper[0]);
 			$patterns[] = array(
@@ -724,7 +725,7 @@ class UpgradeShell extends AppShell {
 			}
 
 			if ($options['checkFolder'] && !empty($this->_map[$type])) {
-				$folder = str_replace('/', DS, $this->_map[$type]);
+				$folder = str_replace('/', DS, (string) $this->_map[$type]);
 				$new = $base . $folder . DS . $class . '.php';
 			} else {
 				$new = dirname($file) . DS . $class . '.php';
@@ -804,7 +805,7 @@ class UpgradeShell extends AppShell {
 
 		foreach ($patterns as $pattern) {
 			$this->out(__d('cake_console', ' * Updating %s', $pattern[0]), 1, Shell::VERBOSE);
-			$contents = preg_replace($pattern[1], $pattern[2], $contents);
+			$contents = preg_replace($pattern[1], (string) $pattern[2], $contents);
 		}
 
 		$this->out(__d('cake_console', 'Done updating %s', $file), 1);

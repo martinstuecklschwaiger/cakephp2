@@ -48,6 +48,7 @@ App::uses('BaseAuthenticate', 'Controller/Component/Auth');
  * @package       Cake.Controller.Component.Auth
  * @since 2.0
  */
+#[\AllowDynamicProperties]
 class BasicAuthenticate extends BaseAuthenticate {
 
 /**
@@ -86,8 +87,8 @@ class BasicAuthenticate extends BaseAuthenticate {
 		$pass = env('PHP_AUTH_PW');
 		if (!strlen($username)) {
 			$httpAuthorization = $request->header('Authorization');
-			if (strlen($httpAuthorization) > 0 && strpos($httpAuthorization, 'Basic') !== false) {
-				list($username, $pass) = explode(':', base64_decode(substr($httpAuthorization, 6)));
+			if (strlen((string) $httpAuthorization) > 0 && strpos((string) $httpAuthorization, 'Basic') !== false) {
+				list($username, $pass) = explode(':', base64_decode(substr((string) $httpAuthorization, 6)));
 			}
 		}
 

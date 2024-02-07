@@ -23,6 +23,7 @@ App::uses('CakeEvent', 'Event');
 /**
  * Tests the CakeEvent class functionality
  */
+#[\AllowDynamicProperties]
 class CakeEventTest extends CakeTestCase {
 
 /**

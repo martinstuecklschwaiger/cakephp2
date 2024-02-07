@@ -13,6 +13,7 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
+#[\AllowDynamicProperties]
 abstract class BaseShellHelper {
 
 /**

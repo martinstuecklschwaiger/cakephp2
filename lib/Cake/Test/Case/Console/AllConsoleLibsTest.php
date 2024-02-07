@@ -23,6 +23,7 @@
  *
  * @package       Cake.Test.Case.Console
  */
+#[\AllowDynamicProperties]
 class AllConsoleLibsTest extends PHPUnit_Framework_TestSuite {
 
 /**

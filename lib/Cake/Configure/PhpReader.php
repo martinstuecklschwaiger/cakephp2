@@ -26,6 +26,7 @@ App::uses('CakePlugin', 'Core');
  *
  * @package       Cake.Configure
  */
+#[\AllowDynamicProperties]
 class PhpReader implements ConfigReaderInterface {
 
 /**

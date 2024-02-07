@@ -237,11 +237,11 @@ class PrototypeEngineHelper extends JsBaseEngineHelper {
 		$url = '"' . $url . '"';
 		$options = $this->_mapOptions('request', $options);
 		$type = '.Request';
-		if (isset($options['type']) && strtolower($options['type']) === 'json') {
+		if (isset($options['type']) && strtolower((string) $options['type']) === 'json') {
 			unset($options['type']);
 		}
 		if (isset($options['update'])) {
-			$url = '"' . str_replace('#', '', $options['update']) . '", ' . $url;
+			$url = '"' . str_replace('#', '', (string) $options['update']) . '", ' . $url;
 			$type = '.Updater';
 			unset($options['update'], $options['type']);
 		}

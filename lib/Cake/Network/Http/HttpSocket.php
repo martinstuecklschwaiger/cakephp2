@@ -28,6 +28,7 @@ App::uses('Hash', 'Utility');
  *
  * @package       Cake.Network.Http
  */
+#[\AllowDynamicProperties]
 class HttpSocket extends CakeSocket {
 
 /**
@@ -341,7 +342,7 @@ class HttpSocket extends CakeSocket {
 		}
 
 		if (!empty($this->request['body']) && !isset($this->request['header']['Content-Length'])) {
-			$this->request['header']['Content-Length'] = strlen($this->request['body']);
+			$this->request['header']['Content-Length'] = strlen((string) $this->request['body']);
 		}
 		if (isset($this->request['uri']['scheme']) && $this->request['uri']['scheme'] === 'https' && in_array($this->config['protocol'], array(false, 'tcp'))) {
 			$this->config['protocol'] = 'ssl';
@@ -392,7 +393,7 @@ class HttpSocket extends CakeSocket {
 						$inHeader = false;
 					}
 				} else {
-					fwrite($this->_contentResource, $data);
+					fwrite($this->_contentResource, (string) $data);
 					fflush($this->_contentResource);
 				}
 			} else {
@@ -419,7 +420,7 @@ class HttpSocket extends CakeSocket {
 		}
 
 		if ($this->request['redirect'] && $this->response->isRedirect()) {
-			$location = trim($this->response->getHeader('Location'), '=');
+			$location = trim((string) $this->response->getHeader('Location'), '=');
 			$request['uri'] = str_replace('%2F', '/', $location);
 			$request['redirect'] = is_int($this->request['redirect']) ? $this->request['redirect'] - 1 : $this->request['redirect'];
 			$this->response = $this->request($request);
@@ -720,7 +721,7 @@ class HttpSocket extends CakeSocket {
 			return false;
 		}
 
-		$uri['path'] = preg_replace('/^\//', null, $uri['path']);
+		$uri['path'] = preg_replace('/^\//', '', (string) $uri['path']);
 		$uri['query'] = http_build_query($uri['query'], '', '&');
 		$uri['query'] = rtrim($uri['query'], '=');
 		$stripIfEmpty = array(
@@ -947,7 +948,7 @@ class HttpSocket extends CakeSocket {
 				$contents = implode(',', $contents);
 			}
 			foreach ((array)$contents as $content) {
-				$contents = preg_replace("/\r\n(?![\t ])/", "\r\n ", $content);
+				$contents = preg_replace("/\r\n(?![\t ])/", "\r\n ", (string) $content);
 				$field = $this->_escapeToken($field);
 
 				$returnHeader .= $field . ': ' . $contents . "\r\n";

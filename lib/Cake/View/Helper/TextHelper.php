@@ -132,7 +132,7 @@ class TextHelper extends AppHelper {
  * @return string Replaced values.
  */
 	protected function _insertPlaceHolder($matches) {
-		$key = md5($matches[0]);
+		$key = md5((string) $matches[0]);
 		$this->_placeholders[$key] = $matches[0];
 		return $key;
 	}
@@ -148,7 +148,7 @@ class TextHelper extends AppHelper {
 		$replace = array();
 		foreach ($this->_placeholders as $hash => $url) {
 			$link = $url;
-			if (!preg_match('#^[a-z]+\://#', $url)) {
+			if (!preg_match('#^[a-z]+\://#', (string) $url)) {
 				$url = 'http://' . $url;
 			}
 			$replace[$hash] = $this->Html->link($link, $url, $htmlOptions);

@@ -23,6 +23,7 @@ App::uses('CakeTime', 'Utility');
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class CakeTimeTest extends CakeTestCase {
 
 /**
@@ -416,7 +417,7 @@ class CakeTimeTest extends CakeTestCase {
 		date_default_timezone_set('UTC');
 		$result = $this->Time->nice(null, 'America/New_York');
 		$expected = $this->Time->nice(time(), 'America/New_York');
-		$this->assertEquals(substr($expected, 0, -1), substr($result, 0, -1));
+		$this->assertEquals(substr((string) $expected, 0, -1), substr((string) $result, 0, -1));
 
 		$this->_restoreSystemTimezone();
 	}
@@ -1174,7 +1175,7 @@ class CakeTimeTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 
 		$result = $this->Time->i18nFormat($time, '%c');
-		$expected = 'jue 14 ene 2010 13:59:28 ' . utf8_encode(strftime('%Z', $time));
+		$expected = 'jue 14 ene 2010 13:59:28 ' . mb_convert_encoding(strftime('%Z', $time), 'UTF-8', 'ISO-8859-1');
 		$this->assertEquals($expected, $result);
 
 		$result = $this->Time->i18nFormat($time, 'Time is %r, and date is %x');
@@ -1188,7 +1189,7 @@ class CakeTimeTest extends CakeTestCase {
 		$this->assertEquals($expected, $result);
 
 		$result = $this->Time->i18nFormat($time, '%c');
-		$expected = 'mié 13 ene 2010 13:59:28 ' . utf8_encode(strftime('%Z', $time));
+		$expected = 'mié 13 ene 2010 13:59:28 ' . mb_convert_encoding(strftime('%Z', $time), 'UTF-8', 'ISO-8859-1');
 		$this->assertEquals($expected, $result);
 
 		$result = $this->Time->i18nFormat($time, 'Time is %r, and date is %x');

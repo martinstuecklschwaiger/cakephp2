@@ -26,6 +26,7 @@ App::uses('Security', 'Utility');
  *
  * @package       Cake.Console.Command.Task
  */
+#[\AllowDynamicProperties]
 class ProjectTask extends AppShell {
 
 /**
@@ -67,7 +68,7 @@ class ProjectTask extends AppShell {
 		while (!$response && is_dir($project) === true && file_exists($project . 'Config' . 'core.php')) {
 			$prompt = __d('cake_console', '<warning>A project already exists in this location:</warning> %s Overwrite?', $project);
 			$response = $this->in($prompt, array('y', 'n'), 'n');
-			if (strtolower($response) === 'n') {
+			if (strtolower((string) $response) === 'n') {
 				$response = $project = false;
 			}
 		}
@@ -195,7 +196,7 @@ class ProjectTask extends AppShell {
 
 		$looksGood = $this->in(__d('cake_console', 'Look okay?'), array('y', 'n', 'q'), 'y');
 
-		switch (strtolower($looksGood)) {
+		switch (strtolower((string) $looksGood)) {
 			case 'y':
 				$Folder = new Folder($skel);
 				if (!empty($this->params['empty'])) {
@@ -236,10 +237,10 @@ class ProjectTask extends AppShell {
 	public function consolePath($path) {
 		$File = new File($path . 'Console' . DS . 'cake.php');
 		$contents = $File->read();
-		if (preg_match('/(__CAKE_PATH__)/', $contents, $match)) {
-			$root = strpos(CAKE_CORE_INCLUDE_PATH, '/') === 0 ? " DS . '" : "'";
-			$replacement = $root . str_replace(DS, "' . DS . '", trim(CAKE_CORE_INCLUDE_PATH, DS)) . "'";
-			$result = str_replace($match[0], $replacement, $contents);
+		if (preg_match('/(__CAKE_PATH__)/', (string) $contents, $match)) {
+			$root = strpos((string) CAKE_CORE_INCLUDE_PATH, '/') === 0 ? " DS . '" : "'";
+			$replacement = $root . str_replace(DS, "' . DS . '", trim((string) CAKE_CORE_INCLUDE_PATH, DS)) . "'";
+			$result = str_replace($match[0], $replacement, (string) $contents);
 			if ($File->write($result)) {
 				return true;
 			}
@@ -257,9 +258,9 @@ class ProjectTask extends AppShell {
 	public function securitySalt($path) {
 		$File = new File($path . 'Config' . DS . 'core.php');
 		$contents = $File->read();
-		if (preg_match('/([\s]*Configure::write\(\'Security.salt\',[\s\'A-z0-9]*\);)/', $contents, $match)) {
+		if (preg_match('/([\s]*Configure::write\(\'Security.salt\',[\s\'A-z0-9]*\);)/', (string) $contents, $match)) {
 			$string = Security::generateAuthKey();
-			$result = str_replace($match[0], "\t" . 'Configure::write(\'Security.salt\', \'' . $string . '\');', $contents);
+			$result = str_replace($match[0], "\t" . 'Configure::write(\'Security.salt\', \'' . $string . '\');', (string) $contents);
 			if ($File->write($result)) {
 				return true;
 			}
@@ -277,10 +278,10 @@ class ProjectTask extends AppShell {
 	public function securityCipherSeed($path) {
 		$File = new File($path . 'Config' . DS . 'core.php');
 		$contents = $File->read();
-		if (preg_match('/([\s]*Configure::write\(\'Security.cipherSeed\',[\s\'A-z0-9]*\);)/', $contents, $match)) {
+		if (preg_match('/([\s]*Configure::write\(\'Security.cipherSeed\',[\s\'A-z0-9]*\);)/', (string) $contents, $match)) {
 			App::uses('Security', 'Utility');
 			$string = substr(bin2hex(Security::generateAuthKey()), 0, 30);
-			$result = str_replace($match[0], "\t" . 'Configure::write(\'Security.cipherSeed\', \'' . $string . '\');', $contents);
+			$result = str_replace($match[0], "\t" . 'Configure::write(\'Security.cipherSeed\', \'' . $string . '\');', (string) $contents);
 			if ($File->write($result)) {
 				return true;
 			}
@@ -299,8 +300,8 @@ class ProjectTask extends AppShell {
 		$app = basename($dir);
 		$File = new File($dir . 'Config' . DS . 'core.php');
 		$contents = $File->read();
-		if (preg_match('/(\$prefix = \'myapp_\';)/', $contents, $match)) {
-			$result = str_replace($match[0], '$prefix = \'' . $app . '_\';', $contents);
+		if (preg_match('/(\$prefix = \'myapp_\';)/', (string) $contents, $match)) {
+			$result = str_replace($match[0], '$prefix = \'' . $app . '_\';', (string) $contents);
 			return $File->write($result);
 		}
 		return false;
@@ -337,8 +338,8 @@ class ProjectTask extends AppShell {
 	protected function _replaceCorePath($filename, $hardCode) {
 		$contents = file_get_contents($filename);
 
-		$root = strpos(CAKE_CORE_INCLUDE_PATH, '/') === 0 ? " DS . '" : "'";
-		$corePath = $root . str_replace(DS, "' . DS . '", trim(CAKE_CORE_INCLUDE_PATH, DS)) . "'";
+		$root = strpos((string) CAKE_CORE_INCLUDE_PATH, '/') === 0 ? " DS . '" : "'";
+		$corePath = $root . str_replace(DS, "' . DS . '", trim((string) CAKE_CORE_INCLUDE_PATH, DS)) . "'";
 
 		$composer = ROOT . DS . APP_DIR . DS . 'Vendor' . DS . 'cakephp' . DS . 'cakephp' . DS . 'lib';
 		if (file_exists($composer)) {
@@ -365,8 +366,8 @@ class ProjectTask extends AppShell {
 		$path = (empty($this->configPath)) ? CONFIG : $this->configPath;
 		$File = new File($path . 'core.php');
 		$contents = $File->read();
-		if (preg_match('%(\s*[/]*Configure::write\(\'Routing.prefixes\',[\s\'a-z,\)\(]*\);)%', $contents, $match)) {
-			$result = str_replace($match[0], "\n" . 'Configure::write(\'Routing.prefixes\', array(\'' . $name . '\'));', $contents);
+		if (preg_match('%(\s*[/]*Configure::write\(\'Routing.prefixes\',[\s\'a-z,\)\(]*\);)%', (string) $contents, $match)) {
+			$result = str_replace($match[0], "\n" . 'Configure::write(\'Routing.prefixes\', array(\'' . $name . '\'));', (string) $contents);
 			if ($File->write($result)) {
 				Configure::write('Routing.prefixes', array($name));
 				return true;

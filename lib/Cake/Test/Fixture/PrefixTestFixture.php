@@ -21,6 +21,7 @@
  *
  * @package       Cake.Test.Fixture
  */
+#[\AllowDynamicProperties]
 class PrefixTestFixture extends CakeTestFixture {
 
 	public $table = 'prefix_prefix_tests';

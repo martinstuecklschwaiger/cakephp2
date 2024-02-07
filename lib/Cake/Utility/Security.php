@@ -23,6 +23,7 @@ App::uses('CakeText', 'Utility');
  *
  * @package       Cake.Utility
  */
+#[\AllowDynamicProperties]
 class Security {
 
 /**
@@ -109,7 +110,7 @@ class Security {
 		if (empty($type)) {
 			$type = static::$hashType;
 		}
-		$type = strtolower($type);
+		$type = strtolower((string) $type);
 
 		if ($type === 'blowfish') {
 			return static::_crypt($string, $salt);
@@ -276,11 +277,11 @@ class Security {
 		// Backwards compatible decrypt with fixed iv
 		if (substr($text, $ivSize, 2) !== '$$') {
 			$iv = substr($key, strlen($key) - 32, 32);
-			return rtrim(mcrypt_decrypt($algorithm, $cryptKey, $text, $mode, $iv), "\0");
+			return rtrim((string) mcrypt_decrypt($algorithm, $cryptKey, $text, $mode, $iv), "\0");
 		}
 		$iv = substr($text, 0, $ivSize);
 		$text = substr($text, $ivSize + 2);
-		return rtrim(mcrypt_decrypt($algorithm, $cryptKey, $text, $mode, $iv), "\0");
+		return rtrim((string) mcrypt_decrypt($algorithm, $cryptKey, $text, $mode, $iv), "\0");
 	}
 
 /**
@@ -295,7 +296,7 @@ class Security {
 		$salt = str_replace(
 			array('+', '='),
 			'.',
-			base64_encode(sha1(uniqid(Configure::read('Security.salt'), true), true))
+			base64_encode(sha1(uniqid((string) Configure::read('Security.salt'), true), true))
 		);
 		return substr($salt, 0, $length);
 	}
@@ -314,11 +315,11 @@ class Security {
 		}
 
 		$invalidCipher = (
-			strpos($salt, '$2y$') !== 0 &&
-			strpos($salt, '$2x$') !== 0 &&
-			strpos($salt, '$2a$') !== 0
+			strpos((string) $salt, '$2y$') !== 0 &&
+			strpos((string) $salt, '$2x$') !== 0 &&
+			strpos((string) $salt, '$2a$') !== 0
 		);
-		if ($salt === true || $invalidCipher || strlen($salt) < 29) {
+		if ($salt === true || $invalidCipher || strlen((string) $salt) < 29) {
 			trigger_error(__d(
 				'cake_dev',
 				'Invalid salt: %s for %s Please visit http://www.php.net/crypt and read the appropriate section for building %s salts.',
@@ -326,7 +327,7 @@ class Security {
 			), E_USER_WARNING);
 			return '';
 		}
-		return crypt($password, $salt);
+		return crypt($password, (string) $salt);
 	}
 
 /**
@@ -436,7 +437,7 @@ class Security {
 			$plain = mcrypt_decrypt($algorithm, $key, $cipher, $mode, $iv);
 		}
 
-		return rtrim($plain, "\0");
+		return rtrim((string) $plain, "\0");
 	}
 
 }

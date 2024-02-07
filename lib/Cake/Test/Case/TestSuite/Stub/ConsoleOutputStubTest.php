@@ -17,6 +17,7 @@ App::uses("ConsoleOutputStub", "TestSuite/Stub");
 /*
  * ConsoleOutputStub test
  */
+#[\AllowDynamicProperties]
 class ConsoleOutputStubTest extends CakeTestCase {
 
 /**

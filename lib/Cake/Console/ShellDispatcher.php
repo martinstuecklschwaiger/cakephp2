@@ -20,6 +20,7 @@
  *
  * @package       Cake.Console
  */
+#[\AllowDynamicProperties]
 class ShellDispatcher {
 
 /**
@@ -223,7 +224,7 @@ class ShellDispatcher {
 		}
 		$methods = array_diff(get_class_methods($Shell), get_class_methods('Shell'));
 		$added = in_array($command, $methods);
-		$private = substr($command, 0, 1) === '_' && method_exists($Shell, $command);
+		$private = substr((string) $command, 0, 1) === '_' && method_exists($Shell, $command);
 
 		if (!$private) {
 			if ($added) {
@@ -292,7 +293,7 @@ class ShellDispatcher {
 		$params = array_merge($defaults, array_intersect_key($this->params, $defaults));
 		$isWin = false;
 		foreach ($defaults as $default => $value) {
-			if (strpos($params[$default], '\\') !== false) {
+			if (strpos((string) $params[$default], '\\') !== false) {
 				$isWin = true;
 				break;
 			}
@@ -300,7 +301,7 @@ class ShellDispatcher {
 		$params = str_replace('\\', '/', $params);
 
 		if (isset($params['working'])) {
-			$params['working'] = trim($params['working']);
+			$params['working'] = trim((string) $params['working']);
 		}
 
 		if (!empty($params['working']) && (!isset($this->args[0]) || isset($this->args[0]) && $this->args[0][0] !== '.')) {
@@ -308,21 +309,21 @@ class ShellDispatcher {
 				$params['working'] = realpath($params['working']);
 			}
 			if (empty($this->params['app']) && $params['working'] != $params['root']) {
-				$params['root'] = dirname($params['working']);
-				$params['app'] = basename($params['working']);
+				$params['root'] = dirname((string) $params['working']);
+				$params['app'] = basename((string) $params['working']);
 			} else {
 				$params['root'] = $params['working'];
 			}
 		}
 
 		if ($this->_isAbsolutePath($params['app'])) {
-			$params['root'] = dirname($params['app']);
-		} elseif (strpos($params['app'], '/')) {
-			$params['root'] .= '/' . dirname($params['app']);
+			$params['root'] = dirname((string) $params['app']);
+		} elseif (strpos((string) $params['app'], '/')) {
+			$params['root'] .= '/' . dirname((string) $params['app']);
 		}
 		$isWindowsAppPath = $this->_isWindowsPath($params['app']);
-		$params['app'] = basename($params['app']);
-		$params['working'] = rtrim($params['root'], '/');
+		$params['app'] = basename((string) $params['app']);
+		$params['working'] = rtrim((string) $params['root'], '/');
 		if (!$isWin || !preg_match('/^[A-Z]:$/i', $params['app'])) {
 			$params['working'] .= '/' . $params['app'];
 		}

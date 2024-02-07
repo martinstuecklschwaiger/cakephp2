@@ -28,6 +28,7 @@ require_once dirname(dirname(dirname(dirname(__FILE__)))) . DS . 'Model' . DS . 
  *
  * @package       Cake.Test.Case.Controller.Component.Acl
  */
+#[\AllowDynamicProperties]
 class AclNodeTwoTestBase extends AclNode {
 
 /**
@@ -50,6 +51,7 @@ class AclNodeTwoTestBase extends AclNode {
  *
  * @package       Cake.Test.Case.Controller.Component.Acl
  */
+#[\AllowDynamicProperties]
 class AroTwoTest extends AclNodeTwoTestBase {
 
 /**
@@ -79,6 +81,7 @@ class AroTwoTest extends AclNodeTwoTestBase {
  *
  * @package       Cake.Test.Case.Controller.Component.Acl
  */
+#[\AllowDynamicProperties]
 class AcoTwoTest extends AclNodeTwoTestBase {
 
 /**
@@ -174,6 +177,7 @@ class DbAclTwoTest extends DbAcl {
  *
  * @package       Cake.Test.Case.Controller.Component.Acl
  */
+#[\AllowDynamicProperties]
 class DbAclTest extends CakeTestCase {
 
 /**

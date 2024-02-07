@@ -26,6 +26,7 @@ require_once dirname(__FILE__) . DS . 'ModelTestBase.php';
 /**
  * Helper class for testing with mocked datasources
  */
+#[\AllowDynamicProperties]
 class TestAuthor extends Author {
 
 	public $hasMany = array(
@@ -108,6 +109,7 @@ class TestPost extends Post {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class ModelWriteTest extends BaseModelTest {
 
 /**
@@ -267,7 +269,7 @@ class ModelWriteTest extends BaseModelTest {
 			array('id', 'title', 'count', 'created', 'updated'),
 			array_keys($result['Uuid'])
 		);
-		$this->assertEquals(36, strlen($result['Uuid']['id']));
+		$this->assertEquals(36, strlen((string) $result['Uuid']['id']));
 	}
 
 /**
@@ -287,7 +289,7 @@ class ModelWriteTest extends BaseModelTest {
 			array('id', 'title', 'count', 'created', 'updated'),
 			array_keys($result['UuidNative'])
 		);
-		$this->assertEquals(36, strlen($result['UuidNative']['id']));
+		$this->assertEquals(36, strlen((string) $result['UuidNative']['id']));
 	}
 
 /**
@@ -309,7 +311,7 @@ class ModelWriteTest extends BaseModelTest {
 			array('id', 'title', 'count', 'created', 'updated'),
 			array_keys($result['Uuid'])
 		);
-		$this->assertEquals(36, strlen($result['Uuid']['id']));
+		$this->assertEquals(36, strlen((string) $result['Uuid']['id']));
 	}
 
 /**
@@ -330,7 +332,7 @@ class ModelWriteTest extends BaseModelTest {
 			array('id', 'title', 'count', 'created', 'updated'),
 			array_keys($result['UuidNative'])
 		);
-		$this->assertEquals(36, strlen($result['UuidNative']['id']));
+		$this->assertEquals(36, strlen((string) $result['UuidNative']['id']));
 	}
 
 /**
@@ -1094,7 +1096,7 @@ class ModelWriteTest extends BaseModelTest {
 			'title' => '',
 			'body' => 'First Article Body'
 		));
-		$result['Article']['title'] = trim($result['Article']['title']);
+		$result['Article']['title'] = trim((string) $result['Article']['title']);
 		$this->assertEquals($expected, $result);
 
 		$TestModel->id = 1;
@@ -2989,7 +2991,7 @@ class ModelWriteTest extends BaseModelTest {
 		$id = $TestModel->id;
 		$result = $TestModel->read(null, $id);
 		$this->assertEquals(1, count($result['Uuiditem']));
-		$this->assertEquals(36, strlen($result['Uuiditem'][0]['UuiditemsUuidportfolio']['id']));
+		$this->assertEquals(36, strlen((string) $result['Uuiditem'][0]['UuiditemsUuidportfolio']['id']));
 	}
 
 /**
@@ -3009,7 +3011,7 @@ class ModelWriteTest extends BaseModelTest {
 		$id = $TestModel->id;
 		$result = $TestModel->read(null, $id);
 		$this->assertEquals(1, count($result['Uuidnativeitem']));
-		$this->assertEquals(36, strlen($result['Uuidnativeitem'][0]['UuidnativeitemsUuidnativeportfolio']['id']));
+		$this->assertEquals(36, strlen((string) $result['Uuidnativeitem'][0]['UuidnativeitemsUuidnativeportfolio']['id']));
 	}
 
 /**

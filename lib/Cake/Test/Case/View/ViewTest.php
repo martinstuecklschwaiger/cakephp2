@@ -224,6 +224,7 @@ class TestBeforeAfterHelper extends Helper {
  *
  * An object with the magic method __toString() for testing with view blocks.
  */
+#[\AllowDynamicProperties]
 class TestObjectWithToString {
 
 	public function __toString() {
@@ -237,6 +238,7 @@ class TestObjectWithToString {
  *
  * An object without the magic method __toString() for testing with view blocks.
  */
+#[\AllowDynamicProperties]
 class TestObjectWithoutToString {
 }
 
@@ -245,6 +247,7 @@ class TestObjectWithoutToString {
  *
  * An event listener to test cakePHP events
  */
+#[\AllowDynamicProperties]
 class TestViewEventListener implements CakeEventListener {
 
 /**
@@ -300,6 +303,7 @@ class TestViewEventListener implements CakeEventListener {
  *
  * @package       Cake.Test.Case.View
  */
+#[\AllowDynamicProperties]
 class ViewTest extends CakeTestCase {
 
 /**

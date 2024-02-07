@@ -27,6 +27,7 @@ App::uses('AclInterface', 'Controller/Component/Acl');
  * @package       Cake.Controller.Component
  * @link https://book.cakephp.org/2.0/en/core-libraries/components/access-control-lists.html
  */
+#[\AllowDynamicProperties]
 class AclComponent extends Component {
 
 /**

@@ -26,6 +26,7 @@ App::uses('CakeBaseReporter', 'TestSuite/Reporter');
  *
  * @package       Cake.Test.Case.TestSuite
  */
+#[\AllowDynamicProperties]
 class HtmlCoverageReportTest extends CakeTestCase {
 
 /**
@@ -122,7 +123,7 @@ class HtmlCoverageReportTest extends CakeTestCase {
 		$this->assertRegExp('/<div class="code-coverage-results" id\="coverage\-myfile\.php-' . md5('myfile.php') . '"/', $result);
 		$this->assertRegExp('/<pre>/', $result);
 		foreach ($file as $i => $line) {
-			$this->assertTrue(strpos($line, $result) !== 0, 'Content is missing ' . $i);
+			$this->assertTrue(strpos($line, (string) $result) !== 0, 'Content is missing ' . $i);
 			$class = 'covered';
 			if (in_array($i + 1, array(5, 9, 2))) {
 				$class = 'uncovered';
@@ -130,7 +131,7 @@ class HtmlCoverageReportTest extends CakeTestCase {
 			if ($i + 1 === 2) {
 				$class .= ' dead';
 			}
-			$this->assertTrue(strpos($class, $result) !== 0, 'Class name is wrong ' . $i);
+			$this->assertTrue(strpos($class, (string) $result) !== 0, 'Class name is wrong ' . $i);
 		}
 	}
 
@@ -170,7 +171,7 @@ class HtmlCoverageReportTest extends CakeTestCase {
 		$this->assertRegExp('/<div class="code-coverage-results" id\="coverage\-myfile\.php-' . md5('myfile.php') . '"/', $result);
 		$this->assertRegExp('/<pre>/', $result);
 		foreach ($file as $i => $line) {
-			$this->assertTrue(strpos($line, $result) !== 0, 'Content is missing ' . $i);
+			$this->assertTrue(strpos($line, (string) $result) !== 0, 'Content is missing ' . $i);
 			$class = 'covered';
 			if (in_array($i + 1, array(5, 9, 2))) {
 				$class = 'uncovered';
@@ -178,7 +179,7 @@ class HtmlCoverageReportTest extends CakeTestCase {
 			if ($i + 1 === 2) {
 				$class .= ' dead';
 			}
-			$this->assertTrue(strpos($class, $result) !== 0, 'Class name is wrong ' . $i);
+			$this->assertTrue(strpos($class, (string) $result) !== 0, 'Class name is wrong ' . $i);
 		}
 	}
 
@@ -207,19 +208,19 @@ class HtmlCoverageReportTest extends CakeTestCase {
 		$result = $this->Coverage->generateDiff('myfile.php', $file, $coverage);
 
 		$this->assertTrue(
-			strpos($result, "title=\"Covered by:\nHtmlCoverageReportTest::testAwesomeness\n\"><span class=\"line-num\">1") !== false,
+			strpos((string) $result, "title=\"Covered by:\nHtmlCoverageReportTest::testAwesomeness\n\"><span class=\"line-num\">1") !== false,
 			'Missing method coverage for line 1'
 		);
 		$this->assertTrue(
-			strpos($result, "title=\"Covered by:\nHtmlCoverageReportTest::testCakeIsSuperior\n\"><span class=\"line-num\">3") !== false,
+			strpos((string) $result, "title=\"Covered by:\nHtmlCoverageReportTest::testCakeIsSuperior\n\"><span class=\"line-num\">3") !== false,
 			'Missing method coverage for line 3'
 		);
 		$this->assertTrue(
-			strpos($result, "title=\"Covered by:\nHtmlCoverageReportTest::testOther\n\"><span class=\"line-num\">4") !== false,
+			strpos((string) $result, "title=\"Covered by:\nHtmlCoverageReportTest::testOther\n\"><span class=\"line-num\">4") !== false,
 			'Missing method coverage for line 4'
 		);
 		$this->assertTrue(
-			strpos($result, "title=\"\"><span class=\"line-num\">5") !== false,
+			strpos((string) $result, "title=\"\"><span class=\"line-num\">5") !== false,
 			'Coverage report is wrong for line 5'
 		);
 	}

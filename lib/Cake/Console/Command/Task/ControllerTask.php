@@ -24,6 +24,7 @@ App::uses('AppModel', 'Model');
  *
  * @package       Cake.Console.Command.Task
  */
+#[\AllowDynamicProperties]
 class ControllerTask extends BakeTask {
 
 /**
@@ -64,7 +65,7 @@ class ControllerTask extends BakeTask {
 			if (!isset($this->connection)) {
 				$this->connection = 'default';
 			}
-			if (strtolower($this->args[0]) === 'all') {
+			if (strtolower((string) $this->args[0]) === 'all') {
 				return $this->all();
 			}
 
@@ -166,13 +167,13 @@ class ControllerTask extends BakeTask {
 		}
 		$doItInteractive = $this->in(implode("\n", $question), array('y', 'n'), 'y');
 
-		if (strtolower($doItInteractive) === 'y') {
+		if (strtolower((string) $doItInteractive) === 'y') {
 			$this->interactive = true;
 			$useDynamicScaffold = $this->in(
 				__d('cake_console', "Would you like to use dynamic scaffolding?"), array('y', 'n'), 'n'
 			);
 
-			if (strtolower($useDynamicScaffold) === 'y') {
+			if (strtolower((string) $useDynamicScaffold) === 'y') {
 				$wannaBakeCrud = 'n';
 				$actions = 'scaffold';
 			} else {
@@ -185,7 +186,7 @@ class ControllerTask extends BakeTask {
 					__d('cake_console', "Would you like to use the FlashComponent to display flash messages?"), array('y', 'n'), 'y'
 				);
 
-				if (strtolower($wannaUseSession) === 'y') {
+				if (strtolower((string) $wannaUseSession) === 'y') {
 					array_push($components, 'Session', 'Flash');
 				}
 				array_unique($components);
@@ -194,12 +195,12 @@ class ControllerTask extends BakeTask {
 			list($wannaBakeCrud, $wannaBakeAdminCrud) = $this->_askAboutMethods();
 		}
 
-		if (strtolower($wannaBakeCrud) === 'y') {
-			$actions = $this->bakeActions($controllerName, null, strtolower($wannaUseSession) === 'y');
+		if (strtolower((string) $wannaBakeCrud) === 'y') {
+			$actions = $this->bakeActions($controllerName, null, strtolower((string) $wannaUseSession) === 'y');
 		}
-		if (strtolower($wannaBakeAdminCrud) === 'y') {
+		if (strtolower((string) $wannaBakeAdminCrud) === 'y') {
 			$admin = $this->Project->getPrefix();
-			$actions .= $this->bakeActions($controllerName, $admin, strtolower($wannaUseSession) === 'y');
+			$actions .= $this->bakeActions($controllerName, $admin, strtolower((string) $wannaUseSession) === 'y');
 		}
 
 		$baked = false;
@@ -207,7 +208,7 @@ class ControllerTask extends BakeTask {
 			$this->confirmController($controllerName, $useDynamicScaffold, $helpers, $components);
 			$looksGood = $this->in(__d('cake_console', 'Look okay?'), array('y', 'n'), 'y');
 
-			if (strtolower($looksGood) === 'y') {
+			if (strtolower((string) $looksGood) === 'y') {
 				$baked = $this->bake($controllerName, $actions, $helpers, $components);
 				if ($baked && $this->_checkUnitTest()) {
 					$this->bakeTest($controllerName);
@@ -253,9 +254,9 @@ class ControllerTask extends BakeTask {
 				$length = count(${$var});
 				foreach (${$var} as $i => $propElement) {
 					if ($i != $length - 1) {
-						$output .= ucfirst($propElement) . ', ';
+						$output .= ucfirst((string) $propElement) . ', ';
 					} else {
-						$output .= ucfirst($propElement);
+						$output .= ucfirst((string) $propElement);
 					}
 				}
 				$this->out($title . "\n\t" . $output);
@@ -407,9 +408,9 @@ class ControllerTask extends BakeTask {
 	protected function _doPropertyChoices($prompt, $example) {
 		$proceed = $this->in($prompt, array('y', 'n'), 'n');
 		$property = array();
-		if (strtolower($proceed) === 'y') {
+		if (strtolower((string) $proceed) === 'y') {
 			$propertyList = $this->in($example);
-			$propertyListTrimmed = str_replace(' ', '', $propertyList);
+			$propertyListTrimmed = str_replace(' ', '', (string) $propertyList);
 			$property = explode(',', $propertyListTrimmed);
 		}
 		return array_filter($property);

@@ -28,6 +28,7 @@ App::uses('CakeText', 'Utility');
  * @package       Cake.Console
  * @since  CakePHP(tm) v 2.0
  */
+#[\AllowDynamicProperties]
 class HelpFormatter {
 
 /**
@@ -165,7 +166,7 @@ class HelpFormatter {
 	protected function _getMaxLength($collection) {
 		$max = 0;
 		foreach ($collection as $item) {
-			$max = (strlen($item->name()) > $max) ? strlen($item->name()) : $max;
+			$max = (strlen((string) $item->name()) > $max) ? strlen((string) $item->name()) : $max;
 		}
 		return $max;
 	}

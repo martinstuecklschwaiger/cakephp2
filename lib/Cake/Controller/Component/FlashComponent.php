@@ -27,6 +27,7 @@ App::uses('CakeSession', 'Model/Datasource');
  *
  * @package       Cake.Controller.Component
  */
+#[\AllowDynamicProperties]
 class FlashComponent extends Component {
 
 /**

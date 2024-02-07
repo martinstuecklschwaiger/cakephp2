@@ -28,6 +28,7 @@ App::uses('ModelBehavior', 'Model');
  * @package       Cake.Model.Behavior
  * @link https://book.cakephp.org/2.0/en/core-libraries/behaviors/containable.html
  */
+#[\AllowDynamicProperties]
 class ContainableBehavior extends ModelBehavior {
 
 /**
@@ -190,7 +191,7 @@ class ContainableBehavior extends ModelBehavior {
 				foreach ($Model->{$type} as $assoc => $data) {
 					if ($Model->useDbConfig === $Model->{$assoc}->useDbConfig && !empty($data['fields'])) {
 						foreach ((array)$data['fields'] as $field) {
-							$query['fields'][] = (strpos($field, '.') === false ? $assoc . '.' : '') . $field;
+							$query['fields'][] = (strpos((string) $field, '.') === false ? $assoc . '.' : '') . $field;
 						}
 					}
 				}
@@ -201,8 +202,8 @@ class ContainableBehavior extends ModelBehavior {
 			foreach ($mandatory[$Model->alias] as $field) {
 				if ($field === '--primaryKey--') {
 					$field = $Model->primaryKey;
-				} elseif (preg_match('/^.+\.\-\-[^-]+\-\-$/', $field)) {
-					list($modelName, $field) = explode('.', $field);
+				} elseif (preg_match('/^.+\.\-\-[^-]+\-\-$/', (string) $field)) {
+					list($modelName, $field) = explode('.', (string) $field);
 					if ($Model->useDbConfig === $Model->{$modelName}->useDbConfig) {
 						$field = $modelName . '.' . (
 							($field === '--primaryKey--') ? $Model->$modelName->primaryKey : $field
@@ -277,11 +278,11 @@ class ContainableBehavior extends ModelBehavior {
 				$name = $children;
 				$children = array();
 			}
-			if (preg_match('/(?<!\.)\(/', $name)) {
-				$name = str_replace('(', '.(', $name);
+			if (preg_match('/(?<!\.)\(/', (string) $name)) {
+				$name = str_replace('(', '.(', (string) $name);
 			}
-			if (strpos($name, '.') !== false) {
-				$chain = explode('.', $name);
+			if (strpos((string) $name, '.') !== false) {
+				$chain = explode('.', (string) $name);
 				$name = array_shift($chain);
 				$children = array(implode('.', $chain) => $children);
 			}
@@ -374,8 +375,16 @@ class ContainableBehavior extends ModelBehavior {
 				foreach ($children as $type => $bindings) {
 					foreach ($bindings as $dependency) {
 						if ($type === 'hasAndBelongsToMany') {
+							//we need this because of the deprecation
+							if($fields === false) {
+								$fields = [];
+							};
 							$fields[$parent][] = '--primaryKey--';
 						} elseif ($type === 'belongsTo') {
+							//we need this because of the deprecation
+							if($fields === false) {
+								$fields = [];
+							};
 							$fields[$parent][] = $dependency . '.--primaryKey--';
 						}
 					}

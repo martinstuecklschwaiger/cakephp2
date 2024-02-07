@@ -24,6 +24,7 @@ App::uses('Model', 'Model');
  *
  * @package       Cake.Console.Command.Task
  */
+#[\AllowDynamicProperties]
 class FixtureTask extends BakeTask {
 
 /**
@@ -121,7 +122,7 @@ class FixtureTask extends BakeTask {
 			if (!isset($this->connection)) {
 				$this->connection = 'default';
 			}
-			if (strtolower($this->args[0]) === 'all') {
+			if (strtolower((string) $this->args[0]) === 'all') {
 				return $this->all();
 			}
 			$model = $this->_modelName($this->args[0]);
@@ -203,7 +204,7 @@ class FixtureTask extends BakeTask {
 		if (!isset($options['records']) && $this->interactive) {
 			$prompt = __d('cake_console', "Would you like to build this fixture with data from %s's table?", $modelName);
 			$fromTable = $this->in($prompt, array('y', 'n'), 'n');
-			if (strtolower($fromTable) === 'y') {
+			if (strtolower((string) $fromTable) === 'y') {
 				$options['fromTable'] = true;
 			}
 		}
@@ -345,7 +346,7 @@ class FixtureTask extends BakeTask {
 					case 'string':
 					case 'binary':
 						$isPrimaryUuid = (
-							isset($fieldInfo['key']) && strtolower($fieldInfo['key']) === 'primary' &&
+							isset($fieldInfo['key']) && strtolower((string) $fieldInfo['key']) === 'primary' &&
 							isset($fieldInfo['length']) && $fieldInfo['length'] == 36
 						);
 						if ($isPrimaryUuid) {

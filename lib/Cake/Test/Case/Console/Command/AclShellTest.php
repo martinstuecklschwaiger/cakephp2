@@ -28,6 +28,7 @@ App::uses('ComponentCollection', 'Controller');
  *
  * @package       Cake.Test.Case.Console.Command
  */
+#[\AllowDynamicProperties]
 class AclShellTest extends CakeTestCase {
 
 /**

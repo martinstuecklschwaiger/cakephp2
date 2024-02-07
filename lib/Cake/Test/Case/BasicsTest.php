@@ -27,6 +27,7 @@ App::uses('Debugger', 'Utility');
  *
  * @package       Cake.Test.Case
  */
+#[\AllowDynamicProperties]
 class BasicsTest extends CakeTestCase {
 
 /**

@@ -27,6 +27,7 @@ require_once dirname(dirname(dirname(__FILE__))) . DS . 'models.php';
  *
  * @package       Cake.Test.Case.Model.Datasource.Database
  */
+#[\AllowDynamicProperties]
 class SqlserverTestDb extends Sqlserver {
 
 /**
@@ -111,6 +112,7 @@ class SqlserverTestDb extends Sqlserver {
  *
  * @package       Cake.Test.Case.Model.Datasource.Database
  */
+#[\AllowDynamicProperties]
 class SqlserverTestModel extends CakeTestModel {
 
 /**
@@ -177,6 +179,7 @@ class SqlserverTestModel extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model.Datasource.Database
  */
+#[\AllowDynamicProperties]
 class SqlserverClientTestModel extends CakeTestModel {
 
 /**
@@ -205,6 +208,7 @@ class SqlserverClientTestModel extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model.Datasource.Database
  */
+#[\AllowDynamicProperties]
 class SqlserverTestResultIterator extends ArrayIterator {
 
 /**
@@ -236,6 +240,7 @@ class SqlserverTestResultIterator extends ArrayIterator {
  *
  * @package       Cake.Test.Case.Model.Datasource.Database
  */
+#[\AllowDynamicProperties]
 class SqlserverTest extends CakeTestCase {
 
 /**
@@ -824,7 +829,7 @@ FROM articles AS [Article]   WHERE 1 = 1  GROUP BY user_id  HAVING COUNT(*) > 10
 WHERE _cake_paging_._cake_page_rownum_ > 15
 ORDER BY _cake_paging_._cake_page_rownum_
 SQL;
-		$this->assertEquals($expected, preg_replace('/^\s+|\s+$/m', '', $sql));
+		$this->assertEquals($expected, preg_replace('/^\s+|\s+$/m', '', (string) $sql));
 	}
 
 /**
@@ -861,6 +866,6 @@ FROM users AS [User]  WITH (UPDLOCK)   WHERE 1 = 1
 WHERE _cake_paging_._cake_page_rownum_ > 15
 ORDER BY _cake_paging_._cake_page_rownum_
 SQL;
-		$this->assertEquals($expected, preg_replace('/^\s+|\s+$/m', '', $sql));
+		$this->assertEquals($expected, preg_replace('/^\s+|\s+$/m', '', (string) $sql));
 	}
 }

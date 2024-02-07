@@ -25,6 +25,7 @@ App::uses('MootoolsEngineHelper', 'View/Helper');
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class MootoolsEngineHelperTest extends CakeTestCase {
 
 /**

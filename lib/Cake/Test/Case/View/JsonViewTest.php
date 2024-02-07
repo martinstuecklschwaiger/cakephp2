@@ -26,6 +26,7 @@ App::uses('JsonView', 'View');
  *
  * @package       Cake.Test.Case.View
  */
+#[\AllowDynamicProperties]
 class JsonViewTest extends CakeTestCase {
 
 /**

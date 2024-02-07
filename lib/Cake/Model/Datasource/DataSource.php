@@ -24,6 +24,7 @@
  * @link          https://book.cakephp.org/2.0/en/models/datasources.html#basic-api-for-datasources
  * @package       Cake.Model.Datasource
  */
+#[\AllowDynamicProperties]
 class DataSource extends CakeObject {
 
 /**

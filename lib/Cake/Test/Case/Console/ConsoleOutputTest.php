@@ -23,6 +23,7 @@ App::uses('ConsoleOutput', 'Console');
  *
  * @package       Cake.Test.Case.Console
  */
+#[\AllowDynamicProperties]
 class ConsoleOutputTest extends CakeTestCase {
 
 /**

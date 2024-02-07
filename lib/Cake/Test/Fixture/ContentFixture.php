@@ -21,6 +21,7 @@
  *
  * @package       Cake.Test.Fixture
  */
+#[\AllowDynamicProperties]
 class ContentFixture extends CakeTestFixture {
 
 	public $table = 'Content';

@@ -53,6 +53,7 @@ App::uses('BasicAuthenticate', 'Controller/Component/Auth');
  * @package       Cake.Controller.Component.Auth
  * @since 2.0
  */
+#[\AllowDynamicProperties]
 class DigestAuthenticate extends BasicAuthenticate {
 
 /**
@@ -102,7 +103,7 @@ class DigestAuthenticate extends BasicAuthenticate {
 			$this->settings['nonce'] = uniqid('');
 		}
 		if (empty($this->settings['opaque'])) {
-			$this->settings['opaque'] = md5($this->settings['realm']);
+			$this->settings['opaque'] = md5((string) $this->settings['realm']);
 		}
 	}
 
@@ -142,8 +143,8 @@ class DigestAuthenticate extends BasicAuthenticate {
 		$digest = env('PHP_AUTH_DIGEST');
 		if (empty($digest) && function_exists('apache_request_headers')) {
 			$headers = apache_request_headers();
-			if (!empty($headers['Authorization']) && substr($headers['Authorization'], 0, 7) === 'Digest ') {
-				$digest = substr($headers['Authorization'], 7);
+			if (!empty($headers['Authorization']) && substr((string) $headers['Authorization'], 0, 7) === 'Digest ') {
+				$digest = substr((string) $headers['Authorization'], 7);
 			}
 		}
 		if (empty($digest)) {

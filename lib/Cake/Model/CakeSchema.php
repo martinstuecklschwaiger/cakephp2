@@ -26,6 +26,7 @@ App::uses('File', 'Utility');
  *
  * @package       Cake.Model
  */
+#[\AllowDynamicProperties]
 class CakeSchema extends CakeObject {
 
 /**
@@ -256,7 +257,7 @@ class CakeSchema extends CakeObject {
 				$db = $Object->getDataSource();
 
 				$fulltable = $table = $db->fullTableName($Object, false, false);
-				if ($prefix && strpos($table, $prefix) !== 0) {
+				if ($prefix && strpos((string) $table, (string) $prefix) !== 0) {
 					continue;
 				}
 				if (!in_array($fulltable, $currentTables)) {
@@ -283,7 +284,7 @@ class CakeSchema extends CakeObject {
 						continue;
 					}
 					$withTable = $db->fullTableName($Object->$class, false, false);
-					if ($prefix && strpos($withTable, $prefix) !== 0) {
+					if ($prefix && strpos((string) $withTable, (string) $prefix) !== 0) {
 						continue;
 					}
 					if (in_array($withTable, $currentTables)) {
@@ -302,7 +303,7 @@ class CakeSchema extends CakeObject {
 		if (!empty($currentTables)) {
 			foreach ($currentTables as $table) {
 				if ($prefix) {
-					if (strpos($table, $prefix) !== 0) {
+					if (strpos((string) $table, (string) $prefix) !== 0) {
 						continue;
 					}
 					$table = $this->_noPrefixTable($prefix, $table);
@@ -420,7 +421,7 @@ class CakeSchema extends CakeObject {
 						$type = $value;
 						$value = array('type' => $type);
 					}
-					$value['type'] = addslashes($value['type']);
+					$value['type'] = addslashes((string) $value['type']);
 					$col = "\t\t'{$field}' => array('type' => '" . $value['type'] . "', ";
 					unset($value['type']);
 					$col .= implode(', ', $this->_values($value));
@@ -625,7 +626,7 @@ class CakeSchema extends CakeObject {
 			if ($Obj->primaryKey === $name && !$hasPrimaryAlready && !isset($value['key'])) {
 				$value['key'] = 'primary';
 			}
-			if (substr($value['type'], 0, 4) !== 'enum') {
+			if (substr((string) $value['type'], 0, 4) !== 'enum') {
 				if (!isset($db->columns[$value['type']])) {
 					trigger_error(__d('cake_dev', 'Schema generation error: invalid column type %s for %s.%s does not exist in DBO', $value['type'], $Obj->name, $name), E_USER_NOTICE);
 					continue;

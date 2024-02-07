@@ -28,6 +28,7 @@ require_once dirname(dirname(dirname(__FILE__))) . DS . 'models.php';
  *
  * @package       Cake.Test.Case.Model.Datasource.Database
  */
+#[\AllowDynamicProperties]
 class MysqlTest extends CakeTestCase {
 
 /**

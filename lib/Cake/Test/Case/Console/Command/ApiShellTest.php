@@ -27,6 +27,7 @@ App::uses('ApiShell', 'Console/Command');
  *
  * @package       Cake.Test.Case.Console.Command
  */
+#[\AllowDynamicProperties]
 class ApiShellTest extends CakeTestCase {
 
 /**

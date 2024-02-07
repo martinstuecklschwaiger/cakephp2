@@ -32,6 +32,7 @@ App::uses('Hash', 'Utility');
  * @property array $pass        Array of passed arguments parsed from the URL.
  * @package       Cake.Network
  */
+#[\AllowDynamicProperties]
 class CakeRequest implements ArrayAccess {
 
 /**
@@ -249,20 +250,20 @@ class CakeRequest implements ArrayAccess {
 		$uri = '';
 		if (!empty($_SERVER['PATH_INFO'])) {
 			return $_SERVER['PATH_INFO'];
-		} elseif (isset($_SERVER['REQUEST_URI']) && strpos($_SERVER['REQUEST_URI'], '://') === false) {
+		} elseif (isset($_SERVER['REQUEST_URI']) && strpos((string) $_SERVER['REQUEST_URI'], '://') === false) {
 			$uri = $_SERVER['REQUEST_URI'];
 		} elseif (isset($_SERVER['REQUEST_URI'])) {
-			$qPosition = strpos($_SERVER['REQUEST_URI'], '?');
-			if ($qPosition !== false && strpos($_SERVER['REQUEST_URI'], '://') > $qPosition) {
+			$qPosition = strpos((string) $_SERVER['REQUEST_URI'], '?');
+			if ($qPosition !== false && strpos((string) $_SERVER['REQUEST_URI'], '://') > $qPosition) {
 				$uri = $_SERVER['REQUEST_URI'];
 			} else {
 				$baseUrl = Configure::read('App.fullBaseUrl');
-				if (substr($_SERVER['REQUEST_URI'], 0, strlen($baseUrl)) === $baseUrl) {
-					$uri = substr($_SERVER['REQUEST_URI'], strlen($baseUrl));
+				if (substr((string) $_SERVER['REQUEST_URI'], 0, strlen((string) $baseUrl)) === $baseUrl) {
+					$uri = substr((string) $_SERVER['REQUEST_URI'], strlen($baseUrl));
 				}
 			}
 		} elseif (isset($_SERVER['PHP_SELF']) && isset($_SERVER['SCRIPT_NAME'])) {
-			$uri = str_replace($_SERVER['SCRIPT_NAME'], '', $_SERVER['PHP_SELF']);
+			$uri = str_replace($_SERVER['SCRIPT_NAME'], '', (string) $_SERVER['PHP_SELF']);
 		} elseif (isset($_SERVER['HTTP_X_REWRITE_URL'])) {
 			$uri = $_SERVER['HTTP_X_REWRITE_URL'];
 		} elseif ($var = env('argv')) {
@@ -271,19 +272,19 @@ class CakeRequest implements ArrayAccess {
 
 		$base = $this->base;
 
-		if (strlen($base) > 0 && strpos($uri, $base) === 0) {
-			$uri = substr($uri, strlen($base));
+		if (strlen($base) > 0 && strpos((string) $uri, $base) === 0) {
+			$uri = substr((string) $uri, strlen($base));
 		}
-		if (strpos($uri, '?') !== false) {
-			list($uri) = explode('?', $uri, 2);
+		if (strpos((string) $uri, '?') !== false) {
+			list($uri) = explode('?', (string) $uri, 2);
 		}
 		if (empty($uri) || $uri === '/' || $uri === '//' || $uri === '/index.php') {
 			$uri = '/';
 		}
 		$endsWithIndex = '/webroot/index.php';
 		$endsWithLength = strlen($endsWithIndex);
-		if (strlen($uri) >= $endsWithLength &&
-			substr($uri, -$endsWithLength) === $endsWithIndex
+		if (strlen((string) $uri) >= $endsWithLength &&
+			substr((string) $uri, -$endsWithLength) === $endsWithIndex
 		) {
 			$uri = '/';
 		}
@@ -337,8 +338,8 @@ class CakeRequest implements ArrayAccess {
 			return $this->base = $base;
 		}
 
-		$file = '/' . basename($baseUrl);
-		$base = dirname($baseUrl);
+		$file = '/' . basename((string) $baseUrl);
+		$base = dirname((string) $baseUrl);
 
 		if ($base === DS || $base === '.') {
 			$base = '';
@@ -587,7 +588,7 @@ class CakeRequest implements ArrayAccess {
  */
 	protected function _headerDetector($detect) {
 		foreach ($detect['header'] as $header => $value) {
-			$header = env('HTTP_' . strtoupper($header));
+			$header = env('HTTP_' . strtoupper((string) $header));
 			if (!is_null($header)) {
 				if (!is_string($value) && !is_bool($value) && is_callable($value)) {
 					return call_user_func($value, $header);
@@ -895,10 +896,10 @@ class CakeRequest implements ArrayAccess {
 		$accept = array();
 		foreach ($raw as $languages) {
 			foreach ($languages as &$lang) {
-				if (strpos($lang, '_')) {
-					$lang = str_replace('_', '-', $lang);
+				if (strpos((string) $lang, '_')) {
+					$lang = str_replace('_', '-', (string) $lang);
 				}
-				$lang = strtolower($lang);
+				$lang = strtolower((string) $lang);
 			}
 			$accept = array_merge($accept, $languages);
 		}
@@ -1116,7 +1117,7 @@ class CakeRequest implements ArrayAccess {
  * @param string $name Name of the key being accessed.
  * @return mixed
  */
-	public function offsetGet($name) {
+	public function offsetGet(mixed $name): mixed {
 		if (isset($this->params[$name])) {
 			return $this->params[$name];
 		}
@@ -1132,11 +1133,11 @@ class CakeRequest implements ArrayAccess {
 /**
  * Array access write implementation
  *
- * @param string $name Name of the key being written
+ * @param mixed $name Name of the key being written
  * @param mixed $value The value being written.
  * @return void
  */
-	public function offsetSet($name, $value) {
+	public function offsetSet(mixed $name, mixed $value): void {
 		$this->params[$name] = $value;
 	}
 
@@ -1146,7 +1147,7 @@ class CakeRequest implements ArrayAccess {
  * @param string $name thing to check.
  * @return bool
  */
-	public function offsetExists($name) {
+	public function offsetExists(mixed $name): bool {
 		if ($name === 'url' || $name === 'data') {
 			return true;
 		}
@@ -1156,10 +1157,10 @@ class CakeRequest implements ArrayAccess {
 /**
  * Array access unset() implementation
  *
- * @param string $name Name to unset.
+ * @param mixed $name Name to unset.
  * @return void
  */
-	public function offsetUnset($name) {
+	public function offsetUnset(mixed $name): void {
 		unset($this->params[$name]);
 	}
 

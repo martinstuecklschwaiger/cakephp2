@@ -23,6 +23,7 @@ App::uses('Validation', 'Utility');
  *
  * @package       Cake.Test.Case.Utility
  */
+#[\AllowDynamicProperties]
 class CustomValidator {
 
 /**
@@ -44,6 +45,7 @@ class CustomValidator {
  *
  * @package       Cake.Test.Case.Utility
  */
+#[\AllowDynamicProperties]
 class TestNlValidation {
 
 /**
@@ -74,6 +76,7 @@ class TestNlValidation {
  *
  * @package       Cake.Test.Case.Utility
  */
+#[\AllowDynamicProperties]
 class TestDeValidation {
 
 /**
@@ -93,6 +96,7 @@ class TestDeValidation {
  *
  * @package       Cake.Test.Case.Utility
  */
+#[\AllowDynamicProperties]
 class ValidationStub extends Validation {
 
 /**
@@ -112,6 +116,7 @@ class ValidationStub extends Validation {
  *
  * @package       Cake.Test.Case.Utility
  */
+#[\AllowDynamicProperties]
 class ValidationTest extends CakeTestCase {
 
 /**
@@ -175,7 +180,7 @@ class ValidationTest extends CakeTestCase {
 		$this->assertTrue(Validation::notBlank('fooo' . chr(243) . 'blabla'));
 		$this->assertTrue(Validation::notBlank('abçďĕʑʘπй'));
 		$this->assertTrue(Validation::notBlank('José'));
-		$this->assertTrue(Validation::notBlank(utf8_decode('José')));
+		$this->assertTrue(Validation::notBlank(mb_convert_encoding('José', 'ISO-8859-1')));
 		$this->assertFalse(Validation::notBlank("\t "));
 		$this->assertFalse(Validation::notBlank(""));
 	}

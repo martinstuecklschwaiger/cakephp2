@@ -21,6 +21,7 @@ App::uses('Security', 'Utility');
  *
  * @package       Cake.Controller.Component.Auth
  */
+#[\AllowDynamicProperties]
 class BlowfishPasswordHasher extends AbstractPasswordHasher {
 
 /**

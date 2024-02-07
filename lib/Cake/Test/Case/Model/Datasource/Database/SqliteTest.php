@@ -27,6 +27,7 @@ require_once dirname(dirname(dirname(__FILE__))) . DS . 'models.php';
  *
  * @package       Cake.Test.Case.Model.Datasource.Database
  */
+#[\AllowDynamicProperties]
 class DboSqliteTestDb extends Sqlite {
 
 /**
@@ -63,6 +64,7 @@ class DboSqliteTestDb extends Sqlite {
  *
  * @package       Cake.Test.Case.Model.Datasource.Database
  */
+#[\AllowDynamicProperties]
 class SqliteTest extends CakeTestCase {
 
 /**

@@ -36,6 +36,7 @@ App::uses('CakeEvent', 'Event');
  * @package       Cake.Controller.Component
  * @link https://book.cakephp.org/2.0/en/core-libraries/components/authentication.html
  */
+#[\AllowDynamicProperties]
 class AuthComponent extends Component {
 
 /**
@@ -282,7 +283,7 @@ class AuthComponent extends Component {
  */
 	public function startup(Controller $controller) {
 		$methods = array_flip(array_map('strtolower', $controller->methods));
-		$action = strtolower($controller->request->params['action']);
+		$action = strtolower((string) $controller->request->params['action']);
 
 		$isMissingAction = (
 			$controller->scaffold === false &&
@@ -323,7 +324,7 @@ class AuthComponent extends Component {
  * @return bool True if action is accessible without authentication else false
  */
 	protected function _isAllowed(Controller $controller) {
-		$action = strtolower($controller->request->params['action']);
+		$action = strtolower((string) $controller->request->params['action']);
 		if (in_array($action, array_map('strtolower', $this->allowedActions))) {
 			return true;
 		}

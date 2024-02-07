@@ -22,6 +22,7 @@
  *
  * @package Cake.Controller.Component.Acl
  */
+#[\AllowDynamicProperties]
 class PhpAcl extends CakeObject implements AclInterface {
 
 /**
@@ -85,8 +86,8 @@ class PhpAcl extends CakeObject implements AclInterface {
 		}
 
 		App::uses('PhpReader', 'Configure');
-		$Reader = new PhpReader(dirname($this->options['config']) . DS);
-		$config = $Reader->read(basename($this->options['config']));
+		$Reader = new PhpReader(dirname((string) $this->options['config']) . DS);
+		$config = $Reader->read(basename((string) $this->options['config']));
 		$this->build($config);
 		$Component->Aco = $this->Aco;
 		$Component->Aro = $this->Aro;
@@ -197,6 +198,7 @@ class PhpAcl extends CakeObject implements AclInterface {
 /**
  * Access Control Object
  */
+#[\AllowDynamicProperties]
 class PhpAco {
 
 /**
@@ -251,9 +253,9 @@ class PhpAco {
 			}
 
 			foreach ($root as $node => $elements) {
-				$pattern = '/^' . str_replace(array_keys(static::$modifiers), array_values(static::$modifiers), $node) . '$/';
+				$pattern = '/^' . str_replace(array_keys(static::$modifiers), array_values(static::$modifiers), (string) $node) . '$/';
 
-				if ($node == $aco[$level] || preg_match($pattern, $aco[$level])) {
+				if ($node == $aco[$level] || preg_match($pattern, (string) $aco[$level])) {
 					// merge allow/denies with $path of current level
 					foreach (array('allow', 'deny') as $policy) {
 						if (!empty($elements[$policy])) {
@@ -361,6 +363,7 @@ class PhpAco {
 /**
  * Access Request Object
  */
+#[\AllowDynamicProperties]
 class PhpAro {
 
 /**
@@ -456,7 +459,7 @@ class PhpAro {
  */
 	public function resolve($aro) {
 		foreach ($this->map as $aroGroup => $map) {
-			list ($model, $field) = explode('/', $map, 2);
+			list ($model, $field) = explode('/', (string) $map, 2);
 			$mapped = '';
 
 			if (is_array($aro)) {

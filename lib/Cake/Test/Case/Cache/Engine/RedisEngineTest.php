@@ -24,6 +24,7 @@ App::uses('RedisEngine', 'Cache/Engine');
  *
  * @package       Cake.Test.Case.Cache.Engine
  */
+#[\AllowDynamicProperties]
 class RedisEngineTest extends CakeTestCase {
 
 /**

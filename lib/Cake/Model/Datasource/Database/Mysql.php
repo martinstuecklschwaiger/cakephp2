@@ -25,6 +25,7 @@ App::uses('DboSource', 'Model/Datasource');
  *
  * @package       Cake.Model.Datasource.Database
  */
+#[\AllowDynamicProperties]
 class Mysql extends DboSource {
 
 /**
@@ -651,7 +652,7 @@ class Mysql extends DboSource {
 				}
 				$name = $this->startQuote . $name . $this->endQuote;
 			}
-			if (isset($value['type']) && strtolower($value['type']) === 'fulltext') {
+			if (isset($value['type']) && strtolower((string) $value['type']) === 'fulltext') {
 				$out .= 'FULLTEXT ';
 			}
 			$out .= 'KEY ' . $name . ' (';
@@ -831,7 +832,7 @@ class Mysql extends DboSource {
  */
 	public function value($data, $column = null, $null = true) {
 		$value = parent::value($data, $column, $null);
-		if (is_numeric($value) && substr($column, 0, 3) === 'set') {
+		if (is_numeric($value) && substr((string) $column, 0, 3) === 'set') {
 			return $this->_connection->quote($value);
 		}
 		return $value;

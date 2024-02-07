@@ -42,6 +42,7 @@ App::uses('CakeTestSuiteCommand', 'TestSuite');
  *
  * @package       Cake.TestSuite
  */
+#[\AllowDynamicProperties]
 class CakeTestSuiteDispatcher {
 
 /**
@@ -95,7 +96,7 @@ class CakeTestSuiteDispatcher {
  */
 	public function __construct() {
 		$this->_baseUrl = $_SERVER['PHP_SELF'];
-		$dir = rtrim(dirname($this->_baseUrl), '\\');
+		$dir = rtrim(dirname((string) $this->_baseUrl), '\\');
 		$this->_baseDir = ($dir === '/') ? $dir : $dir . '/';
 	}
 
@@ -160,7 +161,7 @@ class CakeTestSuiteDispatcher {
 		}
 		$vendors = array_merge(App::path('vendors'), $composerGlobalDir);
 		foreach ($vendors as $vendor) {
-			$vendor = rtrim($vendor, DS);
+			$vendor = rtrim((string) $vendor, DS);
 			if (is_dir($vendor . DS . $phpunitPath)) {
 				ini_set('include_path', $vendor . DS . $phpunitPath . PATH_SEPARATOR . ini_get('include_path'));
 				break;

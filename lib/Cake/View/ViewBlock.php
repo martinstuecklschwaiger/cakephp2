@@ -21,6 +21,7 @@
  *
  * @package Cake.View
  */
+#[\AllowDynamicProperties]
 class ViewBlock {
 
 /**

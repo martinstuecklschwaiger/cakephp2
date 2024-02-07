@@ -195,6 +195,7 @@ class CakeTestFixtureDefaultImportFixture extends CakeTestFixture {
  *
  * @package       Cake.Test.Case.TestSuite
  */
+#[\AllowDynamicProperties]
 class FixtureImportTestModel extends Model {
 
 	public $name = 'FixtureImport';
@@ -205,6 +206,7 @@ class FixtureImportTestModel extends Model {
 
 }
 
+#[\AllowDynamicProperties]
 class FixturePrefixTest extends Model {
 
 	public $name = 'FixturePrefix';
@@ -221,6 +223,7 @@ class FixturePrefixTest extends Model {
  *
  * @package       Cake.Test.Case.TestSuite
  */
+#[\AllowDynamicProperties]
 class CakeTestFixtureTest extends CakeTestCase {
 
 /**

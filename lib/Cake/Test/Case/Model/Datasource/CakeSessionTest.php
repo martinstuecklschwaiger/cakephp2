@@ -25,6 +25,7 @@ App::uses('CacheSession', 'Model/Datasource/Session');
  *
  * @package       Cake.Test.Case.Model.Datasource
  */
+#[\AllowDynamicProperties]
 class TestCakeSession extends CakeSession {
 
 	public static function setUserAgent($value) {
@@ -42,6 +43,7 @@ class TestCakeSession extends CakeSession {
  *
  * @package       Cake.Test.Case.Model.Datasource
  */
+#[\AllowDynamicProperties]
 class TestCacheSession extends CacheSession {
 
 	protected function _writeSession() {
@@ -68,6 +70,7 @@ class TestDatabaseSession extends DatabaseSession {
  *
  * @package       Cake.Test.Case.Model.Datasource
  */
+#[\AllowDynamicProperties]
 class CakeSessionTest extends CakeTestCase {
 
 	protected static $_gcDivisor;

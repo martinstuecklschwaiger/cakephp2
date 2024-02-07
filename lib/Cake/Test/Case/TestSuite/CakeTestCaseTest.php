@@ -25,6 +25,7 @@ App::uses('Model', 'Model');
 /**
  * Secondary Post stub class.
  */
+#[\AllowDynamicProperties]
 class SecondaryPost extends Model {
 
 /**
@@ -42,6 +43,7 @@ class SecondaryPost extends Model {
 /**
  * ConstructorPost test stub.
  */
+#[\AllowDynamicProperties]
 class ConstructorPost extends Model {
 
 /**
@@ -61,6 +63,7 @@ class ConstructorPost extends Model {
  *
  * @package       Cake.Test.Case.TestSuite
  */
+#[\AllowDynamicProperties]
 class CakeTestCaseTest extends CakeTestCase {
 
 /**

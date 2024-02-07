@@ -21,6 +21,7 @@
  *
  * @package       Cake.Test.Fixture
  */
+#[\AllowDynamicProperties]
 class ArmorsPlayerFixture extends CakeTestFixture {
 
 /**

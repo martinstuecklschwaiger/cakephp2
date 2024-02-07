@@ -30,6 +30,7 @@ if (class_exists('HttpResponse')) {
  * @package       Cake.Network.Http
  * @deprecated 3.0.0 This class is deprecated as it has naming conflicts with pecl/http
  */
+#[\AllowDynamicProperties]
 class HttpResponse extends HttpSocketResponse {
 
 }

@@ -28,6 +28,7 @@ App::uses('DataSource', 'Model/Datasource');
  *
  * @package       Cake.Model
  */
+#[\AllowDynamicProperties]
 class ConnectionManager {
 
 /**
@@ -260,9 +261,9 @@ class ConnectionManager {
 		$package = $classname = $plugin = null;
 
 		list($plugin, $classname) = pluginSplit($config['datasource']);
-		if (strpos($classname, '/') !== false) {
-			$package = dirname($classname);
-			$classname = basename($classname);
+		if (strpos((string) $classname, '/') !== false) {
+			$package = dirname((string) $classname);
+			$classname = basename((string) $classname);
 		}
 		return compact('package', 'classname', 'plugin');
 	}

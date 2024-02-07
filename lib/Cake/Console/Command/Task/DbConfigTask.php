@@ -22,6 +22,7 @@ App::uses('AppShell', 'Console/Command');
  *
  * @package       Cake.Console.Command.Task
  */
+#[\AllowDynamicProperties]
 class DbConfigTask extends AppShell {
 
 /**
@@ -96,10 +97,10 @@ class DbConfigTask extends AppShell {
 
 			while (!$name) {
 				$name = $this->in(__d('cake_console', "Name:"), null, 'default');
-				if (preg_match('/[^a-z0-9_]/i', $name)) {
+				if (preg_match('/[^a-z0-9_]/i', (string) $name)) {
 					$name = '';
 					$this->out(__d('cake_console', 'The name may only contain unaccented latin characters, numbers or underscores'));
-				} elseif (preg_match('/^[^a-z_]/i', $name)) {
+				} elseif (preg_match('/^[^a-z_]/i', (string) $name)) {
 					$name = '';
 					$this->out(__d('cake_console', 'The name must start with an unaccented latin character or an underscore'));
 				}
@@ -108,7 +109,7 @@ class DbConfigTask extends AppShell {
 			$datasource = $this->in(__d('cake_console', 'Datasource:'), array('Mysql', 'Postgres', 'Sqlite', 'Sqlserver'), 'Mysql');
 
 			$persistent = $this->in(__d('cake_console', 'Persistent Connection?'), array('y', 'n'), 'n');
-			if (strtolower($persistent) === 'n') {
+			if (strtolower((string) $persistent) === 'n') {
 				$persistent = 'false';
 			} else {
 				$persistent = 'true';
@@ -124,7 +125,7 @@ class DbConfigTask extends AppShell {
 				$port = $this->in(__d('cake_console', 'Port?'), null, 'n');
 			}
 
-			if (strtolower($port) === 'n') {
+			if (strtolower((string) $port) === 'n') {
 				$port = null;
 			}
 
@@ -155,7 +156,7 @@ class DbConfigTask extends AppShell {
 			while (!$prefix) {
 				$prefix = $this->in(__d('cake_console', 'Table Prefix?'), null, 'n');
 			}
-			if (strtolower($prefix) === 'n') {
+			if (strtolower((string) $prefix) === 'n') {
 				$prefix = null;
 			}
 
@@ -163,7 +164,7 @@ class DbConfigTask extends AppShell {
 			while (!$encoding) {
 				$encoding = $this->in(__d('cake_console', 'Table encoding?'), null, 'n');
 			}
-			if (strtolower($encoding) === 'n') {
+			if (strtolower((string) $encoding) === 'n') {
 				$encoding = null;
 			}
 
@@ -173,7 +174,7 @@ class DbConfigTask extends AppShell {
 					$schema = $this->in(__d('cake_console', 'Table schema?'), null, 'n');
 				}
 			}
-			if (strtolower($schema) === 'n') {
+			if (strtolower((string) $schema) === 'n') {
 				$schema = null;
 			}
 
@@ -219,7 +220,7 @@ class DbConfigTask extends AppShell {
 		}
 
 		$this->out(__d('cake_console', "User:         %s", $login));
-		$this->out(__d('cake_console', "Pass:         %s", str_repeat('*', strlen($password))));
+		$this->out(__d('cake_console', "Pass:         %s", str_repeat('*', strlen((string) $password))));
 		$this->out(__d('cake_console', "Database:     %s", $database));
 
 		if ($prefix) {
@@ -237,7 +238,7 @@ class DbConfigTask extends AppShell {
 		$this->hr();
 		$looksGood = $this->in(__d('cake_console', 'Look okay?'), array('y', 'n'), 'y');
 
-		if (strtolower($looksGood) === 'y') {
+		if (strtolower((string) $looksGood) === 'y') {
 			return $config;
 		}
 		return false;
@@ -310,7 +311,7 @@ class DbConfigTask extends AppShell {
 			$config += $this->_defaultConfig;
 			extract($config);
 
-			if (strpos($datasource, 'Database/') === false) {
+			if (strpos((string) $datasource, 'Database/') === false) {
 				$datasource = "Database/{$datasource}";
 			}
 			$out .= "\tpublic \${$name} = array(\n";

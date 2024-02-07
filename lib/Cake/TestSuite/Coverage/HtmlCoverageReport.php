@@ -23,6 +23,7 @@ App::uses('BaseCoverageReport', 'TestSuite/Coverage');
  *
  * @package       Cake.TestSuite.Coverage
  */
+#[\AllowDynamicProperties]
 class HtmlCoverageReport extends BaseCoverageReport {
 
 /**
@@ -101,7 +102,7 @@ HTML;
 				$coveringTests = array();
 				foreach ($coverageData[$lineno] as $test) {
 					$class = (is_array($test) && isset($test['id'])) ? $test['id'] : $test;
-					$testReflection = new ReflectionClass(current(explode('::', $class)));
+					$testReflection = new ReflectionClass(current(explode('::', (string) $class)));
 					$this->_testNames[] = $this->_guessSubjectName($testReflection);
 					$coveringTests[] = $class;
 				}

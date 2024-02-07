@@ -26,6 +26,7 @@ App::uses('ExceptionRenderer', 'Error');
  *
  * @package       Cake.Test.TestApp.Plugin.TestPlugin.Lib.Error
  */
+#[\AllowDynamicProperties]
 class TestPluginExceptionRenderer extends ExceptionRenderer {
 
 /**

@@ -20,6 +20,7 @@
  *
  * @package       Cake.Network.Http
  */
+#[\AllowDynamicProperties]
 class HttpSocketResponse implements ArrayAccess {
 
 /**
@@ -269,26 +270,26 @@ class HttpSocketResponse implements ArrayAccess {
 		}
 
 		preg_match_all("/(.+):(.+)(?:\r\n|\$)/Uis", $header, $matches, PREG_SET_ORDER);
-		$lines = explode("\r\n", $header);
+		$lines = explode("\r\n", (string) $header);
 
 		$header = array();
 		foreach ($lines as $line) {
-			if (strlen($line) === 0) {
+			if (strlen((string) $line) === 0) {
 				continue;
 			}
 			$continuation = false;
-			$first = substr($line, 0, 1);
+			$first = substr((string) $line, 0, 1);
 
 			// Multi-line header
 			if ($first === ' ' || $first === "\t") {
-				$value .= preg_replace("/\s+/", ' ', $line);
+				$value .= preg_replace("/\s+/", ' ', (string) $line);
 				$continuation = true;
-			} elseif (strpos($line, ':') !== false) {
-				list($field, $value) = explode(':', $line, 2);
+			} elseif (strpos((string) $line, ':') !== false) {
+				list($field, $value) = explode(':', (string) $line, 2);
 				$field = $this->_unescapeToken($field);
 			}
 
-			$value = trim($value);
+			$value = trim((string) $value);
 			if (!isset($header[$field]) || $continuation) {
 				$header[$field] = $value;
 			} else {
@@ -312,14 +313,14 @@ class HttpSocketResponse implements ArrayAccess {
 
 		$cookies = array();
 		foreach ((array)$cookieHeader as $cookie) {
-			if (strpos($cookie, '";"') !== false) {
-				$cookie = str_replace('";"', "{__cookie_replace__}", $cookie);
+			if (strpos((string) $cookie, '";"') !== false) {
+				$cookie = str_replace('";"', "{__cookie_replace__}", (string) $cookie);
 				$parts = str_replace("{__cookie_replace__}", '";"', explode(';', $cookie));
 			} else {
-				$parts = preg_split('/\;[ \t]*/', $cookie);
+				$parts = preg_split('/\;[ \t]*/', (string) $cookie);
 			}
 
-			$nameParts = explode('=', array_shift($parts), 2);
+			$nameParts = explode('=', (string) array_shift($parts), 2);
 			if (count($nameParts) < 2) {
 				$nameParts = array('', $nameParts[0]);
 			}
@@ -327,14 +328,14 @@ class HttpSocketResponse implements ArrayAccess {
 			$cookies[$name] = compact('value');
 
 			foreach ($parts as $part) {
-				if (strpos($part, '=') !== false) {
-					list($key, $value) = explode('=', $part);
+				if (strpos((string) $part, '=') !== false) {
+					list($key, $value) = explode('=', (string) $part);
 				} else {
 					$key = $part;
 					$value = true;
 				}
 
-				$key = strtolower($key);
+				$key = strtolower((string) $key);
 				if (!isset($cookies[$name][$key])) {
 					$cookies[$name][$key] = $value;
 				}

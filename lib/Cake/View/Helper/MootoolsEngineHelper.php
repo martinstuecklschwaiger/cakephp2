@@ -239,11 +239,11 @@ class MootoolsEngineHelper extends JsBaseEngineHelper {
 		$options = $this->_mapOptions('request', $options);
 		$type = $data = null;
 		if (isset($options['type']) || isset($options['update'])) {
-			if (isset($options['type']) && strtolower($options['type']) === 'json') {
+			if (isset($options['type']) && strtolower((string) $options['type']) === 'json') {
 				$type = '.JSON';
 			}
 			if (isset($options['update'])) {
-				$options['update'] = str_replace('#', '', $options['update']);
+				$options['update'] = str_replace('#', '', (string) $options['update']);
 				$type = '.HTML';
 			}
 			unset($options['type']);

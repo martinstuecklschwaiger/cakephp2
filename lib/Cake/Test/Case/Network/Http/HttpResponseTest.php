@@ -22,6 +22,7 @@ App::uses('HttpResponse', 'Network/Http');
  *
  * @package       Cake.Test.Case.Network.Http
  */
+#[\AllowDynamicProperties]
 class TestHttpResponse extends HttpResponse {
 
 /**
@@ -82,6 +83,7 @@ class TestHttpResponse extends HttpResponse {
  *
  * @package       Cake.Test.Case.Network.Http
  */
+#[\AllowDynamicProperties]
 class HttpResponseTest extends CakeTestCase {
 
 /**
@@ -116,7 +118,7 @@ class HttpResponseTest extends CakeTestCase {
 		$this->HttpResponse->body = 'other test';
 		$this->assertEquals('other test', $this->HttpResponse->body());
 		$this->assertEquals('other test', (string)$this->HttpResponse);
-		$this->assertTrue(strpos($this->HttpResponse, 'test') > 0);
+		$this->assertTrue(strpos((string) $this->HttpResponse, 'test') > 0);
 
 		$this->HttpResponse->body = null;
 		$this->assertEquals('', (string)$this->HttpResponse);

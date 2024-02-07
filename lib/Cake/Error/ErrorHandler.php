@@ -93,6 +93,7 @@ App::uses('Router', 'Routing');
  * @package       Cake.Error
  * @see ExceptionRenderer for more information on how to customize exception rendering.
  */
+#[\AllowDynamicProperties]
 class ErrorHandler {
 
 /**

@@ -29,6 +29,7 @@ App::uses('CakeText', 'Utility');
  * @package       Cake.Utility
  * @link          https://book.cakephp.org/2.0/en/development/debugging.html#debugger-class
  */
+#[\AllowDynamicProperties]
 class Debugger {
 
 /**
@@ -362,9 +363,9 @@ class Debugger {
 
 		if (strpos($path, APP) === 0) {
 			return str_replace(APP, 'APP' . DS, $path);
-		} elseif (strpos($path, CAKE_CORE_INCLUDE_PATH) === 0) {
+		} elseif (strpos($path, (string) CAKE_CORE_INCLUDE_PATH) === 0) {
 			return str_replace(CAKE_CORE_INCLUDE_PATH, 'CORE', $path);
-		} elseif (strpos($path, ROOT) === 0) {
+		} elseif (strpos($path, (string) ROOT) === 0) {
 			return str_replace(ROOT, 'ROOT', $path);
 		}
 
@@ -487,7 +488,7 @@ class Debugger {
 			case 'float':
 				return '(float) ' . $var;
 			case 'string':
-				if (trim($var) === '') {
+				if (trim((string) $var) === '') {
 					return "''";
 				}
 				return "'" . $var . "'";

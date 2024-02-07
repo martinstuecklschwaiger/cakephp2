@@ -33,6 +33,7 @@ App::uses('BaseAuthenticate', 'Controller/Component/Auth');
  * @since 2.0
  * @see AuthComponent::$authenticate
  */
+#[\AllowDynamicProperties]
 class FormAuthenticate extends BaseAuthenticate {
 
 /**

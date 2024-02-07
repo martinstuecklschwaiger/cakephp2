@@ -30,6 +30,7 @@ App::uses('ConnectionManager', 'Model');
  *
  * @package       Cake.Utility
  */
+#[\AllowDynamicProperties]
 class ClassRegistry {
 
 /**
@@ -160,7 +161,7 @@ class ClassRegistry {
 							if (in_array('test_' . $useDbConfig, $availableDs)) {
 								$useDbConfig = 'test_' . $useDbConfig;
 							}
-							if (strpos($useDbConfig, 'test') === 0) {
+							if (strpos((string) $useDbConfig, 'test') === 0) {
 								$settings['ds'] = $useDbConfig;
 							}
 						}

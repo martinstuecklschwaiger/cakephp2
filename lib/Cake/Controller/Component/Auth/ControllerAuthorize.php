@@ -34,6 +34,7 @@ App::uses('BaseAuthorize', 'Controller/Component/Auth');
  * @since 2.0
  * @see AuthComponent::$authenticate
  */
+#[\AllowDynamicProperties]
 class ControllerAuthorize extends BaseAuthorize {
 
 /**

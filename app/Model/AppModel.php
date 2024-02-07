@@ -29,5 +29,6 @@ App::uses('Model', 'Model');
  *
  * @package       app.Model
  */
+#[\AllowDynamicProperties]
 class AppModel extends Model {
 }

@@ -45,6 +45,7 @@ class TestCakeLog extends CakeLog {
  *
  * @package       Cake.Test.Case.Log.Engine
  */
+#[\AllowDynamicProperties]
 class ConsoleLogTest extends CakeTestCase {
 
 	public function setUp() {

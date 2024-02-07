@@ -25,6 +25,7 @@ App::uses('Hash', 'Utility');
  * @package       Cake.Utility
  * @deprecated 3.0.0 Will be removed in 3.0. Use Hash instead.
  */
+#[\AllowDynamicProperties]
 class Set {
 
 /**
@@ -339,9 +340,9 @@ class Set {
 		do {
 			$token = array_shift($tokens);
 			$conditions = false;
-			if (preg_match_all('/\[([^=]+=\/[^\/]+\/|[^\]]+)\]/', $token, $m)) {
+			if (preg_match_all('/\[([^=]+=\/[^\/]+\/|[^\]]+)\]/', (string) $token, $m)) {
 				$conditions = $m[1];
-				$token = substr($token, 0, strpos($token, '['));
+				$token = substr((string) $token, 0, strpos((string) $token, '['));
 			}
 			$matches = array();
 			foreach ($contexts as $key => $context) {
@@ -412,7 +413,7 @@ class Set {
 							'item' => $item,
 						);
 					}
-				} elseif ($key === $token || (ctype_digit($token) && $key == $token) || $token === '.') {
+				} elseif ($key === $token || (ctype_digit((string) $token) && $key == $token) || $token === '.') {
 					$context['trace'][] = $key;
 					$matches[] = array(
 						'trace' => $context['trace'],
@@ -481,12 +482,12 @@ class Set {
 				}
 				continue;
 			}
-			if (!preg_match('/(.+?)([><!]?[=]|[><])(.*)/', $condition, $match)) {
-				if (ctype_digit($condition)) {
+			if (!preg_match('/(.+?)([><!]?[=]|[><])(.*)/', (string) $condition, $match)) {
+				if (ctype_digit((string) $condition)) {
 					if ($i != $condition) {
 						return false;
 					}
-				} elseif (preg_match_all('/(?:^[0-9]+|(?<=,)[0-9]+)/', $condition, $matches)) {
+				} elseif (preg_match_all('/(?:^[0-9]+|(?<=,)[0-9]+)/', (string) $condition, $matches)) {
 					return in_array($i, $matches[0]);
 				} elseif (!array_key_exists($condition, $data)) {
 					return false;
@@ -501,7 +502,7 @@ class Set {
 			$val = $data[$key];
 
 			if ($op === '=' && $expected && $expected[0] === '/') {
-				return preg_match($expected, $val);
+				return preg_match($expected, (string) $val);
 			}
 			if ($op === '=' && $val != $expected) {
 				return false;
@@ -590,11 +591,11 @@ class Set {
 					}
 				}
 				return $tmp;
-			} elseif (strpos($key, '{') !== false && strpos($key, '}') !== false) {
-				$pattern = substr($key, 1, -1);
+			} elseif (strpos((string) $key, '{') !== false && strpos((string) $key, '}') !== false) {
+				$pattern = substr((string) $key, 1, -1);
 
 				foreach ($data as $j => $val) {
-					if (preg_match('/^' . $pattern . '/s', $j) !== 0) {
+					if (preg_match('/^' . $pattern . '/s', (string) $j) !== 0) {
 						$tmpPath = array_slice($path, $i + 1);
 						if (empty($tmpPath)) {
 							$tmp[$j] = $val;
@@ -1051,8 +1052,8 @@ class Set {
 
 		$return = $idMap = array();
 		$ids = Set::extract($data, $options['idPath']);
-		$idKeys = explode('/', trim($options['idPath'], '/'));
-		$parentKeys = explode('/', trim($options['parentPath'], '/'));
+		$idKeys = explode('/', trim((string) $options['idPath'], '/'));
+		$parentKeys = explode('/', trim((string) $options['parentPath'], '/'));
 
 		foreach ($data as $result) {
 			$result[$options['children']] = array();

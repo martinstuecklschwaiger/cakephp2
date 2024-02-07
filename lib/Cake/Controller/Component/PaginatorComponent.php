@@ -68,6 +68,7 @@ App::uses('Hash', 'Utility');
  * @package       Cake.Controller.Component
  * @link https://book.cakephp.org/2.0/en/core-libraries/components/pagination.html
  */
+#[\AllowDynamicProperties]
 class PaginatorComponent extends Component {
 
 /**
@@ -297,8 +298,8 @@ class PaginatorComponent extends Component {
 
 			$className = null;
 			$name = $this->Controller->uses[0];
-			if (strpos($this->Controller->uses[0], '.') !== false) {
-				list($name, $className) = explode('.', $this->Controller->uses[0]);
+			if (strpos((string) $this->Controller->uses[0], '.') !== false) {
+				list($name, $className) = explode('.', (string) $this->Controller->uses[0]);
 			}
 			if ($className) {
 				return $this->Controller->{$className};
@@ -387,7 +388,7 @@ class PaginatorComponent extends Component {
 		if (isset($options['sort'])) {
 			$direction = null;
 			if (isset($options['direction'])) {
-				$direction = strtolower($options['direction']);
+				$direction = strtolower((string) $options['direction']);
 			}
 			if (!in_array($direction, array('asc', 'desc'))) {
 				$direction = 'asc';
@@ -407,7 +408,7 @@ class PaginatorComponent extends Component {
 			$order = array();
 			foreach ($options['order'] as $key => $value) {
 				if (is_int($key)) {
-					$field = explode(' ', $value);
+					$field = explode(' ', (string) $value);
 					$key = $field[0];
 					$value = count($field) === 2 ? trim($field[1]) : 'asc';
 				}

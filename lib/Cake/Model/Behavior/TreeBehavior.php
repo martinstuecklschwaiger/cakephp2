@@ -29,6 +29,7 @@ App::uses('ModelBehavior', 'Model');
  * @package       Cake.Model.Behavior
  * @link https://book.cakephp.org/2.0/en/core-libraries/behaviors/tree.html
  */
+#[\AllowDynamicProperties]
 class TreeBehavior extends ModelBehavior {
 
 /**
@@ -506,7 +507,7 @@ class TreeBehavior extends ModelBehavior {
 				array_pop($stack);
 				$count--;
 			}
-			$results[$i]['tree_prefix'] = str_repeat($options['spacer'], $count);
+			$results[$i]['tree_prefix'] = str_repeat((string) $options['spacer'], $count);
 			$stack[] = $result[$Model->alias][$right];
 		}
 

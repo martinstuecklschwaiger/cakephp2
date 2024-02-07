@@ -20,6 +20,7 @@ App::uses('AppShell', 'Console/Command');
  *
  * @package       Cake.Console.Command.Task
  */
+#[\AllowDynamicProperties]
 class CommandTask extends AppShell {
 
 /**
@@ -60,7 +61,7 @@ class CommandTask extends AppShell {
  */
 	protected function _appendShells($type, $shells, &$shellList) {
 		foreach ($shells as $shell) {
-			$shellList[$type][] = Inflector::underscore(str_replace('Shell', '', $shell));
+			$shellList[$type][] = Inflector::underscore(str_replace('Shell', '', (string) $shell));
 		}
 	}
 
@@ -133,7 +134,7 @@ class CommandTask extends AppShell {
 	public function getShell($commandName) {
 		list($pluginDot, $name) = pluginSplit($commandName, true);
 
-		if (in_array(strtolower($pluginDot), array('app.', 'core.'))) {
+		if (in_array(strtolower((string) $pluginDot), array('app.', 'core.'))) {
 			$commandName = $name;
 			$pluginDot = '';
 		}

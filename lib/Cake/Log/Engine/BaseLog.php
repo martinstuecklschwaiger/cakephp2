@@ -23,6 +23,7 @@ App::uses('CakeLogInterface', 'Log');
  *
  * @package       Cake.Log.Engine
  */
+#[\AllowDynamicProperties]
 abstract class BaseLog implements CakeLogInterface {
 
 /**

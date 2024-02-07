@@ -24,6 +24,7 @@ App::uses('TestShell', 'Console/Command');
  *
  * @package       Cake.Test.Case.Console.Command
  */
+#[\AllowDynamicProperties]
 class TestTestShell extends TestShell {
 
 	public function mapFileToCase($file, $category, $throwOnMissingFile = true) {
@@ -41,6 +42,7 @@ class TestTestShell extends TestShell {
  *
  * @package       Cake.Test.Case.Console.Command
  */
+#[\AllowDynamicProperties]
 class TestShellTest extends CakeTestCase {
 
 /**

@@ -24,6 +24,7 @@ App::uses('DataSource', 'Model/Datasource');
  *
  * @package       Cake.Test.Case.Model.Datasource
  */
+#[\AllowDynamicProperties]
 class TestSource extends DataSource {
 
 /**
@@ -93,6 +94,7 @@ class TestSource extends DataSource {
  *
  * @package       Cake.Test.Case.Model.Datasource
  */
+#[\AllowDynamicProperties]
 class DataSourceTest extends CakeTestCase {
 
 /**

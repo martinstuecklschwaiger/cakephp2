@@ -25,6 +25,7 @@
  *
  * @package       Cake.Test.Fixture
  */
+#[\AllowDynamicProperties]
 class NumberTreeFixture extends CakeTestFixture {
 
 /**

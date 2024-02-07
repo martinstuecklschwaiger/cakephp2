@@ -28,6 +28,7 @@ App::uses('CakePlugin', 'Core');
  *
  * @package       Cake.TestSuite.Coverage
  */
+#[\AllowDynamicProperties]
 abstract class BaseCoverageReport {
 
 /**
@@ -121,7 +122,7 @@ abstract class BaseCoverageReport {
 	public function filterCoverageDataByPath($path) {
 		$files = array();
 		foreach ($this->_rawCoverage as $fileName => $fileCoverage) {
-			if (strpos($fileName, $path) !== 0) {
+			if (strpos((string) $fileName, $path) !== 0) {
 				continue;
 			}
 			$files[$fileName] = $fileCoverage;

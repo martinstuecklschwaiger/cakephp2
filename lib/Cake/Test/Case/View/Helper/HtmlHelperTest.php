@@ -115,6 +115,7 @@ class Html5TestHelper extends TestHtmlHelper {
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class HtmlHelperTest extends CakeTestCase {
 
 /**
@@ -630,7 +631,7 @@ class HtmlHelperTest extends CakeTestCase {
 		$this->assertRegExp('/^display\s*:\s*none\s*;\s*margin\s*:\s*10px\s*;?$/', $expected);
 
 		$result = $this->Html->style(array('display' => 'none', 'margin' => '10px'), false);
-		$lines = explode("\n", $result);
+		$lines = explode("\n", (string) $result);
 		$this->assertRegExp('/^\s*display\s*:\s*none\s*;\s*$/', $lines[0]);
 		$this->assertRegExp('/^\s*margin\s*:\s*10px\s*;?$/', $lines[1]);
 	}
@@ -700,7 +701,7 @@ class HtmlHelperTest extends CakeTestCase {
 
 		Configure::write('Asset.filter.css', false);
 
-		$result = explode("\n", trim($this->Html->css(array('cake.generic', 'vendor.generic'))));
+		$result = explode("\n", trim((string) $this->Html->css(array('cake.generic', 'vendor.generic'))));
 		$expected['link']['href'] = 'preg:/.*css\/cake\.generic\.css/';
 		$this->assertTags($result[0], $expected);
 		$expected['link']['href'] = 'preg:/.*css\/vendor\.generic\.css/';
@@ -839,7 +840,7 @@ class HtmlHelperTest extends CakeTestCase {
 
 		Configure::write('Asset.filter.css', false);
 
-		$result = explode("\n", trim($this->Html->css(array('TestPlugin.test_plugin_asset', 'TestPlugin.vendor.generic'))));
+		$result = explode("\n", trim((string) $this->Html->css(array('TestPlugin.test_plugin_asset', 'TestPlugin.vendor.generic'))));
 		$expected['link']['href'] = 'preg:/.*test_plugin\/css\/test_plugin_asset\.css/';
 		$this->assertTags($result[0], $expected);
 		$expected['link']['href'] = 'preg:/.*test_plugin\/css\/vendor\.generic\.css/';

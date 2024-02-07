@@ -23,6 +23,7 @@ App::uses('IniReader', 'Configure');
  *
  * @package       Cake.Test.Case.Configure
  */
+#[\AllowDynamicProperties]
 class IniReaderTest extends CakeTestCase {
 
 /**

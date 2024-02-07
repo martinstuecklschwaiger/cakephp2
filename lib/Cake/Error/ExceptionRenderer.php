@@ -54,6 +54,7 @@ App::uses('CakeEvent', 'Event');
  *
  * @package       Cake.Error
  */
+#[\AllowDynamicProperties]
 class ExceptionRenderer {
 
 /**
@@ -294,7 +295,7 @@ class ExceptionRenderer {
 			$this->controller->response->send();
 		} catch (MissingViewException $e) {
 			$attributes = $e->getAttributes();
-			if (isset($attributes['file']) && strpos($attributes['file'], 'error500') !== false) {
+			if (isset($attributes['file']) && strpos((string) $attributes['file'], 'error500') !== false) {
 				$this->_outputMessageSafe('error500');
 			} else {
 				$this->_outputMessage('error500');

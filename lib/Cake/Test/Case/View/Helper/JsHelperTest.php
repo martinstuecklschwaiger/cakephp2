@@ -30,6 +30,7 @@ App::uses('ClassRegistry', 'Utility');
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class JsEncodingObject {
 
 	protected $_title = 'Old thing';
@@ -116,6 +117,7 @@ class OptionEngineHelper extends JsBaseEngineHelper {
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class JsHelperTest extends CakeTestCase {
 
 /**
@@ -372,7 +374,7 @@ class JsHelperTest extends CakeTestCase {
 			'script' => array('type' => 'text/javascript', 'src' => 'preg:/(.)*\.js/'),
 		);
 		$this->assertTags($result, $expected);
-		preg_match('/src="(.*\.js)"/', $result, $filename);
+		preg_match('/src="(.*\.js)"/', (string) $result, $filename);
 		$this->assertTrue(file_exists(WWW_ROOT . $filename[1]));
 		$contents = file_get_contents(WWW_ROOT . $filename[1]);
 		$this->assertRegExp('/one\s=\s1;\ntwo\s=\s2;/', $contents);
@@ -742,6 +744,7 @@ class JsHelperTest extends CakeTestCase {
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class JsBaseEngineTest extends CakeTestCase {
 
 /**

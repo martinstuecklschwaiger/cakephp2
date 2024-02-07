@@ -21,6 +21,7 @@
  *
  * @package       Cake.Cache.Engine
  */
+#[\AllowDynamicProperties]
 class ApcEngine extends CacheEngine {
 
 /**
@@ -145,7 +146,7 @@ class ApcEngine extends CacheEngine {
 		if (class_exists('APCIterator', false)) {
 			$iterator = new APCIterator(
 				'user',
-				'/^' . preg_quote($this->settings['prefix'], '/') . '/',
+				'/^' . preg_quote((string) $this->settings['prefix'], '/') . '/',
 				APC_ITER_NONE
 			);
 			$func($iterator);
@@ -153,7 +154,7 @@ class ApcEngine extends CacheEngine {
 		}
 		$cache = $this->_apcExtension === 'apc' ? apc_cache_info('user') : apcu_cache_info();
 		foreach ($cache['cache_list'] as $key) {
-			if (strpos($key['info'], $this->settings['prefix']) === 0) {
+			if (strpos((string) $key['info'], (string) $this->settings['prefix']) === 0) {
 				$func($key['info']);
 			}
 		}

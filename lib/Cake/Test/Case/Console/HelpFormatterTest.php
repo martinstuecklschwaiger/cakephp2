@@ -24,6 +24,7 @@ App::uses('HelpFormatter', 'Console');
  *
  * @package       Cake.Test.Case.Console
  */
+#[\AllowDynamicProperties]
 class HelpFormatterTest extends CakeTestCase {
 
 /**

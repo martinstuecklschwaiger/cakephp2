@@ -23,6 +23,7 @@
  *
  * @package       Cake.Test.TestApp.Plugin.TestPlugin.Config.Schema
  */
+#[\AllowDynamicProperties]
 class TestPluginAppSchema extends CakeSchema {
 
 	public $name = 'TestPluginApp';

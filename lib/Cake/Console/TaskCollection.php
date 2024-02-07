@@ -24,6 +24,7 @@ App::uses('ObjectCollection', 'Utility');
  *
  * @package       Cake.Console
  */
+#[\AllowDynamicProperties]
 class TaskCollection extends ObjectCollection {
 
 /**
@@ -87,7 +88,7 @@ class TaskCollection extends ObjectCollection {
 		if (!$exists) {
 			throw new MissingTaskException(array(
 				'class' => $taskClass,
-				'plugin' => substr($plugin, 0, -1)
+				'plugin' => substr((string) $plugin, 0, -1)
 			));
 		}
 

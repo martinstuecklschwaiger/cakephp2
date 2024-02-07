@@ -318,7 +318,7 @@ class HtmlHelper extends AppHelper {
  */
 	public function charset($charset = null) {
 		if (empty($charset)) {
-			$charset = strtolower(Configure::read('App.encoding'));
+			$charset = strtolower((string) Configure::read('App.encoding'));
 		}
 		return sprintf($this->_tags['charset'], (!empty($charset) ? $charset : 'utf-8'));
 	}
@@ -477,9 +477,9 @@ class HtmlHelper extends AppHelper {
 			$options = array_diff_key($options, array('fullBase' => null, 'pathPrefix' => null));
 
 			if (Configure::read('Asset.filter.css')) {
-				$pos = strpos($url, Configure::read('App.cssBaseUrl'));
+				$pos = strpos($url, (string) Configure::read('App.cssBaseUrl'));
 				if ($pos !== false) {
-					$url = substr($url, 0, $pos) . 'ccss/' . substr($url, $pos + strlen(Configure::read('App.cssBaseUrl')));
+					$url = substr($url, 0, $pos) . 'ccss/' . substr($url, $pos + strlen((string) Configure::read('App.cssBaseUrl')));
 				}
 			}
 		}
@@ -853,7 +853,7 @@ class HtmlHelper extends AppHelper {
 				throw new InvalidArgumentException(__d('cake', 'Unable to find the requested image to output as base64!'));
 			}
 
-			$base64 = base64_encode($file->read());
+			$base64 = base64_encode((string) $file->read());
 			$type = $file->mime();
 			unset($options['base64']);
 			$path = sprintf('data:%s;base64,%s', $type, $base64);
@@ -1123,7 +1123,7 @@ class HtmlHelper extends AppHelper {
 					);
 				}
 				if (!isset($source['type'])) {
-					$ext = pathinfo($source['src'], PATHINFO_EXTENSION);
+					$ext = pathinfo((string) $source['src'], PATHINFO_EXTENSION);
 					$source['type'] = $this->response->getMimeType($ext);
 				}
 				$source['src'] = $this->assetUrl($source['src'], $options);
@@ -1143,9 +1143,9 @@ class HtmlHelper extends AppHelper {
 			if (is_array($path)) {
 				$mimeType = $path[0]['type'];
 			} else {
-				$mimeType = $this->response->getMimeType(pathinfo($path, PATHINFO_EXTENSION));
+				$mimeType = $this->response->getMimeType(pathinfo((string) $path, PATHINFO_EXTENSION));
 			}
-			if (preg_match('#^video/#', $mimeType)) {
+			if (preg_match('#^video/#', (string) $mimeType)) {
 				$tag = 'video';
 			} else {
 				$tag = 'audio';

@@ -28,6 +28,7 @@ App::uses('CakeEventListener', 'Event');
  *
  * @package       Cake.Model
  */
+#[\AllowDynamicProperties]
 class BehaviorCollection extends ObjectCollection implements CakeEventListener {
 
 /**
@@ -120,7 +121,7 @@ class BehaviorCollection extends ObjectCollection implements CakeEventListener {
 		if (!class_exists($class)) {
 			throw new MissingBehaviorException(array(
 				'class' => $class,
-				'plugin' => substr($plugin, 0, -1)
+				'plugin' => substr((string) $plugin, 0, -1)
 			));
 		}
 

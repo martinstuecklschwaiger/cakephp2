@@ -23,6 +23,7 @@ App::uses('CakeEventListener', 'Event');
  *
  * @package Cake.Routing
  */
+#[\AllowDynamicProperties]
 abstract class DispatcherFilter implements CakeEventListener {
 
 /**

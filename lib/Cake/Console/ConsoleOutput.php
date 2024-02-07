@@ -42,6 +42,7 @@
  *
  * @package       Cake.Console
  */
+#[\AllowDynamicProperties]
 class ConsoleOutput {
 
 /**

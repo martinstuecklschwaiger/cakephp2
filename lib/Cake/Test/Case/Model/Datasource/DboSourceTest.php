@@ -31,6 +31,7 @@ require_once dirname(dirname(__FILE__)) . DS . 'models.php';
  *
  * @package       Cake.Test.Case.Model.Datasource
  */
+#[\AllowDynamicProperties]
 class MockPDO extends PDO {
 
 /**
@@ -46,6 +47,7 @@ class MockPDO extends PDO {
  *
  * @package       Cake.Test.Case.Model.Datasource
  */
+#[\AllowDynamicProperties]
 class MockDataSource extends DataSource {
 }
 
@@ -54,6 +56,7 @@ class MockDataSource extends DataSource {
  *
  * @package       Cake.Test.Case.Model.Datasource
  */
+#[\AllowDynamicProperties]
 class DboTestSource extends DboSource {
 
 	public $nestedSupport = false;
@@ -85,6 +88,7 @@ class DboTestSource extends DboSource {
  *
  * @package       Cake.Test.Case.Model.Datasource
  */
+#[\AllowDynamicProperties]
 class DboSecondTestSource extends DboSource {
 
 	public $startQuote = '_';
@@ -114,6 +118,7 @@ class DboSecondTestSource extends DboSource {
  *
  * @package       Cake.Test.Case.Model.Datasource
  */
+#[\AllowDynamicProperties]
 class DboThirdTestSource extends DboSource {
 
 	public function connect($config = array()) {
@@ -131,6 +136,7 @@ class DboThirdTestSource extends DboSource {
  *
  * @package       Cake.Test.Case.Model.Datasource
  */
+#[\AllowDynamicProperties]
 class DboFourthTestSource extends DboSource {
 
 	public function connect($config = array()) {
@@ -160,6 +166,7 @@ class DboFourthTestSource extends DboSource {
  *
  * @package       Cake.Test.Case.Model.Datasource
  */
+#[\AllowDynamicProperties]
 class DboSourceTest extends CakeTestCase {
 
 /**

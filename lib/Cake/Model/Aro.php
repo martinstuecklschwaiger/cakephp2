@@ -21,6 +21,7 @@ App::uses('AclNode', 'Model');
  *
  * @package       Cake.Model
  */
+#[\AllowDynamicProperties]
 class Aro extends AclNode {
 
 /**

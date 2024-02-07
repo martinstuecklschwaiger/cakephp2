@@ -55,6 +55,7 @@ class ControllerTestAppController extends Controller {
  *
  * @package       Cake.Test.Case.Controller
  */
+#[\AllowDynamicProperties]
 class ControllerPost extends CakeTestModel {
 
 /**
@@ -121,6 +122,7 @@ class ControllerCommentsController extends ControllerTestAppController {
  *
  * @package       Cake.Test.Case.Controller
  */
+#[\AllowDynamicProperties]
 class ControllerComment extends CakeTestModel {
 
 /**
@@ -157,6 +159,7 @@ class ControllerComment extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Controller
  */
+#[\AllowDynamicProperties]
 class ControllerAlias extends CakeTestModel {
 
 /**
@@ -179,6 +182,7 @@ class ControllerAlias extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Controller
  */
+#[\AllowDynamicProperties]
 class NameTest extends CakeTestModel {
 
 /**
@@ -284,6 +288,7 @@ class TestController extends ControllerTestAppController {
  *
  * @package       Cake.Test.Case.Controller
  */
+#[\AllowDynamicProperties]
 class TestComponent extends CakeObject {
 
 /**
@@ -331,6 +336,7 @@ class TestComponent extends CakeObject {
 
 }
 
+#[\AllowDynamicProperties]
 class Test2Component extends TestComponent {
 
 	public $model;
@@ -373,6 +379,7 @@ class AnotherTestController extends ControllerTestAppController {
  *
  * @package       Cake.Test.Case.Controller
  */
+#[\AllowDynamicProperties]
 class ControllerTest extends CakeTestCase {
 
 /**

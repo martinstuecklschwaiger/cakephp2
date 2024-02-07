@@ -29,6 +29,7 @@ App::uses('ConnectionManager', 'Model');
  * @package       Cake.Utility
  * @deprecated    3.0.0 Deprecated since version 2.4
  */
+#[\AllowDynamicProperties]
 class Sanitize {
 
 /**
@@ -52,7 +53,7 @@ class Sanitize {
 
 		$cleaned = array();
 		foreach ($string as $key => $clean) {
-			$cleaned[$key] = preg_replace("/[^{$allow}a-zA-Z0-9]/", '', $clean);
+			$cleaned[$key] = preg_replace("/[^{$allow}a-zA-Z0-9]/", '', (string) $clean);
 		}
 
 		return $cleaned;
@@ -76,7 +77,7 @@ class Sanitize {
 			$start = 2;
 		}
 
-		return substr(substr($string, $start), 0, -1);
+		return substr(substr((string) $string, $start), 0, -1);
 	}
 
 /**

@@ -26,6 +26,7 @@ App::uses("ConsoleOutput", "Console");
  * $helper = new ProgressHelper($output);
  * ```
  */
+#[\AllowDynamicProperties]
 class ConsoleOutputStub extends ConsoleOutput {
 
 /**
@@ -52,7 +53,7 @@ class ConsoleOutputStub extends ConsoleOutput {
 	public function write($message, $newlines = 1) {
 		foreach ((array)$message as $line) {
 			$this->_out[] = $line;
-			$this->_lastWritten = strlen($line);
+			$this->_lastWritten = strlen((string) $line);
 		}
 		$newlines--;
 		while ($newlines > 0) {

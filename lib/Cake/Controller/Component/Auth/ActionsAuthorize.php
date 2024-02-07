@@ -23,6 +23,7 @@ App::uses('BaseAuthorize', 'Controller/Component/Auth');
  * @see AuthComponent::$authenticate
  * @see AclComponent::check()
  */
+#[\AllowDynamicProperties]
 class ActionsAuthorize extends BaseAuthorize {
 
 /**

@@ -72,6 +72,7 @@ App::uses('LogEngineCollection', 'Log');
  * @package       Cake.Log
  * @link https://book.cakephp.org/2.0/en/core-libraries/logging.html#logging
  */
+#[\AllowDynamicProperties]
 class CakeLog {
 
 /**

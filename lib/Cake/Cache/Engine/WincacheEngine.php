@@ -23,6 +23,7 @@
  *
  * @package       Cake.Cache.Engine
  */
+#[\AllowDynamicProperties]
 class WincacheEngine extends CacheEngine {
 
 /**
@@ -135,7 +136,7 @@ class WincacheEngine extends CacheEngine {
 		$cacheKeys = $info['ucache_entries'];
 		unset($info);
 		foreach ($cacheKeys as $key) {
-			if (strpos($key['key_name'], $this->settings['prefix']) === 0) {
+			if (strpos((string) $key['key_name'], (string) $this->settings['prefix']) === 0) {
 				wincache_ucache_delete($key['key_name']);
 			}
 		}

@@ -16,6 +16,7 @@ App::uses('Shell', 'Console');
  *
  * @package       app.Console.Command
  */
+#[\AllowDynamicProperties]
 class AppShell extends Shell {
 
 }

@@ -256,11 +256,11 @@ class PaginatorHelper extends AppHelper {
 		}
 
 		if (isset($options['direction'])) {
-			$dir = strtolower($options['direction']);
+			$dir = strtolower((string) $options['direction']);
 		} elseif (isset($options['order']) && is_array($options['order'])) {
-			$dir = strtolower(current($options['order']));
+			$dir = strtolower((string) current($options['order']));
 		} elseif (isset($params['order']) && is_array($params['order'])) {
-			$dir = strtolower(current($params['order']));
+			$dir = strtolower((string) current($params['order']));
 		}
 
 		if ($dir === 'desc') {
@@ -354,7 +354,7 @@ class PaginatorHelper extends AppHelper {
 
 			$title = __(Inflector::humanize(preg_replace('/_id$/', '', $title)));
 		}
-		$defaultDir = isset($options['direction']) ? strtolower($options['direction']) : 'asc';
+		$defaultDir = isset($options['direction']) ? strtolower((string) $options['direction']) : 'asc';
 		unset($options['direction']);
 
 		$locked = isset($options['lock']) ? $options['lock'] : false;
@@ -698,7 +698,7 @@ class PaginatorHelper extends AppHelper {
 					'%end%' => $end,
 					'%model%' => strtolower(Inflector::humanize(Inflector::tableize($options['model'])))
 				);
-				$out = str_replace(array_keys($map), array_values($map), $options['format']);
+				$out = str_replace(array_keys($map), array_values($map), (string) $options['format']);
 
 				$newKeys = array(
 					'{:page}', '{:pages}', '{:current}', '{:count}', '{:start}', '{:end}', '{:model}'

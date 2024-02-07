@@ -24,6 +24,7 @@ App::uses('CakeTestFixture', 'TestSuite/Fixture');
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class MyAppSchema extends CakeSchema {
 
 /**
@@ -101,6 +102,7 @@ class MyAppSchema extends CakeSchema {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class TestAppSchema extends CakeSchema {
 
 /**
@@ -213,6 +215,7 @@ class TestAppSchema extends CakeSchema {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class SchemaPost extends CakeTestModel {
 
 /**
@@ -242,6 +245,7 @@ class SchemaPost extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class SchemaComment extends CakeTestModel {
 
 /**
@@ -264,6 +268,7 @@ class SchemaComment extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class SchemaTag extends CakeTestModel {
 
 /**
@@ -286,6 +291,7 @@ class SchemaTag extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class SchemaDatatype extends CakeTestModel {
 
 /**
@@ -306,6 +312,7 @@ class SchemaDatatype extends CakeTestModel {
  * @uses          CakeTestModel
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class Testdescribe extends CakeTestModel {
 }
 
@@ -314,6 +321,7 @@ class Testdescribe extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class SchemaCrossDatabase extends CakeTestModel {
 
 /**
@@ -336,6 +344,7 @@ class SchemaCrossDatabase extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class SchemaCrossDatabaseFixture extends CakeTestFixture {
 
 /**
@@ -378,6 +387,7 @@ class SchemaCrossDatabaseFixture extends CakeTestFixture {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class NonConventionalPrimaryKeyFixture extends CakeTestFixture {
 
 /**
@@ -411,6 +421,7 @@ class NonConventionalPrimaryKeyFixture extends CakeTestFixture {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class SchemaPrefixAuthUser extends CakeTestModel {
 
 /**
@@ -433,6 +444,7 @@ class SchemaPrefixAuthUser extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Model
  */
+#[\AllowDynamicProperties]
 class CakeSchemaTest extends CakeTestCase {
 
 /**
@@ -1154,11 +1166,11 @@ class CakeSchemaTest extends CakeTestCase {
 		$col = $Schema->tables['testdescribes']['int_null'];
 		$col['name'] = 'int_null';
 		$column = $this->db->buildColumn($col);
-		$this->assertRegExp('/' . preg_quote($column, '/') . '/', $sql);
+		$this->assertRegExp('/' . preg_quote((string) $column, '/') . '/', $sql);
 
 		$col = $Schema->tables['testdescribes']['int_not_null'];
 		$col['name'] = 'int_not_null';
 		$column = $this->db->buildColumn($col);
-		$this->assertRegExp('/' . preg_quote($column, '/') . '/', $sql);
+		$this->assertRegExp('/' . preg_quote((string) $column, '/') . '/', $sql);
 	}
 }

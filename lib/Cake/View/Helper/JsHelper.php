@@ -209,7 +209,7 @@ class JsHelper extends AppHelper {
 		unset($opts['onDomReady'], $opts['cache'], $opts['clear']);
 
 		if ($options['cache'] && $options['inline']) {
-			$filename = md5($script);
+			$filename = md5((string) $script);
 			$path = WWW_ROOT . Configure::read('App.jsBaseUrl');
 			if (file_exists($path . $filename . '.js')
 				|| cache(str_replace(WWW_ROOT, '', $path) . $filename . '.js', $script, '+999 days', 'public')

@@ -21,5 +21,6 @@
  *
  * @package       Cake.Test.TestApp.Plugin.TestPlugin.Vendor.sample
  */
+#[\AllowDynamicProperties]
 class SamplePluginClassTestName {
 }

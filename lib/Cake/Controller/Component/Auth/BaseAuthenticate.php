@@ -21,6 +21,7 @@ App::uses('CakeEventListener', 'Event');
  *
  * @package       Cake.Controller.Component.Auth
  */
+#[\AllowDynamicProperties]
 abstract class BaseAuthenticate implements CakeEventListener {
 
 /**

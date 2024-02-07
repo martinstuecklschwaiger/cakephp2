@@ -22,6 +22,7 @@ App::uses('CakeRequest', 'Network');
  *
  * @package       Cake.Test.Case.Network
  */
+#[\AllowDynamicProperties]
 class CakeResponseTest extends CakeTestCase {
 
 /**

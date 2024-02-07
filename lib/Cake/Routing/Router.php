@@ -38,6 +38,7 @@ App::uses('CakeRoute', 'Routing/Route');
  *
  * @package       Cake.Routing
  */
+#[\AllowDynamicProperties]
 class Router {
 
 /**
@@ -363,7 +364,7 @@ class Router {
 		}
 		$routeClass = static::$_routeClass;
 		if (isset($options['routeClass'])) {
-			if (strpos($options['routeClass'], '.') === false) {
+			if (strpos((string) $options['routeClass'], '.') === false) {
 				$routeClass = $options['routeClass'];
 			} else {
 				list(, $routeClass) = pluginSplit($options['routeClass'], true);
@@ -540,10 +541,10 @@ class Router {
 		$prefix = $options['prefix'];
 		$connectOptions = $options['connectOptions'];
 		unset($options['connectOptions']);
-		if (strpos($prefix, '/') !== 0) {
+		if (strpos((string) $prefix, '/') !== 0) {
 			$prefix = '/' . $prefix;
 		}
-		if (substr($prefix, -1) !== '/') {
+		if (substr((string) $prefix, -1) !== '/') {
 			$prefix .= '/';
 		}
 
@@ -647,7 +648,7 @@ class Router {
 					$ext = $match;
 				} else {
 					foreach (static::$_validExtensions as $name) {
-						if (strcasecmp($name, $match) === 0) {
+						if (strcasecmp((string) $name, $match) === 0) {
 							$url = substr($url, 0, strpos($url, '.' . $name));
 							$ext = $match;
 							break;
@@ -894,8 +895,8 @@ class Router {
 				} elseif (isset($url[$prefix]) && !$url[$prefix]) {
 					unset($url[$prefix]);
 				}
-				if (isset($url[$prefix]) && strpos($url['action'], $prefix . '_') === 0) {
-					$url['action'] = substr($url['action'], strlen($prefix) + 1);
+				if (isset($url[$prefix]) && strpos((string) $url['action'], $prefix . '_') === 0) {
+					$url['action'] = substr((string) $url['action'], strlen((string) $prefix) + 1);
 				}
 			}
 
@@ -909,7 +910,7 @@ class Router {
 				$url = $route->persistParams($url, $params);
 
 				if ($match = $route->match($url)) {
-					$output = trim($match, '/');
+					$output = trim((string) $match, '/');
 					break;
 				}
 				$url = $originalUrl;
@@ -1005,8 +1006,8 @@ class Router {
 		list($args, $named) = array(Hash::filter($args), Hash::filter($named));
 		foreach (static::$_prefixes as $prefix) {
 			$prefixed = $prefix . '_';
-			if (!empty($url[$prefix]) && strpos($url['action'], $prefixed) === 0) {
-				$url['action'] = substr($url['action'], strlen($prefixed) * -1);
+			if (!empty($url[$prefix]) && strpos((string) $url['action'], $prefixed) === 0) {
+				$url['action'] = substr((string) $url['action'], strlen($prefixed) * -1);
 				break;
 			}
 		}
@@ -1038,10 +1039,10 @@ class Router {
 				if (is_array($value)) {
 					$flattend = Hash::flatten($value, '%5D%5B');
 					foreach ($flattend as $namedKey => $namedValue) {
-						$output .= '/' . $name . "%5B{$namedKey}%5D" . static::$_namedConfig['separator'] . rawurlencode($namedValue);
+						$output .= '/' . $name . "%5B{$namedKey}%5D" . static::$_namedConfig['separator'] . rawurlencode((string) $namedValue);
 					}
 				} else {
-					$output .= '/' . $name . static::$_namedConfig['separator'] . rawurlencode($value);
+					$output .= '/' . $name . static::$_namedConfig['separator'] . rawurlencode((string) $value);
 				}
 			}
 		}
@@ -1073,7 +1074,7 @@ class Router {
 			$out = $q;
 			$q = $extra;
 		}
-		$addition = http_build_query($q, null, $join);
+		$addition = http_build_query($q, '', $join);
 
 		if ($out && $addition && substr($out, strlen($join) * -1, strlen($join)) !== $join) {
 			$out .= $join;

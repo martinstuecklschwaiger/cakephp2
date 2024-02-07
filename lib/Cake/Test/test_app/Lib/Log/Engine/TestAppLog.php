@@ -23,6 +23,7 @@ App::uses('BaseLog', 'Log/Engine');
  *
  * @package       Cake.Test.TestApp.Lib.Log.Engine
  */
+#[\AllowDynamicProperties]
 class TestAppLog extends BaseLog {
 
 	public function write($type, $message) {

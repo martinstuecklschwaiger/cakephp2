@@ -22,6 +22,7 @@
  * @see ConsoleOptionParser::addArgument()
  * @package       Cake.Console
  */
+#[\AllowDynamicProperties]
 class ConsoleInputArgument {
 
 /**

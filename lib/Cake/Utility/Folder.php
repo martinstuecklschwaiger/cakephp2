@@ -20,6 +20,7 @@
  *
  * @package       Cake.Utility
  */
+#[\AllowDynamicProperties]
 class Folder {
 
 /**
@@ -277,7 +278,7 @@ class Folder {
 		$found = array();
 
 		foreach ($files as $file) {
-			if (preg_match('/^' . $pattern . '$/i', $file)) {
+			if (preg_match('/^' . $pattern . '$/i', (string) $file)) {
 				$found[] = Folder::addPathElement($this->path, $file);
 			}
 		}
@@ -455,7 +456,7 @@ class Folder {
 
 			foreach ($paths as $type) {
 				foreach ($type as $fullpath) {
-					$check = explode(DS, $fullpath);
+					$check = explode(DS, (string) $fullpath);
 					$count = count($check);
 
 					if (in_array($check[$count - 1], $exceptions)) {
@@ -520,7 +521,7 @@ class Folder {
 		foreach ($iterator as $itemPath => $fsIterator) {
 			if ($skipHidden) {
 				$subPathName = $fsIterator->getSubPathname();
-				if ($subPathName[0] === '.' || strpos($subPathName, DS . '.') !== false) {
+				if ($subPathName[0] === '.' || strpos((string) $subPathName, DS . '.') !== false) {
 					continue;
 				}
 			}

@@ -31,6 +31,7 @@ if (!defined('FULL_BASE_URL')) {
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class PaginatorHelperTest extends CakeTestCase {
 
 /**

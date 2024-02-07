@@ -21,6 +21,7 @@
  *
  * @package       Cake.Test.Case.Core
  */
+#[\AllowDynamicProperties]
 class AppTest extends CakeTestCase {
 
 /**

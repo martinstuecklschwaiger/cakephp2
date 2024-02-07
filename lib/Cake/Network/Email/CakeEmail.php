@@ -28,6 +28,7 @@ App::uses('View', 'View');
  *
  * @package       Cake.Network.Email
  */
+#[\AllowDynamicProperties]
 class CakeEmail {
 
 /**
@@ -1077,7 +1078,7 @@ class CakeEmail {
 				if (is_int($name)) {
 					throw new SocketException(__d('cake_dev', 'No filename specified.'));
 				}
-				$fileInfo['data'] = chunk_split(base64_encode($fileInfo['data']), 76, "\r\n");
+				$fileInfo['data'] = chunk_split(base64_encode((string) $fileInfo['data']), 76, "\r\n");
 			} else {
 				$fileName = $fileInfo['file'];
 				$fileInfo['file'] = realpath($fileInfo['file']);
@@ -1526,7 +1527,7 @@ class CakeEmail {
  */
 	protected function _readFile($path) {
 		$File = new File($path);
-		return chunk_split(base64_encode($File->read()));
+		return chunk_split(base64_encode((string) $File->read()));
 	}
 
 /**
@@ -1604,7 +1605,7 @@ class CakeEmail {
 				$msg[] = '';
 			}
 			$this->_textMessage = $rendered['text'];
-			$content = explode("\n", $this->_textMessage);
+			$content = explode("\n", (string) $this->_textMessage);
 			$msg = array_merge($msg, $content);
 			$msg[] = '';
 		}
@@ -1617,7 +1618,7 @@ class CakeEmail {
 				$msg[] = '';
 			}
 			$this->_htmlMessage = $rendered['html'];
-			$content = explode("\n", $this->_htmlMessage);
+			$content = explode("\n", (string) $this->_htmlMessage);
 			$msg = array_merge($msg, $content);
 			$msg[] = '';
 		}
@@ -1754,7 +1755,7 @@ class CakeEmail {
 	protected function _getContentTypeCharset() {
 		$charset = strtoupper($this->charset);
 		if (array_key_exists($charset, $this->_contentTypeCharset)) {
-			return strtoupper($this->_contentTypeCharset[$charset]);
+			return strtoupper((string) $this->_contentTypeCharset[$charset]);
 		}
 		return strtoupper($this->charset);
 	}

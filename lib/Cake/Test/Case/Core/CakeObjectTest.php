@@ -27,6 +27,7 @@ App::uses('Model', 'Model');
  *
  * @package       Cake.Test.Case.Core
  */
+#[\AllowDynamicProperties]
 class RequestActionPost extends CakeTestModel {
 
 /**
@@ -133,6 +134,7 @@ class RequestActionController extends Controller {
  *
  * @package       Cake.Test.Case.Core
  */
+#[\AllowDynamicProperties]
 class TestCakeObject extends CakeObject {
 
 /**
@@ -268,6 +270,7 @@ class TestCakeObject extends CakeObject {
  *
  * @package       Cake.Test.Case.Core
  */
+#[\AllowDynamicProperties]
 class ObjectTestModel extends CakeTestModel {
 
 	public $useTable = false;
@@ -279,6 +282,7 @@ class ObjectTestModel extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Core
  */
+#[\AllowDynamicProperties]
 class ObjectTest extends CakeTestCase {
 
 /**
@@ -365,7 +369,7 @@ class ObjectTest extends CakeTestCase {
  * @return void
  */
 	public function testToString() {
-		$result = strtolower($this->object->toString());
+		$result = strtolower((string) $this->object->toString());
 		$this->assertEquals('testcakeobject', $result);
 	}
 

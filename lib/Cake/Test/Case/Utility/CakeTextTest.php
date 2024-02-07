@@ -24,6 +24,7 @@ App::uses('CakeText', 'Utility');
  * @package Cake.Test.Case.Utility
  * @coversDefaultClass CakeText
  */
+#[\AllowDynamicProperties]
 class CakeTextTest extends CakeTestCase {
 
 /**
@@ -354,7 +355,7 @@ class CakeTextTest extends CakeTestCase {
  */
 	public function testWordWrap($text, $width, $break = "\n", $cut = false) {
 		$result = CakeText::wordWrap($text, $width, $break, $cut);
-		$expected = wordwrap($text, $width, $break, $cut);
+		$expected = wordwrap((string) $text, $width, $break, $cut);
 		$this->assertTextEquals($expected, $result, 'Text not wrapped same as built-in function.');
 	}
 

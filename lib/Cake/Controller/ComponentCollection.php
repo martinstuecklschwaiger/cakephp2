@@ -27,6 +27,7 @@ App::uses('CakeEventListener', 'Event');
  *
  * @package       Cake.Controller
  */
+#[\AllowDynamicProperties]
 class ComponentCollection extends ObjectCollection implements CakeEventListener {
 
 /**
@@ -110,7 +111,7 @@ class ComponentCollection extends ObjectCollection implements CakeEventListener 
 		if (!class_exists($componentClass)) {
 			throw new MissingComponentException(array(
 				'class' => $componentClass,
-				'plugin' => substr($plugin, 0, -1)
+				'plugin' => substr((string) $plugin, 0, -1)
 			));
 		}
 		$this->_loaded[$alias] = new $componentClass($this, $settings);

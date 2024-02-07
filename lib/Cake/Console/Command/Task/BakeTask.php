@@ -22,6 +22,7 @@ App::uses('AppShell', 'Console/Command');
  *
  * @package       Cake.Console.Command.Task
  */
+#[\AllowDynamicProperties]
 class BakeTask extends AppShell {
 
 /**
@@ -79,7 +80,7 @@ class BakeTask extends AppShell {
  */
 	public function execute() {
 		foreach ($this->args as $i => $arg) {
-			if (strpos($arg, '.')) {
+			if (strpos((string) $arg, '.')) {
 				list($this->params['plugin'], $this->args[$i]) = pluginSplit($arg);
 				break;
 			}

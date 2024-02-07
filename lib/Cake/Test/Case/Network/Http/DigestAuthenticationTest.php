@@ -56,6 +56,7 @@ class DigestHttpSocket extends HttpSocket {
  *
  * @package       Cake.Test.Case.Network.Http
  */
+#[\AllowDynamicProperties]
 class DigestAuthenticationTest extends CakeTestCase {
 
 /**
@@ -135,12 +136,12 @@ class DigestAuthenticationTest extends CakeTestCase {
 		$this->HttpSocket->nextHeader = 'Digest realm="The batcave",nonce="4cded326c6c51"';
 		$auth = array('user' => 'admin', 'pass' => '1234');
 		DigestAuthentication::authentication($this->HttpSocket, $auth);
-		$this->assertFalse(strpos($this->HttpSocket->request['header']['Authorization'], 'opaque="d8ea7aa61a1693024c4cc3a516f49b3c"'));
+		$this->assertFalse(strpos((string) $this->HttpSocket->request['header']['Authorization'], 'opaque="d8ea7aa61a1693024c4cc3a516f49b3c"'));
 
 		$this->HttpSocket->nextHeader = 'Digest realm="The batcave",nonce="4cded326c6c51",opaque="d8ea7aa61a1693024c4cc3a516f49b3c"';
 		$auth = array('user' => 'admin', 'pass' => '1234');
 		DigestAuthentication::authentication($this->HttpSocket, $auth);
-		$this->assertTrue(strpos($this->HttpSocket->request['header']['Authorization'], 'opaque="d8ea7aa61a1693024c4cc3a516f49b3c"') > 0);
+		$this->assertTrue(strpos((string) $this->HttpSocket->request['header']['Authorization'], 'opaque="d8ea7aa61a1693024c4cc3a516f49b3c"') > 0);
 	}
 
 /**
@@ -152,21 +153,21 @@ class DigestAuthenticationTest extends CakeTestCase {
 		$this->HttpSocket->nextHeader = 'Digest realm="The batcave",nonce="4cded326c6c51",qop="auth"';
 		$auth = array('user' => 'admin', 'pass' => '1234');
 		DigestAuthentication::authentication($this->HttpSocket, $auth);
-		$this->assertTrue(strpos($this->HttpSocket->request['header']['Authorization'], 'nc=00000001') > 0);
+		$this->assertTrue(strpos((string) $this->HttpSocket->request['header']['Authorization'], 'nc=00000001') > 0);
 		$this->assertEquals(2, $auth['nc']);
 
 		DigestAuthentication::authentication($this->HttpSocket, $auth);
-		$this->assertTrue(strpos($this->HttpSocket->request['header']['Authorization'], 'nc=00000002') > 0);
+		$this->assertTrue(strpos((string) $this->HttpSocket->request['header']['Authorization'], 'nc=00000002') > 0);
 		$this->assertEquals(3, $auth['nc']);
-		$responsePos = strpos($this->HttpSocket->request['header']['Authorization'], 'response=');
-		$response = substr($this->HttpSocket->request['header']['Authorization'], $responsePos + 10, 32);
+		$responsePos = strpos((string) $this->HttpSocket->request['header']['Authorization'], 'response=');
+		$response = substr((string) $this->HttpSocket->request['header']['Authorization'], $responsePos + 10, 32);
 
 		$this->HttpSocket->nextHeader = '';
 		DigestAuthentication::authentication($this->HttpSocket, $auth);
-		$this->assertTrue(strpos($this->HttpSocket->request['header']['Authorization'], 'nc=00000003') > 0);
+		$this->assertTrue(strpos((string) $this->HttpSocket->request['header']['Authorization'], 'nc=00000003') > 0);
 		$this->assertEquals(4, $auth['nc']);
-		$responsePos = strpos($this->HttpSocket->request['header']['Authorization'], 'response=');
-		$responseB = substr($this->HttpSocket->request['header']['Authorization'], $responsePos + 10, 32);
+		$responsePos = strpos((string) $this->HttpSocket->request['header']['Authorization'], 'response=');
+		$responseB = substr((string) $this->HttpSocket->request['header']['Authorization'], $responsePos + 10, 32);
 		$this->assertNotEquals($response, $responseB);
 	}
 
@@ -180,8 +181,8 @@ class DigestAuthenticationTest extends CakeTestCase {
 		$this->HttpSocket->request['uri']['path'] = '/admin';
 		$auth = array('user' => 'admin', 'pass' => '1234');
 		DigestAuthentication::authentication($this->HttpSocket, $auth);
-		$responsePos = strpos($this->HttpSocket->request['header']['Authorization'], 'response=');
-		$response = substr($this->HttpSocket->request['header']['Authorization'], $responsePos + 10, 32);
+		$responsePos = strpos((string) $this->HttpSocket->request['header']['Authorization'], 'response=');
+		$response = substr((string) $this->HttpSocket->request['header']['Authorization'], $responsePos + 10, 32);
 		$this->assertNotEquals('da7e2a46b471d77f70a9bb3698c8902b', $response);
 	}
 

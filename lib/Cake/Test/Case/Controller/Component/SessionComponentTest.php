@@ -74,6 +74,7 @@ class OrangeSessionTestController extends Controller {
  *
  * @package       Cake.Test.Case.Controller.Component
  */
+#[\AllowDynamicProperties]
 class SessionComponentTest extends CakeTestCase {
 
 	protected static $_sessionBackup;

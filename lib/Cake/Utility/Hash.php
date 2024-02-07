@@ -27,6 +27,7 @@ App::uses('CakeText', 'Utility');
  *
  * @package       Cake.Utility
  */
+#[\AllowDynamicProperties]
 class Hash {
 
 /**
@@ -239,7 +240,7 @@ class Hash {
 
 			// Pattern matches and other operators.
 			if ($op === '=' && $val && $val[0] === '/') {
-				if (!preg_match($val, $prop)) {
+				if (!preg_match($val, (string) $prop)) {
 					return false;
 				}
 			} elseif (($op === '=' && $prop != $val) ||
@@ -570,7 +571,7 @@ class Hash {
  * @return array Filtered array
  * @link https://book.cakephp.org/2.0/en/core-utility-libraries/hash.html#Hash::filter
  */
-	public static function filter(array $data, $callback = array('self', '_filter')) {
+	public static function filter(array $data, $callback = array(self::class, '_filter')) {
 		foreach ($data as $k => $v) {
 			if (is_array($v)) {
 				$data[$k] = static::filter($v, $callback);
@@ -912,7 +913,7 @@ class Hash {
 			$ignoreCase = $type['ignoreCase'];
 			$type = $type['type'];
 		}
-		$type = strtolower($type);
+		$type = strtolower((string) $type);
 
 		if ($type === 'natural' && version_compare(PHP_VERSION, '5.4.0', '<')) {
 			$type = 'regular';
@@ -1105,10 +1106,10 @@ class Hash {
 		$return = $idMap = array();
 		$ids = static::extract($data, $options['idPath']);
 
-		$idKeys = explode('.', $options['idPath']);
+		$idKeys = explode('.', (string) $options['idPath']);
 		array_shift($idKeys);
 
-		$parentKeys = explode('.', $options['parentPath']);
+		$parentKeys = explode('.', (string) $options['parentPath']);
 		array_shift($parentKeys);
 
 		foreach ($data as $result) {

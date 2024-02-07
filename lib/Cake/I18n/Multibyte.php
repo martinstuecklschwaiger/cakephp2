@@ -21,6 +21,7 @@
  *
  * @package       Cake.I18n
  */
+#[\AllowDynamicProperties]
 class Multibyte {
 
 /**
@@ -739,7 +740,7 @@ class Multibyte {
 		if (empty($charset)) {
 			$charset = Configure::read('App.encoding');
 		}
-		$charset = strtoupper($charset);
+		$charset = strtoupper((string) $charset);
 
 		$start = '=?' . $charset . '?B?';
 		$end = '?=';

@@ -45,6 +45,7 @@ class EmailTestComponent extends EmailComponent {
  *
  * @package       Cake.Test.Case.Controller.Component
  */
+#[\AllowDynamicProperties]
 class DebugCompTransport extends AbstractTransport {
 
 /**
@@ -112,6 +113,7 @@ class EmailTestController extends Controller {
  *
  * @package       Cake.Test.Case.Controller.Component
  */
+#[\AllowDynamicProperties]
 class EmailComponentTest extends CakeTestCase {
 
 /**
@@ -548,7 +550,7 @@ HTMLBLOC;
 		$this->Controller->EmailTest->delivery = 'DebugComp';
 
 		$this->assertTrue($this->Controller->EmailTest->send());
-		$this->assertTrue((bool)strpos($this->Controller->EmailTest->textMessage, 'Right now: ' . date('Y-m-d\TH:i:s\Z', $timestamp)));
+		$this->assertTrue((bool)strpos((string) $this->Controller->EmailTest->textMessage, 'Right now: ' . date('Y-m-d\TH:i:s\Z', $timestamp)));
 	}
 
 /**

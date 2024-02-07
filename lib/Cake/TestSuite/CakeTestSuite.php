@@ -23,6 +23,7 @@ App::uses('Folder', 'Utility');
  *
  * @package       Cake.TestSuite
  */
+#[\AllowDynamicProperties]
 class CakeTestSuite extends PHPUnit_Framework_TestSuite {
 
 /**
@@ -36,7 +37,7 @@ class CakeTestSuite extends PHPUnit_Framework_TestSuite {
 		list(, $files) = $Folder->read(true, true, true);
 
 		foreach ($files as $file) {
-			if (substr($file, -4) === '.php') {
+			if (substr((string) $file, -4) === '.php') {
 				$this->addTestFile($file);
 			}
 		}
@@ -53,7 +54,7 @@ class CakeTestSuite extends PHPUnit_Framework_TestSuite {
 		$files = $Folder->tree(null, true, 'files');
 
 		foreach ($files as $file) {
-			if (substr($file, -4) === '.php') {
+			if (substr((string) $file, -4) === '.php') {
 				$this->addTestFile($file);
 			}
 		}

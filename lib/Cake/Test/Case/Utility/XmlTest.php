@@ -77,6 +77,7 @@ class XmlUser extends CakeTestModel {
  *
  * @package       Cake.Test.Case.Utility
  */
+#[\AllowDynamicProperties]
 class XmlTest extends CakeTestCase {
 
 /**

@@ -23,6 +23,7 @@ App::uses('PagesController', 'Controller');
  *
  * @package       Cake.Test.Case.Controller
  */
+#[\AllowDynamicProperties]
 class PagesControllerTest extends CakeTestCase {
 
 /**

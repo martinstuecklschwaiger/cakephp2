@@ -26,6 +26,7 @@ App::uses('ComponentCollection', 'Controller');
  *
  * @package		Cake.Test.Case.Controller.Component
  */
+#[\AllowDynamicProperties]
 class FlashComponentTest extends CakeTestCase {
 
 /**

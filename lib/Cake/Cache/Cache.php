@@ -40,6 +40,7 @@ App::uses('CacheEngine', 'Cache');
  *
  * @package       Cake.Cache
  */
+#[\AllowDynamicProperties]
 class Cache {
 
 /**
@@ -260,7 +261,7 @@ class Cache {
 				}
 				$settings += static::$_config[$config];
 				if (isset($settings['duration']) && !is_numeric($settings['duration'])) {
-					$settings['duration'] = strtotime($settings['duration']) - time();
+					$settings['duration'] = strtotime((string) $settings['duration']) - time();
 				}
 			}
 			static::$_engines[$config]->settings = $settings;

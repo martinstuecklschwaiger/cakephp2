@@ -23,6 +23,7 @@ App::uses('TextCoverageReport', 'TestSuite/Coverage');
  *
  * @package       Cake.TestSuite.Reporter
  */
+#[\AllowDynamicProperties]
 class CakeTextReporter extends CakeBaseReporter {
 
 /**

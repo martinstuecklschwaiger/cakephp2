@@ -28,6 +28,7 @@ App::uses('Hash', 'Utility');
  *
  * @package       Cake.Console.Command
  */
+#[\AllowDynamicProperties]
 class AclShell extends AppShell {
 
 /**
@@ -117,7 +118,7 @@ class AclShell extends AppShell {
 	public function create() {
 		extract($this->_dataVars());
 
-		$class = ucfirst($this->args[0]);
+		$class = ucfirst((string) $this->args[0]);
 		$parent = $this->parseIdentifier($this->args[1]);
 
 		if (!empty($parent) && $parent !== '/' && $parent !== 'root') {
@@ -608,7 +609,7 @@ class AclShell extends AppShell {
 			$type = $this->args[0];
 		}
 		$vars = array();
-		$class = ucwords($type);
+		$class = ucwords((string) $type);
 		$vars['secondary_id'] = (strtolower($class) === 'aro') ? 'foreign_key' : 'object_id';
 		$vars['data_name'] = $type;
 		$vars['table_name'] = $type . 's';

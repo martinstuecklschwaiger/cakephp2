@@ -21,6 +21,7 @@ App::uses('Hash', 'Utility');
  *
  * @package       Cake.Utility
  */
+#[\AllowDynamicProperties]
 class HashTest extends CakeTestCase {
 
 /**

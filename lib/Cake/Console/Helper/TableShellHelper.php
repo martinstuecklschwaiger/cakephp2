@@ -18,6 +18,7 @@ App::uses("BaseShellHelper", "Console/Helper");
  * Create a visually pleasing ASCII art table
  * from 2 dimensional array data.
  */
+#[\AllowDynamicProperties]
 class TableShellHelper extends BaseShellHelper {
 
 /**
@@ -41,7 +42,7 @@ class TableShellHelper extends BaseShellHelper {
 		$widths = array();
 		foreach ($rows as $line) {
 			for ($i = 0, $len = count($line); $i < $len; $i++) {
-				$columnLength = mb_strlen($line[$i]);
+				$columnLength = mb_strlen((string) $line[$i]);
 				if ($columnLength > (isset($widths[$i]) ? $widths[$i] : 0)) {
 					$widths[$i] = $columnLength;
 				}
@@ -76,7 +77,7 @@ class TableShellHelper extends BaseShellHelper {
 	protected function _render($row, $widths, $options = array()) {
 		$out = '';
 		foreach ($row as $i => $column) {
-			$pad = $widths[$i] - mb_strlen($column);
+			$pad = $widths[$i] - mb_strlen((string) $column);
 			if (!empty($options['style'])) {
 				$column = $this->_addStyle($column, $options['style']);
 			}

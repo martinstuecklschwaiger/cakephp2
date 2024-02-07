@@ -27,6 +27,7 @@ App::uses('View', 'View');
  *
  * @package       Cake.Model.Datasource
  */
+#[\AllowDynamicProperties]
 class DboSource extends DataSource {
 
 /**
@@ -512,6 +513,7 @@ class DboSource extends DataSource {
 			}
 			return $query;
 		} catch (PDOException $e) {
+			//this is adding a dynamic property querystring
 			if (isset($query->queryString)) {
 				$e->queryString = $query->queryString;
 			} else {
@@ -579,7 +581,7 @@ class DboSource extends DataSource {
 
 		if (count($args) === 1) {
 			return $this->fetchAll($args[0]);
-		} elseif (count($args) > 1 && preg_match('/^find(\w*)By(.+)/', $args[0], $matches)) {
+		} elseif (count($args) > 1 && preg_match('/^find(\w*)By(.+)/', (string) $args[0], $matches)) {
 			$params = $args[1];
 
 			$findType = lcfirst($matches[1]);
@@ -925,7 +927,7 @@ class DboSource extends DataSource {
 		if ($return = $this->cacheMethod(__FUNCTION__, $cacheKey)) {
 			return $return;
 		}
-		$data = trim($data);
+		$data = trim((string) $data);
 		if (preg_match('/^[\w-]+(?:\.[^ \*]*)*$/', $data)) { // string, string.string
 			if (strpos($data, '.') === false) { // string
 				return $this->cacheMethod(__FUNCTION__, $cacheKey, $this->startQuote . $data . $this->endQuote);
@@ -1064,7 +1066,7 @@ class DboSource extends DataSource {
 		if (is_object($model)) {
 			$schemaName = $model->schemaName;
 			$table = $model->tablePrefix . $model->table;
-		} elseif (!empty($this->config['prefix']) && strpos($model, $this->config['prefix']) !== 0) {
+		} elseif (!empty($this->config['prefix']) && strpos($model, (string) $this->config['prefix']) !== 0) {
 			$table = $this->config['prefix'] . strval($model);
 		} else {
 			$table = strval($model);
@@ -1744,7 +1746,7 @@ class DboSource extends DataSource {
 			$passedFields = $queryData['fields'];
 
 			if (count($passedFields) > 1 ||
-				(strpos($passedFields[0], $assocFields[0]) === false && !preg_match('/^[a-z]+\(/i', $passedFields[0]))
+				(strpos((string) $passedFields[0], (string) $assocFields[0]) === false && !preg_match('/^[a-z]+\(/i', (string) $passedFields[0]))
 			) {
 				$queryData['fields'] = array_merge($passedFields, $assocFields);
 			}
@@ -1844,7 +1846,7 @@ class DboSource extends DataSource {
 					if ($Model->name !== $LinkModel->name) {
 						$modelAlias = $Model->alias;
 						foreach ($conditions as $key => $condition) {
-							if (is_numeric($key) && strpos($condition, $modelAlias . '.') !== false) {
+							if (is_numeric($key) && strpos((string) $condition, $modelAlias . '.') !== false) {
 								unset($conditions[$key]);
 							}
 						}
@@ -2070,7 +2072,7 @@ class DboSource extends DataSource {
  * @return string
  */
 	public function renderJoinStatement($data) {
-		if (strtoupper($data['type']) === 'CROSS' || empty($data['conditions'])) {
+		if (strtoupper((string) $data['type']) === 'CROSS' || empty($data['conditions'])) {
 			return "{$data['type']} JOIN {$data['table']} {$data['alias']}";
 		}
 		return trim("{$data['type']} JOIN {$data['table']} {$data['alias']} ON ({$data['conditions']})");
@@ -2112,7 +2114,7 @@ class DboSource extends DataSource {
 						${$var} = '';
 					}
 				}
-				if (trim($indexes) !== '') {
+				if (trim((string) $indexes) !== '') {
 					$columns .= ',';
 				}
 				return "CREATE TABLE {$table} (\n{$columns}{$indexes}) {$tableParameters};";
@@ -2222,7 +2224,7 @@ class DboSource extends DataSource {
 				$update .= $this->boolean($value, true);
 			} elseif (!$alias) {
 				$update .= str_replace($quotedAlias . '.', '', str_replace(
-					$Model->alias . '.', '', $value
+					$Model->alias . '.', '', (string) $value
 				));
 			} else {
 				$update .= $value;
@@ -2273,8 +2275,8 @@ class DboSource extends DataSource {
 			$noJoin = true;
 			foreach ($conditions as $field => $value) {
 				$originalField = $field;
-				if (strpos($field, '.') !== false) {
-					list(, $field) = explode('.', $field);
+				if (strpos((string) $field, '.') !== false) {
+					list(, $field) = explode('.', (string) $field);
 					$field = ltrim($field, $this->startQuote);
 					$field = rtrim($field, $this->endQuote);
 				}
@@ -2698,33 +2700,33 @@ class DboSource extends DataSource {
 				}
 				if (is_object($fields[$i]) && isset($fields[$i]->type) && $fields[$i]->type === 'expression') {
 					$fields[$i] = $fields[$i]->value;
-				} elseif (preg_match('/^\(.*\)\s' . $this->alias . '.*/i', $fields[$i])) {
+				} elseif (preg_match('/^\(.*\)\s' . $this->alias . '.*/i', (string) $fields[$i])) {
 					continue;
-				} elseif (!preg_match('/^.+\\(.*\\)/', $fields[$i])) {
+				} elseif (!preg_match('/^.+\\(.*\\)/', (string) $fields[$i])) {
 					$prepend = '';
 
-					if (strpos($fields[$i], 'DISTINCT') !== false) {
+					if (strpos((string) $fields[$i], 'DISTINCT') !== false) {
 						$prepend = 'DISTINCT ';
-						$fields[$i] = trim(str_replace('DISTINCT', '', $fields[$i]));
+						$fields[$i] = trim(str_replace('DISTINCT', '', (string) $fields[$i]));
 					}
-					$dot = strpos($fields[$i], '.');
+					$dot = strpos((string) $fields[$i], '.');
 
 					if ($dot === false) {
 						$prefix = !(
-							strpos($fields[$i], ' ') !== false ||
-							strpos($fields[$i], '(') !== false
+							strpos((string) $fields[$i], ' ') !== false ||
+							strpos((string) $fields[$i], '(') !== false
 						);
 						$fields[$i] = $this->name(($prefix ? $alias . '.' : '') . $fields[$i]);
 					} else {
-						if (strpos($fields[$i], ',') === false) {
-							$build = explode('.', $fields[$i]);
+						if (strpos((string) $fields[$i], ',') === false) {
+							$build = explode('.', (string) $fields[$i]);
 							if (!Hash::numeric($build)) {
 								$fields[$i] = $this->name(implode('.', $build));
 							}
 						}
 					}
 					$fields[$i] = $prepend . $fields[$i];
-				} elseif (preg_match('/\(([\.\w]+)\)/', $fields[$i], $field)) {
+				} elseif (preg_match('/\(([\.\w]+)\)/', (string) $fields[$i], $field)) {
 					if (isset($field[1])) {
 						if (strpos($field[1], '.') === false) {
 							$field[1] = $this->name($alias . '.' . $field[1]);
@@ -2732,7 +2734,7 @@ class DboSource extends DataSource {
 							$field[0] = explode('.', $field[1]);
 							if (!Hash::numeric($field[0])) {
 								$field[0] = implode('.', array_map(array(&$this, 'name'), $field[0]));
-								$fields[$i] = preg_replace('/\(' . $field[1] . '\)/', '(' . $field[0] . ')', $fields[$i], 1);
+								$fields[$i] = preg_replace('/\(' . $field[1] . '\)/', '(' . $field[0] . ')', (string) $fields[$i], 1);
 							}
 						}
 					}
@@ -2780,13 +2782,13 @@ class DboSource extends DataSource {
 			return $clause . (int)$conditions . ' = 1';
 		}
 
-		if (empty($conditions) || trim($conditions) === '') {
+		if (empty($conditions) || trim((string) $conditions) === '') {
 			return $clause . '1 = 1';
 		}
 
 		$clauses = '/^WHERE\\x20|^GROUP\\x20BY\\x20|^HAVING\\x20|^ORDER\\x20BY\\x20/i';
 
-		if (preg_match($clauses, $conditions)) {
+		if (preg_match($clauses, (string) $conditions)) {
 			$clause = '';
 		}
 
@@ -2957,10 +2959,10 @@ class DboSource extends DataSource {
 
 		if (!$virtual && $key !== '?') {
 			$isKey = (
-				strpos($key, '(') !== false ||
-				strpos($key, ')') !== false ||
-				strpos($key, '|') !== false ||
-				strpos($key, '->') !== false
+				strpos((string) $key, '(') !== false ||
+				strpos((string) $key, ')') !== false ||
+				strpos((string) $key, '|') !== false ||
+				strpos((string) $key, '->') !== false
 			);
 			$key = $isKey ? $this->_quoteFields($key) : $this->name($key);
 		}
@@ -3119,12 +3121,12 @@ class DboSource extends DataSource {
 				continue;
 			}
 
-			if (preg_match('/\\x20(ASC|DESC).*/i', $key, $_dir)) {
+			if (preg_match('/\\x20(ASC|DESC).*/i', (string) $key, $_dir)) {
 				$dir = $_dir[0];
-				$key = preg_replace('/\\x20(ASC|DESC).*/i', '', $key);
+				$key = preg_replace('/\\x20(ASC|DESC).*/i', '', (string) $key);
 			}
 
-			$key = trim($key);
+			$key = trim((string) $key);
 
 			if ($Model !== null) {
 				if ($Model->isVirtualField($key)) {
@@ -3146,7 +3148,7 @@ class DboSource extends DataSource {
 				$key = $this->name($key);
 			}
 
-			$key .= ' ' . trim($dir);
+			$key .= ' ' . trim((string) $dir);
 
 			$result[] = $key;
 		}
@@ -3270,7 +3272,7 @@ class DboSource extends DataSource {
 		$sign = isset($result[3]);
 
 		$isFloat = in_array($type, array('dec', 'decimal', 'float', 'numeric', 'double'));
-		if ($isFloat && strpos($length, ',') !== false) {
+		if ($isFloat && strpos((string) $length, ',') !== false) {
 			return $length;
 		}
 
@@ -3505,7 +3507,7 @@ class DboSource extends DataSource {
 			return null;
 		}
 
-		if (substr($type, 0, 4) === 'enum') {
+		if (substr((string) $type, 0, 4) === 'enum') {
 			$out = $this->name($name) . ' ' . $type;
 		} else {
 			$real = $this->columns[$type];
@@ -3544,8 +3546,8 @@ class DboSource extends DataSource {
 		} elseif (isset($column['null']) && $column['null'] === false) {
 			$out .= ' NOT NULL';
 		}
-		if (in_array($type, array('timestamp', 'datetime')) && isset($column['default']) && strtolower($column['default']) === 'current_timestamp') {
-			$out = str_replace(array("'CURRENT_TIMESTAMP'", "'current_timestamp'"), 'CURRENT_TIMESTAMP', $out);
+		if (in_array($type, array('timestamp', 'datetime')) && isset($column['default']) && strtolower((string) $column['default']) === 'current_timestamp') {
+			$out = str_replace(array("'CURRENT_TIMESTAMP'", "'current_timestamp'"), 'CURRENT_TIMESTAMP', (string) $out);
 		}
 		return $this->_buildFieldParameters($out, $column, 'afterDefault');
 	}
@@ -3672,7 +3674,7 @@ class DboSource extends DataSource {
 		$isAllFloat = $isAllInt = true;
 		$containsInt = $containsString = false;
 		foreach ($value as $valElement) {
-			$valElement = trim($valElement);
+			$valElement = trim((string) $valElement);
 			if (!is_float($valElement) && !preg_match('/^[\d]+\.[\d]+$/', $valElement)) {
 				$isAllFloat = false;
 			} else {

@@ -23,6 +23,7 @@ App::uses('CakeResponse', 'Network');
  *
  * @package       Cake.Test.Case.Routing.Filter
  */
+#[\AllowDynamicProperties]
 class AssetDispatcherTest extends CakeTestCase {
 
 /**

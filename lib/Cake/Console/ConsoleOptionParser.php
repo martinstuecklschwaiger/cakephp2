@@ -76,6 +76,7 @@ App::uses('HelpFormatter', 'Console');
  *
  * @package       Cake.Console
  */
+#[\AllowDynamicProperties]
 class ConsoleOptionParser {
 
 /**
@@ -479,9 +480,9 @@ class ConsoleOptionParser {
 		$params = $args = array();
 		$this->_tokens = $argv;
 		while (($token = array_shift($this->_tokens)) !== null) {
-			if (substr($token, 0, 2) === '--') {
+			if (substr((string) $token, 0, 2) === '--') {
 				$params = $this->_parseLongOption($token, $params);
-			} elseif (substr($token, 0, 1) === '-') {
+			} elseif (substr((string) $token, 0, 1) === '-') {
 				$params = $this->_parseShortOption($token, $params);
 			} else {
 				$args = $this->_parseArg($token, $args);

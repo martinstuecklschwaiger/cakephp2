@@ -22,6 +22,7 @@ App::uses('Folder', 'Utility');
  *
  * @package       Cake.Console.Command.Task
  */
+#[\AllowDynamicProperties]
 class PluginTask extends AppShell {
 
 /**
@@ -102,7 +103,7 @@ class PluginTask extends AppShell {
 
 		$looksGood = $this->in(__d('cake_console', 'Look okay?'), array('y', 'n', 'q'), 'y');
 
-		if (strtolower($looksGood) === 'y') {
+		if (strtolower((string) $looksGood) === 'y') {
 			$Folder = new Folder($this->path . $plugin);
 			$directories = array(
 				'Config' . DS . 'Schema',
@@ -179,7 +180,7 @@ class PluginTask extends AppShell {
 	protected function _modifyBootstrap($plugin) {
 		$bootstrap = new File($this->bootstrap, false);
 		$contents = $bootstrap->read();
-		if (!preg_match("@\n\s*CakePlugin::loadAll@", $contents)) {
+		if (!preg_match("@\n\s*CakePlugin::loadAll@", (string) $contents)) {
 			$bootstrap->append("\nCakePlugin::load('$plugin', array('bootstrap' => false, 'routes' => false));\n");
 			$this->out('');
 			$this->out(__d('cake_dev', '%s modified', $this->bootstrap));

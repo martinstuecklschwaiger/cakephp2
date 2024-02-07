@@ -41,6 +41,7 @@ class TextHelperTestObject extends TextHelper {
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class CakeTextMock {
 }
 
@@ -49,6 +50,7 @@ class CakeTextMock {
  *
  * @package       Cake.Test.Case.View.Helper
  */
+#[\AllowDynamicProperties]
 class TextHelperTest extends CakeTestCase {
 
 /**

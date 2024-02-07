@@ -31,6 +31,7 @@ App::uses('CakeEmail', 'Network/Email');
  * @link          https://book.cakephp.org/2.0/en/core-utility-libraries/email.html
  * @deprecated    3.0.0 Will be removed in 3.0. Use Network/CakeEmail instead
  */
+#[\AllowDynamicProperties]
 class EmailComponent extends Component {
 
 /**
@@ -430,7 +431,7 @@ class EmailComponent extends Component {
 	protected function _formatAddresses($addresses) {
 		$formatted = array();
 		foreach ($addresses as $address) {
-			if (preg_match('/((.*))?\s?<(.+)>/', $address, $matches) && !empty($matches[2])) {
+			if (preg_match('/((.*))?\s?<(.+)>/', (string) $address, $matches) && !empty($matches[2])) {
 				$formatted[$this->_strip($matches[3])] = $matches[2];
 			} else {
 				$address = $this->_strip($address);

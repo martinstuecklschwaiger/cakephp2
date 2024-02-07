@@ -26,6 +26,7 @@ App::uses('CakeNumber', 'Utility');
  *
  * @package       Cake.Log.Engine
  */
+#[\AllowDynamicProperties]
 class FileLog extends BaseLog {
 
 /**
@@ -108,7 +109,7 @@ class FileLog extends BaseLog {
 
 		if (!empty($config['file'])) {
 			$this->_file = $config['file'];
-			if (substr($this->_file, -4) !== '.log') {
+			if (substr((string) $this->_file, -4) !== '.log') {
 				$this->_file .= '.log';
 			}
 		}

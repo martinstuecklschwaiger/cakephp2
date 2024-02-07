@@ -33,6 +33,7 @@ App::uses('Xml', 'Utility');
  * @package       Cake.Controller.Component
  * @link https://book.cakephp.org/2.0/en/core-libraries/components/request-handling.html
  */
+#[\AllowDynamicProperties]
 class RequestHandlerComponent extends Component {
 
 /**
@@ -533,7 +534,7 @@ class RequestHandlerComponent extends Component {
 
 		list($contentType) = explode(';', env('CONTENT_TYPE'));
 		if ($contentType === '') {
-			list($contentType) = explode(';', CakeRequest::header('CONTENT_TYPE'));
+			list($contentType) = explode(';', (string) CakeRequest::header('CONTENT_TYPE'));
 		}
 		if (!$type) {
 			return $this->mapType($contentType);

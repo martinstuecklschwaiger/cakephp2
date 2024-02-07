@@ -24,6 +24,7 @@ App::uses('Hash', 'Utility');
  *
  * @package Cake.Routing.Route
  */
+#[\AllowDynamicProperties]
 class CakeRoute {
 
 /**
@@ -203,7 +204,7 @@ class CakeRoute {
 				} else {
 					$header = 'http_' . $header[1];
 				}
-				$header = strtoupper($header);
+				$header = strtoupper((string) $header);
 
 				$val = (array)$val;
 				$h = false;
@@ -292,7 +293,7 @@ class CakeRoute {
 				continue;
 			}
 
-			$separatorIsPresent = strpos($param, $namedConfig['separator']) !== false;
+			$separatorIsPresent = strpos($param, (string) $namedConfig['separator']) !== false;
 			if ((!isset($this->options['named']) || !empty($this->options['named'])) && $separatorIsPresent) {
 				list($key, $val) = explode($namedConfig['separator'], $param, 2);
 				$hasRule = isset($rules[$key]);
@@ -470,7 +471,7 @@ class CakeRoute {
 		//check patterns for routed params
 		if (!empty($this->options)) {
 			foreach ($this->options as $key => $pattern) {
-				if (array_key_exists($key, $url) && !preg_match('#^' . $pattern . '$#', $url[$key])) {
+				if (array_key_exists($key, $url) && !preg_match('#^' . $pattern . '$#', (string) $url[$key])) {
 					return false;
 				}
 			}
@@ -491,8 +492,8 @@ class CakeRoute {
 		if (isset($params['prefix'])) {
 			$prefixed = $params['prefix'] . '_';
 		}
-		if (isset($prefixed, $params['action']) && strpos($params['action'], $prefixed) === 0) {
-			$params['action'] = substr($params['action'], strlen($prefixed));
+		if (isset($prefixed, $params['action']) && strpos((string) $params['action'], $prefixed) === 0) {
+			$params['action'] = substr((string) $params['action'], strlen($prefixed));
 			unset($params['prefix']);
 		}
 
@@ -509,10 +510,10 @@ class CakeRoute {
 				if (is_array($value)) {
 					$flat = Hash::flatten($value, '%5D%5B');
 					foreach ($flat as $namedKey => $namedValue) {
-						$named[] = $key . "%5B{$namedKey}%5D" . $separator . rawurlencode($namedValue);
+						$named[] = $key . "%5B{$namedKey}%5D" . $separator . rawurlencode((string) $namedValue);
 					}
 				} else {
-					$named[] = $key . $separator . rawurlencode($value);
+					$named[] = $key . $separator . rawurlencode((string) $value);
 				}
 			}
 			$params['pass'] = $params['pass'] . '/' . implode('/', $named);
@@ -526,7 +527,7 @@ class CakeRoute {
 				$string = null;
 				if (isset($params[$key])) {
 					$string = $params[$key];
-				} elseif (strpos($out, $key) != strlen($out) - strlen($key)) {
+				} elseif (strpos($out, (string) $key) != strlen($out) - strlen((string) $key)) {
 					$key .= '/';
 				}
 				$search[] = ':' . $key;

@@ -26,6 +26,7 @@
  * @package       Cake.Utility
  * @link https://book.cakephp.org/2.0/en/core-libraries/helpers/number.html
  */
+#[\AllowDynamicProperties]
 class CakeNumber {
 
 /**

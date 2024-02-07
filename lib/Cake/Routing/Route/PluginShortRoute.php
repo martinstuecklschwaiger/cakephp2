@@ -21,6 +21,7 @@ App::uses('CakeRoute', 'Routing/Route');
  *
  * @package Cake.Routing.Route
  */
+#[\AllowDynamicProperties]
 class PluginShortRoute extends CakeRoute {
 
 /**

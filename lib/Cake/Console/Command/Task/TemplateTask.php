@@ -24,6 +24,7 @@ App::uses('Folder', 'Utility');
  *
  * @package       Cake.Console.Command.Task
  */
+#[\AllowDynamicProperties]
 class TemplateTask extends AppShell {
 
 /**
@@ -68,7 +69,7 @@ class TemplateTask extends AppShell {
 
 		$core = current(App::core('Console'));
 		$separator = DS === '/' ? '/' : '\\\\';
-		$core = preg_replace('#shells' . $separator . '$#', '', $core);
+		$core = preg_replace('#shells' . $separator . '$#', '', (string) $core);
 
 		$Folder = new Folder($core . 'Templates' . DS . 'default');
 
@@ -78,7 +79,7 @@ class TemplateTask extends AppShell {
 		$paths[] = $core;
 
 		foreach ($paths as $i => $path) {
-			$paths[$i] = rtrim($path, DS) . DS;
+			$paths[$i] = rtrim((string) $path, DS) . DS;
 		}
 
 		$themes = array();
@@ -87,7 +88,7 @@ class TemplateTask extends AppShell {
 			$contents = $Folder->read();
 			$subDirs = $contents[0];
 			foreach ($subDirs as $dir) {
-				if (empty($dir) || preg_match('@^skel$|_skel$@', $dir)) {
+				if (empty($dir) || preg_match('@^skel$|_skel$@', (string) $dir)) {
 					continue;
 				}
 				$Folder = new Folder($path . 'Templates' . DS . $dir);

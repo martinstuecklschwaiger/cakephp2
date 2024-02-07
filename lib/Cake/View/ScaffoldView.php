@@ -45,7 +45,7 @@ class ScaffoldView extends View {
 		if (!empty($prefixes)) {
 			foreach ($prefixes as $prefix) {
 				if (strpos($name, $prefix . '_') !== false) {
-					$name = substr($name, strlen($prefix) + 1);
+					$name = substr($name, strlen((string) $prefix) + 1);
 					break;
 				}
 			}

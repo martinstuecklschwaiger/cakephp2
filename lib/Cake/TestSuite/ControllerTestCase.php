@@ -111,6 +111,7 @@ class InterceptContentHelper extends Helper {
  * @package       Cake.TestSuite
  * @method        mixed testAction() testAction($url, $options = array())  Lets you do functional tests of a controller action.
  */
+#[\AllowDynamicProperties]
 abstract class ControllerTestCase extends CakeTestCase {
 
 /**
@@ -238,9 +239,9 @@ abstract class ControllerTestCase extends CakeTestCase {
 
 		$restore = array('get' => $_GET, 'post' => $_POST);
 
-		$_SERVER['REQUEST_METHOD'] = strtoupper($options['method']);
+		$_SERVER['REQUEST_METHOD'] = strtoupper((string) $options['method']);
 		if (is_array($options['data'])) {
-			if (strtoupper($options['method']) === 'GET') {
+			if (strtoupper((string) $options['method']) === 'GET') {
 				$_GET = $options['data'];
 				$_POST = array();
 			} else {
