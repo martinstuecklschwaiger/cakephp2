@@ -70,7 +70,11 @@ class Validation {
  * @param string $check Value to check
  * @return bool Success
  */
-	public static function notBlank($check) {
+	public static function notBlank($check): bool {
+		if ($check instanceof BackedEnum) {
+			$check = $check->value;
+		}
+
 		if (empty($check) && !is_bool($check) && !is_numeric($check)) {
 			return false;
 		}
